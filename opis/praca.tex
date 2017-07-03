@@ -1,0 +1,331 @@
+\documentclass[a4paper,twoside,titlepage,openright]{book}
+\usepackage[MeX]{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem} % słownik pojęć
+\usepackage{amsmath}
+\usepackage{tabularx} % tabele
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % kolory jak~się chce gdzieś użyć
+\usepackage{graphicx} % żeby ryciny i~zdjęcia były
+\usepackage{listings} % syntax highlighting
+\usepackage{verbatimbox} % marginesy dla~tabel
+\usepackage{emptypage} % usuwa nagłówki i~numery stron z~pustych stron
+\usepackage{afterpage} % to zapobiega ustawianiu obrazka PO tym
+
+% PAGE LAYOUT
+%\usepackage{showframe} % debug
+\marginparwidth 0pt
+\marginparsep 0pt
+\usepackage[top=3.5cm,bottom=3.5cm,inner=3.5cm,outer=2.5cm]{geometry}
+
+% HEADER, FOOTER
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+
+% TABLE OF CONTENTS
+
+%kropki w~spisie tresci
+\makeatletter
+\def\numberline#1{\hb@xt@\@tempdima{#1.\hfil}}
+\makeatother
+
+% CHAPTER TITLE
+
+%kropki po~tytułach rodziałów
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+	\ifnum \c@secnumdepth >\m@ne
+	  \if@mainmatter
+	   \huge\bfseries \@chapapp\space \thechapter.
+	   \par\nobreak
+	   \vskip 20\p@
+	\fi
+   \fi
+   \interlinepenalty\@M
+   \Huge \bfseries #1\par\nobreak
+   \vskip 40\p@
+  }}
+\makeatother
+
+% SPIS TREŚCI
+
+%kropki w~spisie tresci
+\makeatletter
+\def\numberline#1{\hb@xt@\@tempdima{#1.\hfil}}
+\makeatother
+
+% TYTUŁY ROZDZIAŁÓW
+
+%kropki po~tytułach rozdziałów
+\makeatletter
+\renewcommand*\@seccntformat[1]%
+{\csname the#1\endcsname.\enspace}
+\makeatother
+
+
+% KONFIGURACJA WYGLĄDU NAGŁÓWKA TEGO CO SIĘ POWTARZA
+
+\fancyhead{} 
+\fancyhead[LE]{\rightmark}
+\fancyhead[RO]{\leftmark}
+
+% WYGLĄD TABEL
+
+% vertical padding
+\renewcommand{\arraystretch}{1.5}
+
+% CODE LISTINGS 
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+%frame=lines,
+aboveskip=1.5em,
+    belowcaptionskip=1.5em,
+    xleftmargin=0.5cm,
+  backgroundcolor=\color{white},   % choose the background color
+  %basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\lstdefinelanguage{XML}
+{
+  basicstyle=\ttfamily,
+  morestring=[s]{"}{"},
+  morecomment=[s]{?}{?},
+  morecomment=[s]{!--}{--},
+  commentstyle=\color{darkgreen},
+  moredelim=[s][\color{black}]{>}{<},
+  moredelim=[s][\color{red}]{\ }{=},
+  stringstyle=\color{blue},
+  identifierstyle=\color{maroon},
+  morekeywords={Page.DataContext,viewModel:NameViewModel}
+}
+
+%\setmonofont{Consolas} %to be used with XeLaTeX or LuaLaTeX
+\definecolor{bluekeywords}{rgb}{0,0,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{rgb}{0.5,0.5,0.5}
+\definecolor{types}{rgb}{0.17,0.57,0.68}
+
+\lstset{language=[Sharp]C,
+%captionpos=b,
+%numbers=left, %Nummerierung
+%numberstyle=\tiny, % kleine Zeilennummern
+%frame=lines, % Oberhalb und unterhalb des Listings ist eine Linie
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+morekeywords={partial, var, value, get, set},
+keywordstyle=\color{bluekeywords},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small,
+}
+
+
+
+
+\begin{document}
+
+% ################################
+%        STRONA TYTUŁOWA
+% ################################
+
+\begin{titlepage}
+
+%\newgeometry{inner=3cm,outer=3cm}
+
+\vspace*{1cm}
+\begin{center}
+\begin{Large}
+Uniwersytet Mikołaja Kopernika\\[1mm]
+Wydział Matematyki i~Informatyki\\[1mm]
+\end{Large}
+\end{center}
+
+\vfill
+
+\begin{center}
+{\Large Klaudia Augustyńska}\\
+nr albumu: 265408\\
+informatyka
+\end{center}
+
+\vfill
+
+\begin{center}
+{\Large Praca magisterska}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+{\Huge \textbf{Implementacja Internetu Rzeczy w opaciu o platformę Intel Edison na przykładzie urządzenia dla biegaczy}}
+\end{center}
+
+\vspace{2cm}
+\hfill
+\begin{minipage}{6.5cm}
+Opiekun pracy dyplomowej\\
+dr Błażej Zyglarski
+\end{minipage}
+
+\vfill
+
+\begin{center}
+Toruń 2017
+\end{center}
+
+\end{titlepage}
+
+% odwracamy kartkę ze~stroną tytułową to nic nie~ma z~drugiej strony -> pusta strona
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\tableofcontents
+ 
+\chapter*{Wstęp}
+\markboth{}{Wstęp}
+\addcontentsline{toc}{chapter}{Wstęp}
+
+\section*{Opis zagadnienia}
+\addcontentsline{toc}{section}{Opis zagadnienia}
+
+Podstawę współczesnego Internetu stanowi Web 2.0. Świat opanowały media społecznościowe oraz serwisy, których treść tworzą użytownicy. Jednak od kilku lat można zaobserwować nowy trend, jakim jest koncepcja Internetu rzeczy (ang. \textit{Internet of Things}, w skr. IoT). Idea jeszcze nie rozpoczęła rewolucji, ponieważ teraz dopiero są tworzone urządzenia, które w niedalekiej przyszłości będą stanowiły jej fundament. Bardzo dobre określenie pojęcia ,,internetu rzeczy" podano w książce \cite{iotopis} (tłumaczenie własne): ,,Wizja świata, w którym małe komputery z sensorami i interfejsami komunikacyjnymi są wbudowane w infrastruktury naszych miast, jak i w samochodach, biurach czy ubraniach, ma duże szanse zrewolucjonizować każdą ze sfer naszego życia -- jak się bawimy, jak pracujemy i robimy internesy, oraz jak żyjemy". 
+
+Dokonując syntezy tego cytatu, można powiedzieć, że koncepcję internetu rzeczy można zastosować praktycznie we wszystkich obszarach życia, gdyż wiele przedmiotów jest w stanie zbierać dane sensoryczne i oferować nam nowe wygody. Według szacowań ekspertów, do roku 2020 na świecie będzie 50 miliardów urządzeń oraz rzeczy podłączonych do internetu. \cite{miliardyUrz}
+
+Już dziś istnieje wiele interesujących rozwiązań wykorzystujące internet rzeczy. Kilka lat temu wśród elekronicznych gadżetów zaczęły zdobywać popularność smartzegarki. Poza funkcją zwykłego zegarka łączą w sobie także funkcjonalności zwykłego smartfonu, przykładowo -- wyświetlanie powiadomień o nowych wiadomościach e-mail. Dodatkowo smartwatche często są wyposażone w sensory takie jak czujnik tętna czy krokomierz. Dane zebrane w ten sposób mogą być propagowane między urządzeniami. Jeden z przykładów smartzegarka stanowi Apple Watch, sprzedawany od 2015 roku. Inny ciekawy przykład internetu rzeczy to urządzenia Amazon Echo służące do głosowej obsługi asystenta osobistego o imieniu Alexa firmy Amazon. Korzystanie z tej technologii wygląda w następujący sposób. W pomieszczeniu umieszcza się Echo Dot -- małą estetyczną skrzynkę podłączoną do internetu, nasłuchującą komend głosowych. Gdy użytkownik wypowie imię asystenta (Alexa), może go następnie poprosić o podanie informacji czy wykonanie akcji takiej jak włączenie utworu muzycznego. Następnie Alexa również głosowo podaje informację zwrotną. \cite{amazonEcho}
+
+Zadanie stworzenia projektu w oparciu o ideę internetu rzeczy wiąże się z zaprojektowaniem urządzenia, które zbiera dane przy użyciu sensorów, oraz przekazuje je dalej przy użyciu sieci komputerowej, w celu ich inteligentnego wykorzystania.
+
+Rosnące zainteresowanie tematem spowodowało rozwój rozwiązań typu ,,single board computer", czyli komputerów mieszczących się na jednym obwodzie drukowanym. Komputery takie znacząco upraszczają proces prototypowania urządzeń, gdyż od początku są wyposażone w procesor, pamięć operacyjną i masową, urządzenia do komunikacji takie jak np. usb, bluetooth, wifi, a także posiadają system operacyjny pozwalający na uruchomienie programu napisanego w języku programowania wysokiego poziomu. W związku z tym stanowią idealny fundament do stworzenia własnego projektu, gdzie kluczową rolę stanowi zbieranie danych oraz komunikacja z innymi urządzeniami w sieci. Na warstwie fizycznej samemu należy zadbać jedynie o zamontowanie odpowiednich sensorów.
+
+Popularnym rozwiązaniem tego typu jest Raspberry Pi -- komputer stworzony w celach edukacyjnych, głównie aby uczyć dzieci programowania, a dziś szeroko stosowany do realizacji przeróżnych projektów, w tym opartych o internet rzeczy. Porównanie rozwiązań tego typu znajdzie się w dalszej części pracy.
+
+Urządzenie używane w ramach pracy to Intel Edison. Jest to jedno z nowszych rozwiązań. W przeciwieństwie np. do Raspberry Pi został stworzony przede wszystkim z myślą o prototypowaniu urządzeń wearables, o czym świadczą wyjątkowo małe rozmiary komputera oraz szerokie możliwości nawiązania łączności. Cały komputer wielkością przypomina kartę SD. Można do niego przy pomocy GPIO domontować odpowiednie sensory, a następnie skomunikować np. ze smartfonem. Do prezentacji danych z tak małego komputera dobrze stworzyć aplikację mobilną.
+
+\section*{Temat projektu tworzonego z myślą o Intel Edison}
+\addcontentsline{toc}{section}{Temat projektu tworzonego z myślą o Intel Edison}
+
+Pomysł na projekt związany z pracą dotyczy urządzenia tworzonego z myślą o biegaczach. 
+
+Istotną część treningu biegacza stanowi zapamiętywanie przebiegniętych tras, aby można było śledzić postępy. Do rozwiązania tego problemu istnieją dobrze rozpowszechnione rozwiązania takie jak aplikacja Endomondo oraz zegarki sportowe. 
+
+Aplikacja Endomondo \cite{endomondo} jest to program dostępny na większość platform mobilnych. Wykorzystuje on wiele funkcji smartfona, w tym jego czujniki, funkcje głosowe oraz połączenie z internetem. Dzięki temu zapewnia swoim użytkownikom wiele udogodnień. Jednak wszystko to odbywa się za cenę zabierania ze sobą smartfona na trening, a tym samym używania specjalnych opasek z uchwytem czy plecaka. Kolejną przeszkodę mogą stanowić wymiary smartfona, gdyż zgodnie ze współczesnymi trendami stają się one coraz większe, co może utrudniać wygodne umocowanie smartfonu. Wreszcie mogą dojść także obawy o zniszczenie sprzętu. Dobre smartfony często są bardzo drogie i narażanie ich na upadek podczas treningu może być nienajlepszym pomysłem.
+
+Z kolei zegarki sportowe, ze względu na niewielkie rozmiary oraz praktyczne mocowanie praktycznie nie posiadają wspomnianych wad. Podobnie jak smartfon są wyposażone w niezbędne czujniki, ale oferują oprócz tego wiele udogodnień, jak np. czujnik tętna czy odporność na wodę. Urządzenia firmy Garmin \cite{garmin} pozwalają również eksportować dane do Endomondo. Wszystko to brzmi jak marzenie każdego sportowca. Niestety ceny tych urządzeń często przewyższajają koszt nowych smartfonów z wyższej półki, w związku z czym dla wielu osób mogą być zaporowe. Gdyby każdy był w stanie dwukrotnie zwiększyć wydatki na gadżety elektroniczne, zapewne aplikacja Endomondo nie cieszyłaby się tak dużą popularnością (jest to pierwsza aplikacja w kategorii ,,Zdrowie i fitness" w sklepie Google Play \cite{googlePlay}).
+
+Jednak problem zapamiętywania przebiegniętych tras tak naprawdę można rozwiązać w jeszcze inny sposób. Pomysł proponowany w pracy prezentuje inne podejście do tematu, które dla wielu osób może okazać się ciekawą alternatywą. Polega on na zmontowaniu urządzenia, które można przyczepić na stałe do buta za sznurowadła. Podstawową funkcjonalnością urządzenia jest zapamiętywanie tras. Odczyt danych umożliwia aplikacja mobilna. 
+
+Podejście to posiada wiele zalet. Urządzenie to jest praktycznie bezobsługowe -- można na stałe przyczepić je do buta i tylko od czasu do czasu ładować baterię. Pozwala to na większą swobodę ruchów podczas treningu niż przy użyciu popularnych rozwiązań. Kolejną dużą zaletą jest tani koszt urządzenia. Nie wymaga ono do działania drogiego smartfona ani zgrabnego kolorowego wyświetlacza, a jednocześnie zachowuje najbardziej użyteczną funkcjonalność. Dane zebrane przez urządzenie są wystarczające by móc wyeksportować plik .gpx akceptowany przez Endomondo, dzięki czemu nadal można korzystać z tej aplikacji do prowadzenia dziennika treningów.
+
+\section*{Uzasadnienie wyboru tematu}
+\addcontentsline{toc}{section}{Uzasadnienie wyboru tematu}
+
+Idea platformy Intel Edison, polegająca na zapewnieniu na początek potężnego komputera o bardzo małych rozmiarach, w celu ułatwienia realizacji różnych kreatywnych pomysłów, okazała się być bardzo inspirująca. Autorka bardzo szybko wymyśliła rzecz, którą chciałaby zrobić mając do dyspozycji taki produkt. Ze względu na własne zainteresowanie bieganiem, od razu pomyślała o przedmiocie, który mógłby jej pomóc w treningach do maratonu.
+
+Temat pracy dotyka bardzo ciekawego rozdziału rozwoju technologii, który prawdopodobnie w najbliższych latach zrewolucjonizuje nasze postrzeganie świata. Studiowanie tematu jest również śliśle związane z nowoczesnymi technologiami mobilnymi. 
+
+Mając na uwadze powyższe, jasnym jest iż temat pracy dotyczy jednych z najbardziej ekscytujących obszarów rozwoju współczesnej informatyki. Dotyczy zagadnień, które swe piętno odciskają na codzienności.
+
+\section*{Cel pracy}
+\addcontentsline{toc}{section}{Cel pracy}
+
+Celem pracy jest zaprezentowanie studium przypadku, jak wygląda w dzisiejszych czasach prototypowanie urządzenia typu wearable, mając do dyspozycji nowoczesną platformę Intel Edison. 
+Efekt pracy to urządzenie wspomagające treningi biegaczy przez zapisywanie pokonanych tras, a także aplikacja mobilna komunikująca się z tym urządzeniem, umożliwiająca jego zdalną obsługę, prezentująca dane zebrane przy jego pomocy.
+
+Aby zrealizować cel pracy należy:
+
+\begin{itemize}
+\item przygotować platformę Intel Edison do pracy, tj:
+	\begin{itemize} 
+		\item wgrać system operacyjny i skonfigurować łączność bezprzewodową,
+		\item połączyć ją z dodatkowymi modułami takimi jak bateria, czujnik GPS, akcelerometr, przycisk od "start/stop",
+		\item dokonać odczytu danych z sensorów,
+		\item napisać usługę zdolną do odczytu i zapisu danych, a także umożliwiającą komunikację z aplikacją mobilną;
+	\end{itemize}
+\item przygotować aplikację mobilną posiadającą następujące funkcjonalności:
+	\begin{itemize}
+		\item import zapisanych tras z urządzenia,
+		\item eksport trasy do pliku,
+		\item usuwanie trasy z pamięci aplikacji,
+		\item podstawowe opcje wizualizacji trasy na mapie.
+	\end{itemize}
+\end{itemize}
+
+\section*{Struktura pracy}
+\addcontentsline{toc}{section}{Struktura pracy}
+
+W rozdziale pierwszym zostaną dokładniej przybliżone tematy poruszone we wstępie. Zostaną szerzej opisane zagadnienia internetu rzeczy oraz wearables. Czytelnik zostanie szczegółowiej zapoznany z możliwościami platformy Intel Edison, a także porównaniem jej na tle innych urządzeń tej klasy. Poruszony zostanie temat wyboru języków programowania oraz technologii używanych w celu napiania usługi działającej na urządzenia oraz aplikacji mobilnej. Koniec rozdziału zwieńczy synteza wniosków wynikających z dokonanych porównań.
+
+Rozdział drugi zostanie poświęcony opisaniu technologii, narzędzi oraz algorytmów używanych w celu realizacji projektu. 
+
+Rozdział trzeci dotyczyć będzie przedstawienia procesu wytwórczego projektu oraz tego jak ewoluował. W ostatnim rozdziale wystąpi prezentacja finalnej wersji projektu.
+
+Ostatnia część pracy będzie podsumowaniem wyników pracy, prezentacją wniosków oraz pomysłów na dalszy rozwój projektu.
+
+
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\chapter{Internet rzeczy}
+
+
+\chapter{Wykorzystane technologie, narzędzia i algorytmy}
+
+
+\chapter{Proces wytwórczy projektu}
+
+ 
+\chapter*{Podsumowanie}
+ 
+ 
+ 
+ 
+\addcontentsline{toc}{chapter}{Spis rysunków}
+\listoffigures
+
+
+\addcontentsline{toc}{chapter}{Bibliografia}
+\begin{thebibliography}{99}
+
+%\bibitem{inwestycje} \textsc{Jajuga K., Jajuga T.:}
+%\textit{Inwestycje. Instrumenty finansowe, ryzyko finansowe, inżynieria finansowa}, Warszawa, Wydawnictwo Naukowe PWN SA, 2015, Wydanie III zm., \\ISBN 978-83-01-14957-4.
+
+%\bibitem{soros} \textit{Billionaire who broke the Bank of England}, 
+%\texttt{http://www.telegraph.co.uk/finance/2773265/\\Billionaire-who-broke-the-Bank-of-England.html}, dostęp: 10.12.2016.
+
+\bibitem{iotopis} https://www.manning.com/books/building-the-web-of-things?a\_bid=16f48f14\&a\_aid=wot - chapter1
+
+\bibitem{miliardyUrz} https://www.amazon.com/dp/0996025510/\#reader\_0996025510 – w „about this book” w darmowym wstępie
+
+\bibitem{amazonEcho} https://www.amazon.com/b/?ie=UTF8\&node=9818047011\&ref\_=fs\_ods\_fs\_aucc\_cp amazon echo dot alexa
+
+\bibitem{garmin} http://www.garmin.com/pl/training 
+
+\bibitem{endomondo} https://www.endomondo.com/ 
+
+\bibitem{googlePlay} https://play.google.com/store/apps/category/HEALTH\_AND\_FITNESS 
+
+
+\end{thebibliography}
+
+
+
+
+\end{document}
