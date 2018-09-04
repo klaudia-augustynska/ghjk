@@ -1,6 +1,9 @@
-\documentclass[a4paper,twoside,titlepage,openright]{book}
+\documentclass[12pt,a4paper,twoside,titlepage,openright]{book}
 \usepackage[MeX]{polski}
 \usepackage[utf8]{inputenc}
+\usepackage{setspace}
+%\singlespacing
+\onehalfspacing
 \usepackage{enumitem} % słownik pojęć
 \usepackage{amsmath}
 \usepackage{tabularx} % tabele
@@ -15,7 +18,7 @@
 %\usepackage{showframe} % debug
 \marginparwidth 0pt
 \marginparsep 0pt
-\usepackage[top=3.5cm,bottom=3.5cm,inner=3.5cm,outer=2.5cm]{geometry}
+\usepackage[top=2.5cm,bottom=3cm,inner=4.5cm,outer=3cm]{geometry}
 
 % HEADER, FOOTER
 \usepackage{fancyhdr} 
@@ -203,20 +206,58 @@ Toruń 2018
 \markboth{}{Wstęp}
 \addcontentsline{toc}{chapter}{Wstęp}
 
-\section*{identyfikacja problemu i stan wiedzy na ten temat}
-\addcontentsline{toc}{section}{identyfikacja problemu i stan wiedzy na ten temat}
+Cloud Computing to model stanowiący podstawę dla jednych z najprężniej rozwijających się technologii informatycznych obecnych czasów. Jego wykorzystanie odnosi się do praktycznie wszystkich dziedzin informatyki, poczynając od administrowania infrastrukturą komputerową, przez tworzenie systemów informatycznych, po wsparcie badań naukowych oraz pracy przeciętnych użytkowników komputerów. 
 
-\section*{cel pracy}
-\addcontentsline{toc}{section}{cel pracy}
+Technologie oparte o Cloud Computing mają swoje podwaliny w starszych technologiach, sięgających lat 70. ubiegłego wieku. Chodzi zatem o produkt ewolucji technologicznej, nie zaś odrębną nową technologię. Dzisiejszy dynamiczny rozwój Cloud Computingu zawdzięczamy m.in. szybkiemu łączu internetowemu, upowszechnieniu komputerów PC oraz mocy obliczeniowej umożliwiającej wirtualizację na poziomie wykorzystania sztucznej inteligencji do inteligentnego zarządzania infrastrukturą komputerową (ang. \textit{autonomic computing}). Złożenie tych czynników umożliwiło urzeczywistnienie idei po raz pierwszy wymienionej w latach 60. przez Johna McCarthy'ego, który pisał, że zasoby komputerowe staną się użytecznością publiczną -- podobnie jak prąd, który pobieramy z sieci elektrycznej, nie zaś z własnego generatora prądu. Stąd też analizując temat Cloud Computingu niejednokrotnie można spotkać się ze zwrotem ,,... jako usługa" (ang. ... \textit{as a service}), ponieważ praktycznie wszystko, co może być związane z wykorzystaniem komputerów, można dostarczać jako usługę. \cite{ccCambridge}
 
-\section*{opis rozdziałów}
-\addcontentsline{toc}{section}{opis rozdziałów}
+Za chmurami obliczeniowymi stoją olbrzymie centra danych, łączące w sieć nawet tysiące komputerów. Wirtualizacja wykorzystywana w Cloud Computingu pozwala na automatyczną konfigurację nowych serwerów dołączanych do sieci oraz odpowiednie zachowanie sieci w przypadku gdy jakaś jej część przestanie działać. Dzięki takim narzędziom można dowolnie rozbudować sieć, a więc uzyskać dowolną przestrzeń dyskową i moc obliczeniową. Dlatego model chmury obliczeniowej jest nieodzownie powiązany z technikami wirtualizacji oraz technikami pracy na systemach rozproszonych.
+
+Duża i zarazem bardzo znacząca część technologii związanych z Cloud Computingiem dotyczy programowania. Chodzi nie tylko o usługi usprawniające proces wytwórczy oprogramowania, ale również o technologie i wzorce wspierające skalowalność oraz obsługę dużej ilości danych. Chmura pozwala zautomatyzować wiele zadań, z drugiej strony jej ogromne możliwości stanowią duże wyzwanie, gdyż mogą oznaczać całkowitą zmianę podejścia do wytwarzania oprogramowania, wyboru technologii oraz wzorców architektonicznych. Wiele firm powoli podejmuje to wyzwanie przez np. stopniową rezygnację z serwerów firmowych na rzecz serwerów wirtualnych dostępnych w chmurze, wdrażanie strategii CI/CD czy tworzenie nowych projektów w architekturze mikrousług. 
+
+Biorąc pod uwagę w jak szybkim czasie pojawiło się wiele istotnych narzędzi szybko znajdujących zastosowanie w biznesie, istnieje duże zapotrzebowanie na opracowanie tego tematu całościowo. 
+
+
+\section*{Problem zastosowania chmury obliczeniowej w aplikacjach mobilnych}
+\addcontentsline{toc}{section}{Problem zastosowania chmury obliczeniowej w aplikacjach mobilnych}
+
+Aplikacje mobilne, jako niezbędny element rzeczywistości, są częstym wyborem przy tworzeniu nowych projektów informatycznych. Podczas wyboru technologii warto rozważyć najnowsze rozwiązania, a więc także chmurę obliczeniową. Na etapie analizy dostępnych rozwiązań okazuje się, że istnieje bardzo wiele podejść do tematu, z których duża część powstała w ciągu kilku ostatnich lat i od momentu publikacji zdobyła natychmiastową popularność. Dodatkowo wszystkie materiały, które pozwoliłyby to wszystko zrozumieć, występują w języku angielskim, najczęściej w kontekście wybranego specjalistycznego zastosowania. 
+
+Powyższy problem przyczynia się do braku zrozumienia technologii chmurowych jako całości. Powoduje to niską świadomość jak w pełni wykorzystać możliwości chmury w kontekście tworzenia typowego projektu informatycznego, jakim jest aplikacja mobilna.
+
+
+
+
+
+\section*{Cel pracy}
+\addcontentsline{toc}{section}{Cel pracy}
+
+
+Celem pracy było rozstrzygnięcie jak na obecny stan wiedzy podejść do problemu realizacji typowego projektu aplikacji mobilnej w oparciu o Cloud Computing. W rozumieniu niniejszej pracy, typowa aplikacja pozwala na wprowadzanie i otrzymywanie danych od serwera za pomocą udostępnionego API. W rezultacie miała zostać wybrana konkretna technologia, która pod względem teoretycznym najlepiej odpowiadałaby stawianym wymaganiom.
+
+Wybrana technologia miała być zastosowana w praktyce do stworzenia aplikacji na system Android, komunikującej się z API udostępnianym przez chmurę. Aplikacja miała umożliwiać zapisywanie wydatków w sposób uwzględniający fakt, że wiele wydatków ludzie dokonują nie tylko z myślą o sobie samych. System miał pozwolić założyć konto w serwisie, a następnie połączyć konta w grupy odpowiadające gospodarstwu domowemu. Kategorie wydatków miały pozwolić na uzgodnienie, kto ile płaci w danej kategorii (np. wydatki na higienę po 50\%). Serwer miał być potrzebny do wspomagania rozliczeń pomiędzy poszczególnymi osobami, dynamicznie naliczając kto ma ile do oddania. Ponadto miał wspomagać kontrolę własnych wydatków przez uwzględnienie, że koszty życia to nie tylko własne wydatki, ale również wydatki poniesione przez inne osoby prowadzące to samo gospodarstwo domowe. Ponieważ tradycyjne programy do zarządzania wydatkami nie posiadają wyżej wymienionych funkcjonalności, jak również zazwyczaj mogą działać bez serwera, to jest przykład aplikacji, która może nagle stać się popularna i powinna być w stanie wówczas obsłużyć większe obciążenie serwera. 
+
+
+
+\section*{Opis rozdziałów}
+\addcontentsline{toc}{section}{Opis rozdziałów}
+\textit{Rozdział 1. -- Wprowadzenie} TODO. NAPISZĘ O TYCH ROZDZIAŁACH W CZASIE PRZESZŁYM, JAk RZECZYWIŚCIE BĘDĄ W CZASIE PRZESZŁYM
 
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \chapter{Wprowadzenie}
 
-\section{Krótkie naprowadzenie gdzie jesteśmy, w pigułce}
+Niniejszy rozdział wyjaśnia w jaki sposób ewoluowały technologie, by dać się później poznać jako Cloud Computing, a także czego należy oczekiwać od współczesnej chmury. Na końcu rozdziału opisano dokąd zmierza rozwój przedstawionych technologii.
+
+
+
+\section{Charakterystyka Cloud Computingu}
+
+Cloud Computing to model zgodnie z którym wszelkie zasoby informatyczne (oprogramowanie, przestrzeń dyskowa, dostęp do bazy danych itp.) dostarczane są w formie usługi. Istotną cechą jest wysoka skalowalność udostępnianych rozwiązań. Po stronie klienta ma to wyglądać tak jak gdyby posiadał dostęp do nieskończonej mocy obliczeniowej i niekończącej się przestrzeni dyskowej, natomiast po stronie usługodawcy podłączenie nowych serwerów w celu podtrzymania tej iluzji nie powinno stanowić problemu. \cite{ccBiznes}
+
+Aby była możliwa tak wysoka elastyczność, fizyczne serwery są oddzielone warstwą abstrakcji, na której są widoczne jako pula zasobów takich jak przestrzeń dyskowa czy moc procesora. Każdy program czy serwer wirtualny działający w chmurze osadzany jest na wirtualnych zasobach; nie ma możliwości zdecydowania z którego konkretnego fizycznego zasobu chce się korzystać. Moc chmury obliczeniowej buduje się przez łączenie tanich, łatwo wymienialnych komponentów sprzętowych w potężne zasoby wirtualne. To jest wirtualizacja na poziomie infrastruktury. \cite{ccCambridge}
+
+
+
 
 
 
@@ -261,18 +302,10 @@ Toruń 2018
 \addcontentsline{toc}{chapter}{Spis rysunków}
 \listoffigures
 
-
-\addcontentsline{toc}{chapter}{Bibliografia}
-\begin{thebibliography}{99}
-
-%\bibitem{inwestycje} \textsc{Jajuga K., Jajuga T.:}
-%\textit{Inwestycje. Instrumenty finansowe, ryzyko finansowe, inżynieria finansowa}, Warszawa, Wydawnictwo Naukowe PWN SA, 2015, Wydanie III zm., \\ISBN 978-83-01-14957-4.
-
-%\bibitem{soros} \textit{Billionaire who broke the Bank of England}, 
-%\texttt{http://www.telegraph.co.uk/finance/2773265/\\Billionaire-who-broke-the-Bank-of-England.html}, dostęp: 10.12.2016.
+\bibliographystyle{plain}
+\bibliography{bibliography/ccCambridge,bibliography/ccBiznes} 
 
 
-\end{thebibliography}
 
 
 
