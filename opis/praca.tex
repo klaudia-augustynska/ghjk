@@ -256,20 +256,25 @@ Cloud Computing to model zgodnie z którym wszelkie zasoby informatyczne (oprogr
 
 Aby była możliwa tak wysoka elastyczność, fizyczne serwery są oddzielone warstwą abstrakcji, na której są widoczne jako pula zasobów takich jak przestrzeń dyskowa czy moc procesora. Każdy program czy serwer wirtualny działający w chmurze osadzany jest na wirtualnych zasobach; nie ma możliwości zdecydowania z którego konkretnego fizycznego zasobu chce się korzystać. Moc chmury obliczeniowej buduje się przez łączenie tanich, łatwo wymienialnych komponentów sprzętowych w potężne zasoby wirtualne. \cite{ccCambridge}
 
-Poza rozwiązaniem problemu zarządzania ogromną ilością fizycznych serwerów, wirtualizacja zasobów pozwala na lepsze wykorzystanie sprzętu. W tradycyjnym modelu komputery muszą być przygotowane na wypadek gdyby zainstalowane na nich programy powodowały większe zużycie zasobów. Dzieje się tak nawet w przypadku komputerów PC -- kupuje się specjalnie większe dyski i lepszy procesor, aby przydały się w przyszłości. W ten sposób wykorzystuje się niewielką część możliwości pojedynczego komputera, ponieważ przez większość czasu potrzeba mu znacznie mniej zasobów niż fizycznie posiada. W przypadku wirtualnych zasobów, do fizycznej jednostki można dynamicznie przypisać zużycie powodowane przez wielu użytkowników, wiele wirtualnych systemów operacyjnych, w zgodzie z ustalonym algorytmem. Algorytm może definiować, że np. wszystkie komputery mają zostać obciążone po równo, czy że pojedynczy węzeł ma być wykorzystany w 100\%. Technikę tę nazywa się równoważeniem obciążenia (ang. \textit{load balancing}).
+Poza rozwiązaniem problemu zarządzania ogromną ilością fizycznych serwerów, wirtualizacja zasobów pozwala na lepsze wykorzystanie sprzętu. W tradycyjnym modelu komputery muszą być przygotowane na wypadek gdyby zainstalowane na nich programy powodowały większe zużycie zasobów. Dzieje się tak nawet w przypadku komputerów PC -- kupuje się specjalnie większe dyski i lepszy procesor, aby przydały się w przyszłości. W ten sposób wykorzystuje się niewielką część możliwości pojedynczego komputera, ponieważ przez większość czasu potrzeba mu znacznie mniej zasobów niż fizycznie posiada. W przypadku wirtualnych zasobów, do fizycznej jednostki można dynamicznie przypisać zużycie powodowane przez wielu użytkowników, wiele wirtualnych systemów operacyjnych, w zgodzie z ustalonym algorytmem. Algorytm może definiować, że np. wszystkie komputery mają zostać obciążone po równo (round robin), czy że pojedynczy węzeł ma być wykorzystany w 100\% \cite{cloudFoundry}. Technikę tę nazywa się równoważeniem obciążenia (ang. \textit{load balancing}).
 
-Technika zrównoważonego obciążenia przynosi kilka ważnych korzyści będących istotnymi cechami chmur obliczeniowych. Dzięki niej usługi działające w chmurze mogą być uruchomione na różnych węzłach, w tylu instancjach, ile wymagane jest do prawidłowego obsłużenia ruchu. W przypadku awarii którejś z instancji użytkownicy usługi niczego nie odczuwają, gdyż zostają przekierowani na instancję co do działania której nie wykazano błędów. Wszystko to ułatwia tworzenie wysoce skalowalnego oprogramowania. Nie bez znaczenia jest także pozytywny wpływ na ekologię, ponieważ chmury obliczeniowe oznaczają optymalne zużycie istniejącego sprzętu komputerowego, a więc nie trzeba produkować go więcej niż potrzeba ani niepotrzebnie zużywać energii elektrycznej.
+Technika zrównoważonego obciążenia przynosi kilka ważnych korzyści będących istotnymi cechami chmur obliczeniowych. Dzięki niej usługi działające w chmurze mogą być uruchomione na różnych węzłach, w tylu instancjach, ile wymagane jest do prawidłowego obsłużenia ruchu. W przypadku awarii którejś z instancji użytkownicy usługi niczego nie odczuwają, gdyż zostają przekierowani na instancję co do działania której nie wykazano błędów. Wszystko to ułatwia tworzenie wysoce skalowalnego oprogramowania. Nie bez znaczenia jest także pozytywny wpływ na ekosystem, ponieważ chmury obliczeniowe oznaczają optymalne zużycie istniejącego sprzętu komputerowego, a więc nie trzeba produkować go więcej niż potrzeba ani niepotrzebnie zużywać energii elektrycznej.
 
+Najbardziej spektakularne efekty wykorzystywania modelu chmury widać w przypadku dostawców posiadających największe centra danych na świecie, takich jak Amazon, Microsoft, Google czy IBM. Na kilkudziesięciu $m^{2}$ gromadzą zasoby komputerowe, których równocześnie mogą używać miliony osób na całym świecie. Na jednym fizycznym komputerze zasoby mogą być wykorzystywane przez wiele osób niewiedzących o sobie nawzajem (po angielsku tę właściwość określa się jako \textit{multi-tenancy}). Chmury o takiej architekturze mają potencjał ucieleśnić ideę zgodnie z którą zasoby komputerowe mogą być dostarczane jako usługa użyteczności publicznej.
 
-
-
-
-
-\section{Naprowadzenie jak doszło do tego że jesteśmy gdzie jesteśmy.}
+Wyżej wymieniony sposób myślenia o chmurze jest tym co wyraźnie odróżnia chmury publiczne od chmur prywatnych. Nic nie stoi na przeszkodzie, aby samemu stworzyć prywatną sieć opartą o model chmury. Wówczas formalnie jest to chmura, lecz nie zapewnia niektórych ważnych korzyści, głównie przez konieczność samodzielnego administrowania serwerami, mniejszą ilość potencjalnych użytkowników oraz mniejszy potencjał puli zasobów. Przykładowo, jeśli firma nadal musi martwić się o zarządzanie fizycznymi jednostkami komputerowymi, to nie będzie miała możliwości wychwalać modelu chmury za brak konieczności zatrudniania specjalistów zajmujących się infrastrukturą komputerową.
 
 
 
-\section{Doprecyzowanie czego konkretnie oczekujemy od współczesnej chmury.}
+
+
+
+
+\section{Ewolucja Cloud Computingu}
+
+
+
+\section{Wymagania stawiane współczesnym chmurom}
 
 
 
@@ -307,7 +312,7 @@ Technika zrównoważonego obciążenia przynosi kilka ważnych korzyści będąc
 \listoffigures
 
 \bibliographystyle{plain}
-\bibliography{bibliography/ccCambridge,bibliography/ccBiznes} 
+\bibliography{bibliography/ccCambridge,bibliography/ccBiznes,bibliography/cloudFoundry} 
 
 
 
