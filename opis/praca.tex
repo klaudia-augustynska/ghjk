@@ -264,13 +264,56 @@ Najbardziej spektakularne efekty wykorzystywania modelu chmury widać w przypadk
 
 Wyżej wymieniony sposób myślenia o chmurze jest tym co wyraźnie odróżnia chmury publiczne od chmur prywatnych. Nic nie stoi na przeszkodzie, aby samemu stworzyć prywatną sieć opartą o model chmury. Wówczas formalnie jest to chmura, lecz nie zapewnia niektórych ważnych korzyści, głównie przez konieczność samodzielnego administrowania serwerami, mniejszą ilość potencjalnych użytkowników oraz mniejszy potencjał puli zasobów. Przykładowo, jeśli firma nadal musi martwić się o zarządzanie fizycznymi jednostkami komputerowymi, to nie będzie miała możliwości wychwalać modelu chmury za brak konieczności zatrudniania specjalistów zajmujących się infrastrukturą komputerową.
 
+\subsection*{Korzyści i wady}
 
+Do głównych korzyści wynikających ze stosowania modelu chmury należą:
+\begin{itemize}
+\item \textbf{rozwiązanie problemu skalowania aplikacji }\\
+Wraz z rozwojem Web 2.0, dostępnością szybkiego łącza internetowego, zwiększaniem ilości urządzeń podłączonych do Internetu oraz ilości transmitowanych danych, istnieje rosnące zapotrzebowanie na aplikacje będące w stanie obsłużyć duży ruch. Dzięki chmurom uruchomienie wielu instancji aplikacji na różnych węzłach, dodatkowo w odmiennych wersjach, sprowadza się do opisu - ile, w jakiej wersji, w jakich proporcjach.\cite{kubernetesOreily} Podobnie ułatwione jest korzystanie z baz NoSQL.
 
+\item \textbf{rozwój Big Data} \\
+Chmury są w stanie zapewnić odpowiednie środowisko do przechowywania oraz przetwarzania dużych zbiorów danych. Udostępnienie tego środowiska jako usługi znacząco redukuje koszt przechowywania i analizy tych zbiorów, co za tym idzie próg wejścia w ten temat staje się dużo niższy. Za tym idzie wydajniejsze odkrywanie wiedzy z danych, co może mieć wpływ m.in. na rozwój medycyny.
 
+\item \textbf{ochrona środowiska} \\
+W modelu chmury sprzęt komputerowy zostaje wydajniej wykorzystany, w związku z tym jest mniejsze zapotrzebowanie na nowy sprzęt. Również dzięki pozostawieniu kosztownych operacji po stronie chmury, urządzenia klienckie łączące się z chmurą nie muszą być regularnie wymieniane na silniejsze.
 
+\item \textbf{lepsza koncentracja na wybranym zadaniu} \\
+Model chmury zwalnia użytkowników z dodatkowych czynności przy realizacji danego zadania. Przykładowo, jeśli komuś jest potrzebny serwer, to z chmurą publiczną nie musi martwić się zakupem sprzętu, zapewnieniem odpowiedniego pomieszczenia czy dostępem do Internetu. Może się zamiast tego skupić na właściwym skonfigurowaniu systemu na serwerze wirtualnym. 
+
+\item \textbf{płatność tylko za rzeczywiste zużycie} \\
+Chmura umożliwia rozliczanie na podstawie czasu używania procesora, ilości przesłanych megabajtów czy ilości danych przechowywanych w chmurze. W szczególności zmniejsza to początkowy koszt wdrażania czegokolwiek w chmurze.
+
+\item \textbf{gwarancja jakości usługi} \\
+Każdy dostawca usług chmurowych udostępnia klientom SLA (ang. \textit{Service-level aggrements}), w którym zobowiązuje się do utrzymania określonego poziomu niezawodności usług (np. dostępność w 99,9\% przypadków) oraz przewidywanego zachowania w przypadku niedotrzymania zapewnień (np. obniżki cen).
+
+\end{itemize}
+
+Ostatnią korzyścią, a jednocześnie kontrowersją, jest bezpieczeństwo danych w chmurach publicznych. Wysyłanie niejednokrotnie wrażliwych danych w nie do końca określone miejsce budzi obawy. Według autorów specjalistycznych wydawnictw\cite{ccCambridge}\cite{ccBiznes} są niesłuszne -- pozostają zgodni co do opinii, że główni dostawcy usług chmurowych są w stanie zapewnić najwyższy poziom bezpieczeństwa, a fizyczne przechowywanie danych na terenie firmy daje tylko ułudę bezpieczeństwa.
+
+Do potencjalnych wad rozwiązań bazujących na chmurach obliczeniowych należą:
+
+\begin{itemize}
+
+\item \textbf{problem z przenoszeniem aplikacji z jednej chmury na drugą}
+
+Znaczna część usług oferowanych przez największych dostawców usług chmurowych jest dedykowana dla tworzonej przez nich chmury. Oznacza to, że jeśli użytkownik chce mieć możliwość zmiany dostawcy, powinien uwzględnić to przy wyborze narzędzi pracy. Więcej na ten temat można przeczytać w rozdziale 3.
+
+\item \textbf{problemy prawne}
+
+Istnieje ryzyko rozbieżności pomiędzy prawem do którego dostosowywał się dostawca usług chmurowych, a prawem chroniącym dane w kraju, na terenie którego chce się korzystać z tych usług. 
+
+\end{itemize}
 
 
 \section{Ewolucja Cloud Computingu}
+
+Cloud Computing nie stanowi odrębnej, nowej technologii -- jest to produkt ewolucji technologii rozwijanych od blisko 50 lat. Prześledzenie historii pozwala na zrozumienie, które koncepcje rzeczywiście wprowadzają nową jakość, a nie są jedynie od dawna istniejącą technologią, tyle że  ubraną w ładnie brzmiące słowo.
+
+\subsection*{Historia technologii chmurowych}
+
+
+\subsection*{Współczesne wyzwania dla chmur obliczeniowych}
+
 
 
 
@@ -312,7 +355,7 @@ Wyżej wymieniony sposób myślenia o chmurze jest tym co wyraźnie odróżnia c
 \listoffigures
 
 \bibliographystyle{plain}
-\bibliography{bibliography/ccCambridge,bibliography/ccBiznes,bibliography/cloudFoundry} 
+\bibliography{bibliography/ccCambridge,bibliography/ccBiznes,bibliography/cloudFoundry,bibliography/kubernetesOreily} 
 
 
 
