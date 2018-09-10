@@ -141,7 +141,7 @@ basicstyle=\ttfamily\small,
 
 % BIBLIOGRAFIA
 
-\usepackage[backend=bibtex8]{biblatex}
+\usepackage[backend=bibtex8,sorting=none]{biblatex}
 \nocite{*}
 \addbibresource{bibliography/ccCambridge}
 \addbibresource{bibliography/ccBiznes}
@@ -150,6 +150,9 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/ccSpringer}
 \addbibresource{bibliography/azurePackt}
 \addbibresource{bibliography/serverlessMaddie}
+\addbibresource{bibliography/devOpsPackt}
+\addbibresource{bibliography/kubernetesPacktMastering}
+\addbibresource{bibliography/kubernetesPacktGettingStarted}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -160,6 +163,13 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteAmazonRdsWiki}
 \addbibresource{bibliography/siteGoogleCloudPlatformWiki}
 \addbibresource{bibliography/siteAmazonSimpleDbWiki}
+\addbibresource{bibliography/siteOperatingSystemVirtualizationWiki}
+\addbibresource{bibliography/siteDockerHistory}
+\addbibresource{bibliography/siteCloudControlWiki}
+\addbibresource{bibliography/siteUbuntuBlog}
+\addbibresource{bibliography/siteDockerStackOverflow}
+\addbibresource{bibliography/siteKubernetesBlogBorg}
+\addbibresource{bibliography/siteKubernetesOnRaspberry}
 
 
 
@@ -329,7 +339,7 @@ Istnieje ryzyko rozbieżności pomiędzy prawem do którego dostosowywał się d
 
 Cloud Computing nie stanowi odrębnej, nowej technologii -- jest to produkt ewolucji technologii rozwijanych od blisko 50 lat. Prześledzenie historii pozwala na zrozumienie, które koncepcje rzeczywiście wprowadzają nową jakość, a nie są jedynie od dawna istniejącą technologią, tyle że  ubraną w ładnie brzmiące słowo.
 
-\subsection*{Historia technologii chmurowych}
+\subsection{Historia technologii chmurowych}
 
 Historia ma początek około lat 70., gdy używano wielkich superkomputerów zwanych \textbf{\textit{mainframe}}. Można było z nich korzystać za pomocą terminali, określanych mianem ,,głupich'' (ang. \textit{dump terminal}), ponieważ nie posiadały procesora i mogły być używane jedynie do operacji I/O. Jako że z serwera mógł korzystać jeden terminal naraz, serwer ustawiał je w kolejkę i musiały długo czekać na obsłużenie.
 
@@ -365,6 +375,15 @@ Wymienione wyżej technologie zestawione razem dały podwaliny chmurom obliczeni
 Przyjmuje się, że termin \textit{,,cloud computing''} po raz pierwszy został użyty przez CEO firmy Google, Erica Schmidta, w trakcie konferencji w 2006 r. Tego samego roku Amazon użył tej nazwy publikując pionierską w swoim gatunku usługę Elastic Compute Cloud (EC2), czyli możliwość wynajmu serwera wirtualnego w ich chmurze.
 
 \subsection{Historia najnowsza. Współczesne wyzwania}
+
+Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w tym samym czasie rozwinęły się technologie postrzegane w czasie pisania niniejszej pracy jako rewolucyjne. Na potrzeby opracowania wyróżniono następujące grupy zmian:
+\begin{itemize}
+\item rozwój chmur publicznych,
+\item rozwój rozwiązań opartych o kontenery,
+\item rozwój technik programistycznych wyznaczających najlepsze praktyki tworzenia aplikacji dla chmury.
+\end{itemize}
+
+\subsubsection*{Rozwój chmur publicznych}
 
 W 2003 roku firma Citrix stworzyła Xen - system operacyjny przeznaczony tylko do wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. W marcu 2006 r. roku Amazon na podstawie Xena opracował swój produkt EC2. W ciągu 18 miesięcy zaczęło z niego korzystać ponad pół miliona osób.\cite{ccBiznes}
 
@@ -415,6 +434,7 @@ Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteA
 \end{table}
 \end{small}
 
+\subsubsection{Konteneryzacja i DevOps}
 
 W tym samym czasie rozwijały się technologie przeznaczone do wystawiania własnych usług chmurowych. W 2010 r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na prowadzenie własnej platformy typu PaaS do tworzenia aplikacji w chmurze. 
 
@@ -426,10 +446,75 @@ Cloud Foundry jest niezależny od infrastruktury, może działać zarówno na Op
 
 Cloud Foundry zapewnia orkiestrację kontenerów oraz obsługę procesu CI/CD (ciągłej integracji i ciągłego dostarczania, ang. \textit{continuous integration / continuous delivery}).\cite{cloudFoundry} Stanowi narzędzie pozwalające z powodzeniem wdrażać strategie DevOps. 
 
-% devops to te wszystkie strategie dzięki którym minimalizuje się czas od wprowadznia poprawki do wypuszczenia na produkcję, wszystko co się da jest automatyzowane, termin ukuty w 2009 i od tego czasu określa się nim wszystko co pomaga osiągać taki efekt. Jest mocno związany z chmurami i poniekąd wchodzi w kanon pojęć zwiazanych z chmurą. 
-% kontenery mocno stymulują devops gdyż są lekkie i można nimi szybko automatycznie zarządzać, zatem wraz ze wzrostem zainteresowania ideą devops oraz rozwojem rozwiązań chmurowych tak jakoś wyszło że kontenery zyskały wysoką popularność i stanowią kluczowy mechanizm przy kolejnych rozwiązaniach które teraz wojują świat, jak Kubernetes i te jego wszystkie odnogi
+\textbf{DevOps} to słowo po raz pierwszy użyte 2009 r. na konferencji w Belgii. Stanowi połączenie ze sobą słów \textit{,,development''} (rozwój) i \textit{,,operations''} (eksploatacja). Wskazuje to na zacieśnianie współpracy pomiędzy zespołami zajmującymi się rozwojem oprogramowania, a zespołami, które je wdrażają. Współpraca ta ma doprowadzać do automatyzacji procesów towarzyszących wytwarzaniu oprogramowania, co w efekcie minimalizuje czas potrzebny od wprowadzenia poprawki do wdrożenia na środowisko produkcyjne, zachowując przy tym niezawodność. Jako strategie DevOps określa się wszelkie technologie i narzędzia inżynierii oprogramowania, które dają taki efekt. \cite{devOpsPackt}
+
+Temat DevOps jest mocno powiązany z chmurami, ponieważ jego koncepcje znacząco redukują złożoność towarzyszącą tworzeniu wysoce skalowalnego oprogramowania. Jednocześnie wychodzą one naprzeciw wymaganiom społeczeństwa coraz bardziej przyzwyczajonego do częstych aktualizacji oprogramowania, szybkiej reakcji na błędy oraz braku przestojów towarzyszących wdrażaniu nowych wersji. W przypadku chmur obliczeniowych, w których jedna usługa internetowa może mieć np. kilkadziesiąt instancji na różnych węzłach, taka automatyzacja ma kluczowe znaczenie. W związku z tym pojęcie DevOps obecnie wchodzi w kanon pojęć związanych z chmurą.
+
+Istotny element DevOps stanowią wcześniej wspomniane kontenery. Idea kontenerów kiełkowała już kilka lat wcześniej, np. Solaris Containers z 2004 r. lub OpenVZ (2005 r.) i LXC (Linux Containers -- 2008 r.), które w istocie do działania wykorzystywały UNIX-owy program chroot z 1982 r.\cite{siteOperatingSystemVirtualizationWiki} Jednak prawdziwe ożywienie spowodowało dopiero pojawienie się Dockera -- sprawił iż tworzenie kontenerów oraz przenoszenie ich pomiędzy systemami stało się łatwe. Na nim bazuje kilka projektów intensywnie rozwijanych w czasie pisania niniejszej pracy.
+
+\textbf{Docker} to system kontenerów, który powstał jako element platformy dotCloud, świadczącej usługi typu PaaS. Spopularyzował się w dość osobliwy sposób. Założyciel myślał, że tylko wygłosi mały referat na PyCon w 2013 r., lecz okazało się, że na konferencji było dużo osób, a jego referat był głównym elementem programu. Do końca roku Docker miał 100 mln pobrań, 3 miesiące później -- 300 mln, a w czerwcu 2017 -- 13 miliardów.\cite{siteDockerHistory} Z kolei platforma dotCloud nie okazała się sukcesem -- w 2014 r. Docker Inc. sprzedał ją niemieckiej firmie cloudControl GmbH, która w grudniu 2015 r. zbankrutowała, a w marcu 2016 r. zamknęła usługę.\cite{siteCloudControlWiki}
+
+Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportującego kontenery. Miało to nawiązywać do tego, iż załadowanie statku trwa dłużej niż transport statkiem. Ma to swoją alegorię do programowania. W tradycyjnym podejściu, gdyby zechcieć uruchomić np. aplikację napisaną w ASP.NET, najpierw trzeba byłoby poświęcić kilka godzin na pobieranie i instalację narzędzi: Visual Studio z narzędziami sieci Web, serwer IIS oraz SQL Server LocalDB. Natomiast w podejściu Dockera byłoby to:
+\begin{enumerate}
+\item napisanie pliku Dockerfile z definicją zależności: system Windows, MSBuild, .NET Framework, serwer IIS, menadżer pakietów NuGET,
+\item użycie CLI Dockera oraz pliku Dockerfile do zbudowania tzw. obrazu Dockera,
+\item użycie obrazu Dockera do zbudowania i uruchomienia aplikacji w kontenerze.
+\end{enumerate}
+Obrazy Dockera działają wszędzie, gdzie jest zainstalowany Docker -- niezależnie od systemu operacyjnego czy środowisk jakie ma zainstalowane. Ponadto zależności takie jak np. system operacyjny Ubuntu występują w wersjach ,,odchudzonych'' - przykładowo obraz Minimal Ubuntu 18.04 zajmuje jedynie 29 MB.\cite{siteUbuntuBlog}
+Podejście to stwarza następujące możliwości:
+\begin{itemize}
+\item Na jednej maszynie może jednocześnie działać wiele aplikacji wymagających różnych zależności, lub nawet różniących się jedynie wersjami, w izolacji od siebie oraz maszyny na której są uruchomione.
+\item W procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na środowisku deweloperskim, testowym oraz produkcyjnym.
+\item Obrazy Dockera są lekkie: współdzielą wiele zasobów systemu operacyjnego, dzielą między sobą inne obrazy Dockera.\cite{siteDockerStackOverflow} Na jednej maszynie może działać wiele kontenerów Dockera, podczas gdy maszyn wirtualnych może być zaledwie kilka.\cite{ccSpringer}
+\end{itemize}
+Powyższe znacząco ułatwia tworzenie aplikacji ,,dla chmury'', orkiestrację chmury oraz stosowanie strategii DevOps.
+
+W 2014 r. Google udostępnił system \textbf{Kubernetes}, służący do orkiestracji kontenerów w chmurze. Wywodzi się z projektu Borg, będącego wewnętrznym narzędziem Google do obsługi 2 miliardów\cite{kubernetesPacktGettingStarted} kontenerów tygodniowo, dopracowywanym w tej firmie od ponad dekady.\cite{siteKubernetesBlogBorg} Jako główny system kontenerów wykorzystuje Dockera.\cite{kubernetesOreily} Może zostać skonfigurowany zarówno na fizycznych serwerach jak i na serwerach wirtualnych (można też je mieszać).\cite{kubernetesPacktMastering}
+
+Na pierwszy rzut oka Kubernetes przypomina Cloud Foundry, jest to jednak zupełnie inne narzędzie. Tabela \ref{table:kubernetes} prezentuje porównanie tych dwóch platform.
 
 
+\noindent
+\begin{small}
+\begin{table}[h]
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{ |L|L| }
+
+\hline
+Cloud Foundry & Kubernetes \\
+\hline
+powstał w 2011 r. & powstał w 2014. r. \\
+\hline
+wysoki poziom automatyzacji -- rozpoznaje zależności aplikacji, sam buduje kontener i konfiguruje skalowanie aplikacji & więcej kontroli nad kontenerami, lecz także więcej pracy dla deweloperów. Dla większej automatyzacji należy sięgnąć po rozwiązania PaaS bazujące na Kubernetes, takie jak RedHat OpenShift \cite{kubernetesPacktGettingStarted} \\
+\hline
+minimalne wymagania -- 40 GB HDD, 8 GB RAM, 4 rdzenie CPU & 2 GB RAM, 2 rdzenie CPU. Działa na Raspberry PI \cite{siteKubernetesOnRaspberry} \\
+\hline
+domyślnie używa własnego systemu kontenerów, ale pozwala na korzystanie z obrazów Dockera & stosuje obrazy Dockera jako główny system kontenerów, ale pozwala zastąpić go innym \\
+\hline
+
+
+\end{tabularx}
+
+
+\caption{Główne różnice pomiędzy Cloud Foundry i Kubernetes}
+		\label{table:kubernetes}
+
+\end{table}
+\end{small}
+
+
+% do tego momentu kontenery jawią się jako antidotum na przywiązanie do wybranego dostawcy usług chmurowych, jako te co dają wolność uzywania takich technologii jakich się chce a nie jakieś DynamoDb
+% niestety jak chce się ich używać to trzeba miec jakąś wiedzę taką poza pisaniem sobie aplikacji w jakimś języku programowania, no bo trzeba gdzieś zainstalować tego kubernetes, jakoś go skonfigurować
+% nawet cloud foundry trzeba najpierw zainstalować a przeciez miało byc tak fajnie że tylko piszę aplikację
+% i tadaaaa chmury publiczne wypuszczają Container As A Service tak że można pisać w kontenerach i mieć resztę w d
+
+\subsubsection*{Aplikacje cloud native}
+
+% 12 factor apps
+% mikroserwisy
+% nanoserwisy
+% zero-downtime deplojment
+% moze costam jeszcze..
 
 
 
