@@ -1,5 +1,6 @@
 \documentclass[12pt,a4paper,twoside,titlepage,openright]{book}
 \usepackage[MeX]{polski}
+\usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 %\singlespacing
@@ -13,6 +14,9 @@
 \usepackage{verbatimbox} % marginesy dla~tabel
 \usepackage{emptypage} % usuwa nagłówki i~numery stron z~pustych stron
 \usepackage{afterpage} % to zapobiega ustawianiu obrazka PO tym
+
+\usepackage{multirow}
+\usepackage{url}
 
 % PAGE LAYOUT
 %\usepackage{showframe} % debug
@@ -49,13 +53,6 @@
    \Huge \bfseries #1\par\nobreak
    \vskip 40\p@
   }}
-\makeatother
-
-% SPIS TREŚCI
-
-%kropki w~spisie tresci
-\makeatletter
-\def\numberline#1{\hb@xt@\@tempdima{#1.\hfil}}
 \makeatother
 
 % TYTUŁY ROZDZIAŁÓW
@@ -141,6 +138,28 @@ stringstyle=\color{redstrings},
 basicstyle=\ttfamily\small,
 }
 
+
+% BIBLIOGRAFIA
+
+\usepackage[backend=bibtex8]{biblatex}
+\nocite{*}
+\addbibresource{bibliography/ccCambridge}
+\addbibresource{bibliography/ccBiznes}
+\addbibresource{bibliography/cloudFoundry}
+\addbibresource{bibliography/kubernetesOreily}
+\addbibresource{bibliography/ccSpringer}
+\addbibresource{bibliography/azurePackt}
+\addbibresource{bibliography/serverlessMaddie}
+\addbibresource{bibliography/siteBigTableWikiPl}
+\addbibresource{bibliography/siteGoogleBlogCloudSql}
+\addbibresource{bibliography/siteGoogleBlogKubernetes}
+\addbibresource{bibliography/siteAmazonBlogEks}
+\addbibresource{bibliography/siteMicrosoftBlogAks}
+\addbibresource{bibliography/siteMicrosoftBlogAzure}
+\addbibresource{bibliography/siteAmazonElasticBeanstalkWiki}
+\addbibresource{bibliography/siteAmazonRdsWiki}
+\addbibresource{bibliography/siteGoogleCloudPlatformWiki}
+\addbibresource{bibliography/siteAmazonSimpleDbWiki}
 
 
 
@@ -318,13 +337,13 @@ W latach 70. terminale zaczęły być wyposażone w mikroprocesory i być okreś
 
 Dalszy rozwój umożliwił rozwój mikroprocesorów, co dało początek \textbf{komputerom PC}. Komputery te mogły działać samodzielnie i były znacznie tańsze od mainframe-a.
 
-W latach XX wynaleziono LAN (ang. \textit{local area network}) i WAN (ang. \textit{wide area network}), co umożliwiło łączenie komputerów PC w sieci bez konieczności łączenia z mainframe-m. Powstały sieci \textbf{P2P} (ang. \textit{Peer-To-Peer}).
+Wynaleziono również LAN (ang. \textit{local area network}) i WAN (ang. \textit{wide area network}), co umożliwiło łączenie komputerów PC w sieci bez konieczności łączenia z mainframe-m. Powstały sieci \textbf{P2P} (ang. \textit{Peer-To-Peer}).
 
 We wczesnych latach 80. wynaleziono \textbf{systemy rozproszone}. Ponieważ były w stanie przetwarzać dane równolegle, zachwiało to poglądem iż większą moc obliczeniową należy uzyskiwać przez wynajdowanie silniejszych procesorów. Systemy rozproszone wymagały wzmożonej ilości operacji komunikacji, lecz występowało to w parze z rozwojem LAN osiągającym przepustowość 100 Mbps oraz WAN osiągającym 64 kbps.
 
 Następnie powstała koncepcja \textbf{klastrów komputerowych}. Klaster polegał na połączeniu komputerów tego samego typu (homogenicznych) w sieć LAN i wyłonieniu wśród nich zarządcy, który będzie zajmował się przydzielaniem zadań pozostałym węzłom. Gdyby któryś z węzłów miał awarię, to inne mogły przejąć jego zadanie. Dało to początek idei \textbf{puli zasobów}. W klastrze niezawodność osiągało się przez nadmiarowość zasobów.
 
-Główną wadą klastrów była konieczność powierzenia zarządzania klastrem jednemu komputerowi. Stanowił on miejsce od niezawodności którego zależała niezawodność całej sieci (ang. \textit{single point of failure}). Rozwiązaniem okazały się \textbf{grid}-y, w których każdy węzeł posiadał równy priorytet. Klient mógł podłączyć się do dowolnego komputera w gridzie, a ponadto komputery te mogły być różnego typu (heterogeniczne). Wkrótce gridy przeniknęły ze świata naukowego do świata biznesu i zaczynały być łączone przez WAN.
+Główną wadą klastrów była konieczność powierzenia zarządzania klastrem jednemu komputerowi. Stanowił on miejsce od niezawodności którego zależała niezawodność całej sieci (ang. \textit{single point of failure}). Rozwiązaniem okazały się \textbf{gridy}, w których każdy węzeł posiadał równy priorytet. Klient mógł podłączyć się do dowolnego komputera w gridzie, a ponadto komputery te mogły być różnego typu (heterogeniczne). Wkrótce gridy przeniknęły ze świata naukowego do świata biznesu i zaczynały być łączone przez WAN.
 
 Dotychczas gdy uruchamiało się program na wybranym węźle gridu, to znajdował się na tym węźle dopóki proces nie został zakończony. Stanowiło to problem na drodze do skalowania w czasie rzeczywistym, gdzie na skutek zmienionych potrzeb byłoby dobrze mieć możliwość od nowa zaalokować zasoby bez zakłócania działającej usługi. Problem ten rozwiązała \textbf{wirtualizacja sprzętowa}, za pomocą której zadania były alokowane do maszyn wirtualnych. Technika ta umożliwiła \textbf{utility computing}, czyli model w którym zasoby komputerowe mogą być dostarczane jako usługa, co stanowi serce chmur obliczeniowych. Prekursorem została firma Salesforce.com, która udostępnia oprogramowanie w formie usługi internetowej od 1999 r.
 
@@ -345,11 +364,74 @@ Wymienione wyżej technologie zestawione razem dały podwaliny chmurom obliczeni
 
 Przyjmuje się, że termin \textit{,,cloud computing''} po raz pierwszy został użyty przez CEO firmy Google, Erica Schmidta, w trakcie konferencji w 2006 r. Tego samego roku Amazon użył tej nazwy publikując pionierską w swoim gatunku usługę Elastic Compute Cloud (EC2), czyli możliwość wynajmu serwera wirtualnego w ich chmurze.
 
-\subsection{Historia najnowsza}
+\subsection{Historia najnowsza. Współczesne wyzwania}
 
 W 2003 roku firma Citrix stworzyła Xen - system operacyjny przeznaczony tylko do wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. W marcu 2006 r. roku Amazon na podstawie Xena opracował swój produkt EC2. W ciągu 18 miesięcy zaczęło z niego korzystać ponad pół miliona osób.\cite{ccBiznes}
 
-Kolejne lata przynoszą powstanie kolejnych chmur publicznych oraz rozwój rozwiązań typu PaaS (ang. \textit{platform as a service}). W czerwcu 2007 r. powstał Heroku, będący pionierem w tej kategorii. Niecały rok później Google udostępnił usługę Google App Engine. W lutym 2010 r. Microsoft stworzył Windows Azure, (w kwietniu 2014 przemianowaną na Microsoft Azure \cite{azurePakct}).
+W kolejnych latach powstały kolejne chmury publiczne oraz nastąpił rozwój rozwiązań typu PaaS (ang. \textit{platform as a service}). W czerwcu 2007 r. powstał Heroku, będący pionierem w tej kategorii. Niecały rok później Google udostępnił usługę Google App Engine. W lutym 2010 r. Microsoft udostępnił Windows Azure (w kwietniu 2014 przemianowaną na Microsoft Azure \cite{azurePackt}).
+
+Do tego momentu powstały już 3 największe chmury publiczne: Amazon AWS, Google Cloud Platform, Microsoft Azure. Początkowo miały zróżnicowaną ofertę. W literaturze\cite{ccBiznes} z 2011 r. porównywanie tych platform sprowadzało się do zakresu oferowanych przez nie usług. Z biegiem czasu różnice zatarły się -- obecnie usługa publikowana przez jednego dostawcę po kilku miesiącach jest dostępna także u innych. Tabela \ref{table:historia} prezentuje porównanie tempa rozbudowy zakresu usług.
+
+\noindent
+\begin{small}
+\begin{table}[t]
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{ |L|L|L|L| }
+
+\hline
+\multirow{2}{*}{Typ usługi} & \multicolumn{3}{|c|}{Dostawca} \\
+
+\cline{2-4}
+& \multicolumn{1}{|c|}{AWS} & \multicolumn{1}{|c|}{GCP} & \multicolumn{1}{|c|}{Azure} \\
+
+\hline
+serwery wirtualne & 2006 -- Amazon EC2 \cite{ccCambridge} & 2013 -- Google Compute Engine \cite{siteGoogleCloudPlatformWiki} & 2010 -- 	Azure Virtual Machines \cite{siteMicrosoftBlogAzure} \\
+
+\hline
+platforma aplikacji & 2011 -- AWS Elastic Beanstalk \cite{siteAmazonElasticBeanstalkWiki} &  2008 -- Google App Engine \cite{siteGoogleCloudPlatformWiki} & 2010 -- Azure Cloud Services \cite{siteMicrosoftBlogAzure} \\
+
+\hline
+bazy SQL & 2009 -- Amazon Relational Database Service \cite{siteAmazonRdsWiki} & 2011 -- Google Cloud SQL \cite{siteGoogleBlogCloudSql} & 2010 -- Azure SQL Database \cite{siteMicrosoftBlogAzure} \\
+
+\hline
+bazy klucz-wartość & 2007 -- Amazon SimpleDb (w 2012 Amazon DynamoDB) \cite{siteAmazonSimpleDbWiki} & 2008 -- Google Bigtable \cite{siteBigTableWikiPl} (jako część App Engine) & 2010 -- Azure Table Storage \cite{siteMicrosoftBlogAzure} (2017 -- Azure Cosmos DB) \\
+
+\hline
+serverless & 2014 -- AWS Lambda \cite{serverlessMaddie} & 2016 -- Google Cloud Functions \cite{serverlessMaddie} & 2016 -- Azure Functions \cite{serverlessMaddie}\\
+
+\hline
+Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteAmazonBlogEks} & 2018 -- Google Kubernetes Engine \cite{siteGoogleBlogKubernetes}  & 2017 -- Azure Container Service \cite{siteMicrosoftBlogAks}\\
+
+\hline
+
+
+
+\end{tabularx}
+
+
+\caption{Porównanie historii udostępniania usług chmurowych wśród głównych dostawców}
+		\label{table:historia}
+
+\end{table}
+\end{small}
+
+
+W tym samym czasie rozwijały się technologie przeznaczone do wystawiania własnych usług chmurowych. W 2010 r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na prowadzenie własnej platformy typu PaaS do tworzenia aplikacji w chmurze. 
+
+Cloud Foundry stanowił odpowiedź na główny problem chmur publicznych -- tworzenie aplikacji na wybraną chmurę wiązało ją z mechanizmami specyficznymi dla tej chmury. Brakowało pomostu, który oddzieliłby warstwę tworzenia aplikacji w chmurze od wybranego usługodawcy, bez konieczności tworzenia serwerów wirtualnych na których trzeba instalować określone środowisko. \cite{cloudFoundry}
+
+Cloud Foundry jest niezależny od infrastruktury, może działać zarówno na OpenStacku jak i na serwerze wirtualnym w chmurze publicznej. Zapewnia możliwość wyboru dowolnych technologii do wytwarzania oprogramowania. Do działania używa kontenerów zgodnych ze standardem OCI (Open Container Initiative). \cite{cloudFoundry} 
+
+\textbf{Konteneryzacja} to metoda wirtualizacji na poziomie systemu operacyjnego, gdzie na działającym systemie operacyjnym można uruchomić wiele odizolowanych od siebie instancji przestrzeni użytkownika. Każda taka instancja to kontener. Kontener zapewnia odpowiednie środowisko do działania dla umieszczonej w nim aplikacji, np. środowisko uruchomieniowe .NET Core w odpowiedniej wersji.  \cite{cloudFoundry,ccSpringer}
+
+Cloud Foundry zapewnia orkiestrację kontenerów oraz obsługę procesu CI/CD (ciągłej integracji i ciągłego dostarczania, ang. \textit{continuous integration / continuous delivery}).\cite{cloudFoundry} Stanowi narzędzie pozwalające z powodzeniem wdrażać strategie DevOps. 
+
+% devops to te wszystkie strategie dzięki którym minimalizuje się czas od wprowadznia poprawki do wypuszczenia na produkcję, wszystko co się da jest automatyzowane, termin ukuty w 2009 i od tego czasu określa się nim wszystko co pomaga osiągać taki efekt. Jest mocno związany z chmurami i poniekąd wchodzi w kanon pojęć zwiazanych z chmurą. 
+% kontenery mocno stymulują devops gdyż są lekkie i można nimi szybko automatycznie zarządzać, zatem wraz ze wzrostem zainteresowania ideą devops oraz rozwojem rozwiązań chmurowych tak jakoś wyszło że kontenery zyskały wysoką popularność i stanowią kluczowy mechanizm przy kolejnych rozwiązaniach które teraz wojują świat, jak Kubernetes i te jego wszystkie odnogi
+
+
+
+
 
 
 %\subsection*{Współczesne wyzwania dla chmur obliczeniowych}
@@ -395,12 +477,14 @@ Kolejne lata przynoszą powstanie kolejnych chmur publicznych oraz rozwój rozwi
 \addcontentsline{toc}{chapter}{Spis rysunków}
 \listoffigures
 
-\bibliographystyle{plain}
-\bibliography{bibliography/ccCambridge,bibliography/ccBiznes,bibliography/cloudFoundry,bibliography/kubernetesOreily,bibliography/ccSpringer,bibliography/azurePakct} 
+\addcontentsline{toc}{chapter}{Spis tabel}
+\listoftables
 
 
 
-
+\selectlanguage{polish}
+\printbibliography
+ 
 
 
 \end{document}
