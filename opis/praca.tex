@@ -153,6 +153,12 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/devOpsPackt}
 \addbibresource{bibliography/kubernetesPacktMastering}
 \addbibresource{bibliography/kubernetesPacktGettingStarted}
+\addbibresource{bibliography/dockerPacktMastering}
+\addbibresource{bibliography/microservicesPacktNetCore}
+\addbibresource{bibliography/distributedSystems}
+\addbibresource{bibliography/soaOreily}
+\addbibresource{bibliography/microservicesMaddie}
+\addbibresource{bibliography/microservicesWmii}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -170,6 +176,15 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteDockerStackOverflow}
 \addbibresource{bibliography/siteKubernetesBlogBorg}
 \addbibresource{bibliography/siteKubernetesOnRaspberry}
+\addbibresource{bibliography/siteGoogleTry}
+\addbibresource{bibliography/siteAksPricing}
+\addbibresource{bibliography/siteAzureTry}
+\addbibresource{bibliography/siteAmazonBlogEcs}
+\addbibresource{bibliography/siteAmazonEcs}
+\addbibresource{bibliography/siteAmazonEcsPricing}
+\addbibresource{bibliography/siteAmazonTry}
+\addbibresource{bibliography/siteAmazonEksPricing}
+
 
 
 
@@ -419,7 +434,7 @@ bazy klucz-wartość & 2007 -- Amazon SimpleDb (w 2012 Amazon DynamoDB) \cite{si
 serverless & 2014 -- AWS Lambda \cite{serverlessMaddie} & 2016 -- Google Cloud Functions \cite{serverlessMaddie} & 2016 -- Azure Functions \cite{serverlessMaddie}\\
 
 \hline
-Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteAmazonBlogEks} & 2018 -- Google Kubernetes Engine \cite{siteGoogleBlogKubernetes}  & 2017 -- Azure Container Service \cite{siteMicrosoftBlogAks}\\
+Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteAmazonBlogEks} & 2015 -- Google Kubernetes Engine \cite{siteGoogleBlogKubernetes}  & 2017 -- Azure Container Service \cite{siteMicrosoftBlogAks}\\
 
 \hline
 
@@ -460,11 +475,11 @@ Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportująceg
 \item użycie CLI Dockera oraz pliku Dockerfile do zbudowania tzw. obrazu Dockera,
 \item użycie obrazu Dockera do zbudowania i uruchomienia aplikacji w kontenerze.
 \end{enumerate}
-Obrazy Dockera działają wszędzie, gdzie jest zainstalowany Docker -- niezależnie od systemu operacyjnego czy środowisk jakie ma zainstalowane. Ponadto zależności takie jak np. system operacyjny Ubuntu występują w wersjach ,,odchudzonych'' - przykładowo obraz Minimal Ubuntu 18.04 zajmuje jedynie 29 MB.\cite{siteUbuntuBlog}
-Podejście to stwarza następujące możliwości:
+Obrazy Dockera działają wszędzie, gdzie jest zainstalowany Docker -- niezależnie od systemu operacyjnego czy środowisk jakie ma zainstalowane. Ponadto zależności takie jak np. system operacyjny Ubuntu występują w wersjach ,,odchudzonych'' - przykładowo obraz Minimal Ubuntu 18.04 zajmuje jedynie 29 MB.\cite{siteUbuntuBlog}. Najlżejszym obrazem Linuxa jest dystrybucja Alpine wielkości niecałych 4 MB, stąd używana jest jako baza dla obrazów zapewnianych przez Docker.\cite{dockerPacktMastering}
+Podejście Dockera stwarza następujące możliwości:
 \begin{itemize}
 \item Na jednej maszynie może jednocześnie działać wiele aplikacji wymagających różnych zależności, lub nawet różniących się jedynie wersjami, w izolacji od siebie oraz maszyny na której są uruchomione.
-\item W procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na środowisku deweloperskim, testowym oraz produkcyjnym.
+\item W procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na środowisku deweloperskim, testowym oraz produkcyjnym. Eliminuje to problem gdy na zgłoszony błąd słyszy się odpowiedź ,,u mnie działa''.
 \item Obrazy Dockera są lekkie: współdzielą wiele zasobów systemu operacyjnego, dzielą między sobą inne obrazy Dockera.\cite{siteDockerStackOverflow} Na jednej maszynie może działać wiele kontenerów Dockera, podczas gdy maszyn wirtualnych może być zaledwie kilka.\cite{ccSpringer}
 \end{itemize}
 Powyższe znacząco ułatwia tworzenie aplikacji ,,dla chmury'', orkiestrację chmury oraz stosowanie strategii DevOps.
@@ -487,7 +502,7 @@ powstał w 2011 r. & powstał w 2014. r. \\
 \hline
 wysoki poziom automatyzacji -- rozpoznaje zależności aplikacji, sam buduje kontener i konfiguruje skalowanie aplikacji & więcej kontroli nad kontenerami, lecz także więcej pracy dla deweloperów. Dla większej automatyzacji należy sięgnąć po rozwiązania PaaS bazujące na Kubernetes, takie jak RedHat OpenShift \cite{kubernetesPacktGettingStarted} \\
 \hline
-minimalne wymagania -- 40 GB HDD, 8 GB RAM, 4 rdzenie CPU & 2 GB RAM, 2 rdzenie CPU. Działa na Raspberry PI \cite{siteKubernetesOnRaspberry} \\
+minimalne wymagania -- 40 GB HDD, 8 GB RAM, 4 rdzenie CPU & 2 GB RAM, 2 rdzenie CPU. Na tyle lekki, że można go używać na Raspberry PI \cite{siteKubernetesOnRaspberry} \\
 \hline
 domyślnie używa własnego systemu kontenerów, ale pozwala na korzystanie z obrazów Dockera & stosuje obrazy Dockera jako główny system kontenerów, ale pozwala zastąpić go innym \\
 \hline
@@ -502,19 +517,70 @@ domyślnie używa własnego systemu kontenerów, ale pozwala na korzystanie z ob
 \end{table}
 \end{small}
 
+Do tego momentu kontenery jawią się jako antidotum na przywiązanie do wybranego dostawcy usług chmurowych. Aplikacje w kontenerze Dockera mogą używać szerokiego wachlarza technologii, nie tylko otwartoźródłowych jak np. MongoDB, Node.js, .NET Core. Jako zależność można podać np. OpenJDK czy obraz systemu Windows Server udostępniany przez Microsoft, następnie można do niego doinstalować inne zależności komendą \texttt{RUN} w Dockerfile. \cite{dockerPacktMastering} Dostępność platformy Kubernetes wyznaczyła standard w zarządzaniu kontenerami na szeroką skalę.
 
-% do tego momentu kontenery jawią się jako antidotum na przywiązanie do wybranego dostawcy usług chmurowych, jako te co dają wolność uzywania takich technologii jakich się chce a nie jakieś DynamoDb
-% niestety jak chce się ich używać to trzeba miec jakąś wiedzę taką poza pisaniem sobie aplikacji w jakimś języku programowania, no bo trzeba gdzieś zainstalować tego kubernetes, jakoś go skonfigurować
-% nawet cloud foundry trzeba najpierw zainstalować a przeciez miało byc tak fajnie że tylko piszę aplikację
-% i tadaaaa chmury publiczne wypuszczają Container As A Service tak że można pisać w kontenerach i mieć resztę w d
+Problemem, który w wielu przypadkach mógł podnosić barierę wejścia do stosowania takich rozwiązań, była konieczność samodzielnej instalacji Kubernetes lub podobnego narzędzia na serwerze wirtualnym w chmurze. Chmury publiczne wyszły naprzeciw tym oczekiwaniom i zaczęły udostępniać usługi typu \textbf{CaaS} (ang. \textit{Containers-as-a-Service}), nazywane też KaaS (ang. \textit{Kubernetes-as-a-Service}). Jako przykłady można wymienić:
+\begin{itemize}
+\item \textbf{Google Kubernetes Engine} (wcześniej: Google Container Engine) -- usługa udostępniona w sierpniu 2015 r. \cite{siteGoogleBlogKubernetes} z gotowym do użycia Kubernetes. Można ją przetestować za darmo w ramach kredytu 300 USD do testowania Cloud Platform.\cite{siteGoogleTry}
+\item \textbf{AKS -- Azure Kubernetes Service} (wcześniej: Azure Container Service) -- początkowo od 2015 r. wspierała orkiestratory Mesosphere DC/OS oraz Docker Swarm, jednak na fali popularności Kubernetes firma Microsoft uznała go za standard i w 2017 r. opracowała wsparcie dla Kubernetes. W związku z tym nastąpiła także zmiana nazwy usługi. \cite{siteMicrosoftBlogAks} Usługa jest darmowa\cite{siteAksPricing}, opłaty są naliczane za użyte maszyny wirtualne, które przez rok również w ograniczonym zakresie są bezpłatne.\cite{siteAzureTry}
+\item \textbf{Amazon ECS -- Amazon Elastic Container Service} -- usługa dostępna od kwietnia 2015 r., jest to własna implementacja orkiestracji kontenerów Dockera stworzona przez Amazona. Pozwala na 2 typy rozliczeń: płatność za zużycie zasobów przez kontener lub płatność za przechowanie i uruchamianie aplikacji na EC2.\cite{siteAmazonEcsPricing} Nie występuje na liście usług dostępnych do wyprówowania za darmo.\cite{siteAmazonTry}
+\item \textbf{Amazon EKS -- Amazon Elastic Container Service for Kubernetes} -- usługa została uruchomiona w czerwcu 2018 r. Publikując usługę Amazon chwalił się, że na podstawie danych Cloud Native Computing Foundation (założonej wraz z powstaniem Kubernetes), 57\% firm korzystających z Kubernetes robiło to na serwerach wirtualnych AWS. Płatność wynosi 0.20 USD za godzinę dla każdego klastra w usłudze a dodatkowo za zużycie zasobów AWS.\cite{siteAmazonEksPricing} Nie występuje na liście usług dostępnych do wyprówowania za darmo.\cite{siteAmazonTry}
+\end{itemize}
+
+Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla chmury tak że:
+\begin{itemize}
+\item Do tworzenia aplikacji można wybrać dowolną technologię i wciąż koncentrować się na tworzeniu tej aplikacji, a nie zapewnianiu jej odpowiedniego środowiska na serwerze wirtualnym.
+\item Istnieje standardowy sposób tworzenia obrazu kontenera (Docker).
+\item Istnieje standardowy sposób orkiestracji kontenerów (Kubernetes). Wiedzę na temat korzystania z niego można zastosować do projektów działających na chmurach publicznych, prywatnych i hybrydowych.
+\end{itemize}
 
 \subsubsection*{Aplikacje cloud native}
+
+Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla chmury. W chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a jednocześnie zapewnić niezawodność i jak najniższy koszt eksploatacji, należy zapoznać się ze specyficznym sposobem tworzenia aplikacji dla chmury. Aplikację zgodną z tymi wytycznymi określa się jako \textbf{\textit{cloud native}}.
+
+Jak zostało wspomniane wcześniej, platforma Heroku była pionierem jeśli chodzi o udostępnianie programistom platformy do tworzenia aplikacji w chmurze (2007 r.). Współzałożyciel Heroku, Adam Wiggins wraz z zespołem, w 2012 r. na podstawie doświadczeń zebranych w Heroku stworzyli metodykę ,,twelve-factor'' (ang. \textbf{\textit{The Twelve-Factor App}}). Jest to zbiór podstawowych 12. reguł dotyczących programowania oraz pracy z aplikacjami przeznaczonymi dla chmury. Reguły te są często przywoływane w literaturze zajmującej się tym tematem.\cite{cloudFoundry, microservicesPacktNetCore} Można się z nimi zapoznać odwiedzając stronę \texttt{https://12factor.net} (w czasie pisania pracy strona była dostępna w 13 językach, w tym w języku polskim).
+
+Osobne ,,dobre praktyki'' powstały dla systemów rozproszonych używających kontenerów (w tym Kubernetes). Dzielą się na:
+\begin{itemize}
+\item Wzorce dla kontenerów występujących na jednym węźle (ang. \textit{Single-node patterns}. Należą do nich wzorce: \textit{Sidecar, Ambassador, Adapter}.
+\item Wzorce dla kontenerów występujących na różnych węzłach (ang. \textit{Multi-node patterns}). Koncentrują się na właściwych metodach koordynacji działań pomiędzy różnymi maszynami. Są to wzorce np. komunikacji z użyciem zdarzeń czy kolejek.  \cite{kubernetesPacktMastering, distributedSystems}
+\end{itemize}
+
+Praktyki wyznaczone przez powyższe wzorce w dużej mierze opierają się na \textbf{mikrousługach}. Mikrousługi wywodzą się z \textbf{SOA}. Termin SOA (ang. \textit{Service oriented architecture}) został pierwszy raz użyty przez analityka firmy Gartner podczas wykładu. Utworzył on ten termin, ponieważ zwrot ,,klient/serwer'' tracił na swoim pierwotnym znaczeniu, gdyż zamiast nazywać tak aplikację dla serwera lub klienta, ludzie zaczęli tak nazywać fizyczne maszyny. Następnie inni analitycy w 1996 r. publikowali na ten temat raporty. Bardziej znaczące użycie terminu SOA należało do Microsoftu. W 2000 r. opisywał zbiór standardów do komunikacji komputerów przez Internet, gdzie przedstawił architekturę SOA jako ważną, choć nie niezbędną, dla Web Services. Wkrótce termin podchwyciły inne firmy, w tym  takie jak IBM, Oracle, HP, publikując nowe koncepcje czy narzędzia powiązane z SOA. \cite{soaOreily}
+
+SOA to po polsku architektura zorientowana na usługi. Polega na podzieleniu systemu informatycznego na odrębne części, które mogą znajdować się na różnych maszynach i komunikować się ze sobą przez sieć. Główne koncepcje SOA to: 
+\begin{itemize}
+\item usługi -- rozumiane jako samodzielne komponenty realizujące daną funkcjonalność biznesową,
+\item wysoka interoperacyjność -- łatwe łączenie ze sobą systemów różnych typów,
+\item luźne wiązania -- jak najmniejsza liczba zależności. \cite{soaOreily}
+\end{itemize}
+
+SOA to bardzo ogólne pojęcie, nie definiuje jakiej wielkości powinny być poszczególne usługi. Wraz z rozwojem technologii chmurowych, nastała potrzeba dostosowania paradygmatu SOA do wyzwań związanych ze skalowalnością, szybkością wytwarzania oprogramowania oraz potrzebą adaptacji nowych technologii dla istniejących rozbudowanych systemów. Odpowiedzią na ten problem okazały się mikrousługi (ang. \textit{microservices}).
+
+\textbf{Mikrousługi} stanowią szczególny przypadek SOA. Ich główna cecha: mają być małe. Zamiast tworzyć jedną aplikację, która robi wszystko, system ma składać się z wielu małych, niezależnych od siebie komponentów, odpowiedzialnych za tylko jedną rzecz.
+
+Z jednej strony powinny grupować powiązane ze sobą funkcjonalności, z drugiej strony nie wolno doprowadzać do sytuacji, gdy serwis może stać się zbyt duży i trudny w utrzymaniu. Pomocne w wyobrażeniu jakiej wielkości powinna być przeciętna mikrousługa są następujące wskazówki:
+\begin{itemize}
+\item Zasada pojedynczej odpowiedzialności, wywodząca się z zasad SOLID, a zaadoptowana do usług. Polega na umieszczaniu razem elementów, które będą zmieniać się z tego samego powodu. \cite{microservicesWmii}
+\item Kod mikrousługi powinien być na tyle mały, żeby dało się go przepisać w dwa tygodnie. \cite{microservicesWmii}
+\item Mikrousługa powinna być na tyle mała, żeby do pracy z nią wystarczył jeden zespół programistów. \cite{microservicesMaddie}
+\item W przypadku gdy mikrousługa jest często używana i potrzebuje do działania wielu instancji, nie powinna jednocześnie powielać funkcjonalności rzadziej używanych i tym sposobem marnować zasobów. \cite{microservicesMaddie}
+\end{itemize}
+
+W odniesieniu do chmur, mikrousługi wprowadzają następujące udogodnienia:
+%\begin{itemize}
+%
+%\end{itemize}
+
+
+
+
 
 % 12 factor apps
 % mikroserwisy
 % nanoserwisy
 % zero-downtime deplojment
-% moze costam jeszcze..
+% moze costam jeszcze.. NOSQL
 
 
 
