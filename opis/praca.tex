@@ -157,8 +157,9 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/microservicesPacktNetCore}
 \addbibresource{bibliography/distributedSystems}
 \addbibresource{bibliography/soaOreily}
-\addbibresource{bibliography/microservicesMaddie}
+\addbibresource{bibliography/microservicesSusan}
 \addbibresource{bibliography/microservicesWmii}
+\addbibresource{bibliography/ccResearchSpringer}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -169,6 +170,7 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteAmazonRdsWiki}
 \addbibresource{bibliography/siteGoogleCloudPlatformWiki}
 \addbibresource{bibliography/siteAmazonSimpleDbWiki}
+\addbibresource{bibliography/siteGoogleServerless}
 \addbibresource{bibliography/siteOperatingSystemVirtualizationWiki}
 \addbibresource{bibliography/siteDockerHistory}
 \addbibresource{bibliography/siteCloudControlWiki}
@@ -184,6 +186,8 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteAmazonEcsPricing}
 \addbibresource{bibliography/siteAmazonTry}
 \addbibresource{bibliography/siteAmazonEksPricing}
+\addbibresource{bibliography/siteServerlessFramework}
+\addbibresource{bibliography/siteKubelessReleases}
 
 
 
@@ -431,7 +435,7 @@ bazy SQL & 2009 -- Amazon Relational Database Service \cite{siteAmazonRdsWiki} &
 bazy klucz-wartość & 2007 -- Amazon SimpleDb (w 2012 Amazon DynamoDB) \cite{siteAmazonSimpleDbWiki} & 2008 -- Google Bigtable \cite{siteBigTableWikiPl} (jako część App Engine) & 2010 -- Azure Table Storage \cite{siteMicrosoftBlogAzure} (2017 -- Azure Cosmos DB) \\
 
 \hline
-serverless & 2014 -- AWS Lambda \cite{serverlessMaddie} & 2016 -- Google Cloud Functions \cite{serverlessMaddie} & 2016 -- Azure Functions \cite{serverlessMaddie}\\
+serverless & 2014 -- AWS Lambda \cite{serverlessMaddie} & sierpień 2018 -- Google Cloud Functions \cite{siteGoogleServerless} & 2016 -- Azure Functions \cite{serverlessMaddie}\\
 
 \hline
 Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteAmazonBlogEks} & 2015 -- Google Kubernetes Engine \cite{siteGoogleBlogKubernetes}  & 2017 -- Azure Container Service \cite{siteMicrosoftBlogAks}\\
@@ -542,7 +546,7 @@ Jak zostało wspomniane wcześniej, platforma Heroku była pionierem jeśli chod
 
 Osobne ,,dobre praktyki'' powstały dla systemów rozproszonych używających kontenerów (w tym Kubernetes). Dzielą się na:
 \begin{itemize}
-\item Wzorce dla kontenerów występujących na jednym węźle (ang. \textit{Single-node patterns}. Należą do nich wzorce: \textit{Sidecar, Ambassador, Adapter}.
+\item Wzorce dla kontenerów występujących na jednym węźle (ang. \textit{Single-node patterns}). Należą do nich wzorce: \textit{Sidecar, Ambassador, Adapter}.
 \item Wzorce dla kontenerów występujących na różnych węzłach (ang. \textit{Multi-node patterns}). Koncentrują się na właściwych metodach koordynacji działań pomiędzy różnymi maszynami. Są to wzorce np. komunikacji z użyciem zdarzeń czy kolejek.  \cite{kubernetesPacktMastering, distributedSystems}
 \end{itemize}
 
@@ -557,31 +561,36 @@ SOA to po polsku architektura zorientowana na usługi. Polega na podzieleniu sys
 
 SOA to bardzo ogólne pojęcie, nie definiuje jakiej wielkości powinny być poszczególne usługi. Wraz z rozwojem technologii chmurowych, nastała potrzeba dostosowania paradygmatu SOA do wyzwań związanych ze skalowalnością, szybkością wytwarzania oprogramowania oraz potrzebą adaptacji nowych technologii dla istniejących rozbudowanych systemów. Odpowiedzią na ten problem okazały się mikrousługi (ang. \textit{microservices}).
 
-\textbf{Mikrousługi} stanowią szczególny przypadek SOA. Ich główna cecha: mają być małe. Zamiast tworzyć jedną aplikację, która robi wszystko, system ma składać się z wielu małych, niezależnych od siebie komponentów, odpowiedzialnych za tylko jedną rzecz.
+\textbf{Mikrousługi} stanowią szczególny przypadek SOA. Ich główna cecha: mają być małe. Zamiast tworzyć jedną aplikację, która robi wszystko, system ma składać się z wielu małych, niezależnych od siebie komponentów, odpowiedzialnych za tylko jedną rzecz. \cite{microservicesPacktNetCore}
 
 Z jednej strony powinny grupować powiązane ze sobą funkcjonalności, z drugiej strony nie wolno doprowadzać do sytuacji, gdy serwis może stać się zbyt duży i trudny w utrzymaniu. Pomocne w wyobrażeniu jakiej wielkości powinna być przeciętna mikrousługa są następujące wskazówki:
 \begin{itemize}
 \item Zasada pojedynczej odpowiedzialności, wywodząca się z zasad SOLID, a zaadoptowana do usług. Polega na umieszczaniu razem elementów, które będą zmieniać się z tego samego powodu. \cite{microservicesWmii}
 \item Kod mikrousługi powinien być na tyle mały, żeby dało się go przepisać w dwa tygodnie. \cite{microservicesWmii}
-\item Mikrousługa powinna być na tyle mała, żeby do pracy z nią wystarczył jeden zespół programistów. \cite{microservicesMaddie}
-\item W przypadku gdy mikrousługa jest często używana i potrzebuje do działania wielu instancji, nie powinna jednocześnie powielać funkcjonalności rzadziej używanych i tym sposobem marnować zasobów. \cite{microservicesMaddie}
+\item Mikrousługa powinna być na tyle mała, żeby do pracy z nią wystarczył jeden zespół programistów. \cite{microservicesSusan}
+\item W przypadku gdy mikrousługa jest często używana i potrzebuje do działania wielu instancji, nie powinna jednocześnie powielać funkcjonalności rzadziej używanych i tym sposobem marnować zasobów. \cite{microservicesSusan}
 \end{itemize}
 
-W odniesieniu do chmur, mikrousługi wprowadzają następujące udogodnienia:
-%\begin{itemize}
-%
-%\end{itemize}
+W odniesieniu do chmur, mikrousługi wprowadzają następujące udogodnienia: \cite{microservicesPacktNetCore, microservicesSusan, microservicesWmii}
+\begin{itemize}
+\item \textbf{Efektywne skalowanie.} Gdy określona funkcjonalność systemu jest często używana, uruchamia się więcej instancji mikrousługi odpowiedzialnej za tę funkcjonalność. Nie trzeba zużywać więcej zasobów niż jest to potrzebne.
+\item \textbf{Lepsze zapanowanie nad kodem.} Do mniejszego programu łatwiej wprowadzać poprawki, w razie potrzeby przepisanie go do nowszych technologii nie powinno stanowić problemu. Każda mikrousługa może być napisana przy użyciu innych technologii. Większe zmiany w kodzie oddziałują tylko na daną mikrousługę, nie na cały system.
+\item \textbf{Szybsze wdrażanie.} Procesy ciągłej integracji i ciągłego dostarczania (CI/CD) szybciej działają, gdy mają do kopiowania, budowania i testowania mniejszą ilość kodu. 
+\end{itemize}
 
+Popularność kontenerów, mikrousług oraz modelu \textit{utility computing} (rozliczanie za rzeczywiste użycie zasobów komputerowych) doprowadziła do wytworzenia nowego paradygmatu tworzenia aplikacji w chmurze, znanego jako \textbf{\textit{serverless}} (z ang. ,,bez serwera''). Serverless jest obecnie obiecującą nowością jeśli chodzi o przetwarzanie w chmurze. Nazwa ta zaczęła zdobywać popularność na początku 2016 r. \cite{ccResearchSpringer}  
 
+Aplikacje tego typu zamiast być przez cały czas uruchomione na serwerze oczekując na zapytania, mają być uruchamiane dopiero gdy przyjdzie określone zdarzenie (ang. \textit{event-driven computation}). Zdarzeniem może być np. nowe zapytanie HTTP, nowy wpis w kolejce, wywołanie po upłynięciu interwału czasowego (przez \textit{timer}). Wówczas zostaje powołana do życia aplikacja przeznaczona tylko do obsługi danego zdarzenia i działa tylko na krótki czas obsługi zdarzenia (jest to maksymalnie około kilka minut). Aplikacje te to w istocie mikrousługi, tyle że posiadające tylko jedną funkcję -- stąd nazywa się je po prostu funkcjami. Dla lepszego odróżnienia od mikrousług określa się je terminem ,,nanousług'' (ang. \textit{nanoservices}). \cite{serverlessMaddie, ccResearchSpringer, distributedSystems}
 
+Platforma w chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Functions-as-a-Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w 2014 r. uruchomił usługę Amazon Lambda typu FaaS. W 2016 r. Microsoft udostępnił usługę Azure Functions. W Google Cloud Platform tego typu usługa pojawiła się w sierpniu 2018, choć była udostępniona wcz (miesiąc przed wydaniem niniejszej pracy).
 
+Posługując się modelem serverless, usługodawca może stosować rozliczenie według ilości wywołań poszczególnych funkcji. Dla programisty użycie nanoserwisów oznacza mniej projektowania jeśli chodzi o optymalną architekturę mikrousług. Mikrousługi grupowały ze sobą niektóre elementy, natomiast w nanousługach każda funkcja stanowi osobny byt. 
 
-% 12 factor apps
-% mikroserwisy
-% nanoserwisy
-% zero-downtime deplojment
-% moze costam jeszcze.. NOSQL
+Rozwijane są także inicjatywy niezwiązane z usługami FaaS konkretnych dostawców. W 2015 r. powstał projekt Serverless Framework,\cite{siteServerlessFramework} służący do odseparowania logiki konkretnej usługi FaaS od logiki biznesowej funkcji. Ponadto zapewnia narzędzia wspierające proces tworzenia funkcji. 
 
+W 2017 r. powstał projekt Kubeless.\cite{siteKubelessReleases} Jest to otwartoźródłowy framework dla Kubernetes, który ma działać w sposób podobny do sposobu wyznaczonego przez AWS Lambda, Azure Functions oraz Google Cloud Functions.\cite{distributedSystems} 
+
+Serverless Framework obsługuje wszystkie wyżej wymienione platformy, z Kubeless włącznie.\cite{siteServerlessFramework}
 
 
 
