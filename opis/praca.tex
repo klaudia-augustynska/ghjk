@@ -35,6 +35,9 @@
 \def\numberline#1{\hb@xt@\@tempdima{#1.\hfil}}
 \makeatother
 
+%\setcounter{tocdepth}{3}
+%\setcounter{secnumdepth}{3}
+
 % CHAPTER TITLE
 
 %kropki po~tytułach rodziałów
@@ -160,6 +163,7 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/microservicesSusan}
 \addbibresource{bibliography/microservicesWmii}
 \addbibresource{bibliography/ccResearchSpringer}
+\addbibresource{bibliography/noSqlHistory}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -188,6 +192,7 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteAmazonEksPricing}
 \addbibresource{bibliography/siteServerlessFramework}
 \addbibresource{bibliography/siteKubelessReleases}
+\addbibresource{bibliography/oodbmsManifesto}
 
 
 
@@ -358,7 +363,7 @@ Istnieje ryzyko rozbieżności pomiędzy prawem do którego dostosowywał się d
 
 Cloud Computing nie stanowi odrębnej, nowej technologii -- jest to produkt ewolucji technologii rozwijanych od blisko 50 lat. Prześledzenie historii pozwala na zrozumienie, które koncepcje rzeczywiście wprowadzają nową jakość, a nie są jedynie od dawna istniejącą technologią, tyle że  ubraną w ładnie brzmiące słowo.
 
-\subsection{Historia technologii chmurowych}
+%\subsection{Historia technologii chmurowych}
 
 Historia ma początek około lat 70., gdy używano wielkich superkomputerów zwanych \textbf{\textit{mainframe}}. Można było z nich korzystać za pomocą terminali, określanych mianem ,,głupich'' (ang. \textit{dump terminal}), ponieważ nie posiadały procesora i mogły być używane jedynie do operacji I/O. Jako że z serwera mógł korzystać jeden terminal naraz, serwer ustawiał je w kolejkę i musiały długo czekać na obsłużenie.
 
@@ -374,7 +379,7 @@ Następnie powstała koncepcja \textbf{klastrów komputerowych}. Klaster polega�
 
 Główną wadą klastrów była konieczność powierzenia zarządzania klastrem jednemu komputerowi. Stanowił on miejsce od niezawodności którego zależała niezawodność całej sieci (ang. \textit{single point of failure}). Rozwiązaniem okazały się \textbf{gridy}, w których każdy węzeł posiadał równy priorytet. Klient mógł podłączyć się do dowolnego komputera w gridzie, a ponadto komputery te mogły być różnego typu (heterogeniczne). Wkrótce gridy przeniknęły ze świata naukowego do świata biznesu i zaczynały być łączone przez WAN.
 
-Dotychczas gdy uruchamiało się program na wybranym węźle gridu, to znajdował się na tym węźle dopóki proces nie został zakończony. Stanowiło to problem na drodze do skalowania w czasie rzeczywistym, gdzie na skutek zmienionych potrzeb byłoby dobrze mieć możliwość od nowa zaalokować zasoby bez zakłócania działającej usługi. Problem ten rozwiązała \textbf{wirtualizacja sprzętowa}, za pomocą której zadania były alokowane do maszyn wirtualnych. Technika ta umożliwiła \textbf{utility computing}, czyli model w którym zasoby komputerowe mogą być dostarczane jako usługa, co stanowi serce chmur obliczeniowych. Prekursorem została firma Salesforce.com, która udostępnia oprogramowanie w formie usługi internetowej od 1999 r.
+Dotychczas gdy uruchamiało się program na wybranym węźle gridu, to znajdował się na tym węźle dopóki proces nie został zakończony. Stanowiło to problem na drodze do skalowania w czasie rzeczywistym, gdzie na skutek zmienionych potrzeb byłoby dobrze mieć możliwość od nowa zaalokować zasoby bez zakłócania działającej usługi. Problem ten rozwiązała \textbf{wirtualizacja sprzętowa}, za pomocą której zadania były alokowane do maszyn wirtualnych. Technika ta umożliwiła \textbf{\textit{utility computing}}, czyli model w którym zasoby komputerowe mogą być dostarczane jako usługa, co stanowi serce chmur obliczeniowych. Prekursorem została firma Salesforce.com, która udostępnia oprogramowanie w formie usługi internetowej od 1999 r.
 
 
 W 2001 r. firma IBM zbudowała pierwszy \textbf{autonomiczny system} (ang. \textit{antonomic computing}) -- system, który potrafi sobą zarządzać bez interwencji człowieka. Dzięki wykorzystaniu sztucznej inteligencji do działania, eliminuje się ryzyko związane z błędem ludzkim oraz złożoność związaną z koniecznością doglądania przez człowieka złożonego systemu. IBM wytyczył następujące cechy modelu:
@@ -393,16 +398,20 @@ Wymienione wyżej technologie zestawione razem dały podwaliny chmurom obliczeni
 
 Przyjmuje się, że termin \textit{,,cloud computing''} po raz pierwszy został użyty przez CEO firmy Google, Erica Schmidta, w trakcie konferencji w 2006 r. Tego samego roku Amazon użył tej nazwy publikując pionierską w swoim gatunku usługę Elastic Compute Cloud (EC2), czyli możliwość wynajmu serwera wirtualnego w ich chmurze.
 
-\subsection{Historia najnowsza. Współczesne wyzwania}
+%\subsection{Historia najnowsza. Współczesne wyzwania}
+\section{Historia najnowsza. Współczesne wyzwania}
 
 Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w tym samym czasie rozwinęły się technologie postrzegane w czasie pisania niniejszej pracy jako rewolucyjne. Na potrzeby opracowania wyróżniono następujące grupy zmian:
 \begin{itemize}
-\item rozwój chmur publicznych,
-\item rozwój rozwiązań opartych o kontenery,
-\item rozwój technik programistycznych wyznaczających najlepsze praktyki tworzenia aplikacji dla chmury.
+\item rozwój chmur publicznych (sekcja \ref{chmuryPubliczne}),
+\item rozwój rozwiązań opartych o kontenery (sekcja \ref{konteneryzacja}),
+\item rozwój technik programistycznych wyznaczających najlepsze praktyki tworzenia aplikacji dla chmury (sekcja \ref{mikroserwisy}),
+\item rozwój technologii bazodanowych dla systemów rozproszonych oraz metod analizy danych (sekcja \ref{nosql}),
+\item rozwój technologii przyśpieszających dostęp do usług chmurowych (sekcja \ref{fog}).
 \end{itemize}
 
-\subsubsection*{Rozwój chmur publicznych}
+%\subsubsection{Rozwój chmur publicznych} \label{chmuryPubliczne}
+\subsection{Rozwój chmur publicznych} \label{chmuryPubliczne}
 
 W 2003 roku firma Citrix stworzyła Xen - system operacyjny przeznaczony tylko do wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. W marcu 2006 r. roku Amazon na podstawie Xena opracował swój produkt EC2. W ciągu 18 miesięcy zaczęło z niego korzystać ponad pół miliona osób.\cite{ccBiznes}
 
@@ -453,7 +462,8 @@ Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteA
 \end{table}
 \end{small}
 
-\subsubsection{Konteneryzacja i DevOps}
+%\subsubsection{Konteneryzacja i DevOps} \label{konteneryzacja}
+\subsection{Konteneryzacja i DevOps} \label{konteneryzacja}
 
 W tym samym czasie rozwijały się technologie przeznaczone do wystawiania własnych usług chmurowych. W 2010 r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na prowadzenie własnej platformy typu PaaS do tworzenia aplikacji w chmurze. 
 
@@ -473,7 +483,7 @@ Istotny element DevOps stanowią wcześniej wspomniane kontenery. Idea kontener�
 
 \textbf{Docker} to system kontenerów, który powstał jako element platformy dotCloud, świadczącej usługi typu PaaS. Spopularyzował się w dość osobliwy sposób. Założyciel myślał, że tylko wygłosi mały referat na PyCon w 2013 r., lecz okazało się, że na konferencji było dużo osób, a jego referat był głównym elementem programu. Do końca roku Docker miał 100 mln pobrań, 3 miesiące później -- 300 mln, a w czerwcu 2017 -- 13 miliardów.\cite{siteDockerHistory} Z kolei platforma dotCloud nie okazała się sukcesem -- w 2014 r. Docker Inc. sprzedał ją niemieckiej firmie cloudControl GmbH, która w grudniu 2015 r. zbankrutowała, a w marcu 2016 r. zamknęła usługę.\cite{siteCloudControlWiki}
 
-Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportującego kontenery. Miało to nawiązywać do tego, iż załadowanie statku trwa dłużej niż transport statkiem. Ma to swoją alegorię do programowania. W tradycyjnym podejściu, gdyby zechcieć uruchomić np. aplikację napisaną w ASP.NET, najpierw trzeba byłoby poświęcić kilka godzin na pobieranie i instalację narzędzi: Visual Studio z narzędziami sieci Web, serwer IIS oraz SQL Server LocalDB. Natomiast w podejściu Dockera byłoby to:
+Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportującego kontenery. Miało to nawiązywać do tego, iż załadowanie statku trwa dłużej niż transport statkiem. Ma to swoją alegorię do programowania. W tradycyjnym podejściu, gdyby zechcieć uruchomić np. aplikację napisaną w ASP.NET, najpierw trzeba byłoby poświęcić kilka godzin na pobieranie i instalację narzędzi: Visual Studio z narzędziami sieci Web, serwer IIS oraz SQL Server LocalDB. Natomiast w podejściu Dockera, posiadając zbudowany obraz można by tę aplikację uruchomić od razu. Razem z krokami budowania obrazu byłoby to:
 \begin{enumerate}
 \item napisanie pliku Dockerfile z definicją zależności: system Windows, MSBuild, .NET Framework, serwer IIS, menadżer pakietów NuGET,
 \item użycie CLI Dockera oraz pliku Dockerfile do zbudowania tzw. obrazu Dockera,
@@ -483,7 +493,7 @@ Obrazy Dockera działają wszędzie, gdzie jest zainstalowany Docker -- niezale�
 Podejście Dockera stwarza następujące możliwości:
 \begin{itemize}
 \item Na jednej maszynie może jednocześnie działać wiele aplikacji wymagających różnych zależności, lub nawet różniących się jedynie wersjami, w izolacji od siebie oraz maszyny na której są uruchomione.
-\item W procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na środowisku deweloperskim, testowym oraz produkcyjnym. Eliminuje to problem gdy na zgłoszony błąd słyszy się odpowiedź ,,u mnie działa''.
+\item W procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na środowisku deweloperskim, testowym oraz produkcyjnym. Eliminuje to problem, gdy na zgłoszony błąd słyszy się odpowiedź ,,u mnie działa''.
 \item Obrazy Dockera są lekkie: współdzielą wiele zasobów systemu operacyjnego, dzielą między sobą inne obrazy Dockera.\cite{siteDockerStackOverflow} Na jednej maszynie może działać wiele kontenerów Dockera, podczas gdy maszyn wirtualnych może być zaledwie kilka.\cite{ccSpringer}
 \end{itemize}
 Powyższe znacząco ułatwia tworzenie aplikacji ,,dla chmury'', orkiestrację chmury oraz stosowanie strategii DevOps.
@@ -538,7 +548,8 @@ Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla chmury tak 
 \item Istnieje standardowy sposób orkiestracji kontenerów (Kubernetes). Wiedzę na temat korzystania z niego można zastosować do projektów działających na chmurach publicznych, prywatnych i hybrydowych.
 \end{itemize}
 
-\subsubsection*{Aplikacje cloud native}
+%\subsubsection{Mikrousługi i serverless} \label{mikroserwisy}
+\subsection{Mikrousługi i serverless} \label{mikroserwisy}
 
 Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla chmury. W chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a jednocześnie zapewnić niezawodność i jak najniższy koszt eksploatacji, należy zapoznać się ze specyficznym sposobem tworzenia aplikacji dla chmury. Aplikację zgodną z tymi wytycznymi określa się jako \textbf{\textit{cloud native}}.
 
@@ -559,9 +570,9 @@ SOA to po polsku architektura zorientowana na usługi. Polega na podzieleniu sys
 \item luźne wiązania -- jak najmniejsza liczba zależności. \cite{soaOreily}
 \end{itemize}
 
-SOA to bardzo ogólne pojęcie, nie definiuje jakiej wielkości powinny być poszczególne usługi. Wraz z rozwojem technologii chmurowych, nastała potrzeba dostosowania paradygmatu SOA do wyzwań związanych ze skalowalnością, szybkością wytwarzania oprogramowania oraz potrzebą adaptacji nowych technologii dla istniejących rozbudowanych systemów. Odpowiedzią na ten problem okazały się mikrousługi (ang. \textit{microservices}).
+SOA to bardzo ogólne pojęcie, nie definiuje jakiej wielkości powinny być poszczególne usługi. Wraz z rozwojem technologii chmurowych, nastała potrzeba dostosowania paradygmatu SOA do wyzwań związanych ze skalowalnością, szybkością wytwarzania oprogramowania oraz potrzebą adaptacji nowych technologii dla istniejących rozbudowanych systemów. Odpowiedzią na ten problem okazały się mikrousługi.
 
-\textbf{Mikrousługi} stanowią szczególny przypadek SOA. Ich główna cecha: mają być małe. Zamiast tworzyć jedną aplikację, która robi wszystko, system ma składać się z wielu małych, niezależnych od siebie komponentów, odpowiedzialnych za tylko jedną rzecz. \cite{microservicesPacktNetCore}
+\textbf{Mikrousługi} (ang. \textit{microservices}) stanowią szczególny przypadek SOA. Ich główna cecha: mają być małe. Zamiast tworzyć jedną aplikację, która robi wszystko, system ma składać się z wielu małych, niezależnych od siebie komponentów, odpowiedzialnych za tylko jedną rzecz. \cite{microservicesPacktNetCore}
 
 Z jednej strony powinny grupować powiązane ze sobą funkcjonalności, z drugiej strony nie wolno doprowadzać do sytuacji, gdy serwis może stać się zbyt duży i trudny w utrzymaniu. Pomocne w wyobrażeniu jakiej wielkości powinna być przeciętna mikrousługa są następujące wskazówki:
 \begin{itemize}
@@ -580,11 +591,13 @@ W odniesieniu do chmur, mikrousługi wprowadzają następujące udogodnienia: \c
 
 Popularność kontenerów, mikrousług oraz modelu \textit{utility computing} (rozliczanie za rzeczywiste użycie zasobów komputerowych) doprowadziła do wytworzenia nowego paradygmatu tworzenia aplikacji w chmurze, znanego jako \textbf{\textit{serverless}} (z ang. ,,bez serwera''). Serverless jest obecnie obiecującą nowością jeśli chodzi o przetwarzanie w chmurze. Nazwa ta zaczęła zdobywać popularność na początku 2016 r. \cite{ccResearchSpringer}  
 
-Aplikacje tego typu zamiast być przez cały czas uruchomione na serwerze oczekując na zapytania, mają być uruchamiane dopiero gdy przyjdzie określone zdarzenie (ang. \textit{event-driven computation}). Zdarzeniem może być np. nowe zapytanie HTTP, nowy wpis w kolejce, wywołanie po upłynięciu interwału czasowego (przez \textit{timer}). Wówczas zostaje powołana do życia aplikacja przeznaczona tylko do obsługi danego zdarzenia i działa tylko na krótki czas obsługi zdarzenia (jest to maksymalnie około kilka minut). Aplikacje te to w istocie mikrousługi, tyle że posiadające tylko jedną funkcję -- stąd nazywa się je po prostu funkcjami. Dla lepszego odróżnienia od mikrousług określa się je terminem ,,nanousług'' (ang. \textit{nanoservices}). \cite{serverlessMaddie, ccResearchSpringer, distributedSystems}
+Aplikacje tego typu zamiast być przez cały czas uruchomione na serwerze w oczekiwaniu na zapytania, mają być uruchamiane dopiero gdy przyjdzie określone zdarzenie (ang. \textit{event-driven computation}). Zdarzeniem może być np. nowe zapytanie HTTP, nowy wpis w kolejce, wywołanie po upłynięciu interwału czasowego. Wówczas zostaje powołana do życia aplikacja przeznaczona tylko do obsługi danego zdarzenia i działa tylko na krótki czas obsługi zdarzenia (jest to maksymalnie około kilka minut). Aplikacje te to w istocie mikrousługi, tyle że posiadające tylko jedną funkcję -- stąd nazywa się je po prostu funkcjami. Dla lepszego odróżnienia od mikrousług określa się je jako ,,nanousługi'' (ang. \textit{nanoservices}). \cite{serverlessMaddie, ccResearchSpringer, distributedSystems}
 
-Platforma w chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Functions-as-a-Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w 2014 r. uruchomił usługę Amazon Lambda typu FaaS. W 2016 r. Microsoft udostępnił usługę Azure Functions. W Google Cloud Platform tego typu usługa pojawiła się w sierpniu 2018, choć była udostępniona wcz (miesiąc przed wydaniem niniejszej pracy).
+Platforma w chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Function-as-a-Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w 2014 r. uruchomił usługę AWS Lambda typu FaaS. W 2016 r. Microsoft udostępnił usługę Azure Functions. W Google Cloud Platform tego typu usługa została oficjalnie udostępniona w sierpniu 2018 (miesiąc przed wydaniem niniejszej pracy), choć wersja poglądowa była dostępna wcześniej.
 
-Posługując się modelem serverless, usługodawca może stosować rozliczenie według ilości wywołań poszczególnych funkcji. Dla programisty użycie nanoserwisów oznacza mniej projektowania jeśli chodzi o optymalną architekturę mikrousług. Mikrousługi grupowały ze sobą niektóre elementy, natomiast w nanousługach każda funkcja stanowi osobny byt. 
+Posługując się modelem serverless, usługodawca może stosować rozliczenie według ilości wywołań poszczególnych funkcji. Dzięki temu nie trzeba płacić za programy bezczynnie czekające na przychodzące zapytania.
+
+Dla programisty użycie nanoserwisów oznacza mniej projektowania jeśli chodzi o optymalną architekturę mikrousług. Mikrousługi grupowały ze sobą niektóre elementy, natomiast w nanousługach każda funkcja stanowi osobny byt. Według Maddie Stigler, autorki książki \textit{,,Beginning Serverless Computing''}, użycie architektury serverless oszczędza połowę czasu potrzebnego na stworzenie skalowalnych aplikacji od podstaw.\cite{serverlessMaddie}
 
 Rozwijane są także inicjatywy niezwiązane z usługami FaaS konkretnych dostawców. W 2015 r. powstał projekt Serverless Framework,\cite{siteServerlessFramework} służący do odseparowania logiki konkretnej usługi FaaS od logiki biznesowej funkcji. Ponadto zapewnia narzędzia wspierające proces tworzenia funkcji. 
 
@@ -593,9 +606,18 @@ W 2017 r. powstał projekt Kubeless.\cite{siteKubelessReleases} Jest to otwarto�
 Serverless Framework obsługuje wszystkie wyżej wymienione platformy, z Kubeless włącznie.\cite{siteServerlessFramework}
 
 
+%\subsubsection{Bazy NoSQL i rozwiązania dla Big Data} \label{nosql}
+\subsection{Bazy NoSQL i rozwiązania dla Big Data} \label{nosql}
 
-%\subsection*{Współczesne wyzwania dla chmur obliczeniowych}
+W literaturze rozróżnia się trzy rewolucje w rozwoju technologii bazodanowych.  \cite{noSqlHistory}
 
+Za pierwsze ,,bazy danych'' uznaje się wszelkie techniki zapisu i odczytu danych z nośników, na które pozwalała technika -- kart perforowanych, taśm magnetycznych, magnetycznych dysków twardych. Przed pierwszą rewolucją, każda aplikacja posiadała swoją własną implementację dostępu do danych. Nie istniały żadne mechanizmy chroniące przed uszkodzeniem danych, przed równoczesnym dostępem wielu użytkowników, nie wspominając o optymalizacjach. 
+
+Pierwszą rewolucją było stworzenie systemu bazodanowego (DBMS - ang. \textit{Database Management System}). Wczesne systemy 
+
+
+
+\subsection{CDN i Fog Computing} \label{fog}
 
 
 
