@@ -164,6 +164,10 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/microservicesWmii}
 \addbibresource{bibliography/ccResearchSpringer}
 \addbibresource{bibliography/noSqlHistory}
+\addbibresource{bibliography/relationalDbs}
+\addbibresource{bibliography/hadoop}
+\addbibresource{bibliography/bigData}
+\addbibresource{bibliography/realTimeProcessing}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -398,7 +402,6 @@ Wymienione wyżej technologie zestawione razem dały podwaliny chmurom obliczeni
 
 Przyjmuje się, że termin \textit{,,cloud computing''} po raz pierwszy został użyty przez CEO firmy Google, Erica Schmidta, w trakcie konferencji w 2006 r. Tego samego roku Amazon użył tej nazwy publikując pionierską w swoim gatunku usługę Elastic Compute Cloud (EC2), czyli możliwość wynajmu serwera wirtualnego w ich chmurze.
 
-%\subsection{Historia najnowsza. Współczesne wyzwania}
 \section{Historia najnowsza. Współczesne wyzwania}
 
 Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w tym samym czasie rozwinęły się technologie postrzegane w czasie pisania niniejszej pracy jako rewolucyjne. Na potrzeby opracowania wyróżniono następujące grupy zmian:
@@ -410,7 +413,6 @@ Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań
 \item rozwój technologii przyśpieszających dostęp do usług chmurowych (sekcja \ref{fog}).
 \end{itemize}
 
-%\subsubsection{Rozwój chmur publicznych} \label{chmuryPubliczne}
 \subsection{Rozwój chmur publicznych} \label{chmuryPubliczne}
 
 W 2003 roku firma Citrix stworzyła Xen - system operacyjny przeznaczony tylko do wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. W marcu 2006 r. roku Amazon na podstawie Xena opracował swój produkt EC2. W ciągu 18 miesięcy zaczęło z niego korzystać ponad pół miliona osób.\cite{ccBiznes}
@@ -462,7 +464,6 @@ Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteA
 \end{table}
 \end{small}
 
-%\subsubsection{Konteneryzacja i DevOps} \label{konteneryzacja}
 \subsection{Konteneryzacja i DevOps} \label{konteneryzacja}
 
 W tym samym czasie rozwijały się technologie przeznaczone do wystawiania własnych usług chmurowych. W 2010 r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na prowadzenie własnej platformy typu PaaS do tworzenia aplikacji w chmurze. 
@@ -548,7 +549,6 @@ Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla chmury tak 
 \item Istnieje standardowy sposób orkiestracji kontenerów (Kubernetes). Wiedzę na temat korzystania z niego można zastosować do projektów działających na chmurach publicznych, prywatnych i hybrydowych.
 \end{itemize}
 
-%\subsubsection{Mikrousługi i serverless} \label{mikroserwisy}
 \subsection{Mikrousługi i serverless} \label{mikroserwisy}
 
 Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla chmury. W chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a jednocześnie zapewnić niezawodność i jak najniższy koszt eksploatacji, należy zapoznać się ze specyficznym sposobem tworzenia aplikacji dla chmury. Aplikację zgodną z tymi wytycznymi określa się jako \textbf{\textit{cloud native}}.
@@ -606,15 +606,73 @@ W 2017 r. powstał projekt Kubeless.\cite{siteKubelessReleases} Jest to otwarto�
 Serverless Framework obsługuje wszystkie wyżej wymienione platformy, z Kubeless włącznie.\cite{siteServerlessFramework}
 
 
-%\subsubsection{Bazy NoSQL i rozwiązania dla Big Data} \label{nosql}
 \subsection{Bazy NoSQL i rozwiązania dla Big Data} \label{nosql}
 
 W literaturze rozróżnia się trzy rewolucje w rozwoju technologii bazodanowych.  \cite{noSqlHistory}
 
 Za pierwsze ,,bazy danych'' uznaje się wszelkie techniki zapisu i odczytu danych z nośników, na które pozwalała technika -- kart perforowanych, taśm magnetycznych, magnetycznych dysków twardych. Przed pierwszą rewolucją, każda aplikacja posiadała swoją własną implementację dostępu do danych. Nie istniały żadne mechanizmy chroniące przed uszkodzeniem danych, przed równoczesnym dostępem wielu użytkowników, nie wspominając o optymalizacjach. 
 
-Pierwszą rewolucją było stworzenie systemu bazodanowego (DBMS - ang. \textit{Database Management System}). Wczesne systemy 
+Pierwszą rewolucją było stworzenie \textbf{systemu bazodanowego} (\textbf{DBMS} - ang. \textit{Database Management System}). Wczesne systemy nie opierały się na żadnych podstawach matematycznych. Były to tzw. bazy nawigacyjne, gdzie relacje uzyskiwało się definiując połączenia pomiędzy obiektami. Struktura projektu definiowała jakie będzie można tworzyć rodzaje zapytań do bazy. Przykłady tych wczesnych baz stanowią: IMS od firmy IBM (typ hierarchiczny) oraz IDMS będący implementacją standardu CODASTYL (typ sieciowy). 
 
+Drugą rewolucję zaczął Edgar Codd, będący matematykiem-programistą oraz wieloletnim pracownikiem firmy IBM. Był on pierwszą osobą, która zwróciła uwagę na wady istniejących rozwiązań wynikające z braku podstaw matematycznych, i w 1970 r. opublikował artykuł opisujący relacyjne bazy danych. Początkowo pozostał on bez odzewu. Dopiero w 1974 r. IBM zaczął prace nad prototypem zwanym Systemem R. Prototyp był gotowy w 1976 r. Poza modelem opracowanym przez Codd'a, na potrzeby systemu stworzono język SQL do tworzenia zapytań do bazy danych oraz opracowano zasady obsługi równoległych zapytań. Jim Gray zdefiniował transakcje ACID.
+
+Pierwszą komercyjną \textbf{relacyjną bazą danych} (\textbf{RDBMS} - \textit{Relational Database Management System}) był Oracle. Założyciel Oracle, Larry Ellison był zaznajomiony zarówno z pracą Codd'a jak i Systemem R. Wierząc relacyjne bazy danych, w 1979 r. wydał pierwszą na świecie komercyjną relacyjną bazę danych obsługującą język SQL. \cite{relationalDbs}
+
+W tym samym czasie (od roku 1977) pionierski stał się również projekt Ingres, stworzony przez Michaela Stonebraker'a. Początkowo jako język zapytań stosował QUEL, popularność bazy Oracle wymusiła jednak konieczność obsługi SQL. W połowie lat 80. na bazie Ingres powstał projekt Postgres (post-ingres) znany dzisiaj jako PostgreSQL. 
+
+Po sukcesie Oracle IBM opublikował komercyjną bazę SQL/DS w 1981 r. W późniejszych latach powstawały inne relacyjne bazy chętnie stosowane do dziś: Microsoft SQL Server, PostgreSQL, MySQL. Wszystkie te bazy co do zasady są do siebie podobne -- opierają się o model Codd'a, transakcje ACID oraz język SQL. \cite{relationalDbs}
+
+Potencjalna rewolucja miała szanse dokonać się po latach 80., gdy zaczął się popularyzować paradygmat programowania obiektowego. Istniejące języki zaczęły występować w wersji obiektowej, np. Object Pascal, powstały języki od początku obiektowe, np. Java. Niektórym programistom nie podobała się rozbieżność pomiędzy reprezentacją danych w obiekcie, a w relacyjnej bazie danych. W grudniu 1989 r. powstał manifest obiektowych baz danych (OODBMS, ang. \textit{Object Oriented Database Management System}), w którym bazy relacyjne jawiły się jako relikt przeszłości a obiektowe jako ich następcy. Jednak na przestrzeni lat 90. okazało się, że bazy obiektowe nie zdobyły rynku, nawet w postaci nowych opcji w popularnych bazach jak np. Oracle. Według Guy'a Harrison'a, autora książki \textit{,,Next Generation Databases: NoSQL, NewSQL, and Big Data''}, założenia baz obiektowych koncentrowały się wokół korzyści dla programisty, ignorując korzyści dla biznesu (np. brak wsparcia dla języka SQL będącego powszechnie w użyciu). Dodatkowo dostępność narzędzi ORM (ang. \textit{Object-relational mapping}) znacząco ułatwiła korzystanie z RDBMS w językach obiektowych.
+
+\subsubsection{Trzecia rewolucja}
+
+Trzecia rewolucja rozpoczęła się za sprawą coraz większego znaczenia systemów rozproszonych oraz konieczności analizy dużej ilości danych. Zaczęło się od Google. W 1996 r. powstała wyszukiwarka Google, korzystająca z algorytmu PageRank. W 2005 r. Google był największą stroną internetową na świecie, stroną zbierającą i przetwarzającą dane o wszystkich innych stronach. Potrzebowano nowych narzędzi do rozwiązania problemu, z którym jako pierwsi mieli styczność. W kolejnych latach Google publikował szczegóły swoich rozwiązań, co miało duży wpływ na rozwój dalszych technologii:
+\begin{itemize}
+\item w 2003 r. -- system plików \textbf{GFS} (Google File System) dla systemów rozproszonych, gdzie pula zasobów dyskowych jest widoczna jako jedno,
+\item w 2004 r. -- model \textbf{MapReduce} pozwalający na przetwarzanie danych w systemach rozproszonych,
+\item w 2006 r. -- baza danych \textbf{BigTable}.
+\end{itemize}
+Ponadto w 2005 r. Google opatentował Modular Data Center, czyli sposób na szybką rozbudowę centrum danych. Zamiast z osobna dodawać serwery, mogli dodawać od razu po tysiąc naraz.
+
+Rozwiązania Google zainspirowały inne projekty. W 2004 r. powstał projekt Apache Nutch, który miał być otwartoźródłową wyszukiwarką internetową. Gdy Google opublikował GFS i MapReduce, dla Nutch to był sygnał jak rozwiązywać problemy skalowalności. W 2006 r. Yahoo! zainwestował w projekt, pomimo że był otwartoźródłowy, ponieważ chciał użyć go w swoim produkcie. Adaptację rozwiązań Google wyodrębniono jako osobny projekt. Tak w 2007 r. powstał \textbf{Apache Hadoop}. \cite{hadoop}
+
+Hadoop to nie tylko projekt, ale podejście do skalowalnego przetwarzania danych. \cite{hadoop} Obecnie Hadoop to praktycznie synonim Big Data. \cite{bigData} Termin \textbf{Big Data} (z ang. ,,duże dane'') po raz pierwszy został użyty w 1999 r., jednak zaczął być powszechnie używany odkąd Google użył tego terminu w dokumencie opisującym MapReduce w 2004 r. Początkowo (w 2001 r.) opisywano Big Data za pomocą ,,trzech \textit{V}'': \textit{volume, variety, velocity} (ilość, różnorodność, szybkość). W 2014 r. rozszerzono to do ,,pięciu \textit{V}'' o: \textit{veracity, value} (wiarygodność, wartość).\cite{realTimeProcessing} Właściwości te wyznaczają obszar zainteresowań, gdzie zastosowanie mają takie narzędzia jak Hadoop:
+\begin{itemize}
+\item \textit{volume} -- ilość danych,
+\item \textit{variety} -- stopień różnorodności źródeł danych,
+\item \textit{velocity} -- szybkość z jaką są tworzone nowe dane oraz jak szybko należy je przetworzyć,
+\item \textit{veracity} -- na ile można ufać tym danym, czy źródło danych jest zanieczyszczone,
+\item \textit{value} -- czy dane mają jakiekolwiek znaczenie, czy analiza tych danych tylko tworzy koszty czy daje wartość.
+\end{itemize}
+Powyższe oznacza, że wcale nie trzeba mieć bardzo dużego zbioru danych, aby potrzebować Big Data. \cite{hadoop}
+
+Wracając do Hadoopa, rok po jego wdrożeniu Yahoo! ogłosił, że ich klaster Hadoopa ma 5 petabajtów dysku i ponad 10 000 rdzeni CPU, co generowało im cały indeks wyszukiwarki. Podobnie Facebook skorzystał z Hadoopa w 2007 r. i już w 2008 r. mieli 2500 rdzeni CPU, a w 2012 r. 100 petabajtów dysku, co wyparło użycie rozwiązań Oracle w tej firmie.
+
+Do głównych zalet Hadoopa zalicza się:
+\begin{itemize}
+\item tanie przechowywanie danych -- jest to możliwe na zwykłych dyskach;
+\item skalowanie operacji I/O -- ponieważ zamiast dodawać tylko dyski, dodaje się nowe komputery;
+\item niezadowność -- jeśli zepsuje się jeden komputer, to jego rolę przejmie inny
+\item \textit{,,schema on read''} -- struktura danych tworzy się podczas czytania źródła danych, w przeciwieństwie do tradycyjnego modelu relacyjnego, gdzie przy zapisie danych należy się zastosować do istniejącego schematu (ang. \textit{schema on write}).
+\end{itemize}
+
+Klasyczny Hadoop posiadał ograniczenia jeśli chodzi o użycie innego modelu przetwarzania zadań niż MapReduce. W 2012 r. powstała wersja 2.0, gdzie doszła platforma YARN (ang. \textit{Yet Another Resource Negotiator} lub rekursywnie \textit{YARN Application Resource Negotiator}). YARN pozwala na użycie MapReduce jako jednego z możliwych frameworków do zastosowania, co pozwala np. na użycie SPARK-a pozbawionego niektórych niedogodności MapReduce (krótkotrwałość zadań, brak możliwości trzymania roboczego zbioru danych w pamięci). \cite{hadoop, bigData}
+
+Stworzenie BigTable oraz Hadoopa spowodowało powstanie wielu nowych systemów bazodanowych, które miały lepiej działać na systemach rozproszonych. Dzielą się na:
+\begin{itemize}
+\item \textbf{Bazy NoSQL} -- bazy nierelacyjne. Zalicza się do nich wszelkie rozwiązania, które dzięki niespełnieniu niektórych reguł ACID mogą pozwolić na lepszą skalowalność i/lub szybkość przetwarzania.
+\item \textbf{Bazy NewSQL} -- bazy posiadające możliwość skalowania, zachowujące właściwości ACID baz relacyjnych.
+\end{itemize}
+
+W 2005 r. Michael Stonebraker (założyciel Ingres i PostgreSQL) opracował bazę C-Store, postulującą \textbf{model kolumnowy}. Pomysł opiera się o tradycyjną relacyjną bazę danych, gdzie w tabeli zostają zamienione miejscami wiersze z kolumnami. Taka zamiana powoduje szybsze działanie zapytań agregujących, gdyż wszystkie potrzebne dane znajdują się obok siebie. Poza tym ponieważ obok siebie znajdują się dane bardzo podobnej postaci, można zastosować lepszą kompresję, nawet przez traktowanie każdej kolejnej danej jako zmiana względem poprzedniej.
+
+W 2007 r. Amazon opracował bazę Dynamo, który stał się wzorcem dla baz w modelu \textbf{klucz-wartość}. Jedną z nich jest Apache Cassandra (2008 r.), baza typu \textit{\textbf{wide-column}}. W bazach tego typu w miejscu wartości jest dynamiczna liczba kolumn, co pozwala np. na przeszukiwanie po danej kolumnie lub aktualizacja tylko danej kolumny zamiast całego obiektu. Podobnym projektem jest Apache HBase (2008 r.).
+
+Również w 2007 r. powstała pierwsza \textbf{baza dokumentowa}, która mogła być postrzegana jako alternatywa dla RDBMS. Od 2000 r. powstawały bazy XML, ale raczej mające na celu zarządzanie już istniejącymi dokumentami w tym formacie. XML rozpowszechniał się za sprawą popularności AJAX, później zaczął być zastępowany formatem JSON. Takie dane były już formą dokumentu, a stworzenie systemu do przechowywania ich było kwestią czasu. W 2005 r. powstała baza dokumentowa Apache CouchDB, na razie obsługująca XML, a w 2007 r. była to pierwsza znacząca baza dokumentów JSON. W 2009 r. powstała baza MongoDB, przechowująca dokumenty JSON (wewnętrznie zapisywane jako BSON -- \textit{Binary JSON}). Stanowi dziś najpopularniejszą bazę tego typu.
+
+Kolejnym osiągnięciem z 2007 r. był artykuł Michaela Stonebrakera pt. ,,The end of an architectural era: (it's time for a complete rewrite)'' (,,Koniec współczesnych architektur, czas przepisać je na nowo'' -- tłumaczenie własne). Opisał tam koncepcję bazy H-store typu \textit{\textbf{in-memory}}, która do transakcji nie potrzebuje wykonywać operacji I/O na dysku. Komercyjną implementacją tego pomysłu była baza VoltDB, utworzona w 2008 r. Jest to baza typu NewSQL.
+
+Rok 2007 był przełomowy także dla modelu \textbf{baz grafowych} -- powstała baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na wyższym poziomie abstrakcji oraz pozwalają na przeszukiwanie grafu do zadanego poziomu. Są stworzone dla danych, gdzie najważniejszą właściwością są relacje z innymi danymi, np. relacje w social media. Do odpytywania bazy grafowej używa się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak na dzień dzisiejszy nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z różnych serwerów znacząco obniżyłoby jego wydajność. Do projektów przetwarzania grafów na systemach rozproszonych należą: Apache Giraph (2016 r.), GraphX (część Apache Spark, 2014 r.), Titan (2015 r.) -- działający jako nakładka na HBase czy Cassandrę.
 
 
 \subsection{CDN i Fog Computing} \label{fog}
