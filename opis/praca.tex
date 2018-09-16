@@ -141,10 +141,17 @@ stringstyle=\color{redstrings},
 basicstyle=\ttfamily\small,
 }
 
+% OBRAZKI
+
+\graphicspath{{figures/}}
+
+\makeatletter
+\define@key{Gin}{resolution}{\pdfimageresolution=#1\relax}
+\makeatother
 
 % BIBLIOGRAFIA
 
-\usepackage[backend=bibtex8,sorting=none]{biblatex}
+\usepackage[backend=bibtex8,sorting=none,isbn=false]{biblatex}
 \nocite{*}
 \addbibresource{bibliography/ccCambridge}
 \addbibresource{bibliography/ccBiznes}
@@ -168,6 +175,12 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/hadoop}
 \addbibresource{bibliography/bigData}
 \addbibresource{bibliography/realTimeProcessing}
+\addbibresource{bibliography/cdn}
+\addbibresource{bibliography/fogArticle}
+\addbibresource{bibliography/fog5g}
+\addbibresource{bibliography/iotArchitects}
+\addbibresource{bibliography/iotEnterprise}
+\addbibresource{bibliography/nistArticle}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -197,6 +210,12 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteServerlessFramework}
 \addbibresource{bibliography/siteKubelessReleases}
 \addbibresource{bibliography/oodbmsManifesto}
+\addbibresource{bibliography/siteAkamaiFacts}
+\addbibresource{bibliography/siteAmazonLambdaEdge}
+\addbibresource{bibliography/siteAzureIotEdge}
+\addbibresource{bibliography/siteGoogleIotEdge}
+\addbibresource{bibliography/siteGartnerTrends}
+
 
 
 
@@ -267,20 +286,27 @@ Cloud Computing to model stanowiący podstawę dla jednych z najprężniej rozwi
 
 Technologie oparte o Cloud Computing mają swoje podwaliny w starszych technologiach, sięgających lat 70. ubiegłego wieku. Chodzi zatem o produkt ewolucji technologicznej, nie zaś odrębną nową technologię. Dzisiejszy dynamiczny rozwój Cloud Computingu zawdzięczamy m.in. szybkiemu łączu internetowemu, upowszechnieniu komputerów PC oraz mocy obliczeniowej umożliwiającej wirtualizację na poziomie wykorzystania sztucznej inteligencji do inteligentnego zarządzania infrastrukturą komputerową (ang. \textit{autonomic computing}). Złożenie tych czynników umożliwiło urzeczywistnienie idei po raz pierwszy wymienionej w 1961 r. przez Johna McCarthy'ego, który pisał, że zasoby komputerowe staną się użytecznością publiczną -- podobnie jak prąd, który pobieramy z sieci elektrycznej, nie zaś z własnego generatora prądu.\cite{ccCambridge,ccSpringer} Stąd też analizując temat Cloud Computingu niejednokrotnie można spotkać się ze zwrotem ,,X jako usługa" (ang. X \textit{as a service}), ponieważ praktycznie wszystko, co może być związane z wykorzystaniem komputerów, można dostarczać jako usługę. \cite{ccCambridge}
 
-Za chmurami obliczeniowymi stoją olbrzymie centra danych, łączące w sieć nawet tysiące komputerów. Wirtualizacja wykorzystywana w Cloud Computingu pozwala na automatyczną konfigurację nowych serwerów dołączanych do sieci oraz odpowiednie zachowanie sieci w przypadku gdy jakaś jej część przestanie działać. Dzięki takim narzędziom można dowolnie rozbudować sieć, a więc uzyskać dowolną przestrzeń dyskową i moc obliczeniową. Dlatego model chmury obliczeniowej jest nieodzownie powiązany z technikami wirtualizacji oraz technikami pracy na systemach rozproszonych.
+Za chmurami obliczeniowymi stoją olbrzymie centra danych, łączące w sieć tysiące komputerów. Wirtualizacja wykorzystywana w Cloud Computingu pozwala na automatyczną konfigurację nowych serwerów dołączanych do sieci oraz odpowiednie zachowanie sieci w przypadku gdy jakaś jej część przestanie działać. Dzięki takim narzędziom można dowolnie rozbudować sieć, a więc uzyskać dowolną przestrzeń dyskową i moc obliczeniową. Dlatego model chmury obliczeniowej jest nieodzownie powiązany z technikami wirtualizacji oraz technikami pracy na systemach rozproszonych.
 
 Duża i zarazem bardzo znacząca część technologii związanych z Cloud Computingiem dotyczy programowania. Chodzi nie tylko o usługi usprawniające proces wytwórczy oprogramowania, ale również o technologie i wzorce wspierające skalowalność oraz obsługę dużej ilości danych. Chmura pozwala zautomatyzować wiele zadań, z drugiej strony jej ogromne możliwości stanowią duże wyzwanie, gdyż mogą oznaczać całkowitą zmianę podejścia do wytwarzania oprogramowania, wyboru technologii oraz wzorców architektonicznych. Wiele firm powoli podejmuje to wyzwanie przez np. stopniową rezygnację z serwerów firmowych na rzecz serwerów wirtualnych dostępnych w chmurze, wdrażanie strategii CI/CD czy tworzenie nowych projektów w architekturze mikrousług. 
 
-Biorąc pod uwagę w jak szybkim czasie pojawiło się wiele istotnych narzędzi szybko znajdujących zastosowanie w biznesie, istnieje duże zapotrzebowanie na opracowanie tego tematu całościowo. 
+Biorąc pod uwagę to w jak szybkim czasie pojawiło się wiele istotnych narzędzi szybko znajdujących zastosowanie w biznesie, istnieje duże zapotrzebowanie na opracowanie tego tematu całościowo. 
 
 \section*{Problem zastosowania chmury obliczeniowej w aplikacjach mobilnych}
 \addcontentsline{toc}{section}{Problem zastosowania chmury obliczeniowej w aplikacjach mobilnych}
 
-Chmura obliczeniowa stanowi ważną część tzw. \textit{networked society}, czyli obrazu do którego współcześnie dąży technologia oraz sposób korzystania z niej przez społeczeństwo. Jest to paradygmat w którym korzystanie z elektronicznych asystentów czy IoT (ang. \textit{Internet of Things}) stanowi niezbędny element rzeczywistości.\cite{ccSpringer} W tym nowym obrazie świata chmura stanowi spoiwo, natomiast komunikacja z człowiekiem w dużej mierze odbywa się przy pomocy aplikacji mobilnych. Można spodziewać się rosnącego zapotrzebowania na aplikacje mobilne, których głównym zadaniem jest skuteczna komunikacja z chmurą. 
+Chmura obliczeniowa stanowi ważną część tzw. \textit{networked society}, czyli obrazu, do którego współcześnie dąży technologia oraz sposób korzystania z niej przez społeczeństwo. Jest to paradygmat, w którym korzystanie z elektronicznych asystentów czy Internetu Rzeczy (ang. IoT, \textit{Internet of Things}) stanowi niezbędny element rzeczywistości.\cite{ccSpringer} W tym nowym obrazie świata chmura stanowi spoiwo, natomiast komunikacja z człowiekiem w dużej mierze odbywa się przy pomocy aplikacji mobilnych. Można spodziewać się rosnącego zapotrzebowania na aplikacje mobilne, których głównym zadaniem jest skuteczna komunikacja z chmurą. 
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=\textwidth]{iot-hype.png}
+		\caption{Rosnące zainteresowanie Internetem Rzeczy \cite{iotArchitects}}
+		\label{fig:iot-hype}
+\end{figure}
 
 Podczas wyboru technologii, na etapie analizy dostępnych rozwiązań okazuje się, że istnieje bardzo wiele podejść do tematu, z których duża część powstała w ciągu kilku ostatnich lat i od momentu publikacji zdobyła natychmiastową popularność. Dodatkowo wszystkie materiały, które pozwoliłyby to wszystko zrozumieć, występują w języku angielskim, najczęściej w kontekście wybranego specjalistycznego zastosowania. 
 
-Powyższy problem przyczynia się do braku zrozumienia technologii chmurowych jako całości. Powoduje to niską świadomość jak w pełni wykorzystać możliwości chmury w kontekście tworzenia typowego projektu informatycznego, jakim jest aplikacja mobilna.
+Powyższy problem przyczynia się do braku zrozumienia technologii chmurowych jako całości. Powoduje to niską świadomość tego, jak w pełni wykorzystać możliwości chmury w kontekście tworzenia typowego projektu informatycznego, jakim jest aplikacja mobilna.
 
 
 
@@ -292,7 +318,9 @@ Powyższy problem przyczynia się do braku zrozumienia technologii chmurowych ja
 
 Celem pracy było rozstrzygnięcie jak na obecny stan wiedzy podejść do problemu realizacji typowego projektu aplikacji mobilnej w oparciu o Cloud Computing. W rozumieniu niniejszej pracy, typowa aplikacja pozwala na wprowadzanie i otrzymywanie danych od serwera za pomocą udostępnionego API. W rezultacie miała zostać wybrana konkretna technologia, która pod względem teoretycznym najlepiej odpowiadałaby stawianym wymaganiom.
 
-Wybrana technologia miała być zastosowana w praktyce do stworzenia aplikacji na system Android, komunikującej się z API udostępnianym przez chmurę. Aplikacja miała umożliwiać zapisywanie wydatków w sposób uwzględniający fakt, że wiele wydatków ludzie dokonują nie tylko z myślą o sobie samych. System miał pozwolić założyć konto w serwisie, a następnie połączyć konta w grupy odpowiadające gospodarstwu domowemu. Kategorie wydatków miały pozwolić na uzgodnienie, kto ile płaci w danej kategorii (np. wydatki na higienę po 50\%). Serwer miał być potrzebny do wspomagania rozliczeń pomiędzy poszczególnymi osobami, dynamicznie naliczając kto ma ile do oddania. Ponadto miał wspomagać kontrolę własnych wydatków przez uwzględnienie, że koszty życia to nie tylko własne wydatki, ale również wydatki poniesione przez inne osoby prowadzące to samo gospodarstwo domowe. Ponieważ tradycyjne programy do zarządzania wydatkami nie posiadają wyżej wymienionych funkcjonalności, jak również zazwyczaj mogą działać bez serwera, to jest przykład aplikacji, która może nagle stać się popularna i powinna być w stanie wówczas obsłużyć większe obciążenie serwera. 
+Wybrana technologia miała zostać użyta w praktyce do stworzenia aplikacji na system Android, komunikującej się z API udostępnianym przez chmurę. Aplikacja miała umożliwiać zapisywanie wydatków w sposób uwzględniający fakt, że wiele wydatków ludzie dokonują nie tylko z myślą o sobie samych. System miał pozwolić założyć konto w serwisie, a następnie połączyć konta w grupy odpowiadające gospodarstwu domowemu. Kategorie wydatków miały pozwolić na uzgodnienie, kto ile płaci w danej kategorii (np. wydatki na higienę po 50\%). Serwer miał być potrzebny do wspomagania rozliczeń pomiędzy poszczególnymi osobami przez dynamiczne naliczanie kto ma ile do oddania. Ponadto miał wspomagać kontrolę własnych wydatków przez uwzględnienie, że koszty życia to nie tylko pieniądze wydawane przez siebie samego, ale również wydatki poniesione przez inne osoby prowadzące to samo gospodarstwo domowe. 
+
+Ponieważ tradycyjne programy do zarządzania wydatkami nie posiadają wyżej wymienionych funkcjonalności, jak również zazwyczaj mogą działać bez serwera, to jest przykład aplikacji, która może nagle stać się popularna i powinna być w stanie wówczas obsłużyć większe obciążenie serwera. 
 
 
 
@@ -304,23 +332,44 @@ Wybrana technologia miała być zastosowana w praktyce do stworzenia aplikacji n
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \chapter{Wprowadzenie}
 
-Niniejszy rozdział wyjaśnia w jaki sposób ewoluowały technologie, by dać się później poznać jako Cloud Computing, a także czego należy oczekiwać od współczesnej chmury. Na końcu rozdziału opisano dokąd zmierza rozwój przedstawionych technologii.
+Niniejszy rozdział wyjaśnia, w jaki sposób ewoluowały technologie, by dać się później poznać jako Cloud Computing, a także czego należy oczekiwać od współczesnej chmury. Na końcu rozdziału opisano dokąd zmierza rozwój przedstawionych technologii.
 
 
 
 \section{Charakterystyka Cloud Computingu}
 
-Cloud Computing to model zgodnie z którym wszelkie zasoby informatyczne (oprogramowanie, przestrzeń dyskowa, dostęp do bazy danych itp.) dostarczane są w formie usługi. Istotną cechą jest wysoka skalowalność udostępnianych rozwiązań. Po stronie klienta ma to wyglądać tak, jak gdyby posiadał dostęp do nieskończonej mocy obliczeniowej i niekończącej się przestrzeni dyskowej, natomiast po stronie usługodawcy podłączenie nowych serwerów w celu podtrzymania tej iluzji nie powinno stanowić problemu. \cite{ccBiznes}
+Cloud Computing to model, zgodnie z którym wszelkie zasoby informatyczne (oprogramowanie, przestrzeń dyskowa, dostęp do bazy danych itp.) dostarczane są w formie usługi. Istotną cechą jest wysoka \textbf{skalowalność} udostępnianych rozwiązań. Po stronie klienta ma to wyglądać tak, jak gdyby posiadał dostęp do nieskończonej mocy obliczeniowej i niekończącej się przestrzeni dyskowej, natomiast po stronie usługodawcy podłączenie nowych serwerów w celu podtrzymania tej iluzji nie powinno stanowić problemu. \cite{ccBiznes}
 
-Aby była możliwa tak wysoka elastyczność, fizyczne serwery są oddzielone warstwą abstrakcji, na której są widoczne jako pula zasobów takich jak przestrzeń dyskowa czy moc procesora. Każdy program czy serwer wirtualny działający w chmurze osadzany jest na wirtualnych zasobach; nie ma możliwości zdecydowania z którego konkretnego fizycznego zasobu chce się korzystać. Moc chmury obliczeniowej buduje się przez łączenie tanich, łatwo wymienialnych komponentów sprzętowych w potężne zasoby wirtualne. \cite{ccCambridge}
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.7\textwidth]{layers-and-users.png}
+		\caption{Różni użytkownicy chmury operujący na jej różnych warstwach \cite{ccCambridge}}
+		\label{fig:layers-and-users}
+\end{figure}
 
-Poza rozwiązaniem problemu zarządzania ogromną ilością fizycznych serwerów, wirtualizacja zasobów pozwala na lepsze wykorzystanie sprzętu. W tradycyjnym modelu komputery muszą być przygotowane na wypadek gdyby zainstalowane na nich programy powodowały większe zużycie zasobów. Dzieje się tak nawet w przypadku komputerów PC -- kupuje się specjalnie większe dyski i lepszy procesor, aby przydały się w przyszłości. W ten sposób wykorzystuje się niewielką część możliwości pojedynczego komputera, ponieważ przez większość czasu potrzeba mu znacznie mniej zasobów niż fizycznie posiada. W przypadku wirtualnych zasobów, do fizycznej jednostki można dynamicznie przypisać zużycie powodowane przez wielu użytkowników, wiele wirtualnych systemów operacyjnych, w zgodzie z ustalonym algorytmem. Algorytm może definiować, że np. wszystkie komputery mają zostać obciążone po równo (round robin), czy że pojedynczy węzeł ma być wykorzystany w 100\% \cite{cloudFoundry}. Technikę tę nazywa się równoważeniem obciążenia (ang. \textit{load balancing}).
+Aby była możliwa tak wysoka elastyczność, fizyczne serwery są oddzielone warstwą abstrakcji, na której są widoczne jako \textbf{pula zasobów} takich jak przestrzeń dyskowa czy moc procesora. Każdy program czy serwer wirtualny działający w chmurze osadzany jest na wirtualnych zasobach; nie ma możliwości zdecydowania z którego konkretnego fizycznego zasobu chce się korzystać. Moc chmury obliczeniowej buduje się przez łączenie tanich, łatwo wymienialnych komponentów sprzętowych, w potężne zasoby wirtualne. \cite{ccCambridge}
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.7\textwidth]{pooling.png}
+		\caption{Serwery wirtualne korzystające z puli zasobów \cite{ccCambridge}}
+		\label{fig:pooling}
+\end{figure}
+
+Poza rozwiązaniem problemu zarządzania ogromną ilością fizycznych serwerów, wirtualizacja zasobów pozwala na \textbf{lepsze wykorzystanie sprzętu}. W tradycyjnym modelu komputery muszą być przygotowane na wypadek gdyby zainstalowane na nich programy powodowały większe zużycie zasobów. Dzieje się tak nawet w przypadku komputerów PC -- kupuje się specjalnie większe dyski i lepszy procesor, aby przydały się w przyszłości. W ten sposób wykorzystuje się niewielką część możliwości pojedynczego komputera, ponieważ przez większość czasu potrzeba mu znacznie mniej zasobów niż fizycznie posiada. W przypadku wirtualnych zasobów, do fizycznej jednostki można dynamicznie przypisać zużycie powodowane przez wielu użytkowników, wiele wirtualnych systemów operacyjnych, w zgodzie z ustalonym algorytmem. Algorytm może definiować, że np. wszystkie komputery mają zostać obciążone po równo (round robin), czy że pojedynczy węzeł ma być wykorzystany w 100\% \cite{cloudFoundry}. Technikę tę nazywa się \textbf{równoważeniem obciążenia} (ang. \textit{load balancing}).
 
 Technika zrównoważonego obciążenia przynosi kilka ważnych korzyści będących istotnymi cechami chmur obliczeniowych. Dzięki niej usługi działające w chmurze mogą być uruchomione na różnych węzłach, w tylu instancjach, ile wymagane jest do prawidłowego obsłużenia ruchu. W przypadku awarii którejś z instancji użytkownicy usługi niczego nie odczuwają, gdyż zostają przekierowani na instancję co do działania której nie wykazano błędów. Wszystko to ułatwia tworzenie wysoce skalowalnego oprogramowania. Nie bez znaczenia jest także pozytywny wpływ na ekosystem, ponieważ chmury obliczeniowe oznaczają optymalne zużycie istniejącego sprzętu komputerowego, a więc nie trzeba produkować go więcej niż potrzeba ani niepotrzebnie zużywać energii elektrycznej.
 
 Najbardziej spektakularne efekty wykorzystywania modelu chmury widać w przypadku dostawców posiadających największe centra danych na świecie, takich jak Amazon, Microsoft, Google czy IBM. Na kilkudziesięciu $m^{2}$ gromadzą zasoby komputerowe, których równocześnie mogą używać miliony osób na całym świecie. Na jednym fizycznym komputerze zasoby mogą być wykorzystywane przez wiele osób niewiedzących o sobie nawzajem (po angielsku tę właściwość określa się jako \textit{multi-tenancy}). Chmury o takiej architekturze mają potencjał ucieleśnić ideę zgodnie z którą zasoby komputerowe mogą być dostarczane jako usługa użyteczności publicznej.
 
 Wyżej wymieniony sposób myślenia o chmurze jest tym co wyraźnie odróżnia chmury publiczne od chmur prywatnych. Nic nie stoi na przeszkodzie, aby samemu stworzyć prywatną sieć opartą o model chmury. Wówczas formalnie jest to chmura, lecz nie zapewnia niektórych ważnych korzyści, głównie przez konieczność samodzielnego administrowania serwerami, mniejszą ilość potencjalnych użytkowników oraz mniejszy potencjał puli zasobów. Przykładowo, jeśli firma nadal musi martwić się o zarządzanie fizycznymi jednostkami komputerowymi, to nie będzie miała możliwości wychwalać modelu chmury za brak konieczności zatrudniania specjalistów zajmujących się infrastrukturą komputerową.
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=\textwidth]{ekonomia-skali.png}
+		\caption{Ekonomia skali rosnąca wraz z ilością użytkowników chmury \cite{ccCambridge}}
+		\label{fig:ekonomia-skali}
+\end{figure}
 
 \subsection*{Korzyści i wady}
 
@@ -385,6 +434,21 @@ Główną wadą klastrów była konieczność powierzenia zarządzania klastrem 
 
 Dotychczas gdy uruchamiało się program na wybranym węźle gridu, to znajdował się na tym węźle dopóki proces nie został zakończony. Stanowiło to problem na drodze do skalowania w czasie rzeczywistym, gdzie na skutek zmienionych potrzeb byłoby dobrze mieć możliwość od nowa zaalokować zasoby bez zakłócania działającej usługi. Problem ten rozwiązała \textbf{wirtualizacja sprzętowa}, za pomocą której zadania były alokowane do maszyn wirtualnych. Technika ta umożliwiła \textbf{\textit{utility computing}}, czyli model w którym zasoby komputerowe mogą być dostarczane jako usługa, co stanowi serce chmur obliczeniowych. Prekursorem została firma Salesforce.com, która udostępnia oprogramowanie w formie usługi internetowej od 1999 r.
 
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[t]{0.33\textwidth}
+		\includegraphics[width=\textwidth]{non-virtualized-system.png}
+		\caption{System bez wirtualizacji \cite{ccSpringer}}
+		\label{fig:non-virtualized-system}
+	\end{minipage}
+\hspace*{60px}
+	\begin{minipage}[t]{0.33\textwidth}
+		\includegraphics[width=\textwidth]{system-level-vm.png}
+		\caption{Wirtualizacja sprzętowa \cite{ccSpringer}}
+		\label{fig:system-level-vm}
+	\end{minipage}
+	\hfill
+\end{figure}
 
 W 2001 r. firma IBM zbudowała pierwszy \textbf{autonomiczny system} (ang. \textit{antonomic computing}) -- system, który potrafi sobą zarządzać bez interwencji człowieka. Dzięki wykorzystaniu sztucznej inteligencji do działania, eliminuje się ryzyko związane z błędem ludzkim oraz złożoność związaną z koniecznością doglądania przez człowieka złożonego systemu. IBM wytyczył następujące cechy modelu:
 \begin{itemize}
@@ -474,6 +538,13 @@ Cloud Foundry jest niezależny od infrastruktury, może działać zarówno na Op
 
 \textbf{Konteneryzacja} to metoda wirtualizacji na poziomie systemu operacyjnego, gdzie na działającym systemie operacyjnym można uruchomić wiele odizolowanych od siebie instancji przestrzeni użytkownika. Każda taka instancja to kontener. Kontener zapewnia odpowiednie środowisko do działania dla umieszczonej w nim aplikacji, np. środowisko uruchomieniowe .NET Core w odpowiedniej wersji.  \cite{cloudFoundry,ccSpringer}
 
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.7\textwidth]{containers-vs-vms.png}
+		\caption{Porównanie serwerów wirtualnych i kontenerów \cite{ccSpringer}}
+		\label{fig:containers-vs-vms}
+\end{figure}
+
 Cloud Foundry zapewnia orkiestrację kontenerów oraz obsługę procesu CI/CD (ciągłej integracji i ciągłego dostarczania, ang. \textit{continuous integration / continuous delivery}).\cite{cloudFoundry} Stanowi narzędzie pozwalające z powodzeniem wdrażać strategie DevOps. 
 
 \textbf{DevOps} to słowo po raz pierwszy użyte 2009 r. na konferencji w Belgii. Stanowi połączenie ze sobą słów \textit{,,development''} (rozwój) i \textit{,,operations''} (eksploatacja). Wskazuje to na zacieśnianie współpracy pomiędzy zespołami zajmującymi się rozwojem oprogramowania, a zespołami, które je wdrażają. Współpraca ta ma doprowadzać do automatyzacji procesów towarzyszących wytwarzaniu oprogramowania, co w efekcie minimalizuje czas potrzebny od wprowadzenia poprawki do wdrożenia na środowisko produkcyjne, zachowując przy tym niezawodność. Jako strategie DevOps określa się wszelkie technologie i narzędzia inżynierii oprogramowania, które dają taki efekt. \cite{devOpsPackt}
@@ -539,7 +610,7 @@ Problemem, który w wielu przypadkach mógł podnosić barierę wejścia do stos
 \item \textbf{Google Kubernetes Engine} (wcześniej: Google Container Engine) -- usługa udostępniona w sierpniu 2015 r. \cite{siteGoogleBlogKubernetes} z gotowym do użycia Kubernetes. Można ją przetestować za darmo w ramach kredytu 300 USD do testowania Cloud Platform.\cite{siteGoogleTry}
 \item \textbf{AKS -- Azure Kubernetes Service} (wcześniej: Azure Container Service) -- początkowo od 2015 r. wspierała orkiestratory Mesosphere DC/OS oraz Docker Swarm, jednak na fali popularności Kubernetes firma Microsoft uznała go za standard i w 2017 r. opracowała wsparcie dla Kubernetes. W związku z tym nastąpiła także zmiana nazwy usługi. \cite{siteMicrosoftBlogAks} Usługa jest darmowa\cite{siteAksPricing}, opłaty są naliczane za użyte maszyny wirtualne, które przez rok również w ograniczonym zakresie są bezpłatne.\cite{siteAzureTry}
 \item \textbf{Amazon ECS -- Amazon Elastic Container Service} -- usługa dostępna od kwietnia 2015 r., jest to własna implementacja orkiestracji kontenerów Dockera stworzona przez Amazona. Pozwala na 2 typy rozliczeń: płatność za zużycie zasobów przez kontener lub płatność za przechowanie i uruchamianie aplikacji na EC2.\cite{siteAmazonEcsPricing} Nie występuje na liście usług dostępnych do wyprówowania za darmo.\cite{siteAmazonTry}
-\item \textbf{Amazon EKS -- Amazon Elastic Container Service for Kubernetes} -- usługa została uruchomiona w czerwcu 2018 r. Publikując usługę Amazon chwalił się, że na podstawie danych Cloud Native Computing Foundation (założonej wraz z powstaniem Kubernetes), 57\% firm korzystających z Kubernetes robiło to na serwerach wirtualnych AWS. Płatność wynosi 0.20 USD za godzinę dla każdego klastra w usłudze a dodatkowo za zużycie zasobów AWS.\cite{siteAmazonEksPricing} Nie występuje na liście usług dostępnych do wyprówowania za darmo.\cite{siteAmazonTry}
+\item \textbf{Amazon EKS -- Amazon Elastic Container Service for Kubernetes} -- usługa została uruchomiona w czerwcu 2018 r. Publikując usługę Amazon chwalił się, że na podstawie danych Cloud Native Computing Foundation (założonej wraz z powstaniem Kubernetes), 57\% firm korzystających z Kubernetes robiło to na serwerach wirtualnych AWS. Płatność wynosi 0.20 USD za godzinę dla każdego klastra w usłudze a dodatkowo za zużycie zasobów AWS.\cite{siteAmazonEksPricing} Nie występuje na liście usług dostępnych do wypróbowania za darmo.\cite{siteAmazonTry}
 \end{itemize}
 
 Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla chmury tak że:
@@ -593,7 +664,7 @@ Popularność kontenerów, mikrousług oraz modelu \textit{utility computing} (r
 
 Aplikacje tego typu zamiast być przez cały czas uruchomione na serwerze w oczekiwaniu na zapytania, mają być uruchamiane dopiero gdy przyjdzie określone zdarzenie (ang. \textit{event-driven computation}). Zdarzeniem może być np. nowe zapytanie HTTP, nowy wpis w kolejce, wywołanie po upłynięciu interwału czasowego. Wówczas zostaje powołana do życia aplikacja przeznaczona tylko do obsługi danego zdarzenia i działa tylko na krótki czas obsługi zdarzenia (jest to maksymalnie około kilka minut). Aplikacje te to w istocie mikrousługi, tyle że posiadające tylko jedną funkcję -- stąd nazywa się je po prostu funkcjami. Dla lepszego odróżnienia od mikrousług określa się je jako ,,nanousługi'' (ang. \textit{nanoservices}). \cite{serverlessMaddie, ccResearchSpringer, distributedSystems}
 
-Platforma w chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Function-as-a-Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w 2014 r. uruchomił usługę AWS Lambda typu FaaS. W 2016 r. Microsoft udostępnił usługę Azure Functions. W Google Cloud Platform tego typu usługa została oficjalnie udostępniona w sierpniu 2018 (miesiąc przed wydaniem niniejszej pracy), choć wersja poglądowa była dostępna wcześniej.
+Platforma w chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Function-as-a-Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w 2014 r. uruchomił usługę AWS Lambda typu FaaS. W 2016 r. Microsoft udostępnił usługę Azure Functions. W Google Cloud Platform tego typu usługa została oficjalnie udostępniona w sierpniu 2018 (miesiąc przed wydaniem niniejszej pracy), choć wersja poglądowa była dostępna wcześniej. 
 
 Posługując się modelem serverless, usługodawca może stosować rozliczenie według ilości wywołań poszczególnych funkcji. Dzięki temu nie trzeba płacić za programy bezczynnie czekające na przychodzące zapytania.
 
@@ -606,7 +677,7 @@ W 2017 r. powstał projekt Kubeless.\cite{siteKubelessReleases} Jest to otwarto�
 Serverless Framework obsługuje wszystkie wyżej wymienione platformy, z Kubeless włącznie.\cite{siteServerlessFramework}
 
 
-\subsection{Bazy NoSQL i rozwiązania dla Big Data} \label{nosql}
+\subsection{Bazy NoSQL, NewSQL i rozwiązania dla Big Data} \label{nosql}
 
 W literaturze rozróżnia się trzy rewolucje w rozwoju technologii bazodanowych.  \cite{noSqlHistory}
 
@@ -622,7 +693,7 @@ W tym samym czasie (od roku 1977) pionierski stał się również projekt Ingres
 
 Po sukcesie Oracle IBM opublikował komercyjną bazę SQL/DS w 1981 r. W późniejszych latach powstawały inne relacyjne bazy chętnie stosowane do dziś: Microsoft SQL Server, PostgreSQL, MySQL. Wszystkie te bazy co do zasady są do siebie podobne -- opierają się o model Codd'a, transakcje ACID oraz język SQL. \cite{relationalDbs}
 
-Potencjalna rewolucja miała szanse dokonać się po latach 80., gdy zaczął się popularyzować paradygmat programowania obiektowego. Istniejące języki zaczęły występować w wersji obiektowej, np. Object Pascal, powstały języki od początku obiektowe, np. Java. Niektórym programistom nie podobała się rozbieżność pomiędzy reprezentacją danych w obiekcie, a w relacyjnej bazie danych. W grudniu 1989 r. powstał manifest obiektowych baz danych (OODBMS, ang. \textit{Object Oriented Database Management System}), w którym bazy relacyjne jawiły się jako relikt przeszłości a obiektowe jako ich następcy. Jednak na przestrzeni lat 90. okazało się, że bazy obiektowe nie zdobyły rynku, nawet w postaci nowych opcji w popularnych bazach jak np. Oracle. Według Guy'a Harrison'a, autora książki \textit{,,Next Generation Databases: NoSQL, NewSQL, and Big Data''}, założenia baz obiektowych koncentrowały się wokół korzyści dla programisty, ignorując korzyści dla biznesu (np. brak wsparcia dla języka SQL będącego powszechnie w użyciu). Dodatkowo dostępność narzędzi ORM (ang. \textit{Object-relational mapping}) znacząco ułatwiła korzystanie z RDBMS w językach obiektowych.
+Potencjalna rewolucja miała szanse dokonać się po latach 80., gdy zaczął się popularyzować paradygmat programowania obiektowego. Istniejące języki zaczęły występować w wersji obiektowej, np. Object Pascal, powstały języki od początku obiektowe, np. Java. Niektórym programistom nie podobała się rozbieżność pomiędzy reprezentacją danych w obiekcie, a w relacyjnej bazie danych. W grudniu 1989 r. powstał manifest obiektowych baz danych (OODBMS, ang. \textit{Object Oriented Database Management System}), w którym bazy relacyjne jawiły się jako relikt przeszłości a obiektowe jako ich następcy.\cite{oodbmsManifesto} Jednak na przestrzeni lat 90. okazało się, że bazy obiektowe nie zdobyły rynku, nawet w postaci nowych opcji w popularnych bazach jak np. Oracle. Według Guy'a Harrison'a, autora książki \textit{,,Next Generation Databases: NoSQL, NewSQL, and Big Data''}, założenia baz obiektowych koncentrowały się wokół korzyści dla programisty, ignorując korzyści dla biznesu (np. brak wsparcia dla języka SQL będącego powszechnie w użyciu). Dodatkowo dostępność narzędzi ORM (ang. \textit{Object-relational mapping}) znacząco ułatwiła korzystanie z RDBMS w językach obiektowych.
 
 \subsubsection{Trzecia rewolucja}
 
@@ -664,28 +735,147 @@ Stworzenie BigTable oraz Hadoopa spowodowało powstanie wielu nowych systemów b
 \item \textbf{Bazy NewSQL} -- bazy posiadające możliwość skalowania, zachowujące właściwości ACID baz relacyjnych.
 \end{itemize}
 
-W 2005 r. Michael Stonebraker (założyciel Ingres i PostgreSQL) opracował bazę C-Store, postulującą \textbf{model kolumnowy}. Pomysł opiera się o tradycyjną relacyjną bazę danych, gdzie w tabeli zostają zamienione miejscami wiersze z kolumnami. Taka zamiana powoduje szybsze działanie zapytań agregujących, gdyż wszystkie potrzebne dane znajdują się obok siebie. Poza tym ponieważ obok siebie znajdują się dane bardzo podobnej postaci, można zastosować lepszą kompresję, nawet przez traktowanie każdej kolejnej danej jako zmiana względem poprzedniej.
+W 2005 r. Michael Stonebraker (założyciel Ingres i PostgreSQL) opracował bazę C-Store, postulującą \textbf{model kolumnowy}. Pomysł opiera się o tradycyjną relacyjną bazę danych, gdzie w tabeli zostają zamienione miejscami wiersze z kolumnami. Taka zamiana powoduje szybsze działanie zapytań agregujących, gdyż wszystkie potrzebne dane znajdują się obok siebie. Poza tym, ponieważ obok siebie znajdują się dane bardzo podobnej postaci, można zastosować lepszą kompresję, nawet przez traktowanie każdej kolejnej danej jako zmianę względem poprzedniej.
 
 W 2007 r. Amazon opracował bazę Dynamo, który stał się wzorcem dla baz w modelu \textbf{klucz-wartość}. Jedną z nich jest Apache Cassandra (2008 r.), baza typu \textit{\textbf{wide-column}}. W bazach tego typu w miejscu wartości jest dynamiczna liczba kolumn, co pozwala np. na przeszukiwanie po danej kolumnie lub aktualizacja tylko danej kolumny zamiast całego obiektu. Podobnym projektem jest Apache HBase (2008 r.).
 
-Również w 2007 r. powstała pierwsza \textbf{baza dokumentowa}, która mogła być postrzegana jako alternatywa dla RDBMS. Od 2000 r. powstawały bazy XML, ale raczej mające na celu zarządzanie już istniejącymi dokumentami w tym formacie. XML rozpowszechniał się za sprawą popularności AJAX, później zaczął być zastępowany formatem JSON. Takie dane były już formą dokumentu, a stworzenie systemu do przechowywania ich było kwestią czasu. W 2005 r. powstała baza dokumentowa Apache CouchDB, na razie obsługująca XML, a w 2007 r. była to pierwsza znacząca baza dokumentów JSON. W 2009 r. powstała baza MongoDB, przechowująca dokumenty JSON (wewnętrznie zapisywane jako BSON -- \textit{Binary JSON}). Stanowi dziś najpopularniejszą bazę tego typu.
+Również w 2007 r. powstała pierwsza \textbf{baza dokumentowa}, która mogła być postrzegana jako alternatywa dla RDBMS. Od 2000 r. powstawały bazy XML, ale raczej mające na celu zarządzanie już istniejącymi dokumentami w tym formacie. XML rozpowszechniał się za sprawą popularności AJAX, później w tej technice zaczął być zastępowany formatem JSON. Takie dane były już formą dokumentu, a stworzenie systemu do przechowywania ich było kwestią czasu. W 2005 r. powstała baza dokumentowa Apache CouchDB, na razie obsługująca XML, a w 2007 r. była to pierwsza znacząca baza dokumentów JSON. W 2009 r. powstała baza MongoDB, przechowująca dokumenty JSON (wewnętrznie zapisywane jako BSON -- \textit{Binary JSON}). Stanowi dziś najpopularniejszą bazę tego typu.
 
-Kolejnym osiągnięciem z 2007 r. był artykuł Michaela Stonebrakera pt. ,,The end of an architectural era: (it's time for a complete rewrite)'' (,,Koniec współczesnych architektur, czas przepisać je na nowo'' -- tłumaczenie własne). Opisał tam koncepcję bazy H-store typu \textit{\textbf{in-memory}}, która do transakcji nie potrzebuje wykonywać operacji I/O na dysku. Komercyjną implementacją tego pomysłu była baza VoltDB, utworzona w 2008 r. Jest to baza typu NewSQL.
+Kolejnym osiągnięciem z 2007 r. był artykuł Michaela Stonebrakera pt. ,,The end of an architectural era: (it's time for a complete rewrite)'' (,,Koniec współczesnych architektur, czas przepisać je na nowo'' -- tłumaczenie własne). Opisał tam koncepcję bazy H-store typu \textit{\textbf{in-memory}}, która do transakcji nie potrzebuje wykonywać operacji I/O na dysku. Pomysł opiera się na lepszym wykorzystaniu pamięci RAM i dysków SSD. Komercyjną implementacją tego pomysłu była baza VoltDB, utworzona w 2008 r. Jest to baza typu NewSQL.
 
-Rok 2007 był przełomowy także dla modelu \textbf{baz grafowych} -- powstała baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na wyższym poziomie abstrakcji oraz pozwalają na przeszukiwanie grafu do zadanego poziomu. Są stworzone dla danych, gdzie najważniejszą właściwością są relacje z innymi danymi, np. relacje w social media. Do odpytywania bazy grafowej używa się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak na dzień dzisiejszy nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z różnych serwerów znacząco obniżyłoby jego wydajność. Do projektów przetwarzania grafów na systemach rozproszonych należą: Apache Giraph (2016 r.), GraphX (część Apache Spark, 2014 r.), Titan (2015 r.) -- działający jako nakładka na HBase czy Cassandrę.
+Rok 2007 był przełomowy także dla modelu \textbf{baz grafowych} -- powstała wtedy baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na wyższym poziomie abstrakcji oraz pozwalają na przeszukiwanie grafu do zadanego poziomu. Są stworzone dla danych, gdzie najważniejszą właściwością są relacje z innymi danymi, np. relacje w social media. Do odpytywania bazy grafowej używa się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak na dzień dzisiejszy nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z różnych serwerów znacząco obniżyłoby jego wydajność. Do projektów przetwarzania grafów na systemach rozproszonych należą: Apache Giraph (2016 r.), GraphX (część Apache Spark, 2014 r.), Titan (2015 r.) -- działający jako nakładka na HBase czy Cassandrę.
 
 
 \subsection{CDN i Fog Computing} \label{fog}
 
+Jak było wspomniane wcześniej, chmury obliczeniowe gromadzą się co do zasady w gigantycznych centrach danych. Scentralizowany charakter chmur powoduje opóźnienia względem dostępności usług znajdujących się bliżej użytkownika. W celu zapewnienia wysokiej jakości usług (ang. QoS, \textit{Quality of Service}) stosuje się sieci \textbf{CDN} (ang. \textit{Content Delivery Network}). Węzły sieci CDN są szeroko rozpostarte po całym świecie, na krawędzi (ang. \textit{edge}) dostawców usług internetowych (ang. ISP, \textit{Internet service provider}), znacznie bliżej użytkowników końcowych niż odległość od centrów danych (rysunek \ref{fig:cdn-schemat}). \cite{cdn}
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.7\textwidth]{cdn-schemat.jpg}
+		\caption{Schemat sieci CDN. \cite{cdn}}
+		\label{fig:cdn-schemat}
+\end{figure}
+
+Początkowo większość treści znajdujących się w Internecie była statyczna, więc zadanie sieci CDN koncentrowało się na tworzeniu cache często pobieranej treści. Z czasem treść zaczęła się robić coraz bardziej dynamiczna, zaczęło się upowszechniać strumieniowanie wideo (rysunek \ref{fig:cdn-streaming}). Spowodowało to powstanie drugiej generacji sieci CDN będącej w stanie obsłużyć te przypadki. W technologiach CDN od lat przewodzi założona w 1998 r. firma Akamai. Obecnie posiada ponad 240 000 serwerów CDN w ponad 130 krajach na całym świecie.\cite{siteAkamaiFacts} Do innych znaczących dostarczycieli usług tego typu należą: Limelight, CloudFront (część Amazon AWS), Azure CDN. \cite{ccCambridge, cdn}
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[resolution=120]{cdn-streaming.jpg}
+		\caption{Optymalizacja strumieniowania wideo w sieciach CDN drugiej generacji. \cite{cdn}}
+		\label{fig:cdn-streaming}
+\end{figure}
+
+
+Sieci rozproszone CDN są oparte o model chmury (np. Akamai Intelligent Platform). Dzięki sieciom CDN strony internetowe takie jak Facebook czy Twitter (klienci Akamai), pomimo że gromadzą dane z całego świata, mogą działać w czasie rzeczywistym. \cite{ccCambridge}
+
+Za sprawą rosnącego znaczenia \textbf{Internetu Rzeczy}, przed technologiami w modelu chmury obliczeniowej stoją kolejne wyzwania. Wprawdzie Internet Rzeczy znajduje użycie już teraz, czego dobrym przykładem są inteligentne zegarki. Wizja \textit{networked society} obejmuje jednak znacznie więcej, np. korzystanie z samoprowadzących się samochodów (rysunek \ref{fig:fog-samochod}) czy wspomaganie opieki zdrowotnej przez choćby automatyczne powiadomienie rodziny o zawale serca u pacjenta. Tego rodzaju usługi wymagają dodatkowej warstwy, która podobnie jak CDN znajdowałaby się bliżej użytkownika niż centrum danych, ale potrafiłaby także wstępnie przetworzyć dane czy też zwrócić wynik bez angażowania do tego chmury.
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.5\textwidth]{fog-samochod.png}
+		\caption{Zastosowanie Fog Computing w samoprowadzącym się samochodzie. \cite{fog5g}}
+		\label{fig:fog-samochod}
+\end{figure}
+
+W 2012 r. firma Cisco przedstawił koncepcję \textbf{Fog Computing} (,,mgły obliczeniowej''). Mgła ma stanowić warstwę pośredniczącą pomiędzy urządzeniami IoT a chmurą. Warstwa ta ma być ulokowana na routerze danego gospodarstwa domowego. Do zadań mgły należy wstępna obróbka danych, komunikacja z chmurą (już z użyciem mniejszej ilości danych), a także obsługa urządzeń IoT nawet jeśli w danym momencie brakuje połączenia z Internetem. Przykładowo, takie zadania jak rozpoznawanie obrazów mogą odbywać się już na etapie routera, bez konieczności przesyłania danych przez Internet. Konkretną propozycją Cisco było oprogramowanie Cisco IOx. \cite{fogArticle, iotArchitects}
+
+Fog Computing nie stanowi jedynej koncepcji tego typu, jednakowoż brzmienie tej nazwy jest bardzo wyraziste i w literaturze wybija się na tle innych nazw. Być może z biegiem lat cała rodzina koncepcji przyspieszania technologii IoT będzie w ten sposób nazywana. Do innych koncepcji należą:
+\begin{description}
+\item [Cyber Foraging] Pojęcie przedstawione w 2001 r. w artykule M. Satyanarayanan'a. Technika polegająca na odciążaniu urządzeń mobilnych przez przekazanie wymagających obliczeniowo zadań do serwerów-surogatów i zwrócenie temu urządzeniu wyniku z niskim opóźnieniem. W przypadku braku serwera znajdującego się wystarczająco blisko, zadanie zostaje wykonane na miarę ograniczonych możliwości urządzenia mobilnego. \cite{fogArticle, fog5g}
+\item [Cloudlet] Pojęcie przedstawione w 2009 r. w artykule współtworzonym przez Satyanarayanan'a. W odróżnieniu od Cyber Foragingu, cloudlety wykorzystują techniki wirtualizacji, co pozwala na ich skalowanie w zależności od wymagań użytkowników. Są to chmury znajdujące się bliżej użytkownika. Może to być np. chmura prywatna używana w przedsiębiorstwie. Nie ma wymogów, aby cloudlety komunikowały się dalej z chmurą publiczną. \cite{fogArticle, fog5g}
+\item [Multi-Access Edge Computing (MEC)] Koncepcja pierwotnie nazwana ,,Mobile Edge Computing'' przez Europejski Instytut Norm Telekomunikacyjnych, gdyż była wiązana z telefonią komórkową oraz siecią radiową, lecz w 2017 r. została rozszerzona do wszystkich sieci. W ten koncepcji kładzie się nacisk na odciążanie chmur przez wykonywanie niektórych usług na krawędzi sieci \textit{(edge)}, tj. w pobliżu bramy sieciowej na różnych poziomach. Istotny element tej koncepcji stanowi upowszechnienie superszybkiej sieci 5G. \cite{fogArticle, fog5g}
+\end{description}
+
+Obecnie można zaobserwować rozwój zarówno w kierunku Fog Computingu jak i Edge Computingu:
+\begin{itemize}
+\item W 2015 r. powstał OpenFog Consortium. W 2017 r. konsorcjum opublikowało dokument referencyjny definiujący architekturę dla systemu w modelu Fog Computing. \cite{fogArticle, iotArchitects}
+\item W 2017 r. powstało oprogramowanie ParaDrop, otwartoźródłowe oprogramowanie dla routerów w modelu Fog Computing. \cite{fog5g}
+\item Główni dostawcy usług chmurowych udostępnili usługi typu \textit{edge}: AWS Lambda@Edge (lipiec 2017) \cite{siteAmazonLambdaEdge}, Azure IoT Edge (czerwiec 2018 r.) \cite{siteAzureIotEdge}, Google Cloud IoT Edge (wersja alpha, czerwiec 2018 r.)\cite{siteGoogleIotEdge}. 
+\end{itemize}
 
 
 
 \section{Wymagania stawiane współczesnym chmurom}
 
+Powszechnie korzysta się z atrybutów określonych przez amerykański Narodowy Instytut Standaryzacji i Technologii w 2011 r., zwanych \textbf{modelem NIST}. Wyróżnia on cechy zasadnicze, modele dostarczania usług i formy wdrożenia. \cite{nistArticle, ccCambridge}
 
+\subsection{Zasadnicze cechy chmury}
+
+Do cech zasadniczych należą:
+
+\begin{description}
+\item [Samoobsługa] Aby skorzystać z usługi w chmurze czy zmodyfikować jej zakres, nie jest konieczna interwencja pracownika usługodawcy. Do samoobsługi służy panel administracyjny udostępniony przez usługodawcę.
+\item [Szeroki dostęp przez sieć] Chmura powinna umożliwiać użytkownikom łączenie się przez sieć bez względu na to gdzie się znajdują i kiedy chcą skorzystać z usługi.
+\item [Pula zasobów] Zasoby takie jak moc procesora, dyski, pamięć, mają być widoczne jako zasoby wirtualne oraz posiadać właściwość \textit{multi-tenancy} (z jednego zasobu może korzystać wiele niezależnych osób, nie mając na to wpływu i nie wiedząc o tym).
+\item [Wysoka elastyczność] Dostępność zasobów ma być dozowana tak by dla użytkownika wyglądało to na nieskończoną ilość.
+\item [Zliczanie zużycia] Dla każdego użytkownika stosowany jest mechanizm zliczania jego rzeczywistego zużycia danych usług. Zużycie jest transparentne dla obu stron, m.in. przez udostępnienie stosownych paneli służących do monitorowania i raportowania.
+\end{description}
+
+\subsection{Modele dostarczania usług}
+
+Co do zasady istnieją 3 modele dostarczania usług:
+\begin{itemize}
+\item IaaS -- Infrastruktura jako usługa (ang. \textit{Infrastructure as a Service}),
+\item PaaS -- Platforma jako usługa (ang. \textit{Platform as a Service)},
+\item SaaS -- Oprogramowanie jako usługa (ang. \textit{Software as a Service}).
+\end{itemize}
+W literaturze i innych publikacjach często można spotkać się także z innymi podobnymi zwrotami w formie \textit{,,... as a Service''}, jednak zawsze jest to podkategoria dla tych powyższych. IaaS, PaaS i SaaS stanowią następujące po sobie warstwy.
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.7\textwidth]{iaas-paas-saas.png}
+		\caption{Odpowiedzialność dostawcy usług chmurowych przy różnych ich rodzajach \cite{iotArchitects}}
+		\label{fig:iaas-paas-saas}
+\end{figure}
+
+\textbf{IaaS} to wirtualne zasoby udostępnione jako usługa. Ponieważ wirtualizacja zasobów stanowi podstawową technikę stosowaną w modelu chmury, IaaS występuje zawsze gdy są udostępniane np. serwery wirtualne, dyski w chmurze czy sieci wirtualne. Przykład podgrupy: NaaS (\textit{Network} -- sieć).
+
+W \textbf{PaaS} jako platformę określa się każde oprogramowanie umożliwiające użytkownikowi (programiście) zarządzanie jego własnymi aplikacjami. Warstwa ta jest zawsze zbudowana na IaaS, gdyż owo oprogramowanie musi działać na jakimś systemie operacyjnym na maszynie wirtualnej. Warstwa PaaS obejmuje wszystko co jest potrzebne programiście, by jego aplikacja mogła działać w chmurze: wsparcie dla różnych języków programowania, systemy bazodanowe, serwer WWW. Przykładowe podgrupy to:
+\begin{itemize}
+\item FaaS (\textit{Functions} -- funkcje) -- wdrażanie w modelu serverless,
+\item CaaS (\textit{Container} -- kontener) -- wdrażanie aplikacji opakowanych w kontener,
+\item KaaS (Kubernetes) -- CaaS z wykorzystaniem Kubernetes,
+\item DBaaS (\textit{Database} -- baza danych) -- usługa dzięki której nie trzeba samemu instalować bazy danych ani nią administrować,
+\item BaaS/MBaaS (\textit{Mobile Backend}) -- wspomaganie aplikacji użytkownika narzędziami służącymi np. do wysyłania notyfikacji na urządzenia mobilne.
+\end{itemize}
+
+Warstwa \textbf{SaaS} obejmuje gotowe do użycia aplikacje. Na tej warstwie wszystko znajduje się pod kontrolą dostawcy usługi. Jest to najbardziej dojrzały model dostarczania usługi chmurowej, był stosowany już w 1999 r. przez Salesforce. Do rozwiązań SaaS należą m.in. popularne aplikacje dostępne przez przeglądarkę internetową: Gmail, Dropbox, Microsoft Office 365. Przykładowe podgrupy to:
+\begin{itemize}
+\item DaaS (\textit{Data} -- dane) -- usługa dostępu do danych zebranych np. przez Visa czy MasterCard aby pomóc personalizować przekaz reklamowy,
+\item SECaaS (\textit{Security} -- bezpieczeństwo) -- narzędzia wspierające bezpieczeństwo, np. programy antywirusowe.
+\end{itemize}
+
+\subsection{Formy wdrożenia}
+
+chmury publiczne itd...
 
 
 \section{Dokąd zmierza rozwój CC.}
+
+\begin{itemize}
+\item Tactile Internet
+\item rozwój w kierunku IoT - edge i fog przy użyciu kontenerów
+\item ja bym widziała jakąś bazę, która raz na zawsze rozwiąże problem ,,jaką bazę wybrać''. Był na to fajny rysunek w jednej książce
+\item serverless -- bo to co jest to na pewno nie jest ostatnie słowo w tym temacie...
+\end{itemize}
+
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=\textwidth]{gartner-trends.jpg}
+		\caption{Raport dot. technologicznych trendów wykonany przez firmę Gartner w sierpniu 2017 r. \cite{siteGartnerTrends}}
+		\label{fig:gartner-trends}
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=\textwidth]{networked-society.png}
+		\caption{Technologie umożliwiające \textit{network society} \cite{ccSpringer}}
+		\label{fig:networked-society}
+\end{figure}
+
 
 
 \chapter{Porównanie różnych podejść}
