@@ -326,7 +326,9 @@ Ponieważ tradycyjne programy do zarządzania wydatkami nie posiadają wyżej wy
 
 \section*{Opis rozdziałów}
 \addcontentsline{toc}{section}{Opis rozdziałów}
-\textit{Rozdział 1. -- Wprowadzenie} TODO. NAPISZĘ O TYCH ROZDZIAŁACH W CZASIE PRZESZŁYM, JAk RZECZYWIŚCIE BĘDĄ W CZASIE PRZESZŁYM
+\textit{Rozdział 1. -- Wprowadzenie} zawiera najważniejsze informacje o tym, skąd wziął się Cloud Computing, jaki jest obecny stan wiedzy na jego temat oraz w jakim kierunku zmierza jego rozwój. 
+
+TODO. NAPISZĘ O TYCH ROZDZIAŁACH W CZASIE PRZESZŁYM, JAk RZECZYWIŚCIE BĘDĄ W CZASIE PRZESZŁYM
 
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
@@ -769,7 +771,7 @@ Początkowo większość treści znajdujących się w Internecie była statyczna
 
 Sieci rozproszone CDN są oparte o model chmury (np. Akamai Intelligent Platform). Dzięki sieciom CDN strony internetowe takie jak Facebook czy Twitter (klienci Akamai), pomimo że gromadzą dane z całego świata, mogą działać w czasie rzeczywistym. \cite{ccCambridge}
 
-Za sprawą rosnącego znaczenia \textbf{Internetu Rzeczy}, przed technologiami w modelu chmury obliczeniowej stoją kolejne wyzwania. Wprawdzie Internet Rzeczy znajduje użycie już teraz, czego dobrym przykładem są inteligentne zegarki. Wizja \textit{networked society} obejmuje jednak znacznie więcej, np. korzystanie z samoprowadzących się samochodów (rysunek \ref{fig:fog-samochod}) czy wspomaganie opieki zdrowotnej przez choćby automatyczne powiadomienie rodziny o zawale serca u pacjenta. Tego rodzaju usługi wymagają dodatkowej warstwy, która podobnie jak CDN znajdowałaby się bliżej użytkownika niż centrum danych, ale potrafiłaby także wstępnie przetworzyć dane czy też zwrócić wynik bez angażowania do tego chmury.
+Za sprawą rosnącego znaczenia \textbf{Internetu Rzeczy}, przed technologiami w modelu chmury obliczeniowej stoją kolejne wyzwania. Internet Rzeczy znajduje użycie już teraz, czego dobrym przykładem są inteligentne zegarki. Wizja \textit{networked society} obejmuje jednak znacznie więcej, np. korzystanie z samoprowadzących się samochodów (rysunek \ref{fig:fog-samochod}) czy wspomaganie opieki zdrowotnej przez choćby automatyczne powiadomienie rodziny o zawale serca u pacjenta. Tego rodzaju usługi wymagają braku jakichkolwiek opóźnień. Ma to zostać zapewnione przez dodatkową warstwę, która podobnie jak CDN znajdowałaby się bliżej użytkownika niż centrum danych, ale potrafiłaby także wstępnie przetworzyć dane czy też zwrócić wynik bez angażowania do tego chmury.
 
 \begin{figure}[h]
 	\centering
@@ -840,7 +842,7 @@ W \textbf{PaaS} jako platformę określa się każde oprogramowanie umożliwiaj�
 \item BaaS/MBaaS (\textit{Mobile Backend}) -- wspomaganie aplikacji użytkownika narzędziami służącymi np. do wysyłania notyfikacji na urządzenia mobilne.
 \end{itemize}
 
-Warstwa \textbf{SaaS} obejmuje gotowe do użycia aplikacje. Na tej warstwie wszystko znajduje się pod kontrolą dostawcy usługi. Jest to najbardziej dojrzały model dostarczania usługi chmurowej, był stosowany już w 1999 r. przez Salesforce. Do rozwiązań SaaS należą m.in. popularne aplikacje dostępne przez przeglądarkę internetową: Gmail, Dropbox, Microsoft Office 365. Przykładowe podgrupy to:
+Warstwa \textbf{SaaS} obejmuje gotowe do użycia aplikacje. Na tej warstwie cała aplikacja znajduje się pod kontrolą dostawcy usługi, użytkownik może ją jedynie skonfigurować. Jest to najbardziej dojrzały model dostarczania usługi chmurowej, był stosowany już w 1999 r. przez Salesforce. Do rozwiązań SaaS należą m.in. popularne aplikacje dostępne przez przeglądarkę internetową: Gmail, Dropbox, Microsoft Office 365. Przykładowe podgrupy to:
 \begin{itemize}
 \item DaaS (\textit{Data} -- dane) -- usługa dostępu do danych zebranych np. przez Visa czy MasterCard aby pomóc personalizować przekaz reklamowy,
 \item SECaaS (\textit{Security} -- bezpieczeństwo) -- narzędzia wspierające bezpieczeństwo, np. programy antywirusowe.
@@ -848,33 +850,47 @@ Warstwa \textbf{SaaS} obejmuje gotowe do użycia aplikacje. Na tej warstwie wszy
 
 \subsection{Formy wdrożenia}
 
-chmury publiczne itd...
+Istnieją 4 formy wdrożenia, zależne od zakładanej ilości użytkowników chmury:
 
+\begin{description}
+\item [Chmura prywatna] Jest to chmura stworzona na potrzeby danej organizacji, bez możliwości dostępu z zewnątrz. Fizyczne serwery tworzące chmurę mogą znajdować się wewnątrz sieci lokalnej organizacji (typ \textit{on-premises}) bądź poza siecią lokalną, ale wciąż pod pełną kontrolą tej organizacji (typ \textit{off-premises}), np. w wynajmowanej serwerowni. Ponieważ każdy kto ma dostęp do chmury jest ze sobą powiązany, nie występuje właściwość \textit{multi-tenancy} prowadząca do optymalizacji kosztów.
+\item [Chmura społecznościowa] Chmura dostępna dla wielu organizacji, które łączy wspólna misja czy cel, a zamknięta dla wszystkich spoza społeczności. Może być zarządzana przez jedną bądź wiele organizacji należących do społeczności. Podobnie jak chmura prywatna, może być \textit{on-premises} bądź \textit{off-premises}.
+\item [Chmura publiczna] Chmura dostępna dla wszystkich, dostępna tylko przez sieć publiczną. Nie ma możliwości stworzenia chmury publicznej typu \textit{on-premises}. Posiada właściwość \textit{multi-tenancy}. Zarządzanie odbywa się w pełni po stronie usługodawcy.
+\item [Chmura hybrydowa] Połączenie chmury prywatnej bądź społecznościowej oraz chmury publicznej. Taki układ pozwala np. na obsługę standardowego ruchu za pomocą chmury prywatnej, a w przypadku wzmożonego obciążenia (godziny wieczorne, wybrany dzień w roku) przekierowanie części ruchu na chmurę publiczną.
+\end{description}
 
-\section{Dokąd zmierza rozwój CC.}
+\section{Dokąd zmierza rozwój Cloud Computingu}
 
+Na podstawie historii najnowszej, a także mając na uwadze cele jakie stawia sobie technologia, autorka pracy dostrzega następujące kierunki rozwoju:
 \begin{itemize}
-\item Tactile Internet
-\item rozwój w kierunku IoT - edge i fog przy użyciu kontenerów
-\item ja bym widziała jakąś bazę, która raz na zawsze rozwiąże problem ,,jaką bazę wybrać''. Był na to fajny rysunek w jednej książce
-\item serverless -- bo to co jest to na pewno nie jest ostatnie słowo w tym temacie...
+\item \textbf{Dążenie do eliminacji problemu \textit{vendor lock-in}} (uzależnienia technologicznego od wybranego dostawcy usług chmurowych) \\
+Natychmiastowa popularność konteneryzacji, Kubernetes jako usługa oraz pomysły takie jak Kubeless i Serverless Framework pozwalają wnioskować, że dalsza ewolucja dąży do wypracowania uniwersalnych standardów wytwarzania aplikacji dla chmury.
+
+\item \textbf{Unifikacja systemów baz danych} \\
+W ostatnich latach stworzono wiele innowacyjnych systemów baz danych. Ilość wariantów do wybrania stała się wręcz przytłaczająca. Dla jednego projektu może być potrzebne nawet kilka typów baz, dodatkowo nawet w ramach jednego typu są różne możliwości. Microsoft dostrzegł ten problem i stworzył usługę Azure CosmosDB, obsługującą wiele typów baz. Zdaniem autorki to nie jest ostatnie słowo wypowiedziane w tym kierunku. System pozbawiony problemu vendor lock-in, sam dobierający format przechowywania danych, byłby wielkim ułatwieniem dla programistów.
+
+\item \textbf{Usprawnienie modelu serverless} \\
+Usługa AWS Lambda powstała w 2014 r., a Google Cloud Functions wyszła z fazy poglądowej dopiero miesiąc temu. Według autorki w przypadku usług FaaS konkurencja istnieje na tyle krótko, że dostarczyciele usług mogą się jeszcze wiele od siebie nawzajem nauczyć i zastosować nowe pomysły, które nieco zmienią implementacje tego typu usług. 
+
+\item \textbf{Wdrażanie Edge Computingu i Fog Computingu} \\
+Pomimo że chmura stanowi podstawę dla Internetu Rzeczy, dobrze rozwinięta ,,warstwa pośrednia'' jest niezbędna by tworzyć inteligentne miasta. Autorka spodziewa się większego zainteresowania koncepcją Edge, ponieważ nie wymaga aktualizacji routerów u użytkowników, więc cały proces dla użytkowników mógłby przebiegać przezroczyście. Router typu Fog mógłby znajdować się w gotowym nowoczesnym produkcie, np. w samoprowadzącym się samochodzie. 
+
 \end{itemize}
 
+%\begin{figure}[h]
+%	\centering
+%			\includegraphics[width=\textwidth]{gartner-trends.jpg}
+%		\caption{Raport dot. technologicznych trendów wykonany przez firmę Gartner w sierpniu 2017 r. \cite{siteGartnerTrends}}
+%		\label{fig:gartner-trends}
+%\end{figure}
 
-\begin{figure}[h]
-	\centering
-			\includegraphics[width=\textwidth]{gartner-trends.jpg}
-		\caption{Raport dot. technologicznych trendów wykonany przez firmę Gartner w sierpniu 2017 r. \cite{siteGartnerTrends}}
-		\label{fig:gartner-trends}
-\end{figure}
 
-
-\begin{figure}[h]
-	\centering
-			\includegraphics[width=\textwidth]{networked-society.png}
-		\caption{Technologie umożliwiające \textit{network society} \cite{ccSpringer}}
-		\label{fig:networked-society}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%			\includegraphics[width=\textwidth]{networked-society.png}
+%		\caption{Technologie umożliwiające \textit{network society} \cite{ccSpringer}}
+%		\label{fig:networked-society}
+%\end{figure}
 
 
 
