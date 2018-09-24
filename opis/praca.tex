@@ -181,6 +181,7 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/iotArchitects}
 \addbibresource{bibliography/iotEnterprise}
 \addbibresource{bibliography/nistArticle}
+\addbibresource{bibliography/rightscaleReport}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -215,6 +216,8 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteAzureIotEdge}
 \addbibresource{bibliography/siteGoogleIotEdge}
 \addbibresource{bibliography/siteGartnerTrends}
+\addbibresource{bibliography/siteAzureStack}
+\addbibresource{bibliography/siteGoogleCisco}
 
 
 
@@ -472,14 +475,14 @@ Przyjmuje się, że termin \textit{,,cloud computing''} po raz pierwszy został 
 
 Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w tym samym czasie rozwinęły się technologie postrzegane w czasie pisania niniejszej pracy jako rewolucyjne. Na potrzeby opracowania wyróżniono następujące grupy zmian:
 \begin{itemize}
-\item rozwój chmur publicznych (sekcja \ref{chmuryPubliczne}),
-\item rozwój rozwiązań opartych o kontenery (sekcja \ref{konteneryzacja}),
-\item rozwój technik programistycznych wyznaczających najlepsze praktyki tworzenia aplikacji dla chmury (sekcja \ref{mikroserwisy}),
-\item rozwój technologii bazodanowych dla systemów rozproszonych oraz metod analizy danych (sekcja \ref{nosql}),
-\item rozwój technologii przyśpieszających dostęp do usług chmurowych (sekcja \ref{fog}).
+\item rozwój chmur publicznych (sekcja \ref{section:chmuryPubliczne}),
+\item rozwój rozwiązań opartych o kontenery (sekcja \ref{section:konteneryzacja}),
+\item rozwój technik programistycznych wyznaczających najlepsze praktyki tworzenia aplikacji dla chmury (sekcja \ref{section:mikroserwisy}),
+\item rozwój technologii bazodanowych dla systemów rozproszonych oraz metod analizy danych (sekcja \ref{section:nosql}),
+\item rozwój technologii przyśpieszających dostęp do usług chmurowych (sekcja \ref{section:fog}).
 \end{itemize}
 
-\subsection{Rozwój chmur publicznych} \label{chmuryPubliczne}
+\subsection{Rozwój chmur publicznych} \label{section:chmuryPubliczne}
 
 W 2003 roku firma Citrix stworzyła Xen - system operacyjny przeznaczony tylko do wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. W marcu 2006 r. roku Amazon na podstawie Xena opracował swój produkt EC2. W ciągu 18 miesięcy zaczęło z niego korzystać ponad pół miliona osób.\cite{ccBiznes}
 
@@ -530,7 +533,7 @@ Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteA
 \end{table}
 \end{small}
 
-\subsection{Konteneryzacja i DevOps} \label{konteneryzacja}
+\subsection{Konteneryzacja i DevOps} \label{section:konteneryzacja}
 
 W tym samym czasie rozwijały się technologie przeznaczone do wystawiania własnych usług chmurowych. W 2010 r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na prowadzenie własnej platformy typu PaaS do tworzenia aplikacji w chmurze. 
 
@@ -622,7 +625,7 @@ Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla chmury tak 
 \item Istnieje standardowy sposób orkiestracji kontenerów (Kubernetes). Wiedzę na temat korzystania z niego można zastosować do projektów działających na chmurach publicznych, prywatnych i hybrydowych.
 \end{itemize}
 
-\subsection{Mikrousługi i serverless} \label{mikroserwisy}
+\subsection{Mikrousługi i serverless} \label{section:mikroserwisy}
 
 Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla chmury. W chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a jednocześnie zapewnić niezawodność i jak najniższy koszt eksploatacji, należy zapoznać się ze specyficznym sposobem tworzenia aplikacji dla chmury. Aplikację zgodną z tymi wytycznymi określa się jako \textbf{\textit{cloud native}}.
 
@@ -679,7 +682,7 @@ W 2017 r. powstał projekt Kubeless.\cite{siteKubelessReleases} Jest to otwarto�
 Serverless Framework obsługuje wszystkie wyżej wymienione platformy, z Kubeless włącznie.\cite{siteServerlessFramework}
 
 
-\subsection{Bazy NoSQL, NewSQL i rozwiązania dla Big Data} \label{nosql}
+\subsection{Bazy NoSQL, NewSQL i rozwiązania dla Big Data} \label{section:nosql}
 
 W literaturze rozróżnia się trzy rewolucje w rozwoju technologii bazodanowych.  \cite{noSqlHistory}
 
@@ -748,7 +751,7 @@ Kolejnym osiągnięciem z 2007 r. był artykuł Michaela Stonebrakera pt. ,,The 
 Rok 2007 był przełomowy także dla modelu \textbf{baz grafowych} -- powstała wtedy baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na wyższym poziomie abstrakcji oraz pozwalają na przeszukiwanie grafu do zadanego poziomu. Są stworzone dla danych, gdzie najważniejszą właściwością są relacje z innymi danymi, np. relacje w social media. Do odpytywania bazy grafowej używa się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak na dzień dzisiejszy nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z różnych serwerów znacząco obniżyłoby jego wydajność. Do projektów przetwarzania grafów na systemach rozproszonych należą: Apache Giraph (2016 r.), GraphX (część Apache Spark, 2014 r.), Titan (2015 r.) -- działający jako nakładka na HBase czy Cassandrę.
 
 
-\subsection{CDN i Fog Computing} \label{fog}
+\subsection{CDN i Fog Computing} \label{section:fog}
 
 Jak było wspomniane wcześniej, chmury obliczeniowe gromadzą się co do zasady w gigantycznych centrach danych. Scentralizowany charakter chmur powoduje opóźnienia względem dostępności usług znajdujących się bliżej użytkownika. W celu zapewnienia wysokiej jakości usług (ang. QoS, \textit{Quality of Service}) stosuje się sieci \textbf{CDN} (ang. \textit{Content Delivery Network}). Węzły sieci CDN są szeroko rozpostarte po całym świecie, na krawędzi (ang. \textit{edge}) dostawców usług internetowych (ang. ISP, \textit{Internet service provider}), znacznie bliżej użytkowników końcowych niż odległość od centrów danych (rysunek \ref{fig:cdn-schemat}). \cite{cdn}
 
@@ -800,7 +803,7 @@ Obecnie można zaobserwować rozwój zarówno w kierunku Fog Computingu jak i Ed
 
 \section{Wymagania stawiane współczesnym chmurom}
 
-Powszechnie korzysta się z atrybutów określonych przez amerykański Narodowy Instytut Standaryzacji i Technologii w 2011 r., zwanych \textbf{modelem NIST}. Wyróżnia on cechy zasadnicze, modele dostarczania usług i formy wdrożenia. \cite{nistArticle, ccCambridge}
+Powszechnie korzysta się z atrybutów określonych przez amerykański Narodowy Instytut Standaryzacji i Technologii w 2011 r., zwanych \textbf{modelem NIST}. Wyróżnia on cechy zasadnicze, modele dostarczania usług i formy wdrożenia. \cite{nistArticle, ccCambridge, azurePackt}
 
 \subsection{Zasadnicze cechy chmury}
 
@@ -822,7 +825,7 @@ Co do zasady istnieją 3 modele dostarczania usług:
 \item PaaS -- Platforma jako usługa (ang. \textit{Platform as a Service)},
 \item SaaS -- Oprogramowanie jako usługa (ang. \textit{Software as a Service}).
 \end{itemize}
-W literaturze i innych publikacjach często można spotkać się także z innymi podobnymi zwrotami w formie \textit{,,... as a Service''}, jednak zawsze jest to podkategoria dla tych powyższych. IaaS, PaaS i SaaS stanowią następujące po sobie warstwy.
+W literaturze i innych publikacjach często można spotkać się także z innymi podobnymi zwrotami w formie \textit{,,... as a Service''}, jednak zawsze jest to podkategoria dla tych powyższych. IaaS, PaaS i SaaS stanowią następujące po sobie warstwy. W przypadku wątpliwości związanej z klasyfikacją danej usługi wszelkie wątpliwości rozwiewa schemat umieszczony na rysunku \ref{fig:iaas-paas-saas}.
 
 \begin{figure}[h]
 	\centering
@@ -831,13 +834,17 @@ W literaturze i innych publikacjach często można spotkać się także z innymi
 		\label{fig:iaas-paas-saas}
 \end{figure}
 
-\textbf{IaaS} to wirtualne zasoby udostępnione jako usługa. Ponieważ wirtualizacja zasobów stanowi podstawową technikę stosowaną w modelu chmury, IaaS występuje zawsze gdy są udostępniane np. serwery wirtualne, dyski w chmurze czy sieci wirtualne. Przykład podgrupy: NaaS (\textit{Network} -- sieć).
+\textbf{IaaS} to wirtualne zasoby udostępnione jako usługa. Ponieważ wirtualizacja zasobów stanowi podstawową technikę stosowaną w modelu chmury, IaaS występuje zawsze gdy są udostępniane np. serwery wirtualne, dyski w chmurze czy sieci wirtualne. Przykładowe podgrupy to:
+\begin{itemize}
+\item NaaS (\textit{Network} -- sieć) -- sieci wirtualne,
+\item CaaS (\textit{Container} -- kontener) -- usługa konteneryzacji,
+\item KaaS (Kubernetes) -- CaaS z wykorzystaniem Kubernetes.
+\end{itemize}
+Klasyfikacja usługi CaaS może uchodzić za niejednoznaczną, ponieważ IaaS kojarzy się głównie z serwerami wirtualnymi, a kontenery z tworzeniem aplikacji. Podobnie jak serwery wirtualne odpowiadają wirtualizacji z użyciem nadzorcy typu 1, tak kontenery odpowiadają wirtualizacji na poziomie systemu operacyjnego. Stąd usługi, w których zarządzanie kontenerami jest wyeksponowane dla użytkownika, można zaliczyć do grupy IaaS.
 
 W \textbf{PaaS} jako platformę określa się każde oprogramowanie umożliwiające użytkownikowi (programiście) zarządzanie jego własnymi aplikacjami. Warstwa ta jest zawsze zbudowana na IaaS, gdyż owo oprogramowanie musi działać na jakimś systemie operacyjnym na maszynie wirtualnej. Warstwa PaaS obejmuje wszystko co jest potrzebne programiście, by jego aplikacja mogła działać w chmurze: wsparcie dla różnych języków programowania, systemy bazodanowe, serwer WWW. Przykładowe podgrupy to:
 \begin{itemize}
 \item FaaS (\textit{Functions} -- funkcje) -- wdrażanie w modelu serverless,
-\item CaaS (\textit{Container} -- kontener) -- wdrażanie aplikacji opakowanych w kontener,
-\item KaaS (Kubernetes) -- CaaS z wykorzystaniem Kubernetes,
 \item DBaaS (\textit{Database} -- baza danych) -- usługa dzięki której nie trzeba samemu instalować bazy danych ani nią administrować,
 \item BaaS/MBaaS (\textit{Mobile Backend}) -- wspomaganie aplikacji użytkownika narzędziami służącymi np. do wysyłania notyfikacji na urządzenia mobilne.
 \end{itemize}
@@ -896,11 +903,372 @@ Pomimo że chmura stanowi podstawę dla Internetu Rzeczy, dobrze rozwinięta ,,w
 
 \chapter{Porównanie różnych podejść}
 
+Usługę wspierającą urządzenie mobilne w chmurze można stworzyć i udostępnić na wiele sposobów. Dla programisty, który nie korzysta z chmury na co dzień, wybór ten może okazać się zaskakująco szeroki.
+
+W niniejszym rozdziale zostaną przedstawione i porównane konkretne sposoby tworzenia usługi w chmurze, w kolejności od najstarszych do najnowszych rozwiązań.
+
+Ze względu na największą popularność (rysunek \ref{fig:popularnosc}) oraz ilość dostępnych materiałów, w niniejszej pracy omawiając konkretne usługi chmurowe, koncentrowano się na chmurach AWS, Azure oraz Google Cloud.
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=\textwidth]{popularnosc.png}
+		\caption{Popularność dostawców usług chmurowych \cite{rightscaleReport}}
+		\label{fig:popularnosc}
+\end{figure}
+
+\section{Budowanie własnej chmury prywatnej} \label{section:chmuraPrywatna}
+
+Jest to rozwiązanie polegające na budowaniu wszystkiego samemu u podstaw. Potrzebny jest przynajmniej jeden serwer, połączenie z Internetem oraz zespół osób dbających o infrastrukturę. Trzeba pamiętać nie tylko o standardowym przygotowaniu (odpowiednia temperatura pomieszczenia itp.), ale także o bieżących naprawach, konserwacji sprzętu, byciu na bieżąco z najnowszymi wymogami bezpieczeństwa. 
+
+Pod względem idei posiadania własnych serwerów, chmura różni się tym, że docelowo zależy nam na korzyściach wynikających z dobrego skalowania systemów. Im więcej serwerów jest potrzebne, tym większym wyzwaniem staje się utrzymywanie całej infrastruktury i bycie odpowiedzialnym za jej bezpieczeństwo. 
+
+\subsection*{Podsumowanie}
+
+\subsubsection*{Główne narzędzia}
+\begin{itemize}
+\item hardware, łącze internetowe, prąd
+\item system operacyjny dla serwera, np. CentOS, Debian, Windows Server
+\item nadzorca typu 1 (ang. \textit{bare-metal hypervisor}), np. Xen, Oracle VM, Microsoft Hyper-V, VMware ESXi
+\item dla usług IaaS: OpenStack, OpenNebula
+\item dla usług CaaS: Kubernetes, Docker Swarm, Mezosphere DC/OS
+\item dla usług PaaS: Cloud Foundry, OpenShift
+\end{itemize}
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Pełna niezależność.
+\item Jedyna opcja dla organizacji, które muszą działać w obrębie sieci lokalnej, bez dostępu do Internetu (np. podczas ćwiczeń wojskowych).
+\item Brak zmartwienia związanego z brakiem wiedzy o tym, gdzie fizycznie znajdują się dane.
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Konieczność samodzielnego troszczenia się o infrastrukturę: serwis komputerów, temperatura w serwerowni, czekanie na kuriera z nowymi częściami itp.
+\item Konieczność samodzielnego aktualizowania oprogramowania i dbałości o bezpieczeństwo danych.
+\item Brak możliwości skorzystania z ekonomii skali, obserwowanej w chmurach publicznych.
+\end{itemize}
+
+\section{Łączenie chmury prywatnej z chmurą hybrydową}
+
+Posiadając chmurę prywatną, w przypadku skalowania w górę nie trzeba koniecznie kupować nowych serwerów. Można skonfigurować chmurę hybrydową, łącząc chmurę prywatną z publiczną. Chmury publiczne zazwyczaj udostępniają interfejs do łączenia ich przez VPN z chmurą prywatną.
+
+Istnieje także możliwość pokuszenia się o zakup gotowego zestawu dostosowanego do tworzenia chmury hybrydowej, ze wsparciem firm specjalizujących się w tych rozwiązaniach.
+
+Zgodnie z raportem RightScale 2018\cite{rightscaleReport}, z rozwiązań hybrydowych w 2017 r. korzystało 58\% ankietowanych, a rok później liczba ta spadła do 51\%. Jednocześnie odnotowano nadanie większego priorytetu chmurom publicznym (zwiększenie z 29\% do 38\%), a mniejszego hybrydowym (spadek z 50\% do 45\%).
 
 
-\section{Chmury publiczne}
+\subsection*{Podsumowanie}
 
-\section{Chmury prywatne}
+
+
+\subsubsection*{Główne usługi chmurowe}
+Usługi przydatne przy tworzeniu chmury hybrydowej wymieniono w tabeli \ref{table:hybrid}.
+
+
+\noindent
+\begin{small}
+\begin{table}[h!]
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{ |L|L|L|L| }
+
+\hline
+\multirow{2}{*}{Typ usługi} & \multicolumn{3}{|c|}{Dostawca} \\
+
+\cline{2-4}
+& \multicolumn{1}{|c|}{AWS} & \multicolumn{1}{|c|}{GCP} & \multicolumn{1}{|c|}{Azure} \\
+
+\hline
+wirtualna prywatna sieć & Virtual Private Cloud & Virtual Private Cloud & Virtual Network \\
+\hline
+dedykowane prywatne połączenie & Direct Connect & Cloud Interconnect & Azure Express Route \\
+\hline
+zarządzanie kontami użytkowników & Identity and Access Management & Cloud Identity & Azure Active Directory \\
+\hline
+wsparcie bezpieczeństwa chmury prywatnej & Inspector & b/d & Azure Security Center \\
+\hline
+integracja danych & Storage Gateway & b/d & StorSimple \\
+\hline 
+
+\end{tabularx}
+
+
+\caption{Główne interfejsy chmur publicznych dla chmur hybrydowych}
+		\label{table:hybrid}
+
+\end{table}
+\end{small}
+
+\subsubsection*{Gotowe zestawy do tworzenia chmur hybrydowych}
+Gotowe zestawy integrujące dedykowany zestaw fizycznych urządzeń z wybraną chmurą publiczną wymieniono w tabeli \ref{table:hybridIntegrated}.
+
+\noindent
+\begin{small}
+\begin{table}[h!]
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{ |L|L|L| }
+
+\hline
+Nazwa & Chmura publiczna & Zestawy \\
+\hline
+Azure Stack \cite{siteAzureStack} & Microsoft Azure & 
+Avanade Solution, \newline
+Cisco Integrated System, \newline
+Dell EMC Cloud, \newline
+HPE ProLiant (HP), \newline
+Huawei Hybrid Cloud Solution, \newline
+Lenovo ThinkAgile SX, \newline
+TERRA (Wortmann AG, Intel, and Microsoft) \\
+\hline
+Cisco and Google Cloud \cite{siteGoogleCisco} & Google Cloud & Cisco Hybrid Cloud Platform for Google Cloud \\
+\hline
+
+
+\end{tabularx}
+
+
+\caption{Gotowe rozwiązania dla chmur hybrydowych}
+		\label{table:hybridIntegrated}
+
+\end{table}
+\end{small}
+
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Największa elastyczność -- korzystanie z zalet chmur prywatnych i publicznych.
+\item Możliwość wykorzystywania chmury publicznej tylko w przypadku gdy prywatna infrastruktura przestaje wystarczać.
+\item Możliwość tworzenia kopii zapasowej do chmury.
+\item Możliwość wykorzystywania wybranych specjalistycznych zastosowań chmury publicznej.
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Konieczność utrzymywania rozwiązań zarówno chmury prywatnej jak i chmury publicznej.
+\item Spowolnienie rozwoju przez zachowywanie kompatybilności pomiędzy chmurami.
+\end{itemize}
+
+
+\section{Wykupienie serwera wirtualnego w chmurze}\label{section:podejscieVm}
+
+Jest to podejście, w którym rezygnuje się z zarządzania fizyczną infrastrukturą komputerową. Odchodzą zatem ograniczenia spotykane przy budowaniu własnej chmury prywatnej (opisane w sekcji  \ref{section:chmuraPrywatna}). Nadal jednak trzeba samodzielnie wybrać system operacyjny oraz doinstalować odpowiednie środowiska.
+
+Serwer wirtualny w chmurze można łatwo pomylić ze zwykłym VPS (ang. \textit{Virtual Private Server}) oferowanym przez firmy hostingowe. Hosting VPS istniał również w czasach ,,przed'' Amazon EC2. Typowo polegał na podzieleniu zasobów jednej fizycznej maszyny na kilka mniejszych -- wirtualnych, za pomocą oprogramowania typu Xen. Podobnie jak fizyczny serwer, VPS miał odgórnie ustaloną ilość RAM, wielkość dysku twardego i limity CPU. Można postrzegać VPS jako tańszą alternatywę dla fizycznego serwera. 
+
+Natomiast podejście ,,chmurowe'' do serwerów wirtualnych różni się od tradycyjnego podejścia VPS w następujących względach:
+\begin{itemize}
+\item Dochodzi warstwa abstrakcji, dzięki której maszyna wirtualna nie jest ściśle przypisana do fizycznej maszyny. Można zmieniać ilość przydzielonych zasobów oraz zmieniać ilość wirtualnych maszyn hostujących aplikację.
+\item Rozliczanie odbywa się w modelu płatności za zużycie (\textit{utility computing}). Płatność za tradycyjne serwery wirtualne odbywa się w formie abonamentu, np. w przypadku miesięcznego okresu rozliczeniowego, chcąc używać VPS przez kilka dni, nadal należałoby zapłacić za cały miesiąc.
+\item Zgodnie z modelem chmury NIST, panuje samoobsługa realizowana przy pomocy panelu administracyjnego. Nie ma konieczności składania zamówienia czy czekania na personel aż uruchomi skonfigurowaną maszynę.
+\item Możliwość wykonania kopii zapasowej maszyny wirtualnej, znacznie ułatwione przez chmurową warstwę abstrakcji. 
+\end{itemize}
+
+W związku z dostępnością narzędzi przygotowanych do tworzenia chmur prywatnych, dostarczyciele serwerów VPS zaczęli stosować niektóre bądź wszystkie techniki wymienione powyżej. Wówczas główną różnicę stanowi zaplecze zasobów. W przypadku dużych chmur publicznych jest ono tak duże, że dla skalowania ilości maszyn wirtualnych w górę tworzy się iluzja nieskończoności zasobów, gdyż można zażyczyć sobie nawet dziesiątki tysięcy instancji serwerów wirtualnych. Dla mniejszych dostawców to wciąż może być zbyt wielkie wyzwanie.
+
+Jednocześnie chmury publiczne nie stronią od świadczenia usług bardziej przypominających VPS. Spośród opcji rozliczania można wybrać takie uwzględniające rezerwację określonej puli zasobów na określony czas. Również istnieją możliwości wynajęcia serwera fizycznie odizolowanego od innych, np. w usłudze Amazon EC2 Dedicated Hosts.
+
+Wynajmując prawdziwy serwer wirtualny w chmurze należy pamiętać, że to nie jest hosting, nawet jeśli go przypomina. Cechami chmury są skalowalność i płatność za zużycie. Podczas konfiguracji usługi IaaS istnieje możliwość indywidualnego doboru wielu parametrów, które należy dopasować w sposób optymalizujący koszty. W koszta należy również uwzględnić dodatkowe usługi poza maszynami wirtualnymi, np. wynajęcie przestrzeni dyskowej na kopie zapasowe maszyn wirtualnych, usługi typu Load Balancer, itp.
+
+Do tworzenia maszyn wirtualnych można używać napisanych przez siebie programów wykorzystujące API usługodawcy. Dla popularnych technologii (Java, Python itp.) są dostępne SDK do obługi wybranej chmury, a także biblioteki obsługujące usługi IaaS wielu dostawców.
+
+\subsection*{Podsumowanie}
+
+
+\subsubsection*{Serwery wirtualne w chmurach publicznych}
+\begin{itemize}
+\item \textbf{Amazon Elastic Compute Cloud (EC2)} -- Aby uruchomić nową instancję, należy wybrać obraz AMI (ang. \textit{Amazon Machine Image}) zawierający system operacyjny wraz z oprogramowaniem, a także wybrać typ instancji zawierający wstępną konfigurację. Wraz z maszyną zostaje utworzony wirtualny dysk w usłudze Amazon Elastic Block Store. Można zmodyfikować domyślną konfigurację o dodanie m.in. load balancerów (Elastic Load Balancing), automatycznie skalującej się grupy (Amazon EC2 Auto Scaling), dodatkowych dysków w EBS. Wszystkie te usługi zostały zebrane wewnątrz panelu administracyjnego usługi EC2.
+\item \textbf{Azure Virtual Machines} -- Wbrew mitom pozwala na utworzenie maszyn wirtualnych działających na systemach innych niż Windows, m.in. Ubuntu, Red Hat, SUSE, CoreOS, FreeBSD. Obrazy tych systemów znajdują się w Azure MarketPlace. Do skalowania służą Virtual Machine Scale Sets. Ciekawą opcję stanowią Azure Extensions, czyli skrypty automatycznie uruchamiane po uruchomieniu maszyny wirtualnej. W przypadku maszyn działających na systemie Linux dostępna jest również opcja Cloud-init, gdzie można zdefiniować listę paczek do doinstalowania po pierwszym uruchomieniu systemu. 
+\item \textbf{Google Cloud Platform} -- Usługę Google wyróżnia prosty, schludny interfejs użytkownika. Do uruchomienia instancji maszyny wirtualnej z domyślnymi ustawieniami wystarcza jeden ekran z opcjami. W przypadku braku maszyn wirtualnych portal proponuje wykonać jeden projekt szacowany na 15 minut przy użyciu samouczka.
+\end{itemize}
+
+\subsubsection{Biblioteki przystosowane do obsługi wielu chmur IaaS}
+\begin{itemize}
+\item \textbf{Apache LibCloud} -- biblioteka dla języka Python. Obsługuje ponad 50 różnych dostawców.
+\item \textbf{Apache jClouds} -- biblioteka dla języka Java. 
+\item \textbf{Libretto} -- biblioteka dla języka Go.
+\item \textbf{pkgcloud} -- biblioteka dla node.js.
+\item \textbf{Fog} -- biblioteka dla Ruby.
+\end{itemize}
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Brak początkowej inwestycji w infrastrukturę.
+\item Brak zmartwień związanych z samodzielnym administrowaniem serwerami.
+\item Skalowalność infrastruktury.
+\item Możliwość instalowania dowolnych środowisk.
+\item Możliwość przeniesienia tradycyjnie napisanej aplikacji do chmury.
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Większy koszt w porównaniu z usługami PaaS (np. koszty licencji oprogramowania).
+\item Konieczność samodzielnego administrowania oprogramowaniem.
+\item Konieczność samodzielnego dbania o bezpieczeństwo i aktualizacje.
+\item Skomplikowany model rozliczania -- mnogość parametrów od których zależy całkowity koszt usług. Niewystarczająca uwaga natychmiast odbija się na karcie podanej do rozliczeń. Autorka pracy ma w tym punkcie zastrzeżenie do firmy Amazon, ponieważ z jednej strony dużymi literami ogłasza możliwość darmowego przetestowania usług, a z drugiej strony samo założenie konta kosztuje 1 USD, a założenie maszyny wirtualnej (która sama w sobie była bezpłatna) z domyślnymi opcjami kosztowało kolejnego. 
+\item Organizacje celujące w ograniczoną ilość odbiorców mogą potrzebować serwera wirtualnego, ale nie potrzebować skalowalności jaką daje chmura. Dla nich odległość do centrum danych mieszczącego się w innym kraju oraz korzystanie z oferty zagranicznych usługodawców mogą stanowić wady, a hosting typu VPS dostarczany z pobliskiej miejscowości lepszą alternatywę.
+\end{itemize}
+
+\section{Usługi typu PaaS oparte o maszyny wirtualne w chmurach publicznych}
+
+Jest to pierwsza generacja usług typu PaaS, gdzie w odróżnieniu od tworzenia własnej maszyny wirtualnej i na niej uruchamianiu aplikacji, twórca aplikacji ma skupić się jedynie na dostarczeniu aplikacji, a utworzenie odpowiednich maszyn wirtualnych znajduje się po stronie usługodawcy. Obecnie funkcjonują również inne sposoby usprawniające pracę programisty w kontekście usług chmurowych i te sposoby zostały omówione w kolejnych sekcjach.
+
+Główną charakterystyką tych usług jest to, że są one specyficzne dla danej chmury. Każda posiada własne mechanizmy łączenia ze sobą różnych typów usług stworzonych dla developerów. Mogą różnić się m.in. wspieranymi technologiami. Przykładowo, firma Microsoft wspiera szerokie spektrum technologii, ale zawsze w pierwszej kolejności .NET Framework. Chmura Google zaczynała od wsparcia dla Javy i Pythona, a obecnie można tworzyć również w Node.js, PHP, Go, Ruby, .NET Core.
+
+Wadą tego typu rozwiązań jest duże przywiązanie do wybranego dostawcy usług. Każdy udostępnia swój własny SDK dla wspieranych języków programowania i przeniesienie aplikacji napisanej w ten sposób do innego usługodawcy wymaga przepisywania znacznej części kodu lub może być niemożliwe.
+
+Platformy aplikacji w chmurach publicznych są dobrze przygotowane do tworzenia aplikacji typu \textit{cloud native}, zgodnych z metodyką \textit{12-factor app}. Usługodawcy dbają również o łatwe stosowanie strategii DevOps na swoich platformach. Powyższe implikuje, iż tworząc tego typu aplikacje warto wcześniej dobrze zapoznać się z metodyką 12-factor, jak również z wzorcami projektowymi towarzyszącymi tworzeniu mikrousług. 
+
+Wsparcie dla tworzenia aplikacji w chmurze może polegać na:
+\begin{itemize}
+\item budowaniu back-endu dla aplikacji mobilnych -- jest to zastosowanie, na którym koncentruje się niniejsza praca. Polega na udostępnianiu węzłów końcowych API (ang. \textit{endpoints}), z którymi komunikuje się aplikacja mobilna. Odbywa się to przy pomocy REST lub SOAP;
+\item serwisie notyfikacji -- umożliwia wysyłanie notyfikacji push z poziomu chmury;
+\item aplikacjach logicznych -- umożliwiają definiowanie przepływów, np. segregacja wiadomości z Twittera a następnie automatyczne wysłanie e-maili;
+\item stronach internetowych -- gotowe szablony stron internetowych opartych np. o Wordpress czy Joomla!;
+\item korelowaniu i analizie różnych źródeł danych.
+\end{itemize}
+
+\subsection*{Podsumowanie}
+
+\subsubsection{Główne usługi wspierające tworzenie back-endu dla aplikacji mobilnych}
+
+AWS:
+\begin{itemize}
+\item \textbf{AWS Elastic Beanstalk} -- aplikacje internetowe oraz mikrousługi
+\item \textbf{AWS Lambda} -- platforma serverless; ten typ zostanie szerzej omówiony w sekcji \ref{section:podejscieServerless}
+\item \textbf{Simple Storage Services (S3)} -- przechowywanie danych binarnych
+\item \textbf{Amazon DynamoDB} -- baza obsługująca dwa modele danych: dokumentowe oraz klucz-wartość
+\item \textbf{Amazon Relational Database Service (RDS)} -- relacyjna baza danych kompatybilna z różnymi silnikami baz danych: PostgreSQL, MySQL, MariaDB, Oracle Database, Microsoft SQL Server
+\item \textbf{Amazon Aurora} -- baza kompatybilna z PostgreSQL oraz MySQL, zarządzana przez RDS
+\end{itemize}
+
+\noindent
+Azure:
+\begin{itemize}
+\item \textbf{Azure App Service}
+	\begin{itemize}
+		\item \textbf{Web Apps} -- aplikacje internetowe oraz mikrousługi
+		\item \textbf{Mobile Apps} -- tworzenie backendu dla aplikacji mobilnych, możliwość synchronizacji offline, połączenie z Notification Hubs do wysyłania notyfikacji push
+		\item \textbf{WebJobs} -- zadania wykonywane po odebraniu zdarzenia
+		\item \textbf{Functions} -- bazująca na WebJobs platforma serverless; ten typ zostanie szerzej omówiony w sekcji \ref{section:podejscieServerless}
+	\end{itemize}
+\item \textbf{Azure Storage}
+	\begin{itemize}
+		\item \textbf{Blob Storage} -- dane binarne
+		\item \textbf{Table Storage} -- baza NoSQL typu \textit{wide-column}
+		\item \textbf{Queue Storage} -- kolejki komunikatów
+	\end{itemize}
+\item \textbf{Azure Cosmos DB} -- baza NoSQL obsługująca wiele modeli danych: grafowe, dokumentowe, klucz-wartość oraz \textit{wide-column}
+\item \textbf{Azure SQL Database} -- baza relacyjna kompatybilna z MS SQL
+\item \textbf{Azure Notification Hubs} -- wysyłanie notyfikacji push na urządzenia z różnymi systemami operacyjnymi
+\item \textbf{Azure Cognitive Services} -- usługi ułatwiające uczenie maszynowe, np. rozpoznawanie obrazów
+
+\end{itemize}
+
+\noindent
+Google Cloud:
+\begin{itemize}
+\item \textbf{Google App Engine} -- platforma tworzenia mikrousług
+\item \textbf{Google Cloud Endpoints} -- narzędzia do generowania API i bibliotek na podstawie aplikacji w App Engine
+\item \textbf{Google Cloud Functions} -- platforma serverless; ten typ zostanie szerzej omówiony w sekcji \ref{section:podejscieServerless}
+\item \textbf{Google Cloud Datastore} -- baza NoSQL typu dokumentowego
+\item \textbf{Google Cloud Firebase} -- baza NoSQL typu dokumentowego, będąca następcą Datastore; aktualnie w wersji beta
+\item \textbf{Google Cloud SQL} -- baza relacyjna kompatybilna z MySQL
+\item \textbf{Google Cloud Storage} -- przechowywanie danych binarnych
+\item \textbf{Google Cloud Bigtable} -- baza typu \textit{wide-column}
+\item \textbf{Google Cloud Spanner} -- baza relacyjna skalowalna horyzontalnie
+
+\end{itemize}
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Tańszy koszt w porównaniu z IaaS.
+\item Koncentracja na zadaniu tworzenia aplikacji.
+\item Dostęp do specjalistycznych usług, np. rozpoznawania obrazów.
+\item Wsparcie dla DevOps w zintegrowanym środowisku danej platformy.
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Problem \textit{vendor lock-in} -- trudność w przenoszeniu aplikacji na inną platformę.
+\item Konieczność zastosowania się do rozwiązań dyktowanych przez początkowo wybranego usługodawcę. Można napotkać na trudność we wprowadzaniu zmian do już istniejących aplikacji, ponieważ gdy usługodawca zmieni API, wprowadzając zmianę należy również dostosować aplikację do aktualnego API.
+\item Wiązanie się z konkretnym usługodawcą oznacza konieczność zatrudniania programistów wyspecjalizowanych w usługach tego dostawcy. Występuje tu potencjalna trudność w znalezieniu pracownika oraz płaceniu za jego wąską specjalizację.
+\item Mniejsza elastyczność niż w IaaS.
+\item Konieczność zapoznania się z dobrymi praktykami tworzenia aplikacji \textit{cloud native} a także mikrousług.
+\end{itemize}
+
+\section{Samodzielna instalacja orkiestratora kontenerów}\label{section:instalujKontenery}
+
+Jest to podejście, które do niedawna (do czasu publikacji usług typu CaaS) miało szczególne znaczenie, ponieważ pozwalało na korzystanie z Cloud Foundry czy Kubernetes pomimo braku specjalnego wsparcia po stronie chmur publicznych. 
+
+Rozwiązania te dzięki wykorzystaniu kontenerów eliminują problem \textit{vendor lock-in}. Trzeba jednak samemu przejść przez proces instalacji odpowiedniego oprogramowania na serwerze wirtualnym lub fizycznej maszynie (ang. \textit{bare-metal}).
+
+Chmury publiczne wspierają konteneryzację jako usługę od stosunkowo niedawna. Wciąż 57\% wdrożeń Kubernetes opiera się na Amazon EC2. Podejście oparte o samodzielną instalację niejednokrotnie będzie można spotkać w literaturze, na stronach internetowych oraz w już wdrożonych aplikacjach.
+
+\subsection*{Podsumowanie}
+
+Główne usługi chmurowe oraz zalety i wady dziedziczą się odpowiednio z wynajmu maszyny wirtualnej (sekcja \ref{section:podejscieVm}) bądź z tworzenia chmury prywatnej (sekcja \ref{section:chmuraPrywatna}).
+
+\subsubsection{Główne narzędzia}
+\begin{itemize}
+\item Kubernetes
+\item Docker Swarm
+\item Mezosphere DC/OS
+\item Cloud Foundry
+\end{itemize}
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Brak problemu \textit{vendor lock-in}.
+\item Możliwość korzystania z obrazów Dockera, które uchodzą za standard obsługiwany na każdej platformie.
+\item Możliwość skalowania aplikacji w standardowy sposób.
+\item Możliwość korzystania z dowolnych technologii w odpowiednich wersjach.
+\item Możliwość zatrudniania programistów o różnych umiejętnościach, ponieważ nie muszą znać technologii podyktowanych przez wybranego dostawcę usług chmurowych. Co więcej, każda mikrousługa może być napisana w innej technologii, więc łatwiej znaleźć odpowiednich specjalistów.
+\item Możliwość rozwijania oprogramowania lokalnie na komputerze, mając pewność, że na środowisku produkcyjnym będą obowiązywały dokładnie te same narzędzia.
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Konieczność samodzielnej instalacji potrzebnego środowiska.
+\end{itemize}
+
+\section{Usługa konteneryzacji w chmurach publicznych}
+
+Na fali ogromnej popularności Dockera, a później Kubernetes, zaczęły powstawać usługi typu CaaS/KaaS, pozwalające na korzystanie z dobrodziejstw orkiestratorów kontenerów bez konieczności ich instalowania. Usługi te zazwyczaj pozwalają zarządzać orkiestratorem z poziomu narzędzia CLI bądź przy pomocy graficznego interfejsu (rysunek \ref{fig:kubernetes-engine}).
+
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=\textwidth]{kubernetes-service.png}
+		\caption{Graficzny interfejs pozwalający skonfigurować Kubernetes w Google Kubernetes Engine}
+		\label{fig:kubernetes-engine}
+\end{figure}
+
+\subsection*{Podsumowanie}
+
+\begin{itemize}
+\item \textbf{Google Kubernetes Engine}
+\item \textbf{Azure Kubernetes Service (AKS)}
+\item \textbf{Amazon ECS -- Amazon Elastic Container Service} -- własna implementacja orkiestracji kontenerów Dockera stworzona przez Amazona
+\item \textbf{Amazon EKS -- Amazon Elastic Container Service for Kubernetes} -- wersja implementująca Kubernetes
+\end{itemize}
+
+\subsubsection{Perspektywy}
+
+\begin{itemize}
+\item Prosta możliwość wypróbowania i skorzystania z Kubernetes bez przechodzenia przez proces konfiguracji całej infrastruktury.
+\item Główne zalety dziedziczą się z zalet opisanych w sekcji poświęconej samodzielnej instalacji orkiestratora kontenerów (sekcja \ref{section:instalujKontenery}).
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Konieczność zapoznania się z odpowiednim konfigurowaniem orkiestratora kontenerów. Jest to konfiguracja dotycząca infrastruktury, czyli dla twórcy aplikacji nie jest związana z programowaniem.
+\item Pod względem tworzenia aplikacji wypada znać i umieć stosować w praktyce zasady dotyczące tworzenia aplikacji dla chmury, w szczególności mikrousług.
+\end{itemize}
+
+
+\section{Usługi typu PaaS oparte o kontenery w chmurach publicznych}
+
+
+\section{Serverless} \label{section:podejscieServerless}
 
 
 \chapter{Analiza wyboru platformy dla aplikacji mobilnej}
