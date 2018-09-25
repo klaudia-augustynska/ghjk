@@ -184,6 +184,7 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/rightscaleReport}
 \addbibresource{bibliography/serverlessArticle}
 \addbibresource{bibliography/openLambdaArticle}
+\addbibresource{bibliography/windowsAzureWprowadzenie}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -339,9 +340,7 @@ Ponieważ tradycyjne programy do zarządzania wydatkami nie posiadają wyżej wy
 \textit{Rozdział 1. -- Wprowadzenie} zawiera najważniejsze informacje o tym, skąd wziął się Cloud Computing, jaki jest obecny stan wiedzy na jego temat oraz w jakim kierunku zmierza jego rozwój. 
 
 \noindent
-\textit{Rozdział 2. -- Porównanie różnych podejść} prezentuje dziewięć różnych podejść do wytwarzania w chmurze aplikacji, z którą może komunikować się aplikacja mobilna. Przy każdym podejściu czytelnik znajdzie listy konkretnych narzędzi oraz usług chmurowych, a także listy zalet i wad danego podejścia.
-
-TODO. NAPISZĘ O TYCH ROZDZIAŁACH W CZASIE PRZESZŁYM, JAk RZECZYWIŚCIE BĘDĄ W CZASIE PRZESZŁYM
+\textit{Rozdział 2. -- Porównanie różnych podejść} prezentuje dziewięć różnych podejść do wytwarzania w chmurze serwisów, z którymi może komunikować się aplikacja mobilna. Przy każdym podejściu czytelnik znajdzie listy konkretnych narzędzi oraz usług chmurowych, a także listy zalet i wad danego podejścia.
 
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
@@ -1411,11 +1410,103 @@ Podstawowym ograniczeniem związanym z używaniem Kubeless jest konieczność zd
 
 \chapter{Analiza wyboru platformy dla aplikacji mobilnej}
 
-\section{Wytumaczenie czemu to jest typowy projekt}
+\section{Opis projektu aplikacji mobilnej}
 
-\section{Wymagania co trzeba wziąć pod uwagę}
+Pomysł na aplikację mobilną tworzoną w ramach pracy, to realny przykład aplikacji, dla której chmura może stanowić niezbędne wsparcie. Powody ku temu są następujące:
+\begin{itemize}
+\item do działania wymaga serwera,
+\item komunikuje się używając REST-owego API,
+\item działa w oparciu o treść tworzoną przez użytkowników,
+\item w teorii ma szansę zyskać popularność, czyli może być wymagana zdolność do skalowania w górę.
+\end{itemize}
 
-\section{Werdykt, kandydatka nr 1, 2 ,3}
+\subsection{Geneza pomysłu}\label{section:genezaPomyslu}
+
+Pomysł polega na stworzeniu nowatorskiej aplikacji służącej do zapisywania wydatków. Tego typu aplikacje dotychczas tworzone były z myślą o jednym użytkowniku i raczej nie wymagały do działania serwera. Z doświadczenia autorki pracy, takie podejście jest skuteczne do czasu, gdy mieszka się samemu, a wszystkie wydatki tworzy się z myślą o sobie. 
+
+W przypadku gdy mieszka ze sobą więcej osób, liczby przestają cokolwiek mówić, gdyż może być tak, że jedna osoba robi więcej zakupów czy inna płaci rachunki. Powstają problemy jak się nawzajem rozliczać. Szczególnie biorąc pod uwagę, że różne kategorie wydatków można rozliczać w różny sposób, np.:
+\begin{itemize}
+\item wydatki na higienę, gdzie z części rzeczy korzystają wszyscy, a część służy konkretnym osobom,
+\item wydatki na samochód, gdzie za naprawy mogliby płacić wszyscy użytkownicy po równo, a za paliwo zgodnie z użytkowaniem,
+\item wydatki na rachunki, gdzie można ustalić, że osoba zarabiająca więcej będzie płaciła proporcjonalnie więcej,
+\item wydatki na jedzenie, gdzie jedzenie dla jednej osoby może kosztować znacznie więcej niż dla drugiej.
+\end{itemize}
+Gdy gospodarstwo domowe liczy więcej osób, wzajemne rozliczenia stają się skomplikowane. Trudno wówczas prowadzić budżet domowy, kontrolować gdzie ,,wyciekają'' pieniądze. Można starać się, aby wydatki były zapisywane na jednym komputerze, można pewne obliczenia przeprowadzić ręcznie. Nie zapewnia to jednak wygody oddzielenia własnych wydatków od wydatków innych, a także nie umożliwia sprawdzania np. ile wynoszą wydatki na jedzenie w tym miesiącu.
+
+Biorąc pod uwagę powyższe, idealnym rozwiązaniem problemu zapisywania wydatków przez kilka osób byłaby aplikacja, która umożliwiłaby połączenie kilku użytkowników w grupę i przy pomocy serwera przeprowadzałaby wszystkie potrzebne obliczenia. Gwarantowałoby to niespotykaną wcześniej precyzję w rozliczeniach, przy jednoczesnej prostocie obsługi. 
+
+Do obsługi wystarczyłaby jakakolwiek aplikacja kliencka zdolna do połączenia z Internetem. Serwer zadbałby o właściwą synchronizację pomiędzy instancjami aplikacji. Aby umożliwić precyzyjne rozliczenia, dodawanie wydatku powinno umożliwić wyszczególnienie, że należy do kategorii, w której panuje określony sposób rozliczeń. 
+
+Jest możliwe ułatwić tę czynność przez rozpoznawanie obrazu, gdzie podstawowe parametry (cena na paragonie, data zakupu, nazwa sklepu) byłyby wczytywane automatycznie. Z doświadczenia autorki w zapisywaniu dodatków wynika, że zazwyczaj prawie wszystkie pozycje na paragonie odnoszą się do jednej kategorii. Aby wygodnie wyszczególnić pojedynczą rzecz na paragonie, wystarczy odjąć ją od ceny całkowitej i przypisać do innej kategorii. Możliwość wyszczególnienia wydatków z danego paragonu byłaby sporym ułatwieniem.
+
+Również z doświadczenia autorki spory problem stanowi rozliczanie wydatków na jedzenie. Trudno wyznaczyć model, w którym owo rozliczenie przeprowadzone jest jednocześnie sprawiedliwie oraz wygodnie. Możliwym rozwiązaniem, będącym elementem pomysłu na aplikację, byłoby automatyczne tworzenie przeliczników dla kategorii ,,jedzenie'', bazując na wprowadzonych danych takich jak: waga, wiek, płeć, wzrost i poziom aktywności fizycznej u danej osoby. Wykorzystując siłę serwera w chmurze, wszystkie potrzebne obliczenia byłyby przeprowadzone automatycznie.
+
+Kolejną rzeczą będącą utrapieniem tradycyjnych aplikacji są wycieczki zagraniczne i wydatki w obcej walucie. Trudno w takich sytuacjach podtrzymywać kontrolę nad tym, ile ma się pieniędzy, jeśli część występuje w obcej walucie. Dlatego pomysł uwzględnia także obsługę różnych walut.
+
+Tak skonstruowana aplikacja praktycznie nie wymagałaby większego wysiłku niż tradycyjne programy do zapisywania wydatków. Za to posiadając dodatkowe informacje byłaby w stanie generować wiele przydatnych raportów, np.:
+\begin{itemize}
+\item ile wydaje się jako gospodarstwo domowe w danej kategorii,
+\item ile dana osoba wydaje na ubrania,
+\item ile wspólnie wydaje się na życie,
+\item ile dana osoba wydaje na jedzenie,
+\item w których sklepach najczęściej się wydaje pieniądze,
+\item ile dana osoba lub wszyscy razem posiadają pieniędzy w jakich walutach.
+\end{itemize}
+
+\subsection{Typowy projekt dla chmury}
+
+Opisany w sekcji \ref{section:genezaPomyslu} pomysł stanowi przykład typowego projektu informatycznego. Rozwiązuje problem życia codziennego przez umiejętne zebranie informacji, przetworzenie jej i zwrócenie wartościowych wyników. 
+
+Jednocześnie nie jest to pomysł czysto teoretyczny, czyli taki, z jakim często można mieć styczność przerabiając różne samouczki od programowania. Tego rodzaju projekty są często zbyt uproszczone, by pozwolić zetknąć się z rzeczywistymi problemami. Nie jest to sztandarowy program do napisania, taki jak ,,lista zadań'', który został już przerobiony przez innych pod każdym możliwym kątem.
+
+Realizacja tego pomysłu nie byłaby możliwa bez serwera. Serwer można teoretycznie utworzyć na tradycyjnej infrastrukturze niezgodnej z modelem chmury. Wówczas niestety aplikacji grozi tzw. ,,syndrom Naszej-Klasy'' (nazwany tak w książce \textit{,,Windows Azure. Wprowadzenie do programowania w chmurze''}), gdzie autor aplikacji sam nie przewiduje jej nagłego wzrostu popularności. Sukces staje się wtedy zwiastunem klęski, ze względu na wdrożenie aplikacji w sposób niepozwalający na obsługę większego ruchu. Zirytowani użytkownicy odwracają swoje zainteresowanie od aplikacji, która ma problemy z dostępnością. \cite{windowsAzureWprowadzenie} Zależność tę widać na rysunku \ref{fig:nasza-klasa}.
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.85\textwidth]{nasza-klasa.png}
+		\caption{Wykres obrazujący problem tradycyjnego podejścia do skalowania aplikacji \cite{windowsAzureWprowadzenie}}
+		\label{fig:nasza-klasa}
+\end{figure}
+
+Biorąc pod uwagę powyższe, wykorzystanie chmury okaże się przydatne właśnie w momencie, kiedy aplikacja okaże się sukcesem. Jeśli aplikacja nie ma szansy na sukces, nie ma sensu jej w ogóle  wdrażać. Jeśli ma szanse na sukces, to lepiej zapewnić jej skalowalne środowisko.
+
+Ważnym elementem skalowalności aplikacji jest jej budowa. Nawet aplikacja wdrożona w chmurze, jeśli zostanie stworzona w sposób tradycyjny, jest narażona na problemy ze skalowalnością. Tradycyjnie większą ilość zasobów osiągało się przez skalowanie wertykalne, czyli wymianę serwera na taki o lepszych parametrach sprzętowych (rysunek \ref{fig:skalowanie-wertykalne}). Niestety specjalistyczne zasoby komputerowe o wysokiej mocy są drogie, a i one mają swoje granice. 
+
+\begin{figure}[h!]
+	\centering
+			\includegraphics[width=\textwidth]{skalowanie-wertykalne.png}
+		\caption{Skalowanie wertykalne -- wraz z rosnącym zapotrzebowaniem wymiana serwera na taki z lepszymi parametrami \cite{ccCambridge}}
+		\label{fig:skalowanie-wertykalne}
+\end{figure}
+
+Z pomocą przychodzi skalowanie horyzontalne. Ponieważ pozwala połączyć siły wielu komputerów, które pod względem zasobów mogą być przeciętne i tanie (rysunek \ref{fig:skalowanie-horyzontalne}). Nie istnieje wówczas problem ze skalowalnością ani z przerwą w dostarczaniu usług. Możliwość skalowania horyzontalnego wymaga użycia odpowiedniej architektury aplikacji.
+
+\begin{figure}[h!]
+	\centering
+			\includegraphics[width=\textwidth]{skalowanie-horyzontalne.png}
+		\caption{Skalowanie horyzontalne -- wraz z rosnącym zapotrzebowaniem dokładanie serwerów o tej samej mocy \cite{ccCambridge}}
+		\label{fig:skalowanie-horyzontalne}
+\end{figure}
+
+Chmura idealnie nadaje się do skalowania horyzontalnego. Tworzona z setek tysięcy maszyn daje możliwość obsłużenia nawet nadspodziewanie wysokiego ruchu. Z kolei usługi chmurowe wspomagają proces tworzenia aplikacji typu \textit{cloud native}, tworzonych za pomocą mikrousług i korzystających z baz NoSQL.
+
+Kolejnym ważnym aspektem, dla którego warto rozważyć użycie chmury, jest dostępność usług wykorzystujących uczenie maszynowe do np. rozpoznawania obrazu, a także usług związanych z przetwarzaniem dużej ilości danych. W dłuższej perspektywie ułatwienia takie jak automatyczne czytanie danych ze zdjęcia paragonu lub możliwość wykonania analizy dużego zbioru danych mogą stanowić dużą wartość dodaną.
+
+Wymienione powyżej przesłanki wskazują na to, że omawiany projekt posiada cechy typowego projektu informatycznego i z powodzeniem obrazuje sens wykorzystania chmury do tworzenia nawet eksperymentalnych projektów.
+
+\section{Wymagania dotyczące wyboru podejścia oraz chmury}
+
+
+
+\section{Analiza}
+
+\subsection{Wybór podejścia}
+
+\subsection{Wybór chmury}
+
+\subsection{Podsumowanie analiz}
+
+
 
 
 
@@ -1434,6 +1525,7 @@ Podstawowym ograniczeniem związanym z używaniem Kubeless jest konieczność zd
 
 
 
+\addcontentsline{toc}{chapter}{Bibliografia}
 \selectlanguage{polish}
 \printbibliography
  
