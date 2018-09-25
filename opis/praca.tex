@@ -182,6 +182,8 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/iotEnterprise}
 \addbibresource{bibliography/nistArticle}
 \addbibresource{bibliography/rightscaleReport}
+\addbibresource{bibliography/serverlessArticle}
+\addbibresource{bibliography/openLambdaArticle}
 \addbibresource{bibliography/siteBigTableWikiPl}
 \addbibresource{bibliography/siteGoogleBlogCloudSql}
 \addbibresource{bibliography/siteGoogleBlogKubernetes}
@@ -215,9 +217,14 @@ basicstyle=\ttfamily\small,
 \addbibresource{bibliography/siteAmazonLambdaEdge}
 \addbibresource{bibliography/siteAzureIotEdge}
 \addbibresource{bibliography/siteGoogleIotEdge}
-\addbibresource{bibliography/siteGartnerTrends}
+\addbibresource{bibliography/siteAzureContainerInstancesIntroducing}
+\addbibresource{bibliography/siteAwsFargateIntroducing}
+%\addbibresource{bibliography/siteGartnerTrends}
 \addbibresource{bibliography/siteAzureStack}
 \addbibresource{bibliography/siteGoogleCisco}
+\addbibresource{bibliography/siteAzureContainerInstances}
+\addbibresource{bibliography/siteAwsFargate}
+\addbibresource{bibliography/siteAzureFunctions2}
 
 
 
@@ -882,6 +889,9 @@ Usługa AWS Lambda powstała w 2014 r., a Google Cloud Functions wyszła z fazy 
 \item \textbf{Wdrażanie Edge Computingu i Fog Computingu} \\
 Pomimo że chmura stanowi podstawę dla Internetu Rzeczy, dobrze rozwinięta ,,warstwa pośrednia'' jest niezbędna by tworzyć inteligentne miasta. Autorka spodziewa się większego zainteresowania koncepcją Edge, ponieważ nie wymaga aktualizacji routerów u użytkowników, więc cały proces dla użytkowników mógłby przebiegać przezroczyście. Router typu Fog mógłby znajdować się w gotowym nowoczesnym produkcie, np. w samoprowadzącym się samochodzie. 
 
+\item \textbf{Dążenie do uproszczenia wdrażania kontenerów w chmurze} \\
+Usługi typu CaaS były pierwszym krokiem do uproszczenia zarządzania kontenerami. Oferują przyjazne panele administracyjne, niewymagające korzystania z CLI. Pod koniec 2017 r. pojawił się nowy trend polegający na możliwości wdrażania kontenerów w chmurze bez konieczności zarządzania orkiestratorem oraz maszynami wirtualnymi. Amazon udostępnił AWS Fargate w listopadzie 2017 r.,\cite{siteAwsFargateIntroducing} a Microsoft udostępnił Web App for Containers we wrześniu 2017 r.\cite{siteAzureWebAppContainersAvailable} oraz Azure Container Instances w kwietniu 2018 r.\cite{siteAzureContainerInstancesIntroducing} Google nie posiada jeszcze swojego rozwiązania tego typu. Można zatem spodziewać się odpowiedzi ze strony Google oraz dopracowania tego typu rozwiązań w taki sposób, aby przeciętnemu programiście wiedza o konfiguracji Kubernetes nie była potrzebna w codziennej pracy.
+
 \end{itemize}
 
 %\begin{figure}[h]
@@ -1107,7 +1117,7 @@ Do tworzenia maszyn wirtualnych można używać napisanych przez siebie program�
 \item Organizacje celujące w ograniczoną ilość odbiorców mogą potrzebować serwera wirtualnego, ale nie potrzebować skalowalności jaką daje chmura. Dla nich odległość do centrum danych mieszczącego się w innym kraju oraz korzystanie z oferty zagranicznych usługodawców mogą stanowić wady, a hosting typu VPS dostarczany z pobliskiej miejscowości lepszą alternatywę.
 \end{itemize}
 
-\section{Usługi typu PaaS oparte o maszyny wirtualne w chmurach publicznych}
+\section{Usługi typu PaaS oparte o maszyny wirtualne w chmurach publicznych}\label{section:podejsciePaas}
 
 Jest to pierwsza generacja usług typu PaaS, gdzie w odróżnieniu od tworzenia własnej maszyny wirtualnej i na niej uruchamianiu aplikacji, twórca aplikacji ma skupić się jedynie na dostarczeniu aplikacji, a utworzenie odpowiednich maszyn wirtualnych znajduje się po stronie usługodawcy. Obecnie funkcjonują również inne sposoby usprawniające pracę programisty w kontekście usług chmurowych i te sposoby zostały omówione w kolejnych sekcjach.
 
@@ -1128,12 +1138,23 @@ Wsparcie dla tworzenia aplikacji w chmurze może polegać na:
 
 \subsection*{Podsumowanie}
 
+\subsubsection{Usługi służące tworzeniu aplikacji}
+\begin{itemize}
+\item \textbf{AWS Elastic Beanstalk} -- aplikacje internetowe oraz mikrousługi. Obsługiwane języki: Java, PHP, Python, Node.js, Ruby, .NET, Go
+\item \textbf{Azure App Service}
+	\begin{itemize}
+		\item \textbf{Web Apps} -- aplikacje internetowe oraz mikrousługi. Obsługiwane języki:  Java, PHP, Python, Node.js, Ruby, .NET
+		\item \textbf{Mobile Apps} -- tworzenie backendu dla aplikacji mobilnych, możliwość synchronizacji offline, połączenie z Notification Hubs do wysyłania notyfikacji push
+		\item \textbf{WebJobs} -- zadania wykonywane po odebraniu zdarzenia
+	\end{itemize}
+\item \textbf{Google App Engine} -- platforma tworzenia mikrousług. Obsługiwane języki: Java, PHP, Python, Node.js, Ruby, .NET, Go
+\item \textbf{Google Cloud Endpoints} -- narzędzia do generowania API i bibliotek na podstawie aplikacji w App Engine
+\end{itemize}
+
 \subsubsection{Główne usługi wspierające tworzenie back-endu dla aplikacji mobilnych}
 
 AWS:
 \begin{itemize}
-\item \textbf{AWS Elastic Beanstalk} -- aplikacje internetowe oraz mikrousługi
-\item \textbf{AWS Lambda} -- platforma serverless; ten typ zostanie szerzej omówiony w sekcji \ref{section:podejscieServerless}
 \item \textbf{Simple Storage Services (S3)} -- przechowywanie danych binarnych
 \item \textbf{Amazon DynamoDB} -- baza obsługująca dwa modele danych: dokumentowe oraz klucz-wartość
 \item \textbf{Amazon Relational Database Service (RDS)} -- relacyjna baza danych kompatybilna z różnymi silnikami baz danych: PostgreSQL, MySQL, MariaDB, Oracle Database, Microsoft SQL Server
@@ -1143,13 +1164,6 @@ AWS:
 \noindent
 Azure:
 \begin{itemize}
-\item \textbf{Azure App Service}
-	\begin{itemize}
-		\item \textbf{Web Apps} -- aplikacje internetowe oraz mikrousługi
-		\item \textbf{Mobile Apps} -- tworzenie backendu dla aplikacji mobilnych, możliwość synchronizacji offline, połączenie z Notification Hubs do wysyłania notyfikacji push
-		\item \textbf{WebJobs} -- zadania wykonywane po odebraniu zdarzenia
-		\item \textbf{Functions} -- bazująca na WebJobs platforma serverless; ten typ zostanie szerzej omówiony w sekcji \ref{section:podejscieServerless}
-	\end{itemize}
 \item \textbf{Azure Storage}
 	\begin{itemize}
 		\item \textbf{Blob Storage} -- dane binarne
@@ -1166,9 +1180,6 @@ Azure:
 \noindent
 Google Cloud:
 \begin{itemize}
-\item \textbf{Google App Engine} -- platforma tworzenia mikrousług
-\item \textbf{Google Cloud Endpoints} -- narzędzia do generowania API i bibliotek na podstawie aplikacji w App Engine
-\item \textbf{Google Cloud Functions} -- platforma serverless; ten typ zostanie szerzej omówiony w sekcji \ref{section:podejscieServerless}
 \item \textbf{Google Cloud Datastore} -- baza NoSQL typu dokumentowego
 \item \textbf{Google Cloud Firebase} -- baza NoSQL typu dokumentowego, będąca następcą Datastore; aktualnie w wersji beta
 \item \textbf{Google Cloud SQL} -- baza relacyjna kompatybilna z MySQL
@@ -1193,6 +1204,7 @@ Google Cloud:
 \item Wiązanie się z konkretnym usługodawcą oznacza konieczność zatrudniania programistów wyspecjalizowanych w usługach tego dostawcy. Występuje tu potencjalna trudność w znalezieniu pracownika oraz płaceniu za jego wąską specjalizację.
 \item Mniejsza elastyczność niż w IaaS.
 \item Konieczność zapoznania się z dobrymi praktykami tworzenia aplikacji \textit{cloud native} a także mikrousług.
+\item Utrudnione rozwijanie aplikacji offline, bez dostępu do platformy.
 \end{itemize}
 
 \section{Samodzielna instalacja orkiestratora kontenerów}\label{section:instalujKontenery}
@@ -1230,10 +1242,11 @@ Główne usługi chmurowe oraz zalety i wady dziedziczą się odpowiednio z wyna
 \item Konieczność samodzielnej instalacji potrzebnego środowiska.
 \end{itemize}
 
-\section{Usługa konteneryzacji w chmurach publicznych}
+\section{Usługa konteneryzacji w chmurach publicznych}\label{section:caas}
 
 Na fali ogromnej popularności Dockera, a później Kubernetes, zaczęły powstawać usługi typu CaaS/KaaS, pozwalające na korzystanie z dobrodziejstw orkiestratorów kontenerów bez konieczności ich instalowania. Usługi te zazwyczaj pozwalają zarządzać orkiestratorem z poziomu narzędzia CLI bądź przy pomocy graficznego interfejsu (rysunek \ref{fig:kubernetes-engine}).
 
+Do zarządzania obrazami kontenerów usługodawcy proponują specjalne rejestry kontenerów.
 
 \begin{figure}[h]
 	\centering
@@ -1244,11 +1257,21 @@ Na fali ogromnej popularności Dockera, a później Kubernetes, zaczęły powsta
 
 \subsection*{Podsumowanie}
 
+\subsubsection{Usługi CaaS}
+
 \begin{itemize}
 \item \textbf{Google Kubernetes Engine}
 \item \textbf{Azure Kubernetes Service (AKS)}
 \item \textbf{Amazon ECS -- Amazon Elastic Container Service} -- własna implementacja orkiestracji kontenerów Dockera stworzona przez Amazona
 \item \textbf{Amazon EKS -- Amazon Elastic Container Service for Kubernetes} -- wersja implementująca Kubernetes
+\end{itemize}
+
+\subsubsection{Usługi rejestru kontenerów}
+
+\begin{itemize}
+\item Amazon Elastic Container Registry
+\item Azure Container Registry
+\item Google Container Registry
 \end{itemize}
 
 \subsubsection{Perspektywy}
@@ -1267,8 +1290,120 @@ Na fali ogromnej popularności Dockera, a później Kubernetes, zaczęły powsta
 
 \section{Usługi typu PaaS oparte o kontenery w chmurach publicznych}
 
+Aby na chmurze publicznej móc korzystać z kontenerów Dockera, nie trzeba koniecznie znać się na Kubernetes. Chmury publiczne wypracowały rozwiązania polegające na wdrożeniu w chmurze zadanego obrazu, bez konieczności konfigurowania infrastruktury na jakiej są uruchamiane.
 
-\section{Serverless} \label{section:podejscieServerless}
+Rozwiązania tego typu służą głównie w celu uruchomienia na chmurze pojedynczego kontenera. Jako inny przypadek użycia Azure podaje chaotyczne zapotrzebowanie (ang. \textit{traffic in spikes}, czyli ruch, który na wykresie wyglądałby jak kolce). Natomiast dla długo działających kontenerów ze stabilnym ruchem, Azure rekomenduje wykorzystanie CaaS. \cite{siteAzureContainerInstances}.
+
+Podobnie jak w przypadku usług CaaS (sekcja \ref{section:caas}), do zarządzania obrazami kontenerów można użyć usługi rejestru kontenerów.
+
+Opisywane podejście w czasie tworzenia pracy uchodzi za nowatorskie -- pierwsze rozwiązania tego typu pojawiły się pod koniec 2017 r., a firma Google póki do nie przedstawiła swojej propozycji.
+
+\subsection*{Podsumowanie}
+
+\subsubsection{Usługi instancji kontenerów}
+
+\begin{itemize}
+\item \textbf{AWS Fargate} -- usługi CaaS od Amazona, ECS i EKS, posiadają dwa tryby wdrożenia kontenera: tryb Fargate oraz tryb EC2. Fargate to możliwość wdrożenia kontenera bez konieczności zarządzania orkiestratorem i maszynami wirtualnymi. \cite{siteAwsFargate}
+\item \textbf{AWS Elastic Beanstalk -- Deploying Elastic Beanstalk Applications from Docker Containers} -- opcja wdrażania aplikacji w Elastic Beanstalk za pomocą obrazu Dockera 
+\item \textbf{Azure Container Instances} -- możliwość wdrażania instancji kontenerów rozliczana na podstawie sekund \cite{siteAzureContainerInstances}
+\item \textbf{Azure App Service -- Web App for Containers} -- rozwinięcie App Service o możliwość wdrożenia obrazu kontenera.
+\end{itemize}
+
+\subsubsection{Usługi rejestru kontenerów}
+Tak samo jak w sekcji dotyczącej usługi CaaS (sekcja \ref{section:caas}).
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Niska bariera wejścia jeśli chodzi o wdrażanie obrazu kontenera do chmury publicznej.
+\item Możliwość odroczenia nauki orkiestratora kontenerów do czasu wzrostu popularności aplikacji.
+\item Główne zalety dziedziczą się z zalet opisanych w sekcji poświęconej samodzielnej instalacji orkiestratora kontenerów (sekcja \ref{section:instalujKontenery}).
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Podejście nie rozwiązuje całkowicie problemu nauki orkiestratora kontenerów.
+\item Pod względem tworzenia aplikacji wypada znać i umieć stosować w praktyce zasady dotyczące tworzenia aplikacji dla chmury, w szczególności mikrousług.
+\item Usługi tego typu są bardzo nowe, co może powodować zwiększone ryzyko napotkania na nietypowe problemy lub dostosowywania się do zmian względem pierwotnej wersji.
+\end{itemize}
+
+\section{Serverless -- usługi typu FaaS} \label{section:podejscieServerless}
+
+Odkąd w 2014 r. Amazon udostępnił usługę AWS Lambda, model serverless zaczął być postrzegany jako kolejna rewolucja po kontenerach. W tym podejściu jeszcze większa część pracy pozostaje po stronie usługodawcy, a programiście zostaje głównie część związana z tworzeniem aplikacji (rysunek \ref{fig:serverlessSharing}).
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.7\textwidth]{serverlessSharing.png}
+		\caption{Porównanie ilości warstw współdzielonych przez różne typy komponentów osadzonych w chmurze. \cite{openLambdaArticle}}
+		\label{fig:serverlessSharing}
+\end{figure}
+
+Technologie serverless wciąż znajdują się w fazie rozwoju, jednak wyglądają bardzo obiecująco. Zgodnie z badaniem przytoczonym w artykule\cite{serverlessArticle}, podejście serverless może powodować oszczędności względem architektur monolitycznych oraz mikrousługowych na poziomie do 70.08\%. Powoduje również znaczną oszczędność czasu pracy nad projektem.\cite{serverlessMaddie}
+
+\subsection*{Podsumowanie}
+
+\subsubsection{Usługi FaaS}
+
+\begin{itemize}
+\item \textbf{AWS Lambda} -- pierwsza platforma tego typu. Obsługiwane języki: Java, Python, Node.js, C\#/.NET Core, Go
+\item \textbf{Azure Functions} -- platforma serverless bazująca na WebJobs. Obsługiwane języki (bez uwzględniania wsparcia eksperymentalnego i poglądowego):
+	\begin{itemize}
+		\item w wersji 1.x: C\#, F\#/.NET Framework, Node.js 6
+		\item w wersji 2.x (oficjalnie dostępnej od 24.09.2018 r. \cite{siteAzureFunctions2}): C\#, F\#/.NET Core 2, Node.js 8 \& 10
+	\end{itemize}
+\item \textbf{Google Cloud Functions} -- platforma serverless oficjalnie dostępna od sierpnia 2018 r. \cite{siteGoogleServerless} Obsługiwane języki: Java, Python
+\end{itemize}
+
+\subsubsection{Główne usługi wspierające tworzenie back-endu dla aplikacji mobilnych}
+Tak jak w sekcji dotyczącej usług PaaS w oparciu o maszyny wirtualne (sekcja \ref{section:podejsciePaas}).
+
+\subsubsection{Perspektywy}
+\begin{itemize}
+\item Mniejszy koszt utrzymania aplikacji przez brak konieczności zajmowania zasobów w oczekiwaniu na przychodzące zapytania.
+\item Brak konieczności umiejętnego projektowania mikrousług.
+\item Skalowanie pozbawione nadmiarowości.
+\item Szybki czas wdrożenia aplikacji do chmury (2x szybciej niż mikrousługi) \cite{serverlessMaddie}
+\end{itemize}
+
+\subsubsection{Ograniczenia}
+\begin{itemize}
+\item Wady dziedziczą się z podejścia PaaS do tworzenia aplikacji w chmurze publicznej (sekcja \ref{section:podejsciePaas}, za wyjątkiem konieczności nauki projektowania mikrousług).
+\item Utrudnienia w uruchamianiu dłużej trwających zadań.
+\item Ograniczona możliwość testowania funkcji offline.
+\end{itemize}
+
+
+
+\section{Serverless bez przywiązania do platformy} 
+
+Podczas gdy usługi FaaS w chmurach publicznych jawią się jako najtańsze oraz posiadające najmniejszą barierę wejścia do chmury, wciąż dziedziczą po innych rozwiązaniach typu PaaS starszy problem przywiązania do usługodawcy. Jest to dość istotny problem, biorąc pod uwagę to jaką popularność zdobył Docker oraz Kubernetes stanowiąc wybawienie od niego.
+
+W literaturze przedmiotu znaleziono dwa projekty, które mają rozwiązać ten problem.
+
+\subsection{Serverless Framework}
+
+Jest to narzędzie do rozwijania i wdrażania funkcji w sposób oddzielający logikę konkretnego dostawcy usługi FaaS od sposobu pisania funkcji. Dzięki temu jeden kod jest gotowy do działania na różnych platformach (w tym Kubeless, o którym mowa w następnej sekcji). \cite{serverlessMaddie}
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.4\textwidth]{serverless-framework.png}
+		\caption{Oddzielenie logiki aplikacji od logiki dostawcy usługi FaaS przy pomocy Serverless Framework \cite{serverlessMaddie}}
+		\label{fig:serverless-framework}
+\end{figure}
+
+Rozwiązanie problemu \textit{vendor lock-in} skutkuje następującymi ograniczeniami:
+\begin{itemize}
+\item Narzędzia będące nakładkami na inne narzędzia zawsze dążą do obsługiwania wspólnego mianownika tych narzędzi. Wyklucza to (lub znacząco utrudnia) użycie pewnych specyficznych usług typu PaaS danego dostawcy.
+\item Konieczność uczenia się dodatkowego narzędzia.
+\end{itemize}
+
+
+\subsection{Kubeless}
+
+Jest to framework działający na Kubernetes, pozwalający uruchomić mechanizm serverless podobny do tego spotykanego w usługach FaaS. \cite{distributedSystems} 
+
+Kubeless obsługuje technologie: Python, Node.js, Ruby, PHP, Go, .NET, Ballerina. Funkcje tworzone z obrazów Dockera są w trakcie rozwoju.
+
+Podstawowym ograniczeniem związanym z używaniem Kubeless jest konieczność zdobycia najpierw Kubernetes. Bez względu na to, czy będzie on zainstalowany na fizycznym serwerze czy maszynie wirtualnej (ręcznie albo przez KaaS), wciąż trzeba przede wszystkim zapewnić mu zasoby na których można go uruchomić. Eliminuje to zatem prawdopodobnie najważniejszą korzyść jaką wnosi serverless na chmurze publicznej, czyli brak stałych opłat za utrzymanie funkcji. Co prawda w Kubeless funkcja jest uruchomiona tylko przez chwilę, ale Kubernetes już działa cały czas.
 
 
 \chapter{Analiza wyboru platformy dla aplikacji mobilnej}
