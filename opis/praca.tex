@@ -896,23 +896,6 @@ Usługi typu CaaS były pierwszym krokiem do uproszczenia zarządzania kontenera
 
 \end{itemize}
 
-%\begin{figure}[h]
-%	\centering
-%			\includegraphics[width=\textwidth]{gartner-trends.jpg}
-%		\caption{Raport dot. technologicznych trendów wykonany przez firmę Gartner w sierpniu 2017 r. \cite{siteGartnerTrends}}
-%		\label{fig:gartner-trends}
-%\end{figure}
-
-
-%\begin{figure}[h]
-%	\centering
-%			\includegraphics[width=\textwidth]{networked-society.png}
-%		\caption{Technologie umożliwiające \textit{network society} \cite{ccSpringer}}
-%		\label{fig:networked-society}
-%\end{figure}
-
-
-
 \chapter{Porównanie różnych podejść}
 
 Usługę wspierającą urządzenie mobilne w chmurze można stworzyć i udostępnić na wiele sposobów. Dla programisty, który nie korzysta z chmury na co dzień, wybór ten może okazać się zaskakująco szeroki.
@@ -932,7 +915,7 @@ Ze względu na największą popularność (rysunek \ref{fig:popularnosc}) oraz i
 
 Jest to rozwiązanie polegające na budowaniu wszystkiego samemu u podstaw. Potrzebny jest przynajmniej jeden serwer, połączenie z Internetem oraz zespół osób dbających o infrastrukturę. Trzeba pamiętać nie tylko o standardowym przygotowaniu (odpowiednia temperatura pomieszczenia itp.), ale także o bieżących naprawach, konserwacji sprzętu, byciu na bieżąco z najnowszymi wymogami bezpieczeństwa. 
 
-Pod względem idei posiadania własnych serwerów, chmura różni się tym, że docelowo zależy nam na korzyściach wynikających z dobrego skalowania systemów. Im więcej serwerów jest potrzebne, tym większym wyzwaniem staje się utrzymywanie całej infrastruktury i bycie odpowiedzialnym za jej bezpieczeństwo. 
+Pod względem idei posiadania własnych serwerów, chmura różni się tym od tradycyjnego podejścia, że docelowo zależy nam na korzyściach wynikających z dobrego skalowania systemów. Im więcej serwerów jest potrzebne, tym większym wyzwaniem staje się utrzymywanie całej infrastruktury i bycie odpowiedzialnym za jej bezpieczeństwo. 
 
 \subsection*{Podsumowanie}
 
@@ -955,12 +938,13 @@ Pod względem idei posiadania własnych serwerów, chmura różni się tym, że 
 
 \subsubsection{Ograniczenia}
 \begin{itemize}
-\item Konieczność samodzielnego troszczenia się o infrastrukturę: serwis komputerów, temperatura w serwerowni, czekanie na kuriera z nowymi częściami itp.
+\item Konieczność samodzielnego troszczenia się o infrastrukturę: serwis komputerów, temperatura w serwerowni, czekanie na kuriera z nowymi częściami, itp.
 \item Konieczność samodzielnego aktualizowania oprogramowania i dbałości o bezpieczeństwo danych.
 \item Brak możliwości skorzystania z ekonomii skali, obserwowanej w chmurach publicznych.
+\item Największy koszt wdrożenia chmury, szczególnie koszt początkowy zakupu infrastruktury i opłacenia specjalistów, którzy się nią zajmą.
 \end{itemize}
 
-\section{Łączenie chmury prywatnej z chmurą hybrydową}
+\section{Łączenie chmury prywatnej z chmurą publiczną}
 
 Posiadając chmurę prywatną, w przypadku skalowania w górę nie trzeba koniecznie kupować nowych serwerów. Można skonfigurować chmurę hybrydową, łącząc chmurę prywatną z publiczną. Chmury publiczne zazwyczaj udostępniają interfejs do łączenia ich przez VPN z chmurą prywatną.
 
@@ -1071,16 +1055,16 @@ Natomiast podejście ,,chmurowe'' do serwerów wirtualnych różni się od trady
 \item Dochodzi warstwa abstrakcji, dzięki której maszyna wirtualna nie jest ściśle przypisana do fizycznej maszyny. Można zmieniać ilość przydzielonych zasobów oraz zmieniać ilość wirtualnych maszyn hostujących aplikację.
 \item Rozliczanie odbywa się w modelu płatności za zużycie (\textit{utility computing}). Płatność za tradycyjne serwery wirtualne odbywa się w formie abonamentu, np. w przypadku miesięcznego okresu rozliczeniowego, chcąc używać VPS przez kilka dni, nadal należałoby zapłacić za cały miesiąc.
 \item Zgodnie z modelem chmury NIST, panuje samoobsługa realizowana przy pomocy panelu administracyjnego. Nie ma konieczności składania zamówienia czy czekania na personel aż uruchomi skonfigurowaną maszynę.
-\item Możliwość wykonania kopii zapasowej maszyny wirtualnej, znacznie ułatwione przez chmurową warstwę abstrakcji. 
+\item Wykonanie kopii zapasowej maszyny wirtualnej jest znacznie ułatwione przez chmurową warstwę abstrakcji. 
 \end{itemize}
 
 W związku z dostępnością narzędzi przygotowanych do tworzenia chmur prywatnych, dostarczyciele serwerów VPS zaczęli stosować niektóre bądź wszystkie techniki wymienione powyżej. Wówczas główną różnicę stanowi zaplecze zasobów. W przypadku dużych chmur publicznych jest ono tak duże, że dla skalowania ilości maszyn wirtualnych w górę tworzy się iluzja nieskończoności zasobów, gdyż można zażyczyć sobie nawet dziesiątki tysięcy instancji serwerów wirtualnych. Dla mniejszych dostawców to wciąż może być zbyt wielkie wyzwanie.
 
 Jednocześnie chmury publiczne nie stronią od świadczenia usług bardziej przypominających VPS. Spośród opcji rozliczania można wybrać takie uwzględniające rezerwację określonej puli zasobów na określony czas. Również istnieją możliwości wynajęcia serwera fizycznie odizolowanego od innych, np. w usłudze Amazon EC2 Dedicated Hosts.
 
-Wynajmując prawdziwy serwer wirtualny w chmurze należy pamiętać, że to nie jest hosting, nawet jeśli go przypomina. Cechami chmury są skalowalność i płatność za zużycie. Podczas konfiguracji usługi IaaS istnieje możliwość indywidualnego doboru wielu parametrów, które należy dopasować w sposób optymalizujący koszty. W koszta należy również uwzględnić dodatkowe usługi poza maszynami wirtualnymi, np. wynajęcie przestrzeni dyskowej na kopie zapasowe maszyn wirtualnych, usługi typu Load Balancer, itp.
+Wynajmując prawdziwy serwer wirtualny w chmurze należy pamiętać, że to nie jest hosting, nawet jeśli go przypomina. Cechami chmury są skalowalność i płatność za zużycie. Podczas konfiguracji usługi IaaS istnieje możliwość indywidualnego doboru wielu parametrów, które należy dopasować w sposób optymalizujący koszty. W kosztach należy również uwzględnić dodatkowe usługi poza maszynami wirtualnymi, np. wynajęcie przestrzeni dyskowej na kopie zapasowe maszyn wirtualnych, usługi typu Load Balancer, itp.
 
-Do tworzenia maszyn wirtualnych można używać napisanych przez siebie programów wykorzystujące API usługodawcy. Dla popularnych technologii (Java, Python itp.) są dostępne SDK do obługi wybranej chmury, a także biblioteki obsługujące usługi IaaS wielu dostawców.
+Do tworzenia maszyn wirtualnych można używać napisanych przez siebie programów wykorzystujących API usługodawcy. Dla popularnych technologii (Java, Python itp.) są dostępne SDK do obsługi wybranej chmury oraz biblioteki obsługujące usługi IaaS wielu dostawców.
 
 \subsection*{Podsumowanie}
 
@@ -1115,7 +1099,7 @@ Do tworzenia maszyn wirtualnych można używać napisanych przez siebie program�
 \item Większy koszt w porównaniu z usługami PaaS (np. koszty licencji oprogramowania).
 \item Konieczność samodzielnego administrowania oprogramowaniem.
 \item Konieczność samodzielnego dbania o bezpieczeństwo i aktualizacje.
-\item Skomplikowany model rozliczania -- mnogość parametrów od których zależy całkowity koszt usług. Niewystarczająca uwaga natychmiast odbija się na karcie podanej do rozliczeń. Autorka pracy ma w tym punkcie zastrzeżenie do firmy Amazon, ponieważ z jednej strony dużymi literami ogłasza możliwość darmowego przetestowania usług, a z drugiej strony samo założenie konta kosztuje 1 USD, a założenie maszyny wirtualnej (która sama w sobie była bezpłatna) z domyślnymi opcjami kosztowało kolejnego. 
+\item Skomplikowany model rozliczania -- mnogość parametrów od których zależy całkowity koszt usług. Niewystarczająca uwaga natychmiast odbija się na karcie podanej do rozliczeń. Autorka pracy ma w tym punkcie zastrzeżenie do firmy Amazon, ponieważ z jednej strony dużymi literami ogłasza możliwość darmowego przetestowania usług, a z drugiej strony samo założenie konta kosztuje 1 USD, a założenie maszyny wirtualnej (która sama w sobie była bezpłatna) z domyślnymi opcjami kosztowało kolejnego dolara. 
 \item Organizacje celujące w ograniczoną ilość odbiorców mogą potrzebować serwera wirtualnego, ale nie potrzebować skalowalności jaką daje chmura. Dla nich odległość do centrum danych mieszczącego się w innym kraju oraz korzystanie z oferty zagranicznych usługodawców mogą stanowić wady, a hosting typu VPS dostarczany z pobliskiej miejscowości lepszą alternatywę.
 \end{itemize}
 
@@ -1205,7 +1189,7 @@ Google Cloud:
 \item Konieczność zastosowania się do rozwiązań dyktowanych przez początkowo wybranego usługodawcę. Można napotkać na trudność we wprowadzaniu zmian do już istniejących aplikacji, ponieważ gdy usługodawca zmieni API, wprowadzając zmianę należy również dostosować aplikację do aktualnego API.
 \item Wiązanie się z konkretnym usługodawcą oznacza konieczność zatrudniania programistów wyspecjalizowanych w usługach tego dostawcy. Występuje tu potencjalna trudność w znalezieniu pracownika oraz płaceniu za jego wąską specjalizację.
 \item Mniejsza elastyczność niż w IaaS.
-\item Konieczność zapoznania się z dobrymi praktykami tworzenia aplikacji \textit{cloud native} a także mikrousług.
+\item Konieczność zapoznania się z dobrymi praktykami tworzenia aplikacji \textit{cloud native}, w tym mikrousług.
 \item Utrudnione rozwijanie aplikacji offline, bez dostępu do platformy.
 \end{itemize}
 
@@ -1294,7 +1278,7 @@ Do zarządzania obrazami kontenerów usługodawcy proponują specjalne rejestry 
 
 Aby na chmurze publicznej móc korzystać z kontenerów Dockera, nie trzeba koniecznie znać się na Kubernetes. Chmury publiczne wypracowały rozwiązania polegające na wdrożeniu w chmurze zadanego obrazu, bez konieczności konfigurowania infrastruktury na jakiej są uruchamiane.
 
-Rozwiązania tego typu służą głównie w celu uruchomienia na chmurze pojedynczego kontenera. Jako inny przypadek użycia Azure podaje chaotyczne zapotrzebowanie (ang. \textit{traffic in spikes}, czyli ruch, który na wykresie wyglądałby jak kolce). Natomiast dla długo działających kontenerów ze stabilnym ruchem, Azure rekomenduje wykorzystanie CaaS. \cite{siteAzureContainerInstances}.
+Rozwiązania tego typu służą głównie w celu uruchomienia w chmurze pojedynczego kontenera. Jako inny przypadek użycia Azure podaje chaotyczne zapotrzebowanie (ang. \textit{traffic in spikes}, czyli ruch, który na wykresie wyglądałby jak kolce). Natomiast dla długo działających kontenerów ze stabilnym ruchem, Azure rekomenduje wykorzystanie CaaS. \cite{siteAzureContainerInstances}.
 
 Podobnie jak w przypadku usług CaaS (sekcja \ref{section:caas}), do zarządzania obrazami kontenerów można użyć usługi rejestru kontenerów.
 
@@ -1431,17 +1415,17 @@ W przypadku gdy mieszka ze sobą więcej osób, liczby przestają cokolwiek mów
 \item wydatki na rachunki, gdzie można ustalić, że osoba zarabiająca więcej będzie płaciła proporcjonalnie więcej,
 \item wydatki na jedzenie, gdzie jedzenie dla jednej osoby może kosztować znacznie więcej niż dla drugiej.
 \end{itemize}
-Gdy gospodarstwo domowe liczy więcej osób, wzajemne rozliczenia stają się skomplikowane. Trudno wówczas prowadzić budżet domowy, kontrolować gdzie ,,wyciekają'' pieniądze. Można starać się, aby wydatki były zapisywane na jednym komputerze, można pewne obliczenia przeprowadzić ręcznie. Nie zapewnia to jednak wygody oddzielenia własnych wydatków od wydatków innych, a także nie umożliwia sprawdzania np. ile wynoszą wydatki na jedzenie w tym miesiącu.
+Gdy gospodarstwo domowe liczy więcej osób, wzajemne rozliczenia stają się skomplikowane. Trudno wówczas prowadzić budżet domowy, kontrolować gdzie ,,wyciekają'' pieniądze. Można starać się, aby wydatki były zapisywane na jednym komputerze, można pewne obliczenia przeprowadzić ręcznie. Nie zapewnia to jednak wygody oddzielenia własnych wydatków od wydatków innych, jak również nie umożliwia sprawdzania np. ile wynoszą wydatki na jedzenie w tym miesiącu.
 
 Biorąc pod uwagę powyższe, idealnym rozwiązaniem problemu zapisywania wydatków przez kilka osób byłaby aplikacja, która umożliwiłaby połączenie kilku użytkowników w grupę i przy pomocy serwera przeprowadzałaby wszystkie potrzebne obliczenia. Gwarantowałoby to niespotykaną wcześniej precyzję w rozliczeniach, przy jednoczesnej prostocie obsługi. 
 
 Do obsługi wystarczyłaby jakakolwiek aplikacja kliencka zdolna do połączenia z Internetem. Serwer zadbałby o właściwą synchronizację pomiędzy instancjami aplikacji. Aby umożliwić precyzyjne rozliczenia, dodawanie wydatku powinno umożliwić wyszczególnienie, że należy do kategorii, w której panuje określony sposób rozliczeń. 
 
-Jest możliwe ułatwić tę czynność przez rozpoznawanie obrazu, gdzie podstawowe parametry (cena na paragonie, data zakupu, nazwa sklepu) byłyby wczytywane automatycznie. Z doświadczenia autorki w zapisywaniu dodatków wynika, że zazwyczaj prawie wszystkie pozycje na paragonie odnoszą się do jednej kategorii. Aby wygodnie wyszczególnić pojedynczą rzecz na paragonie, wystarczy odjąć ją od ceny całkowitej i przypisać do innej kategorii. Możliwość wyszczególnienia wydatków z danego paragonu byłaby sporym ułatwieniem.
+Jest możliwe ułatwić tę czynność przez rozpoznawanie obrazu, gdzie podstawowe parametry (cena na paragonie, data zakupu, nazwa sklepu) byłyby wczytywane automatycznie. Z doświadczenia autorki w zapisywaniu wydatków wynika, że zazwyczaj prawie wszystkie pozycje na paragonie odnoszą się do jednej kategorii. Aby wygodnie wyszczególnić pojedynczą rzecz na paragonie, wystarczy odjąć ją od ceny całkowitej i przypisać do innej kategorii. Możliwość wyszczególnienia wydatków z danego paragonu byłaby sporym ułatwieniem.
 
 Również z doświadczenia autorki spory problem stanowi rozliczanie wydatków na jedzenie. Trudno wyznaczyć model, w którym owo rozliczenie przeprowadzone jest jednocześnie sprawiedliwie oraz wygodnie. Możliwym rozwiązaniem, będącym elementem pomysłu na aplikację, byłoby automatyczne tworzenie przeliczników dla kategorii ,,jedzenie'', bazując na wprowadzonych danych takich jak: waga, wiek, płeć, wzrost i poziom aktywności fizycznej u danej osoby. Wykorzystując siłę serwera w chmurze, wszystkie potrzebne obliczenia byłyby przeprowadzone automatycznie.
 
-Kolejną rzeczą będącą utrapieniem tradycyjnych aplikacji są wycieczki zagraniczne i wydatki w obcej walucie. Trudno w takich sytuacjach podtrzymywać kontrolę nad tym, ile ma się pieniędzy, jeśli część występuje w obcej walucie. Dlatego pomysł uwzględnia także obsługę różnych walut.
+Kolejną rzeczą będącą utrapieniem tradycyjnych aplikacji są wycieczki zagraniczne i wydatki w obcej walucie. Trudno w takich sytuacjach podtrzymywać kontrolę nad tym, ile ma się pieniędzy, jeśli część występuje w innej walucie. Dlatego pomysł uwzględnia także obsługę różnych walut.
 
 Tak skonstruowana aplikacja praktycznie nie wymagałaby większego wysiłku niż tradycyjne programy do zapisywania wydatków. Za to posiadając dodatkowe informacje byłaby w stanie generować wiele przydatnych raportów, np.:
 \begin{itemize}
@@ -1457,9 +1441,9 @@ Tak skonstruowana aplikacja praktycznie nie wymagałaby większego wysiłku niż
 
 Opisany w sekcji \ref{section:genezaPomyslu} pomysł stanowi przykład typowego projektu informatycznego. Rozwiązuje problem życia codziennego przez umiejętne zebranie informacji, przetworzenie jej i zwrócenie wartościowych wyników. 
 
-Jednocześnie nie jest to pomysł czysto teoretyczny, czyli taki, z jakim często można mieć styczność przerabiając różne samouczki od programowania. Tego rodzaju projekty są często zbyt uproszczone, by pozwolić zetknąć się z rzeczywistymi problemami. Nie jest to sztandarowy program do napisania, taki jak ,,lista zadań'', który został już przerobiony przez innych pod każdym możliwym kątem.
+Jednocześnie nie jest to pomysł czysto teoretyczny, czyli taki, z jakim często można mieć styczność przerabiając różne samouczki do programowania. Tego rodzaju projekty są często zbyt uproszczone, by pozwolić zetknąć się z rzeczywistymi problemami. Nie jest to sztandarowy program do napisania, taki jak ,,lista zadań'', który został już przerobiony przez innych pod każdym możliwym kątem.
 
-Realizacja tego pomysłu nie byłaby możliwa bez serwera. Serwer można teoretycznie utworzyć na tradycyjnej infrastrukturze niezgodnej z modelem chmury. Wówczas niestety aplikacji grozi tzw. ,,syndrom Naszej-Klasy'' (nazwany tak w książce \textit{,,Windows Azure. Wprowadzenie do programowania w chmurze''}), gdzie autor aplikacji sam nie przewiduje jej nagłego wzrostu popularności. Sukces staje się wtedy zwiastunem klęski, ze względu na wdrożenie aplikacji w sposób niepozwalający na obsługę większego ruchu. Zirytowani użytkownicy odwracają swoje zainteresowanie od aplikacji, która ma problemy z dostępnością. \cite{windowsAzureWprowadzenie} Zależność tę widać na rysunku \ref{fig:nasza-klasa}.
+Realizacja tego pomysłu nie byłaby możliwa bez serwera. Serwer można teoretycznie utworzyć na tradycyjnej infrastrukturze niezgodnej z modelem chmury. Wówczas niestety aplikacji grozi tzw. ,,syndrom Naszej-Klasy'' (nazwany tak w książce \textit{,,Windows Azure. Wprowadzenie do programowania w chmurze''}), objawiający się tym, że autor aplikacji sam nie przewiduje jej nagłego wzrostu popularności. Sukces staje się wtedy zwiastunem klęski, ze względu na wdrożenie aplikacji w sposób niepozwalający na obsługę większego ruchu. Zirytowani użytkownicy odwracają swoje zainteresowanie od aplikacji, która ma problemy z dostępnością. \cite{windowsAzureWprowadzenie} Zależność tę widać na rysunku \ref{fig:nasza-klasa}.
 
 \begin{figure}[h]
 	\centering
@@ -1479,7 +1463,7 @@ Ważnym elementem skalowalności aplikacji jest jej budowa. Nawet aplikacja wdro
 		\label{fig:skalowanie-wertykalne}
 \end{figure}
 
-Z pomocą przychodzi skalowanie horyzontalne. Ponieważ pozwala połączyć siły wielu komputerów, które pod względem zasobów mogą być przeciętne i tanie (rysunek \ref{fig:skalowanie-horyzontalne}). Nie istnieje wówczas problem ze skalowalnością ani z przerwą w dostarczaniu usług. Możliwość skalowania horyzontalnego wymaga użycia odpowiedniej architektury aplikacji.
+Z pomocą przychodzi skalowanie horyzontalne. Pozwala połączyć siły wielu komputerów, które pod względem zasobów mogą być przeciętne i tanie (rysunek \ref{fig:skalowanie-horyzontalne}). Nie istnieje wówczas problem ze skalowalnością ani z przerwą w dostarczaniu usług. Możliwość skalowania horyzontalnego wymaga użycia odpowiedniej architektury aplikacji.
 
 \begin{figure}[h!]
 	\centering
@@ -1488,7 +1472,7 @@ Z pomocą przychodzi skalowanie horyzontalne. Ponieważ pozwala połączyć sił
 		\label{fig:skalowanie-horyzontalne}
 \end{figure}
 
-Chmura idealnie nadaje się do skalowania horyzontalnego. Tworzona z setek tysięcy maszyn daje możliwość obsłużenia nawet nadspodziewanie wysokiego ruchu. Z kolei usługi chmurowe wspomagają proces tworzenia aplikacji typu \textit{cloud native}, tworzonych za pomocą mikrousług i korzystających z baz NoSQL.
+Chmura idealnie nadaje się do skalowania horyzontalnego. Tworzona z setek tysięcy maszyn, daje możliwość obsłużenia nawet nadspodziewanie wysokiego ruchu. Z kolei usługi chmurowe wspomagają proces tworzenia aplikacji typu \textit{cloud native}, tworzonych za pomocą mikrousług i korzystających z baz NoSQL.
 
 Kolejnym ważnym aspektem, dla którego warto rozważyć użycie chmury, jest dostępność usług wykorzystujących uczenie maszynowe do np. rozpoznawania obrazu, a także usług związanych z przetwarzaniem dużej ilości danych. W dłuższej perspektywie ułatwienia takie jak automatyczne czytanie danych ze zdjęcia paragonu lub możliwość wykonania analizy dużego zbioru danych mogą stanowić dużą wartość dodaną.
 
