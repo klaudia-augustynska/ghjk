@@ -432,21 +432,21 @@ Cloud Computing nie stanowi odrębnej, nowej technologii -- jest to produkt ewol
 
 %\subsection{Historia technologii chmurowych}
 
-Historia ma początek około lat 70., gdy używano wielkich superkomputerów zwanych \textbf{\textit{mainframe}}. Można było z nich korzystać za pomocą terminali, określanych mianem ,,głupich'' (ang. \textit{dump terminal}), ponieważ nie posiadały procesora i mogły być używane jedynie do operacji I/O. Jako że z serwera mógł korzystać jeden terminal naraz, serwer ustawiał je w kolejkę i musiały długo czekać na obsłużenie.
+Historia ma początek około lat 70., gdy używano wielkich superkomputerów zwanych \textbf{\textit{mainframe}}. Można było z nich korzystać za pomocą terminali, określanych mianem ,,głupich'' (ang. \textit{dumb terminal}), ponieważ nie posiadały procesora i mogły być używane jedynie do operacji I/O. Jako że z serwera mógł korzystać jeden terminal naraz, serwer ustawiał je w kolejkę i musiały długo czekać na obsłużenie.
 
-W latach 70. terminale zaczęły być wyposażone w mikroprocesory i być określane mianem \textbf{,,inteligentnych terminali''} (ang. \textit{inteligent terminal}). Mogły już partycypować przy uruchamianiu programów, co skróciło czas obsługi i dało początek modelowi klient-serwer.
+W latach 70. terminale zaczęły być wyposażone w mikroprocesory i być określane mianem \textbf{,,inteligentnych terminali''} (ang. \textit{intelligent terminal}). Mogły już partycypować przy uruchamianiu programów, co skróciło czas obsługi i dało początek modelowi klient-serwer.
 
-Dalszy rozwój umożliwił rozwój mikroprocesorów, co dało początek \textbf{komputerom PC}. Komputery te mogły działać samodzielnie i były znacznie tańsze od mainframe-a.
+Dalszy rozwój mikroprocesorów dał początek \textbf{komputerom PC}. Komputery te mogły działać samodzielnie i były znacznie tańsze od mainframe'a.
 
-Wynaleziono również LAN (ang. \textit{local area network}) i WAN (ang. \textit{wide area network}), co umożliwiło łączenie komputerów PC w sieci bez konieczności łączenia z mainframe-m. Powstały sieci \textbf{P2P} (ang. \textit{Peer-To-Peer}).
+Pojawiły się również LAN (ang. \textit{local area network}) i WAN (ang. \textit{wide area network}), co umożliwiło łączenie komputerów PC w sieci bez konieczności łączenia z mainframe'm. Powstały sieci \textbf{P2P} (ang. \textit{Peer-To-Peer}).
 
 We wczesnych latach 80. wynaleziono \textbf{systemy rozproszone}. Ponieważ były w stanie przetwarzać dane równolegle, zachwiało to poglądem iż większą moc obliczeniową należy uzyskiwać przez wynajdowanie silniejszych procesorów. Systemy rozproszone wymagały wzmożonej ilości operacji komunikacji, lecz występowało to w parze z rozwojem LAN osiągającym przepustowość 100 Mbps oraz WAN osiągającym 64 kbps.
 
 Następnie powstała koncepcja \textbf{klastrów komputerowych}. Klaster polegał na połączeniu komputerów tego samego typu (homogenicznych) w sieć LAN i wyłonieniu wśród nich zarządcy, który będzie zajmował się przydzielaniem zadań pozostałym węzłom. Gdyby któryś z węzłów miał awarię, to inne mogły przejąć jego zadanie. Dało to początek idei \textbf{puli zasobów}. W klastrze niezawodność osiągało się przez nadmiarowość zasobów.
 
-Główną wadą klastrów była konieczność powierzenia zarządzania klastrem jednemu komputerowi. Stanowił on miejsce od niezawodności którego zależała niezawodność całej sieci (ang. \textit{single point of failure}). Rozwiązaniem okazały się \textbf{gridy}, w których każdy węzeł posiadał równy priorytet. Klient mógł podłączyć się do dowolnego komputera w gridzie, a ponadto komputery te mogły być różnego typu (heterogeniczne). Wkrótce gridy przeniknęły ze świata naukowego do świata biznesu i zaczynały być łączone przez WAN.
+Główną wadą klastrów była konieczność powierzenia zarządzania klastrem jednemu komputerowi. Stanowił on miejsce, od niezawodności którego zależała niezawodność całej sieci (ang. \textit{single point of failure}). Rozwiązaniem okazały się \textbf{gridy}, w których każdy węzeł posiadał równy priorytet. Klient mógł podłączyć się do dowolnego komputera w gridzie, a ponadto komputery te mogły być różnego typu (heterogeniczne). Wkrótce gridy przeniknęły ze świata naukowego do świata biznesu i zaczynały być łączone przez WAN.
 
-Dotychczas gdy uruchamiało się program na wybranym węźle gridu, to znajdował się na tym węźle dopóki proces nie został zakończony. Stanowiło to problem na drodze do skalowania w czasie rzeczywistym, gdzie na skutek zmienionych potrzeb byłoby dobrze mieć możliwość od nowa zaalokować zasoby bez zakłócania działającej usługi. Problem ten rozwiązała \textbf{wirtualizacja sprzętowa}, za pomocą której zadania były alokowane do maszyn wirtualnych. Technika ta umożliwiła \textbf{\textit{utility computing}}, czyli model w którym zasoby komputerowe mogą być dostarczane jako usługa, co stanowi serce chmur obliczeniowych. Prekursorem została firma Salesforce.com, która udostępnia oprogramowanie w formie usługi internetowej od 1999 r.
+Dotychczas gdy uruchamiało się program na wybranym węźle gridu, to znajdował się na tym węźle dopóki proces nie został zakończony. Stanowiło to problem na drodze do skalowania w czasie rzeczywistym, gdzie na skutek zmienionych potrzeb byłoby dobrze mieć możliwość od nowa zaalokować zasoby bez zakłócania działającej usługi. Problem ten rozwiązała \textbf{wirtualizacja sprzętowa}, za pomocą której zadania były alokowane do maszyn wirtualnych. Technika ta umożliwiła \textbf{\textit{utility computing}}, czyli model, w którym zasoby komputerowe mogą być dostarczane jako usługa, co stanowi serce chmur obliczeniowych. Prekursorem została firma Salesforce.com, która udostępnia oprogramowanie w formie usługi internetowej od 1999 r.
 
 \begin{figure}[h!]
 	\centering
@@ -474,7 +474,7 @@ W 2001 r. firma IBM zbudowała pierwszy \textbf{autonomiczny system} (ang. \text
 Wirtualizacje w tym systemie działają zgodnie z ,,pętlą adaptacyjną'': obserwuj, decyduj, zareaguj.\cite{ccSpringer}
 
 
-Duże znaczenie miało także wynalezienie metody \textbf{SOA} (ang. service oriented architecture), czyli techniki wytwarzania oprogramowania przez wydzielanie niezależnie działających komponentów, składających się razem na większy system informatyczny. Ważna była również koncepcja \textbf{Web 2.0}, nazwana tak po raz pierwszy w 2002 r. roku. Model Web 2.0 spowodował zmiany w sposobie myślenia o Internecie, zgodnie z którymi nie powinien jedynie służyć do dostarczania statycznej treści, lecz może być użyteczny również do udostępniania treści tworzonej przez użytkowników Internetu.
+Duże znaczenie miało także wynalezienie metody \textbf{SOA} (ang. service oriented architecture), czyli techniki wytwarzania oprogramowania przez wydzielanie niezależnie działających komponentów, składających się razem na większy system informatyczny. Ważna była również koncepcja \textbf{Web 2.0}, nazwana tak po raz pierwszy w 2002 roku. Model Web 2.0 spowodował zmiany w sposobie myślenia o Internecie, zgodnie z którymi nie powinien jedynie służyć do dostarczania statycznej treści, lecz może być użyteczny również do udostępniania treści tworzonej przez użytkowników Internetu.
 
 Wymienione wyżej technologie zestawione razem dały podwaliny chmurom obliczeniowym.
 
