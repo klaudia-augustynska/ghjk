@@ -1480,13 +1480,174 @@ Wymienione powyżej przesłanki wskazują na to, że omawiany projekt posiada ce
 
 \section{Wymagania dotyczące wyboru podejścia oraz chmury}
 
+Poniżej wymieniono podstawowe kryteria wyboru:
 
+\begin{description}
+\item [Koszt (jak najniższy)] Choć doceniane są droższe narzędzia za którymi mogłyby iść dodatkowe korzyści, preferowane są podejścia oraz usługodawcy dzięki którym można optymalizować koszty. Istotna jest tu niska bariera uruchomienia aplikacji w chmurze, szczególnie biorąc pod uwagę iż jest to projekt tworzony przez jedną osobę i jest wysoce prawdopodobne, że zanim powstanie stabilna wersja może upłynąć dużo czasu.
+\item [Poziom skomplikowania (jak najniższy)] Im wyższy poziom skomplikowania, tym więcej różnych dziedzin wiedzy należałoby połączyć i dysponować tym większym zasobem specjalistów. Jako projekt realizowany przez jedną osobę i przy niskich kosztach, powinien stosować taki zakres rozwiązań by ta jedna osoba mogła się nimi swobodnie posługiwać.
+\item [Czas dostępu (jak najkrótszy)] Preferowane są te chmury, które posiadają centrum danych w pobliżu lub na terenie Polski. Ma to znaczenie dla jakości usługi oraz ewentualnych dodatkowych kosztów ponoszonych na CDN.
+\item [Technologie (najlepiej .NET)] Ponieważ autorka pracy posiada największe doświadczenie w technologii .NET, usługodawca wspierający tę technologię będzie miał przewagę nad innymi usługodawcami podczas wyboru. Używanie technologii, których się już zna, redukuje koszt i czas wdrożenia aplikacji.
+\item [Przenoszenie na inną platformę (nieistotne)] Zdaniem autorki pracy, jest większe prawdopodobieństwo, że do tego projektu mogą się przydać usługi specyficzne dla danej chmury, niż prawdopodobieństwo by koszt uruchomienia projektu na innej chmurze był znacząco niższy i warty przenoszenia. 
+\end{description}
 
 \section{Analiza}
 
+W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają się z wymaganiami postawionymi projektowi. Na podstawie analiz dokonano wyboru podejścia oraz chmury publicznej, na której został zrealizowany projekt.
+
 \subsection{Wybór podejścia}
 
+
+\subsubsection{Budowanie chmury prywatnej lub hybrydowej}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- serwer to wydatek rzędu kilku tysięcy złotych, do tego należy zadbać o odpowiednie pomieszczenie, odpowiednie łącze internetowe, o publiczny adres IP. Do tego należało by opłacić wsparcie firmy zajmującej się administrowaniem serwerów, ponieważ nawet zakładając, że autorka sama będzie na bieżąco ze wszystkimi zagadnieniami dotyczącymi serwerów, to i tak potrzebowałaby mieć zmiennika. Wszystkie te czynniki dyskwalifikują podejście budowania własnej chmury. 
+	\item \textbf{Poziom skomplikowania} -- jest bardzo wysoki. Należy być na bieżąco z administracją fizycznych serwerów, oprogramowaniem zapewniającym wirtualizację oraz oprogramowaniem do świadczenia usług typu IaaS bądź CaaS. Wszystkie te rzeczy nie mają zbyt wiele wspólnego z programowaniem.
+	\item \textbf{Czas dostępu} -- dla użytkowników znajdujących się na terenie kraju czas dostępu byłby wyjątkowo niski, zakładając że kwestie administrowania serwerem i utrzymania właściwego poziomu bezpieczeństwa przebiegałyby bez zarzutu.
+	\item \textbf{Technologie} -- istniałaby możliwość zastosowania dowolnych technologii. Wymagałyby jednak zakupu licencji, co mogłoby okazać się dodatkowym kosztem.
+	\item \textbf{Przenoszenie na inną platformę} -- istniałaby możliwość stworzenia chmury hybrydowej i dalszego operowania na maszynach wirtualnych.
+\end{enumerate}
+
+
+\subsubsection{Wynajem maszyny wirtualnej}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- przy wynajmie maszyny wirtualnej należy przez cały czas gdy maszyna jest włączona opłacać przynajmniej zasoby zużywane przez uruchomiony specjalnie na potrzeby wynajmującego system operacyjny. Do tego dochodzi utrzymanie uruchomionej tam aplikacji, a w przypadku skalowania zwielokrotnienie tych opłat zgodnie z ilością działających maszyn wirtualnych.
+	\item \textbf{Poziom skomplikowania} -- uruchomienie tradycyjnie napisanej aplikacji nie byłoby skomplikowane, gdyż odbywałoby się dokładnie tak jak na każdym innym komputerze. Konfiguracja bardziej zaawansowanego środowiska, np. kilka maszyn wirtualnych obsługujących MongoDB, przysporzyłaby już więcej kłopotu.
+	\item \textbf{Czas dostępu} -- dla Amazon EC2 oraz Google Compute Engine najbliższy region to Frankfurt w Niemczech, najbliżej znajduje się Azure Virtual Machines w Magdeburgu w Niemczech.
+	\item \textbf{Technologie} -- jak w chmurze prywatnej
+	\item \textbf{Przenoszenie na inną platformę} -- istnieją metody przenoszenia obrazów maszyn wirtualnych pomiędzy chmurami.
+\end{enumerate}
+
+
+\subsubsection{Usługi typu PaaS w oparciu o maszyny wirtualne}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- niższy niż w przypadku maszyn wirtualnych, ponieważ w PaaS maszyną wirtualną zarządza dostarczyciel usługi, więc może zapewnić optymalizacje. Nadal występuje płatność za sam fakt, że aplikacja jest aktywna w chmurze, chociaż nikt z niej nie korzysta.
+	\item \textbf{Poziom skomplikowania} -- z jednej strony nie jest za wysoki, gdyż można tworzyć aplikacje z wykorzystaniem znanych i lubianych technologii, a chmury użyć w celu ich wdrożenia. Bardziej skomplikowane jest zastosowanie się do potrzebnych wzorców architektonicznych, dzięki którym aplikacje będą dobrze się skalować.
+	\item \textbf{Czas dostępu} -- dla AWS Elastic Beanstalk oraz Google App Engine najbliższy region to Frankfurt w Niemczech, najbliżej znajduje się Azure Virtual Machines w Magdeburgu w Niemczech.
+	\item \textbf{Technologie} -- wszystkie trzy chmury obsługuję platformę .NET, jednak w przypadku Google jest to tylko .NET Core wciąż uchodzący za nowość.
+	\item \textbf{Przenoszenie na inną platformę} -- nie należałoby się na to nastawiać.
+\end{enumerate}
+
+\subsubsection{Samodzielna instalacja orkiestratora kontenerów}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- tak jak w maszynie wirtualnej
+	\item \textbf{Poziom skomplikowania} -- należy dobrze zapoznać się z systemem, np. Kubernetes, nie tylko jego obsługą, lecz także instalacją i konfiguracją na wielu maszynach.
+	\item \textbf{Czas dostępu} -- tak jak w maszynie wirtualnej
+	\item \textbf{Technologie} -- dowolne
+	\item \textbf{Przenoszenie na inną platformę} -- łatwe i zgodne ze standardami
+\end{enumerate}
+
+\subsubsection{Usługa konteneryzacji w chmurach publicznych}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- tak jak w maszynie wirtualnej, a dodatkowo koszt usługi ułatwiającej zadanie wykorzystania maszyn wirtualnych do instalacji na nich orkiestratora. Jedynie w przypadku Azure taka usługa jest darmowa.
+	\item \textbf{Poziom skomplikowania} -- należy dobrze zapoznać się z obsługą systemu orkiestracji kontenerów, np. Kubernetes.
+	\item \textbf{Czas dostępu} -- tak jak w maszynie wirtualnej
+	\item \textbf{Technologie} -- dowolne
+	\item \textbf{Przenoszenie na inną platformę} -- łatwe i zgodne ze standardami
+\end{enumerate}
+
+
+\subsubsection{Usługi typu PaaS oparte o kontenery w chmurach publicznych}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- tak jak usłudze konteneryzacji, przy czym skalowanie dla instancji kontenerów dobierane jest dynamicznie. Azure co do tego wprost pisze, że jeśli ruch jest zrównoważony, to taniej wyjdzie skorzystać z usługi konteneryzacji.
+	\item \textbf{Poziom skomplikowania} -- teoretycznie jest niski, lecz w przypadku chęci utrzymania większej liczby kontenerów i tak będzie potrzebna migracja do samodzielnego zarządzania orkiestratorem.
+	\item \textbf{Czas dostępu} -- tak jak w maszynie wirtualnej
+	\item \textbf{Technologie} -- dowolne
+	\item \textbf{Przenoszenie na inną platformę} -- łatwe i zgodne ze standardami
+\end{enumerate}
+
+
+\subsubsection{Serverless -- usługi typu FaaS}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- najniższy, ponieważ ta usługa jako jedyna nie wymaga płatności za aplikację, która bezczynnie czeka aż ktoś wyśle zapytanie. Jednocześnie raczej nie ponosi się kosztu źle zaprojektowanej aplikacji, gdyż natura nanousług wyklucza tworzenie mikrousługi o zbyt dużym zakresie odpowiedzialności. Zarazem w razie gdyby funkcja mimo wszystko zbyt długo się wykonywała, są na to nałożone limity, które sprawią, że po pewnym krótkim czasie jej wykonywanie zostanie przerwane.
+	\item \textbf{Poziom skomplikowania} -- wymaga nauczenia się sposobu funkcjonowania usługi FaaS, ale dzięki temu nie trzeba martwić się o właściwą architekturę usług, co znacząco upraszcza proces tworzenia. Każda usługa stanowi osobny byt, więc jest wykluczone stworzenie zbyt skomplikowanej siatki zależności pomiędzy usługami.
+	\item \textbf{Czas dostępu} -- najdalej znajduje się Google Functions w Belgii, następnie  AWS Lambda we Frankfurcie w Niemczech, najbliżej znajduje się Azure Functions w Magdeburgu w Niemczech.
+	\item \textbf{Technologie} -- język pisania usług jest praktycznie dowolny, jednakowoż z dużym prawdopodobieństwem będą bazować na innych usługach PaaS wybranego dostawcy.
+	\item \textbf{Przenoszenie na inną platformę} -- biorąc pod uwagę specyficzne API dla usługi FaaS oraz zależności do innych usług PaaS, przenoszenie na inne platformy może być praktycznie niewykonalne.
+\end{enumerate}
+
+\subsubsection{Kubeless}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- taki jak w samodzielnym instalowaniu orkiestratora kontenerów bądź z pomocą usługi CaaS
+	\item \textbf{Poziom skomplikowania} -- duży, ponieważ wymaga nauki orkiestratora (w tym być może jego instalacji) oraz doinstalowania Kubeless i nauki tego narzędzia.
+	\item \textbf{Czas dostępu} -- tak jak w maszynie wirtualnej
+	\item \textbf{Technologie} -- dowolne
+	\item \textbf{Przenoszenie na inną platformę} -- w teorii łatwe, w praktyce nie wiadomo czy projekt Kubeless w ogóle przetrwa próbę czasu i stanie się jakimkolwiek standardem.
+\end{enumerate}
+
+\subsubsection{Serverless Framework}
+
+\begin{enumerate}
+	\item \textbf{Koszt} -- taki jak w FaaS
+	\item \textbf{Poziom skomplikowania} -- taki jak w FaaS + nauka Serverless Framework, który proponuje swoje rozwiązania na każdym etapie tworzenia funkcji. 
+	\item \textbf{Czas dostępu} -- tak jak w FaaS
+	\item \textbf{Technologie} -- możliwość pisania we wielu językach, nawet jeśli chmura docelowa w praktyce go nie obsługuje. Z tym że sprowadzając wszystkie platformy do jednego mianownika, ogranicza się możliwość skorzystania z innych usług PaaS chmury publicznej. Z kolei jeśli i tak doprowadza się do uzależnienia od wybranego dostawcy, to po co zakładać dodatkową warstwę abstrakcji.
+	\item \textbf{Przenoszenie na inną platformę} -- przeniesienie kodu mikrousług byłoby łatwe, należałoby się jednak zapoznać także z zagadnieniami migracji danych.
+\end{enumerate}
+	
 \subsection{Wybór chmury}
+
+Jako że praktycznie każde podejście jest możliwe do zrealizowania u każdego dostawcy, w niniejszej sekcji zostaną porównani pod względem pobocznych cech.
+
+\subsubsection{Amazon}
+
+Plusy:
+\begin{itemize}
+\item[+] Najczęściej wybierany dostawca usług chmurowych.
+\item[+] Innowacyjny -- usługi EC2, SimpleDb, Lambda były pionierskimi rozwiązaniami.
+\end{itemize}
+
+\noindent
+Minusy:
+\begin{itemize}
+\item[--] Niejasny model rozliczeń, który nie budzi zaufania. Pobieranie po dolarze od każdego, kto chce przetestować usługę, nie wygląda dobrze. Skomplikowany model testowania usług, gdzie część usług jest do testowania za darmo, a za inne są pobierane opłaty. 
+\item[--] Konieczność podania karty kredytowej do rejestracji.
+\item[--] Zdaniem autorki mało przyjazne panele administracyjne, przepełnione zbędną treścią.
+\end{itemize}
+
+\subsubsection{Azure}
+
+Plusy:
+\begin{itemize}
+\item[+] Drugi najczęściej wybierany dostawca usług chmurowych.
+\item[+] Czasami innowacyjny, np. baza Cosmos Db.
+\item[+] Udostępnia bezpłatną subskrypcję dla studentów, która nie wymaga podawania karty kredytowej.
+\item[+] Zdaniem autorki przyjazny panel administracyjny.
+\item[+] Dobre wsparcie dla technologii .NET.
+\item[+] Centrum danych znajduje się najbliżej Polski.
+\end{itemize}
+
+\noindent
+Minusy:
+\begin{itemize}
+\item[--] Niedopracowania objawiające się np. nie do końca przetłumaczonym interfejsem użytkownika.
+\end{itemize}
+
+\subsubsection{Google Cloud}
+
+Plusy:
+\begin{itemize}
+\item[+] Trzeci najczęściej wybierany dostawca usług chmurowych.
+\item[+] Tworzony przez firmę, która dała początek wielu technologiom, na których opiera się współczesny Cloud Computing: GFS, MapReduce, BigTable, Kubernetes.
+\item[+] Pośród głównych graczy najdłużej prowadzi usługi PaaS.
+\item[+] Klarowne rozliczenia.
+\item[+] Zdaniem autorki bardzo przyjazny, wyjątkowo intuicyjny panel administracyjny. Zamiast zasypywać użytkownika stronami prezentującymi wiele przykładów, proponowany jest jeden samouczek w formie interaktywnej.
+\end{itemize}
+
+\noindent
+Minusy:
+\begin{itemize}
+\item[--] Technologie .NET są obsługiwane w drugiej kolejności, np. w Google Functions póki co nie posiada dla nich wsparcia.
+\item[--] Wiele stabilnych wersji usług zostało opublikowanych najpóźniej spośród pozostałych największych graczy. Wiele specyficznych usług dostępnych w AWS i Azure w ogóle nie ma odpowiednika w Google Cloud.
+\item[--] Google Functions najbliżej znajduje się w Belgii.
+\end{itemize}
+
 
 \subsection{Podsumowanie analiz}
 
