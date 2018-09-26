@@ -812,7 +812,7 @@ Obecnie można zaobserwować rozwój zarówno w kierunku Fog Computingu jak i Ed
 
 \section{Wymagania stawiane współczesnym chmurom}
 
-Powszechnie korzysta się z atrybutów określonych przez amerykański Narodowy Instytut Standaryzacji i Technologii w 2011 r., zwanych \textbf{modelem NIST}. Wyróżnia on cechy zasadnicze, modele dostarczania usług i formy wdrożenia. \cite{nistArticle, ccCambridge, azurePackt}
+Powszechnie korzysta się z atrybutów określonych przez amerykański Narodowy Instytut Standaryzacji i Technologii w 2011 r., zwanych \textbf{modelem NIST}. Wyróżnia on cechy zasadnicze, modele dostarczania usług i formy wdrożenia. \cite{ccCambridge, azurePackt, nistArticle}
 
 \subsection{Zasadnicze cechy chmury}
 
@@ -822,7 +822,7 @@ Do cech zasadniczych należą:
 \item [Samoobsługa] Aby skorzystać z usługi w chmurze czy zmodyfikować jej zakres, nie jest konieczna interwencja pracownika usługodawcy. Do samoobsługi służy panel administracyjny udostępniony przez usługodawcę.
 \item [Szeroki dostęp przez sieć] Chmura powinna umożliwiać użytkownikom łączenie się przez sieć bez względu na to gdzie się znajdują i kiedy chcą skorzystać z usługi.
 \item [Pula zasobów] Zasoby takie jak moc procesora, dyski, pamięć, mają być widoczne jako zasoby wirtualne oraz posiadać właściwość \textit{multi-tenancy} (z jednego zasobu może korzystać wiele niezależnych osób, nie mając na to wpływu i nie wiedząc o tym).
-\item [Wysoka elastyczność] Dostępność zasobów ma być dozowana tak by dla użytkownika wyglądało to na nieskończoną ilość.
+\item [Wysoka elastyczność] Dostępność zasobów ma być dozowana tak, by dla użytkownika wyglądało to na nieskończoną ilość.
 \item [Zliczanie zużycia] Dla każdego użytkownika stosowany jest mechanizm zliczania jego rzeczywistego zużycia danych usług. Zużycie jest transparentne dla obu stron, m.in. przez udostępnienie stosownych paneli służących do monitorowania i raportowania.
 \end{description}
 
@@ -834,7 +834,7 @@ Co do zasady istnieją 3 modele dostarczania usług:
 \item PaaS -- Platforma jako usługa (ang. \textit{Platform as a Service)},
 \item SaaS -- Oprogramowanie jako usługa (ang. \textit{Software as a Service}).
 \end{itemize}
-W literaturze i innych publikacjach często można spotkać się także z innymi podobnymi zwrotami w formie \textit{,,... as a Service''}, jednak zawsze jest to podkategoria dla tych powyższych. IaaS, PaaS i SaaS stanowią następujące po sobie warstwy. W przypadku wątpliwości związanej z klasyfikacją danej usługi wszelkie wątpliwości rozwiewa schemat umieszczony na rysunku \ref{fig:iaas-paas-saas}.
+W literaturze i innych publikacjach często można spotkać się także z innymi podobnymi zwrotami w formie \textit{,,... as a Service''}, jednak zawsze jest to podkategoria dla tych powyższych. IaaS, PaaS i SaaS stanowią następujące po sobie warstwy. W przypadku wątpliwości związanej z klasyfikacją danej usługi, rozwiewa je schemat umieszczony na rysunku \ref{fig:iaas-paas-saas}.
 
 \begin{figure}[h]
 	\centering
@@ -860,7 +860,7 @@ W \textbf{PaaS} jako platformę określa się każde oprogramowanie umożliwiaj�
 
 Warstwa \textbf{SaaS} obejmuje gotowe do użycia aplikacje. Na tej warstwie cała aplikacja znajduje się pod kontrolą dostawcy usługi, użytkownik może ją jedynie skonfigurować. Jest to najbardziej dojrzały model dostarczania usługi chmurowej, był stosowany już w 1999 r. przez Salesforce. Do rozwiązań SaaS należą m.in. popularne aplikacje dostępne przez przeglądarkę internetową: Gmail, Dropbox, Microsoft Office 365. Przykładowe podgrupy to:
 \begin{itemize}
-\item DaaS (\textit{Data} -- dane) -- usługa dostępu do danych zebranych np. przez Visa czy MasterCard aby pomóc personalizować przekaz reklamowy,
+\item DaaS (\textit{Data} -- dane) -- usługa dostępu do danych zebranych np. przez Visa czy MasterCard, aby pomóc personalizować przekaz reklamowy,
 \item SECaaS (\textit{Security} -- bezpieczeństwo) -- narzędzia wspierające bezpieczeństwo, np. programy antywirusowe.
 \end{itemize}
 
@@ -886,10 +886,10 @@ Natychmiastowa popularność konteneryzacji, Kubernetes jako usługa oraz pomys�
 W ostatnich latach stworzono wiele innowacyjnych systemów baz danych. Ilość wariantów do wybrania stała się wręcz przytłaczająca. Dla jednego projektu może być potrzebne nawet kilka typów baz, dodatkowo nawet w ramach jednego typu są różne możliwości. Microsoft dostrzegł ten problem i stworzył usługę Azure CosmosDB, obsługującą wiele typów baz. Zdaniem autorki to nie jest ostatnie słowo wypowiedziane w tym kierunku. System pozbawiony problemu vendor lock-in, sam dobierający format przechowywania danych, byłby wielkim ułatwieniem dla programistów.
 
 \item \textbf{Usprawnienie modelu serverless} \\
-Usługa AWS Lambda powstała w 2014 r., a Google Cloud Functions wyszła z fazy poglądowej dopiero miesiąc temu. Według autorki w przypadku usług FaaS konkurencja istnieje na tyle krótko, że dostarczyciele usług mogą się jeszcze wiele od siebie nawzajem nauczyć i zastosować nowe pomysły, które nieco zmienią implementacje tego typu usług. 
+Usługa AWS Lambda powstała w 2014 r., a Google Cloud Functions wyszła z fazy poglądowej dopiero miesiąc temu. Według autorki, w przypadku usług FaaS konkurencja istnieje na tyle krótko, że dostarczyciele usług mogą się jeszcze wiele od siebie nawzajem nauczyć i zastosować nowe pomysły, które nieco zmienią implementacje tego typu usług. 
 
 \item \textbf{Wdrażanie Edge Computingu i Fog Computingu} \\
-Pomimo że chmura stanowi podstawę dla Internetu Rzeczy, dobrze rozwinięta ,,warstwa pośrednia'' jest niezbędna by tworzyć inteligentne miasta. Autorka spodziewa się większego zainteresowania koncepcją Edge, ponieważ nie wymaga aktualizacji routerów u użytkowników, więc cały proces dla użytkowników mógłby przebiegać przezroczyście. Router typu Fog mógłby znajdować się w gotowym nowoczesnym produkcie, np. w samoprowadzącym się samochodzie. 
+Pomimo że chmura stanowi podstawę dla Internetu Rzeczy, dobrze rozwinięta ,,warstwa pośrednia'' jest niezbędna by tworzyć inteligentne miasta. Autorka spodziewa się większego zainteresowania koncepcją Edge, ponieważ nie wymaga aktualizacji routerów u użytkowników, więc cały proces mógłby przebiegać bez angażowania użytkowników. Router typu Fog mógłby znajdować się w gotowym nowoczesnym produkcie, np. w samoprowadzącym się samochodzie. 
 
 \item \textbf{Dążenie do uproszczenia wdrażania kontenerów w chmurze} \\
 Usługi typu CaaS były pierwszym krokiem do uproszczenia zarządzania kontenerami. Oferują przyjazne panele administracyjne, niewymagające korzystania z CLI. Pod koniec 2017 r. pojawił się nowy trend polegający na możliwości wdrażania kontenerów w chmurze bez konieczności zarządzania orkiestratorem oraz maszynami wirtualnymi. Amazon udostępnił AWS Fargate w listopadzie 2017 r.,\cite{siteAwsFargateIntroducing} a Microsoft udostępnił Web App for Containers we wrześniu 2017 r.\cite{siteAzureWebAppContainersAvailable} oraz Azure Container Instances w kwietniu 2018 r.\cite{siteAzureContainerInstancesIntroducing} Google nie posiada jeszcze swojego rozwiązania tego typu. Można zatem spodziewać się odpowiedzi ze strony Google oraz dopracowania tego typu rozwiązań w taki sposób, aby przeciętnemu programiście wiedza o konfiguracji Kubernetes nie była potrzebna w codziennej pracy.
