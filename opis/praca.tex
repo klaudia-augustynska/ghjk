@@ -1396,7 +1396,7 @@ Kubeless obsługuje technologie: Python, Node.js, Ruby, PHP, Go, .NET, Ballerina
 Podstawowym ograniczeniem związanym z używaniem Kubeless jest konieczność zdobycia najpierw Kubernetes. Bez względu na to, czy będzie on zainstalowany na fizycznym serwerze czy maszynie wirtualnej (ręcznie albo przez KaaS), wciąż trzeba przede wszystkim zapewnić mu zasoby na których można go uruchomić. Eliminuje to zatem prawdopodobnie najważniejszą korzyść jaką wnosi serverless na chmurze publicznej, czyli brak stałych opłat za utrzymanie funkcji. Co prawda w Kubeless funkcja jest uruchomiona tylko przez chwilę, ale Kubernetes już działa cały czas.
 
 
-\chapter{Analiza wyboru platformy dla aplikacji mobilnej}
+\chapter{Analiza wyboru platformy dla projektu}
 
 \section{Opis projektu aplikacji mobilnej}
 
@@ -1676,11 +1676,154 @@ Usługa KaaS jest rekomendowaną opcją przez Kubernetes dla osób, które dopie
 
 \chapter{Opis wdrożenia aplikacji}
 
-\section{Prezentacja interfejsu użytkownika}
+W tym rozdziale zostanie opisana konkretna implementacja rozwiązania z użyciem usługi Azure Functions.
 
-\section{Technologie i narzędzia}
+Projekt składa się z:
+\begin{itemize}
+\item REST API (C\#/.NET Framework 4.6.1, Visual Studio),
+\item aplikacji klienckiej na system Android (Java 8, Android API 24, Android Studio).
+\end{itemize}
 
-\section{Budowa projektu}
+\section{Prezentacja aplikacji}
+
+Na początek zostanie zaprezentowane, jaki jest sposób działania aplikacji przedstawionej w rozdziale 3.
+
+\subsection{Podstawowa obsługa aplikacji}
+
+\begin{enumerate}
+\item \textbf{Rejestracja użytkownika.} 
+
+W celu korzystania z aplikacji należy założyć konto, podając login i hasło.
+\item \textbf{Logowanie} 
+
+Posiadając konto należy się zalogować. Logowanie zwraca token, który jest potrzeby, by móc korzystać z funkcji API dla zalogowanych. Token ten automatycznie zapisuje się do managera kont w Androidzie. Raz uzyskany może zostać ponownie użyty do automatycznego logowania.
+\item \textbf{Wstępna konfiguracja konta} 
+
+Jest to strona, która pokazuje się tylko podczas pierwszego logowania. Po przejściu konfiguracji, logowanie prowadzi już prosto do strony głównej aplikacji.
+
+Konfiguracja służy wprowadzeniu podstawowych danych o użytkowniku, tj.: waga, wzrost, płeć, imię, data urodzenia, poziom aktywności fizycznej, ilość posiadanych pieniędzy. 
+
+Pieniądze wprowadza się za pomocą ,,portfeli'' -- na przykład można podać osobno kwotę na koncie w PLN, gotówkę w PLN i konto walutowe w EUR. Pozwoli to później lepiej kontrolować stan portfeli, przy czym nic nie stoi na przeszkodzie by przy tworzeniu statystyk sumować portfele z tej samej waluty.
+
+\item \textbf{Strona główna}
+
+Zalogowany, skonfigurowany użytkownik ląduje na stronie głównej. Jest to aktywność stworzona na bazie \textit{nagivation drawer}, czyli menu wysuwanego z boku ekranu. 
+
+Z poziomu \textit{navigation drawer} dostępne są opcje:
+	\begin{itemize}
+	\item \textit{Podsumowanie} -- podstawowa statystyka wyświetlana po zalogowaniu,
+	\item \textit{Profil} -- zarządzanie profilem użytkownika (możliwość usunięcia konta),
+	\item \textit{Gospodarstwo domowe} -- dla kont połączonych w grupę można tam podejrzeć statystykę dla poszczególnych kont,
+	\item \textit{Zaproszenia} -- miejsce gdzie można zaprosić inne konto do grupy oraz potwierdzać takie zaproszenia,
+	\item \textit{Kategorie} -- lista kategorii wraz z ustawionymi przelicznikami dla danej kategorii, jaki \% płaci dana osoba z grupy.
+	\end{itemize}
+	
+Z poziomu menu typu ,,więcej opcji'' jest dostępna opcja ,,wyloguj''.
+
+Na stronie ,,podsumowanie'', będącej domyślnie wyświetlanym fragmentem strony głównej, widnieje wielki przycisk pozwalający dodać wydatek.
+\end{enumerate}
+
+\subsection{Dodawanie wydatku}
+
+Dzięki zastosowaniu kategorii z przelicznikami oraz listy portfeli walutowych, dodawanie wydatku prezentuje się bardzo prosto nawet mimo możliwości tworzenia docelowo skomplikowanych raportów o wielu osobach.
+
+Aby dodać wydatek należy:
+
+\begin{enumerate}
+\item \textbf{Wybrać datę}, jeśli ma być inna niż bieżący dzień. Można tego dokonać używając systemowej kontrolki kalendarza.
+\item \textbf{Wybrać kategorię wydatku}. Jeśli konto należy do grupy, to od kategorii zależy jak później będą naliczane długi. \textit{Przykład: gdy dana osoba dodaje wydatek na wspólne jedzenie, innym automatycznie naliczy się ile powinni oddać tej osobie, zgodnie z ich zapotrzebowaniem kalorycznym.}
+\item \textbf{Podać sumę na paragonie}. Od tej sumy ewentualnie zostaną odjęte poszczególne pozycje na paragonie, które nie pasują do kategorii głównej.
+\item \textbf{Zaznaczyć portfel}, jeśli domyślnie zaznaczony nie pasuje. Jest to źródło, z którego był opłacony wydatek. Tym sposobem wydatek może być w obcej walucie.
+\item \textit{(opcjonalnie)} \textbf{Podać szczegóły z paragonu}. Przydatna opcja odejmująca wiele pracy. \textit{Przykład: dodawany jest paragon z supermarketu, na nim samo jedzenie i do tego żel pod prysznic. Żeby zachować właściwe przypisanie do kategorii, nie trzeba ręcznie odejmować żelu pod prysznic i osobno go dodawać. Wystarczy podać go jako szczegół na paragonie pasujący do kategorii ,,higiena'' i cała reszta dopasuje się automatycznie.}
+\end{enumerate}
+
+\subsection{Łączenie w gospodarstwo domowe}
+
+Aplikacja może działać w trybie pracy dla jednej osoby, ale jej główne przeznaczenie stanowi zapisywanie wydatków przez kilka osób. W tym celu należy skonfigurować gospodarstwo domowe. Scenariusz ten odbywa się w następujący sposób:
+
+\begin{enumerate}
+\item \textbf{Dodanie i skonfigurowanie kont} -- każda osoba powinna najpierw założyć konto.
+\item \textbf{Wysyłanie zaproszeń} -- po zalogowaniu należy przejść do sekcji ,,zaproszenia'' i tam wysłać zaproszenie danej osobie, podając jej login.
+\item \textbf{Akceptacja zaproszenia} -- każda osoba posiadająca zaproszenie może je wyświetlić i zaakceptować w sekcji ,,zaproszenia''.  
+\end{enumerate}
+
+Po akceptacji zaproszenia konto zmienia status na należące do gospodarstwa domowego. W sekcji ,,podsumowanie'' pojawiają się \textbf{dodatkowe wartości}:
+
+\begin{itemize}
+\item wydatki całego gospodarstwa domowego, przedstawione jako suma wszystkich walut posiadanych przez wszystkich uczestników,
+\item pieniądze znajdujące się w gospodarstwie domowym, przedstawione jak wyżej,
+\item długi użytkownika i/lub zobowiązania innych osób względem użytkownika.
+\end{itemize}
+
+\textbf{Długi i zobowiązania} działają w taki sposób, że jeśli dana osoba dokonała wydatku w imieniu innej osoby, to odpowiednio zaznaczona kategoria automatycznie naliczy tej osobie pieniądze do oddania.
+
+Dołączenie nowej osoby do gospodarstwa domowego powoduje \textbf{agregację kategorii} gospodarstwa oraz nowej osoby. Domyślne kategorie posiadają swój sposób agregacji, tzn. jedzenie zawsze agreguje się zgodnie z zapotrzebowaniem kalorycznym, a pozostałe kategorie dzielą wydatki po równo na każdą z osób. Można także dodawać swoje kategorie.
+
+\textbf{Stan finansów każdej z osób w gospodarstwie domowym} można podejrzeć w sekcji ,,gospodarstwo domowe''.
+
+
+\section{Implementacja API}
+
+
+W niniejszej sekcji opisano, jak wyglądała praca z Azure Functions.
+
+\subsection{Teoretyczne podstawy Azure Functions}
+
+%- typ aplikacji azure web apps
+%- można pisać jako skrypt w różnych językach albo jako biblioteka c#
+%- .net core oficjalnie działa dopiero od kilku dni
+%budowa funkcji:
+%- triggery
+%- uprawnienia do funkcji
+%- logi
+
+
+\subsection{Przygotowanie środowiska}
+
+%- Założenie subskrypcji dla studentów
+%- wybór sposobu pisania: jako biblioteka, ponieważ wstępnie kompilowane funkcje mają szybciej działać
+%- wybór sposobu zapisu danych: Azure Storage, ponieważ CosmosDb jak był zakładany projekt to była jeszcze większa nowość niż teraz, a na Storage było sporo przykładów, w instrukcjach od Azure był pokazany jako podstawowy sposób zapisu danych
+%- Visual Studio z doinstalowanymi narzędziami do Azure
+%- Azure Storage Emulator
+%- MS SQL Server
+%- Microsoft Azure Storage Explorer
+%- przemyślenie jak powinna wyglądać baza: posłużenie się modelem relacyjnym żeby lepiej wiedzieć o co nam chodzi
+
+
+\subsection{Pierwsze funkcje}
+
+%- funkcje z dostępem anonimowym - nie wymagają tokenów
+%- jak zdefiniować http trigger
+%- jak się podłączyć do Storage
+%- jak testować?
+%1) narzędzia typu Postman
+%2) testy jednostkowe
+%3) repozytorium + aplikacja testowa w WPF
+
+\subsection{Funkcje z dostępem na klucz}
+
+%- jak się zajebiście dowiedzieć że klucze są z Kudu Services, że nie da się tego przetestować lokalnie
+
+\subsection{Azure Queue Storage}
+
+%- piętrzące się opóźnienia dzięki kolejce
+%- zachowanie że jak 5x będzie błąd to dodaje się na kolejkę "poisoned"
+
+\subsection{Oczekiwania a rzeczywistość}
+
+
+\section{Aplikacja na Android}
+
+%- uzasadnienie wyboru narzędzi: czysta Java, kontrolki z szablonu
+%- repozytorium
+%- cechy
+%* asynchroniczna
+%* dobrze waliduje wartości
+%* korzysta z Accounts Manager
+
+
+
+
 
 \addcontentsline{toc}{chapter}{Podsumowanie}
 \chapter*{Podsumowanie}
