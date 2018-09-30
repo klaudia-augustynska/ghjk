@@ -344,7 +344,7 @@ Ponieważ tradycyjne programy do zarządzania wydatkami nie posiadają wyżej wy
 \textit{Rozdział 2. -- Porównanie różnych podejść} prezentuje dziewięć różnych podejść do wytwarzania w chmurze serwisów, z którymi może komunikować się aplikacja mobilna. Przy każdym podejściu czytelnik znajdzie listy konkretnych narzędzi oraz usług chmurowych, a także listy zalet i wad danego podejścia.
 
 \noindent
-\textit{Rozdział 3. -- Analiza wyboru platformy dla aplikacji mobilnej} wyjaśnia, w jaki sposób chmura usprawnia tworzenie aplikacji mobilnych, oraz w odniesieniu do konkretnego projektu uzasadnia wybór rodzaju usługi chmurowej oraz dostawcy usługi.
+\textit{Rozdział 3. -- Analiza wyboru platformy dla aplikacji mobilnej} wyjaśnia, w jaki sposób chmura usprawnia tworzenie aplikacji mobilnych, oraz w odniesieniu do konkretnego projektu uzasadnia wybór rodzaju usługi chmurowej i dostawcy usługi.
 
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
@@ -1693,21 +1693,21 @@ Na początek zostanie zaprezentowane, jaki jest sposób działania aplikacji prz
 \begin{enumerate}
 \item \textbf{Rejestracja użytkownika.} 
 
-W celu korzystania z aplikacji należy założyć konto, podając login i hasło.
+W celu korzystania z aplikacji należy założyć konto, podając login i hasło (rysunek \ref{fig:app-rejestracja}).
 \item \textbf{Logowanie} 
 
-Posiadając konto należy się zalogować. Logowanie zwraca token, który jest potrzeby, by móc korzystać z funkcji API dla zalogowanych. Token ten automatycznie zapisuje się do managera kont w Androidzie. Raz uzyskany może zostać ponownie użyty do automatycznego logowania.
+Posiadając konto należy się zalogować (rysunek \ref{fig:app-logowanie}). Logowanie zwraca token, który jest potrzeby, by móc korzystać z funkcji API dla zalogowanych. Token automatycznie zapisuje się do managera kont w Androidzie (rysunek \ref{fig:app-accountsManager}). Raz uzyskany może zostać ponownie użyty do automatycznego logowania.
 \item \textbf{Wstępna konfiguracja konta} 
 
 Jest to strona, która pokazuje się tylko podczas pierwszego logowania. Po przejściu konfiguracji, logowanie prowadzi już prosto do strony głównej aplikacji.
 
-Konfiguracja służy wprowadzeniu podstawowych danych o użytkowniku, tj.: waga, wzrost, płeć, imię, data urodzenia, poziom aktywności fizycznej, ilość posiadanych pieniędzy. 
+Konfiguracja służy wprowadzeniu podstawowych danych o użytkowniku (rysunek \ref{fig:app-konfiguracja1}), tj.: waga, wzrost, płeć, imię, data urodzenia, poziom aktywności fizycznej, ilość posiadanych pieniędzy. 
 
-Pieniądze wprowadza się za pomocą ,,portfeli'' -- na przykład można podać osobno kwotę na koncie w PLN, gotówkę w PLN i konto walutowe w EUR. Pozwoli to później lepiej kontrolować stan portfeli, przy czym nic nie stoi na przeszkodzie by przy tworzeniu statystyk sumować portfele z tej samej waluty.
+Pieniądze wprowadza się za pomocą ,,portfeli'' (rysunek \ref{fig:app-konfiguracja2}) -- na przykład można podać osobno kwotę na koncie w PLN, gotówkę w PLN i konto walutowe w EUR. Pozwoli to później lepiej kontrolować stan portfeli, przy czym nic nie stoi na przeszkodzie by przy tworzeniu statystyk sumować portfele z tej samej waluty.
 
 \item \textbf{Strona główna}
 
-Zalogowany, skonfigurowany użytkownik ląduje na stronie głównej. Jest to aktywność stworzona na bazie \textit{nagivation drawer}, czyli menu wysuwanego z boku ekranu. 
+Zalogowany, skonfigurowany użytkownik ląduje na stronie głównej (rysunek \ref{fig:app-stronaGlowna1}). Jest to aktywność stworzona na bazie \textit{nagivation drawer}, czyli menu wysuwanego z boku ekranu (rysunek \ref{fig:app-navigationDrawer}). 
 
 Z poziomu \textit{navigation drawer} dostępne są opcje:
 	\begin{itemize}
@@ -1723,9 +1723,59 @@ Z poziomu menu typu ,,więcej opcji'' jest dostępna opcja ,,wyloguj''.
 Na stronie ,,podsumowanie'', będącej domyślnie wyświetlanym fragmentem strony głównej, widnieje wielki przycisk pozwalający dodać wydatek.
 \end{enumerate}
 
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/rejestracja.png}}
+		\caption{Rejestracja}
+		\label{fig:app-rejestracja}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/logowanie.png}}
+		\caption{Logowanie}
+		\label{fig:app-logowanie}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/accountsManager.png}}
+		\caption{Przechowywanie danych zalogowanego użytkownika w Accounts Managerze}
+		\label{fig:app-accountsManager}
+	\end{minipage}
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/konfiguracja1.png}}
+		\caption{Dane do wstępnej konfiguracji}
+		\label{fig:app-konfiguracja1}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/konfiguracja2.png}}
+		\caption{Portfele we wstępnej konfiguracji}
+		\label{fig:app-konfiguracja2}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stronaGlowna1.png}}
+		\caption{Strona główna przed konfiguracją grupy}
+		\label{fig:app-stronaGlowna1}
+	\end{minipage}
+\end{figure}
+
+
 \subsection{Dodawanie wydatku}
 
-Dzięki zastosowaniu kategorii z przelicznikami oraz listy portfeli walutowych, dodawanie wydatku prezentuje się bardzo prosto nawet mimo możliwości tworzenia docelowo skomplikowanych raportów o wielu osobach.
+Dzięki zastosowaniu kategorii z przelicznikami oraz listy portfeli walutowych, dodawanie wydatku prezentuje się bardzo prosto nawet mimo możliwości tworzenia docelowo skomplikowanych raportów o wielu osobach (rysunki \ref{fig:app-dodajWydatek1}, \ref{fig:app-dodajWydatek2}).
 
 Aby dodać wydatek należy:
 
@@ -1734,8 +1784,36 @@ Aby dodać wydatek należy:
 \item \textbf{Wybrać kategorię wydatku}. Jeśli konto należy do grupy, to od kategorii zależy jak później będą naliczane długi. \textit{Przykład: gdy dana osoba dodaje wydatek na wspólne jedzenie, innym automatycznie naliczy się ile powinni oddać tej osobie, zgodnie z ich zapotrzebowaniem kalorycznym.}
 \item \textbf{Podać sumę na paragonie}. Od tej sumy ewentualnie zostaną odjęte poszczególne pozycje na paragonie, które nie pasują do kategorii głównej.
 \item \textbf{Zaznaczyć portfel}, jeśli domyślnie zaznaczony nie pasuje. Jest to źródło, z którego był opłacony wydatek. Tym sposobem wydatek może być w obcej walucie.
-\item \textit{(opcjonalnie)} \textbf{Podać szczegóły z paragonu}. Przydatna opcja odejmująca wiele pracy. \textit{Przykład: dodawany jest paragon z supermarketu, na nim samo jedzenie i do tego żel pod prysznic. Żeby zachować właściwe przypisanie do kategorii, nie trzeba ręcznie odejmować żelu pod prysznic i osobno go dodawać. Wystarczy podać go jako szczegół na paragonie pasujący do kategorii ,,higiena'' i cała reszta dopasuje się automatycznie.}
+\item \textit{(opcjonalnie)} \textbf{Podać szczegóły z paragonu}. Przydatna opcja odejmująca wiele pracy (rysunek \ref{fig:app-dodajWydatek2}). \textit{Przykład: dodawany jest paragon z supermarketu, na nim samo jedzenie i do tego żel pod prysznic. Żeby zachować właściwe przypisanie do kategorii, nie trzeba ręcznie odejmować żelu pod prysznic i osobno go dodawać. Wystarczy podać go jako szczegół na paragonie pasujący do kategorii ,,higiena'' i cała reszta dopasuje się automatycznie.}
 \end{enumerate}
+
+
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/navigationDrawer.png}}
+		\caption{Nawigacja w aplikacji}
+		\label{fig:app-navigationDrawer}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/dodajWydatek1.png}}
+		\caption{Dodawanie wydatku}
+		\label{fig:app-dodajWydatek1}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/dodajWydatek2.png}}
+		\caption{Dodawanie szczegółów paragonu}
+		\label{fig:app-dodajWydatek2}
+	\end{minipage}
+\end{figure}
+
+
 
 \subsection{Łączenie w gospodarstwo domowe}
 
@@ -1743,11 +1821,11 @@ Aplikacja może działać w trybie pracy dla jednej osoby, ale jej główne prze
 
 \begin{enumerate}
 \item \textbf{Dodanie i skonfigurowanie kont} -- każda osoba powinna najpierw założyć konto.
-\item \textbf{Wysyłanie zaproszeń} -- po zalogowaniu należy przejść do sekcji ,,zaproszenia'' i tam wysłać zaproszenie danej osobie, podając jej login.
-\item \textbf{Akceptacja zaproszenia} -- każda osoba posiadająca zaproszenie może je wyświetlić i zaakceptować w sekcji ,,zaproszenia''.  
+\item \textbf{Wysyłanie zaproszeń} -- po zalogowaniu należy przejść do sekcji ,,zaproszenia'' i tam wysłać zaproszenie danej osobie, podając jej login (rysunek \ref{fig:app-zaproszenie}).
+\item \textbf{Akceptacja zaproszenia} -- każda osoba posiadająca zaproszenie może je wyświetlić i zaakceptować w sekcji ,,zaproszenia'' (rysunek \ref{fig:app-akceptacja}).  
 \end{enumerate}
 
-Po akceptacji zaproszenia konto zmienia status na należące do gospodarstwa domowego. W sekcji ,,podsumowanie'' pojawiają się \textbf{dodatkowe wartości}:
+Po akceptacji zaproszenia konto zmienia status na należące do gospodarstwa domowego. W sekcji ,,podsumowanie'' pojawiają się \textbf{dodatkowe wartości} (rysunek \ref{fig:app-stronaGlowna3}):
 
 \begin{itemize}
 \item wydatki całego gospodarstwa domowego, przedstawione jako suma wszystkich walut posiadanych przez wszystkich uczestników,
@@ -1755,11 +1833,72 @@ Po akceptacji zaproszenia konto zmienia status na należące do gospodarstwa dom
 \item długi użytkownika i/lub zobowiązania innych osób względem użytkownika.
 \end{itemize}
 
-\textbf{Długi i zobowiązania} działają w taki sposób, że jeśli dana osoba dokonała wydatku w imieniu innej osoby, to odpowiednio zaznaczona kategoria automatycznie naliczy tej osobie pieniądze do oddania.
+\textbf{Długi i zobowiązania} działają w taki sposób, że jeśli dana osoba dokonała wydatku w imieniu innej osoby (rysunek \ref{fig:app-stronaGlowna4}), to odpowiednio zaznaczona kategoria automatycznie naliczy tej osobie pieniądze do oddania (rysunek \ref{fig:app-stronaGlowna5}).
 
-Dołączenie nowej osoby do gospodarstwa domowego powoduje \textbf{agregację kategorii} gospodarstwa oraz nowej osoby. Domyślne kategorie posiadają swój sposób agregacji, tzn. jedzenie zawsze agreguje się zgodnie z zapotrzebowaniem kalorycznym, a pozostałe kategorie dzielą wydatki po równo na każdą z osób. Można także dodawać swoje kategorie.
+Dołączenie nowej osoby do gospodarstwa domowego powoduje \textbf{agregację kategorii} gospodarstwa oraz nowej osoby (rysunek \ref{fig:app-kategorie}). Domyślne kategorie posiadają swój sposób agregacji, tzn. jedzenie zawsze agreguje się zgodnie z zapotrzebowaniem kalorycznym, a pozostałe kategorie dzielą wydatki po równo na każdą z osób. Można także dodawać swoje kategorie.
 
-\textbf{Stan finansów każdej z osób w gospodarstwie domowym} można podejrzeć w sekcji ,,gospodarstwo domowe''.
+\textbf{Stan finansów każdej z osób w gospodarstwie domowym} można podejrzeć w sekcji ,,gospodarstwo domowe'' (rysunek \ref{fig:app-stanKont}).
+
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/zaproszenie.png}}
+		\caption{Wysłanie zaproszenia}
+		\label{fig:app-zaproszenie}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/akceptacja.png}}
+		\caption{Akceptacja zaproszenia}
+		\label{fig:app-akceptacja}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stronaGlowna3.png}}
+		\caption{Strona główna po akceptacji zaproszenia}
+		\label{fig:app-stronaGlowna3}
+	\end{minipage}
+\end{figure}
+
+
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stronaGlowna4.png}}
+		\caption{Strona główna po dodaniu wydatku}
+		\label{fig:app-stronaGlowna4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stronaGlowna5.png}}
+		\caption{Strona główna u drugiej osoby}
+		\label{fig:app-stronaGlowna5}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/kategorie.png}}
+		\caption{Przeliczniki dla kategorii (automatycznie wyliczone)}
+		\label{fig:app-kategorie}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{0.3\textwidth}
+		\setlength{\fboxsep}{1pt}
+		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stanKont.png}}
+		\caption{Stan kont u wszystkich osób}
+		\label{fig:app-stanKont}
+	\end{minipage}
+\end{figure}
 
 
 \section{Implementacja API}
