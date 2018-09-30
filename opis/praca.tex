@@ -153,84 +153,7 @@ basicstyle=\ttfamily\small,
 
 \usepackage[backend=bibtex8,sorting=none,isbn=false]{biblatex}
 \nocite{*}
-\addbibresource{bibliography/ccCambridge}
-\addbibresource{bibliography/ccBiznes}
-\addbibresource{bibliography/cloudFoundry}
-\addbibresource{bibliography/kubernetesOreily}
-\addbibresource{bibliography/ccSpringer}
-\addbibresource{bibliography/azurePackt}
-\addbibresource{bibliography/serverlessMaddie}
-\addbibresource{bibliography/devOpsPackt}
-\addbibresource{bibliography/kubernetesPacktMastering}
-\addbibresource{bibliography/kubernetesPacktGettingStarted}
-\addbibresource{bibliography/dockerPacktMastering}
-\addbibresource{bibliography/microservicesPacktNetCore}
-\addbibresource{bibliography/distributedSystems}
-\addbibresource{bibliography/soaOreily}
-\addbibresource{bibliography/microservicesSusan}
-\addbibresource{bibliography/microservicesWmii}
-\addbibresource{bibliography/ccResearchSpringer}
-\addbibresource{bibliography/noSqlHistory}
-\addbibresource{bibliography/relationalDbs}
-\addbibresource{bibliography/hadoop}
-\addbibresource{bibliography/bigData}
-\addbibresource{bibliography/realTimeProcessing}
-\addbibresource{bibliography/cdn}
-\addbibresource{bibliography/fogArticle}
-\addbibresource{bibliography/fog5g}
-\addbibresource{bibliography/iotArchitects}
-\addbibresource{bibliography/iotEnterprise}
-\addbibresource{bibliography/nistArticle}
-\addbibresource{bibliography/rightscaleReport}
-\addbibresource{bibliography/serverlessArticle}
-\addbibresource{bibliography/openLambdaArticle}
-\addbibresource{bibliography/windowsAzureWprowadzenie}
-\addbibresource{bibliography/siteBigTableWikiPl}
-\addbibresource{bibliography/siteGoogleBlogCloudSql}
-\addbibresource{bibliography/siteGoogleBlogKubernetes}
-\addbibresource{bibliography/siteAmazonBlogEks}
-\addbibresource{bibliography/siteMicrosoftBlogAks}
-\addbibresource{bibliography/siteMicrosoftBlogAzure}
-\addbibresource{bibliography/siteAmazonElasticBeanstalkWiki}
-\addbibresource{bibliography/siteAmazonRdsWiki}
-\addbibresource{bibliography/siteGoogleCloudPlatformWiki}
-\addbibresource{bibliography/siteAmazonSimpleDbWiki}
-\addbibresource{bibliography/siteGoogleServerless}
-\addbibresource{bibliography/siteOperatingSystemVirtualizationWiki}
-\addbibresource{bibliography/siteDockerHistory}
-\addbibresource{bibliography/siteCloudControlWiki}
-\addbibresource{bibliography/siteUbuntuBlog}
-\addbibresource{bibliography/siteDockerStackOverflow}
-\addbibresource{bibliography/siteKubernetesBlogBorg}
-\addbibresource{bibliography/siteKubernetesOnRaspberry}
-\addbibresource{bibliography/siteGoogleTry}
-\addbibresource{bibliography/siteAksPricing}
-\addbibresource{bibliography/siteAzureTry}
-\addbibresource{bibliography/siteAmazonBlogEcs}
-\addbibresource{bibliography/siteAmazonEcs}
-\addbibresource{bibliography/siteAmazonEcsPricing}
-\addbibresource{bibliography/siteAmazonTry}
-\addbibresource{bibliography/siteAmazonEksPricing}
-\addbibresource{bibliography/siteServerlessFramework}
-\addbibresource{bibliography/siteKubelessReleases}
-\addbibresource{bibliography/oodbmsManifesto}
-\addbibresource{bibliography/siteAkamaiFacts}
-\addbibresource{bibliography/siteAmazonLambdaEdge}
-\addbibresource{bibliography/siteAzureIotEdge}
-\addbibresource{bibliography/siteGoogleIotEdge}
-\addbibresource{bibliography/siteAzureContainerInstancesIntroducing}
-\addbibresource{bibliography/siteAwsFargateIntroducing}
-\addbibresource{bibliography/siteAzureStack}
-\addbibresource{bibliography/siteGoogleCisco}
-\addbibresource{bibliography/siteAzureContainerInstances}
-\addbibresource{bibliography/siteAzureWebAppContainersAvailable}
-\addbibresource{bibliography/siteAwsFargate}
-\addbibresource{bibliography/siteAzureFunctions2}
-\addbibresource{bibliography/siteStackOverflowSurvey}
-
-
-
-
+\input{bibitems}
 
 \begin{document}
 
@@ -1837,10 +1760,10 @@ Po akceptacji zaproszenia konto zmienia status na należące do gospodarstwa dom
 
 Dołączenie nowej osoby do gospodarstwa domowego powoduje \textbf{agregację kategorii} gospodarstwa oraz nowej osoby (rysunek \ref{fig:app-kategorie}). Domyślne kategorie posiadają swój sposób agregacji, tzn. jedzenie zawsze agreguje się zgodnie z zapotrzebowaniem kalorycznym, a pozostałe kategorie dzielą wydatki po równo na każdą z osób. Można także dodawać swoje kategorie.
 
-\textbf{Stan finansów każdej z osób w gospodarstwie domowym} można podejrzeć w sekcji ,,gospodarstwo domowe'' (rysunek \ref{fig:app-stanKont}).
+\textbf{Stan finansów każdej z osób w gospodarstwie domowym} można podejrzeć w sekcji ,,gospodarstwo domowe''. %(rysunek \ref{fig:app-stanKont}).
 
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
 	\begin{minipage}[t]{0.3\textwidth}
 		\setlength{\fboxsep}{1pt}
@@ -1866,7 +1789,7 @@ Dołączenie nowej osoby do gospodarstwa domowego powoduje \textbf{agregację ka
 
 
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
 	\begin{minipage}[t]{0.3\textwidth}
 		\setlength{\fboxsep}{1pt}
@@ -1890,15 +1813,15 @@ Dołączenie nowej osoby do gospodarstwa domowego powoduje \textbf{agregację ka
 	\end{minipage}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\begin{minipage}[t]{0.3\textwidth}
-		\setlength{\fboxsep}{1pt}
-		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stanKont.png}}
-		\caption{Stan kont u wszystkich osób}
-		\label{fig:app-stanKont}
-	\end{minipage}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\begin{minipage}[t]{0.3\textwidth}
+%		\setlength{\fboxsep}{1pt}
+%		\fcolorbox{gray}{white}{\includegraphics[width=\textwidth]{app/stanKont.png}}
+%		\caption{Stan kont u wszystkich osób}
+%		\label{fig:app-stanKont}
+%	\end{minipage}
+%\end{figure}
 
 
 \section{Implementacja API}
@@ -1908,13 +1831,93 @@ W niniejszej sekcji opisano, jak wyglądała praca z Azure Functions.
 
 \subsection{Teoretyczne podstawy Azure Functions}
 
-%- typ aplikacji azure web apps
-%- można pisać jako skrypt w różnych językach albo jako biblioteka c#
-%- .net core oficjalnie działa dopiero od kilku dni
-%budowa funkcji:
-%- triggery
-%- uprawnienia do funkcji
-%- logi
+Azure Functions stanowi usługę wchodzącą w skład Azure App Services. Została wbudowana na bazie Azure WebJobs, która umożliwia uruchamianie zadań w tle.
+
+Dostępne są dwie wersje środowiska uruchomieniowego Azure Functions: \cite{siteAzureFunctions2}
+\begin{itemize}
+\item 1.x -- działa na .NET Framework
+\item 2.x -- działa na .NET Standard; do dnia 24.09 występowała w wersji poglądowej i zalecano korzystanie z 1.x.
+\end{itemize} 
+
+Aplikacja utworzona w Azure Functions dostępna jest pod adresem postaci:
+
+\texttt{https://NAZWA\_APLIKACJI.azurewebsites.net/api/}
+
+\subsubsection{Atrybuty funkcji}
+
+Każda funkcja to bezstanowy kod, który reaguje na dane zdarzenie. Jako kilka podstawowych przykładów \textbf{wyzwalaczy} (ang. \textit{triggers}) można wymienić:
+\begin{itemize}
+\item Http trigger -- obsługa zapytania HTTP. 
+
+Należy zdefiniować ścieżkę (np. \textit{/api/person/get/{name}}), obsługiwane rodzaje zapytania (GET, POST itd.) oraz \textbf{poziom autoryzacji}.
+
+Są obsługiwane 3 poziomy autoryzacji. Poziom \textbf{Anonymous} oznacza, że funkcja jest dostępna bez konieczności podawania klucza. W poziomach \textbf{Function} oraz \textbf{Admin} konieczne jest podanie klucza. W ramach aplikacji są zdefiniowane klucze hosta (ang. \textit{host keys}) i tego typu kluczem można uzyskać dostęp do poziomu Admin oraz Function. Poza tym każda funkcja posiada swoją kolekcję kluczy, którymi można się do nich zautoryzować, jeśli mają dostęp Function.
+
+Klucz podaje się przez dodanie parametru \texttt{code} do zapytania HTTP, np.:
+
+\texttt{/api/person/get/grazyna?code=miejsceNaToken}
+\item Timer trigger -- funkcja zostanie wywołana po upłynięciu określonego interwału czasowego. 
+
+Interwał określa się za pomocą wyrażenia CRON, np. \texttt{0~*~*~*~*~*} oznacza \textit{,,0 sekund, każdej minuty, każdej godziny, każdego dnia, każdego miesiąca, każdego dnia tygodnia''} (czyli co minutę). \cite{siteAppTimerTrigger}
+\item Queue trigger -- został dodany wpis do danej kolejki w Azure Queue Storage .
+\item Blob trigger -- został dodany plik do kontenera w Azure Blob Storage.
+\item CosmosDb trigger -- został dodany lub zmodyfikowany wpis w bazie Azure CosmosDb.
+\end{itemize}
+
+
+\begin{figure}[h]
+	\centering
+			\includegraphics[width=0.85\textwidth]{new-function.png}
+		\caption{Tworzenie nowej funkcji w Visual Studio. Widoczne różne rodzaje wyzwalaczy oraz dostępne poziomy autoryzacji dla wyzwalacza Http.}
+		\label{fig:new-function}
+\end{figure}
+
+Funkcja może powiadać także \textbf{wiązania} (ang. \textit{bindings}) do danych, wejściowe lub wyjściowe. Może to służyć np. do odczytu danych z Azure Table Storage lub użycia zwracanego przez funkcję obiektu jako nowego wpisu do kolejki. \cite{siteAppBindings}
+
+Każda funkcja posiada wiązanie do dziennika \textbf{logów}. Jest to niezwykle istotny element funkcji, ponieważ (podobnie jak w mikrousługach) funkcje nie są typem aplikacji, gdzie żeby sprawdzić dlaczego coś nie działa można sobie na spokojnie prześledzić kod w trybie debuggowania. Bez szczegółowych logów trudno znaleźć przyczynę błędu.
+
+\subsubsection{Budowa projektu}
+
+
+
+Do tworzenia aplikacji można podejść na dwa sposoby: \cite{siteAppLanguages}
+\begin{enumerate}
+\item każda funkcja to skrypt,
+\item cała aplikacja to biblioteka.
+\end{enumerate}
+
+\textbf{Skrypty} działają bardziej wieloplatformowo. Można je tworzyć w językach C\#, F\# oraz JavaScript (w wersji 2.x także poglądowo w Javie). Istnieje wtedy możliwość uruchamiania funkcji lokalnie przy pomocy paczki Azure Functions Core Tools dla menadżera pakietów npm. W wersji 2.x można w ten sposób postąpić na wielu platformach, wszędzie gdzie działa .NET Core, czyli m.in. na Linuksie i macOS. Core Tools można używać z poziomu linii komend lub korzystając z Visual Studio Code z doinstalowanym rozszerzeniem Azure Functions for Visual Studio Code.\cite{siteAppLocally} 
+
+Aplikacje ze skryptów można edytować z poziomu portalu Azure.
+
+Każda funkcja utworzona jako skrypt składa się z:
+\begin{itemize}
+\item \textbf{pliku ze skryptem}, gdzie w przypadku C\# i F\# obowiązują rozszerzenia .csx i .fsx oraz styl pisania skryptu,
+\item \textbf{pliku \textit{function.json}}, znajdującego się w tym samym folderze. Plik ten opisuje m.in. wiązania (ang. \textit{bindings}) z mechanizmami uruchamiającymi funkcję lub usługami takimi jak Azure Storage. Wskazuje się tam również rodzaj autoryzacji.
+\end{itemize}
+
+Wspólnie dla wszystkich funkcji definiuje się:
+\begin{itemize}
+\item \textbf{plik z zależnościami projektu}. Dla NuGet jest to \textit{project.json}, dla npm \textit{package.json} i dla Mavena \textit{pom.xml},
+\item \textbf{plik \textit{host.json}} przechowujący opis konfiguracji na produkcji. Tam można np. zdefiniować przedrostek dla ścieżki API (inny niż domyślny \textit{/api}),
+\item \textit{(w wersji 2.x i pracy lokalnie)} \textbf{plik \textit{extensions.json}} rejestrujący wiązania występujące w paczkach NuGet. \cite{siteAppCSharpScript}.
+\end{itemize}
+
+\textbf{Biblioteka} to podejście przeznaczone dla osób korzystających z Visual Studio i języka C\#. Polega na tym, że funkcje w projekcie są prekompilowane do formatu .dll i w takiej formie publikowane do Azure. 
+
+Podejście to daje następujące korzyści: \cite{siteAppLibrary}
+\begin{itemize}
+\item[+] szybszy czas pełnego uruchomienia prekompilowanej funkcji względem skryptu,
+\item[+] korzystanie ze wszystkich ułatwień Visual Studio, łącznie z IntelliSense, pisaniem testów, łączeniem z głównym repozytorium kodu itp.,
+\item[+] brak konieczności tworzenia pliku \textit{function.json} -- można korzystać z atrybutów WebJobs do definiowania wyzwalaczy i wiązań,
+\item[+] brak konieczności tworzenia plików \textit{package.json} oraz \textit{extensions.json} -- zarządza nimi NuGet,
+\item[+] wszystkie potrzebne narzędzia instalują się wraz z narzędziami Azure Functions Tools.
+\end{itemize}
+Odbywa się to kosztem następujących niedogodności:
+\begin{itemize}
+\item[--] nie można edytować kodu funkcji z poziomu portalu Azure,
+\item[--] kod jest związany z Visual Studio.
+\end{itemize}
 
 
 \subsection{Przygotowanie środowiska}
