@@ -230,7 +230,7 @@ Biorąc pod uwagę to, w~jak szybkim czasie pojawiło~się wiele istotnych narz�
 \section*{Problem zastosowania chmury obliczeniowej w~aplikacjach mobilnych}
 \addcontentsline{toc}{section}{Problem zastosowania chmury obliczeniowej w~aplikacjach mobilnych}
 
-Chmura obliczeniowa stanowi ważną część tzw. \textit{networked society}, czyli obrazu, do~którego współcześnie dąży technologia oraz sposób korzystania z~niej przez społeczeństwo (rysunek \ref{fig:iot-hype}). Jest to paradygmat, w~którym korzystanie z~elektronicznych asystentów czy Internetu Rzeczy (ang. IoT, \textit{Internet of Things}) stanowi niezbędny element rzeczywistości.\cite{ccSpringer} w~tym nowym obrazie świata chmura stanowi spoiwo, natomiast komunikacja z~człowiekiem w~dużej mierze odbywa~się przy pomocy aplikacji mobilnych. Można spodziewać~się rosnącego zapotrzebowania na~aplikacje mobilne, których głównym zadaniem jest skuteczna komunikacja z~chmurą. 
+Chmura obliczeniowa stanowi ważną część tzw. \textit{networked society}, czyli obrazu, do~którego współcześnie dąży technologia oraz sposób korzystania z~niej przez społeczeństwo (rysunek \ref{fig:iot-hype}). Jest to paradygmat, w~którym korzystanie z~elektronicznych asystentów czy Internetu Rzeczy (ang. IoT, \textit{Internet of Things}) stanowi niezbędny element rzeczywistości.\cite{ccSpringer} W~tym nowym obrazie świata chmura stanowi spoiwo, natomiast komunikacja z~człowiekiem w~dużej mierze odbywa~się przy pomocy aplikacji mobilnych. Można spodziewać~się rosnącego zapotrzebowania na~aplikacje mobilne, których głównym zadaniem jest skuteczna komunikacja z~chmurą. 
 
 \begin{figure}[h]
 	\centering
@@ -251,7 +251,7 @@ Powyższy problem przyczynia~się do~braku zrozumienia technologii chmurowych ja
 \addcontentsline{toc}{section}{Cel pracy}
 
 
-Celem pracy było rozstrzygnięcie, jak na~obecny stan wiedzy podejść do~problemu realizacji typowego projektu aplikacji mobilnej w~oparciu o~Cloud Computing. w~rozumieniu niniejszej pracy, typowa aplikacja pozwala na~wprowadzanie i~otrzymywanie danych od~serwera za pomocą udostępnionego API. w~rezultacie miała zostać wybrana konkretna technologia, która pod względem teoretycznym najlepiej odpowiadałaby stawianym wymaganiom.
+Celem pracy było rozstrzygnięcie, jak na~obecny stan wiedzy podejść do~problemu realizacji typowego projektu aplikacji mobilnej w~oparciu o~Cloud Computing. W~rozumieniu niniejszej pracy, typowa aplikacja pozwala na~wprowadzanie i~otrzymywanie danych od~serwera za pomocą udostępnionego API. W~rezultacie miała zostać wybrana konkretna technologia, która pod względem teoretycznym najlepiej odpowiadałaby stawianym wymaganiom.
 
 Wybrana technologia miała zostać użyta w~praktyce do~stworzenia aplikacji na~system Android, komunikującej~się z~API udostępnianym przez chmurę. Aplikacja miała umożliwiać zapisywanie wydatków w~sposób uwzględniający wydatki kilku osób w~gospodarstwie domowym. System miał pozwolić założyć konto w~serwisie, a~następnie połączyć konta w~grupy odpowiadające gospodarstwu domowemu. Kategorie wydatków miały pozwolić na~uzgodnienie, kto ile płaci w~danej kategorii (np. wydatki na~higienę po 50\%). Serwer miał być potrzebny do~wspomagania rozliczeń pomiędzy poszczególnymi osobami przez dynamiczne naliczanie kto ma ile do~oddania. Ponadto miał wspomagać kontrolę własnych wydatków przez uwzględnienie, że~koszty życia to nie tylko pieniądze wydawane przez siebie samego, ale również wydatki poniesione przez inne osoby prowadzące to samo gospodarstwo domowe. 
 
@@ -297,11 +297,11 @@ Aby była możliwa tak wysoka elastyczność, fizyczne serwery są oddzielone wa
 		\label{fig:pooling}
 \end{figure}
 
-Poza rozwiązaniem problemu zarządzania ogromną ilością fizycznych serwerów, wirtualizacja zasobów pozwala na~\textbf{lepsze wykorzystanie sprzętu}. w~tradycyjnym modelu komputery muszą być przygotowane na~wypadek gdyby zainstalowane na~nich programy powodowały większe zużycie zasobów. Dzieje~się tak nawet w~przypadku komputerów PC -- kupuje~się specjalnie większe dyski i~lepszy procesor, aby przydały~się w~przyszłości. w~ten sposób wykorzystuje~się niewielką część możliwości pojedynczego komputera, ponieważ przez większość czasu potrzeba mu znacznie mniej zasobów, niż fizycznie posiada. w~przypadku wirtualnych zasobów, do~fizycznej jednostki można dynamicznie przypisać zużycie powodowane przez wielu użytkowników, wiele wirtualnych systemów operacyjnych, w~zgodzie z~ustalonym algorytmem. Algorytm może definiować, że~np. wszystkie komputery mają zostać obciążone po równo (round robin), czy że~pojedynczy węzeł ma być wykorzystany w~100\% \cite{cloudFoundry}. Technikę tę nazywa~się \textbf{równoważeniem obciążenia} (ang. \textit{load balancing}).
+Poza rozwiązaniem problemu zarządzania ogromną ilością fizycznych serwerów, wirtualizacja zasobów pozwala na~\textbf{lepsze wykorzystanie sprzętu}. W~tradycyjnym modelu komputery muszą być przygotowane na~wypadek gdyby zainstalowane na~nich programy powodowały większe zużycie zasobów. Dzieje~się tak nawet w~przypadku komputerów PC -- kupuje~się specjalnie większe dyski i~lepszy procesor, aby przydały~się w~przyszłości. W~ten sposób wykorzystuje~się niewielką część możliwości pojedynczego komputera, ponieważ przez większość czasu potrzeba mu znacznie mniej zasobów, niż fizycznie posiada. W~przypadku wirtualnych zasobów, do~fizycznej jednostki można dynamicznie przypisać zużycie powodowane przez wielu użytkowników, wiele wirtualnych systemów operacyjnych, w~zgodzie z~ustalonym algorytmem. Algorytm może definiować, że~np. wszystkie komputery mają zostać obciążone po równo (round robin), czy że~pojedynczy węzeł ma być wykorzystany w~100\% \cite{cloudFoundry}. Technikę tę nazywa~się \textbf{równoważeniem obciążenia} (ang. \textit{load balancing}).
 
-Technika zrównoważonego obciążenia przynosi kilka ważnych korzyści, będących istotnymi cechami chmur obliczeniowych. Dzięki niej usługi działające w~chmurze mogą być uruchomione na~różnych węzłach, w~tylu instancjach, ile wymagane jest do~prawidłowego obsłużenia ruchu. w~przypadku awarii którejś z~instancji, użytkownicy usługi niczego nie odczuwają, gdyż zostają przekierowani na~instancję co do~działania której nie wykazano błędów. Wszystko to ułatwia tworzenie wysoce skalowalnego oprogramowania. Nie bez znaczenia jest także pozytywny wpływ na~środowisko naturalne, ponieważ chmury obliczeniowe oznaczają optymalne zużycie istniejącego sprzętu komputerowego, więc nie trzeba produkować go więcej niż potrzeba ani niepotrzebnie zużywać energii elektrycznej.
+Technika zrównoważonego obciążenia przynosi kilka ważnych korzyści, będących istotnymi cechami chmur obliczeniowych. Dzięki niej usługi działające w~chmurze mogą być uruchomione na~różnych węzłach, w~tylu instancjach, ile wymagane jest do~prawidłowego obsłużenia ruchu. W~przypadku awarii którejś z~instancji, użytkownicy usługi niczego nie odczuwają, gdyż zostają przekierowani na~instancję co do~działania której nie wykazano błędów. Wszystko to ułatwia tworzenie wysoce skalowalnego oprogramowania. Nie bez znaczenia jest także pozytywny wpływ na~środowisko naturalne, ponieważ chmury obliczeniowe oznaczają optymalne zużycie istniejącego sprzętu komputerowego, więc nie trzeba produkować go więcej niż potrzeba ani niepotrzebnie zużywać energii elektrycznej.
 
-Najbardziej spektakularne efekty wykorzystywania modelu chmury widać w~przypadku dostawców posiadających największe centra danych na~świecie, takich jak Amazon, Microsoft, Google czy IBM. na~kilkudziesięciu $m^{2}$ gromadzą zasoby komputerowe, których równocześnie mogą używać miliony osób na~całym świecie. na~jednym fizycznym komputerze zasoby mogą być wykorzystywane przez wiele osób niewiedzących o~sobie nawzajem (po angielsku tę właściwość określa~się jako \textit{multi-tenancy}). Chmury o~takiej architekturze mają potencjał ucieleśnić ideę, zgodnie z~którą zasoby komputerowe mogą być dostarczane jako usługa użyteczności publicznej.
+Najbardziej spektakularne efekty wykorzystywania modelu chmury widać w~przypadku dostawców posiadających największe centra danych na~świecie, takich jak Amazon, Microsoft, Google czy IBM. Na~kilkudziesięciu $m^{2}$ gromadzą zasoby komputerowe, których równocześnie mogą używać miliony osób na~całym świecie. Na~jednym fizycznym komputerze zasoby mogą być wykorzystywane przez wiele osób niewiedzących o~sobie nawzajem (po angielsku tę właściwość określa~się jako \textit{multi-tenancy}). Chmury o~takiej architekturze mają potencjał ucieleśnić ideę, zgodnie z~którą zasoby komputerowe mogą być dostarczane jako usługa użyteczności publicznej.
 
 Wyżej wymieniony sposób myślenia o~chmurze jest tym, co wyraźnie odróżnia chmury publiczne od~chmur prywatnych. Nic nie stoi na~przeszkodzie, aby samemu stworzyć prywatną sieć opartą o~model chmury. Wówczas formalnie jest to chmura, lecz nie zapewnia niektórych ważnych korzyści, głównie przez konieczność samodzielnego administrowania serwerami, mniejszą ilość potencjalnych użytkowników oraz mniejszy potencjał puli zasobów. Przykładowo, jeśli firma nadal musi martwić~się o~zarządzanie fizycznymi jednostkami komputerowymi, to nie będzie miała możliwości wychwalać modelu chmury za brak konieczności zatrudniania specjalistów zajmujących~się infrastrukturą komputerową.
 
@@ -329,7 +329,7 @@ W modelu chmury sprzęt komputerowy zostaje wydajniej wykorzystany, w~związku z
 Model chmury zwalnia użytkowników z~dodatkowych czynności przy realizacji danego zadania. Przykładowo, jeśli komuś jest potrzebny serwer, to z~chmurą publiczną nie musi martwić~się zakupem sprzętu, zapewnieniem odpowiedniego pomieszczenia czy dostępem do~Internetu. Może~się zamiast tego skupić na~właściwym skonfigurowaniu systemu na~serwerze wirtualnym. 
 
 \item \textbf{płatność tylko za rzeczywiste zużycie} \\
-Chmura umożliwia rozliczanie na~podstawie czasu używania procesora, ilości przesłanych megabajtów czy ilości danych przechowywanych w~chmurze. w~szczególności zmniejsza to początkowy koszt wdrażania czegokolwiek w~chmurze.
+Chmura umożliwia rozliczanie na~podstawie czasu używania procesora, ilości przesłanych megabajtów czy ilości danych przechowywanych w~chmurze. W~szczególności zmniejsza to początkowy koszt wdrażania czegokolwiek w~chmurze.
 
 \item \textbf{gwarancja jakości usługi} \\
 Każdy dostawca usług chmurowych udostępnia klientom SLA (ang. \textit{Service-level aggrements}), w~którym zobowiązuje~się do~utrzymania określonego poziomu niezawodności usług (np. dostępność w~99,9\% przypadków) oraz przewidywanego zachowania w~przypadku niedotrzymania zapewnień (np. obniżki cen).
@@ -369,7 +369,7 @@ Pojawiły~się również LAN (ang. \textit{local area network}) i~WAN (ang. \tex
 
 We wczesnych latach 80. wynaleziono \textbf{systemy rozproszone}. Ponieważ były w~stanie przetwarzać dane równolegle, zachwiało to poglądem iż~większą moc obliczeniową należy uzyskiwać przez wynajdowanie silniejszych procesorów. Systemy rozproszone wymagały wzmożonej ilości operacji komunikacji, lecz występowało to w~parze z~rozwojem LAN osiągającym przepustowość 100 Mbps oraz WAN osiągającym 64 kbps.
 
-Następnie powstała koncepcja \textbf{klastrów komputerowych}. Klaster polegał na~połączeniu komputerów tego samego typu (homogenicznych) w~sieć LAN i~wyłonieniu wśród nich zarządcy, który będzie zajmował~się przydzielaniem zadań pozostałym węzłom. Gdyby któryś z~węzłów miał awarię, to inne mogły przejąć jego zadanie. Dało to początek idei \textbf{puli zasobów}. w~klastrze niezawodność osiągało~się przez nadmiarowość zasobów.
+Następnie powstała koncepcja \textbf{klastrów komputerowych}. Klaster polegał na~połączeniu komputerów tego samego typu (homogenicznych) w~sieć LAN i~wyłonieniu wśród nich zarządcy, który będzie zajmował~się przydzielaniem zadań pozostałym węzłom. Gdyby któryś z~węzłów miał awarię, to inne mogły przejąć jego zadanie. Dało to początek idei \textbf{puli zasobów}. W~klastrze niezawodność osiągało~się przez nadmiarowość zasobów.
 
 Główną wadą klastrów była konieczność powierzenia zarządzania klastrem jednemu komputerowi. Stanowił on miejsce, od~niezawodności którego zależała niezawodność całej sieci (ang. \textit{single point of failure}). Rozwiązaniem okazały~się \textbf{gridy}, w~których każdy węzeł posiadał równy priorytet. Klient mógł podłączyć~się do~dowolnego komputera w~gridzie, a~ponadto komputery te mogły być różnego typu (heterogeniczne). Wkrótce gridy przeniknęły ze świata naukowego do~świata biznesu i~zaczynały być łączone przez WAN.
 
@@ -409,7 +409,7 @@ Przyjmuje się, że~termin \textit{,,cloud computing''} po raz pierwszy został 
 
 \section{Historia najnowsza. Współczesne wyzwania}
 
-Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w~tym samym czasie rozwinęły~się technologie postrzegane w~czasie pisania niniejszej pracy jako rewolucyjne. na~potrzeby opracowania wyróżniono następujące grupy zmian:
+Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w~tym samym czasie rozwinęły~się technologie postrzegane w~czasie pisania niniejszej pracy jako rewolucyjne. Na~potrzeby opracowania wyróżniono następujące grupy zmian:
 \begin{itemize}
 \item rozwój chmur publicznych (sekcja \ref{section:chmuryPubliczne}),
 \item rozwój rozwiązań opartych o~kontenery (sekcja \ref{section:konteneryzacja}),
@@ -420,11 +420,11 @@ Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań
 
 \subsection{Rozwój chmur publicznych} \label{section:chmuryPubliczne}
 
-W 2003 roku firma Citrix stworzyła Xen -- system operacyjny przeznaczony tylko do~wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. w~marcu 2006~r. Amazon na~podstawie Xena opracował swój produkt EC2. w~ciągu 18 miesięcy zaczęło z~niego korzystać ponad pół miliona osób.\cite{ccBiznes}
+W 2003 roku firma Citrix stworzyła Xen -- system operacyjny przeznaczony tylko do~wirtualizacji innych systemów operacyjnych. Niedługo potem Xen został udostępniony jako oprogramowanie otwartoźródłowe. W~marcu 2006~r. Amazon na~podstawie Xena opracował swój produkt EC2. W~ciągu 18 miesięcy zaczęło z~niego korzystać ponad pół miliona osób.\cite{ccBiznes}
 
-W kolejnych latach powstały kolejne chmury publiczne oraz nastąpił rozwój rozwiązań typu PaaS (ang. \textit{Platform as a~Service}). w~czerwcu 2007~r. powstał Heroku, będący pionierem w~tej kategorii. Niecały rok później Google udostępnił usługę Google App Engine. w~lutym 2010~r. Microsoft udostępnił Windows Azure (w kwietniu 2014 przemianowaną na~Microsoft Azure \cite{azurePackt}).
+W kolejnych latach powstały kolejne chmury publiczne oraz nastąpił rozwój rozwiązań typu PaaS (ang. \textit{Platform as a~Service}). W~czerwcu 2007~r. powstał Heroku, będący pionierem w~tej kategorii. Niecały rok później Google udostępnił usługę Google App Engine. W~lutym 2010~r. Microsoft udostępnił Windows Azure (w kwietniu 2014 przemianowaną na~Microsoft Azure \cite{azurePackt}).
 
-Do tego momentu powstały już 3 największe chmury publiczne: Amazon AWS, Google Cloud Platform, Microsoft Azure. Początkowo miały zróżnicowaną ofertę. w~literaturze\cite{ccBiznes} z~2011~r. porównywanie tych platform sprowadzało~się do~zakresu oferowanych przez nie usług. z~biegiem czasu różnice zatarły~się -- obecnie usługa publikowana przez jednego dostawcę po kilku miesiącach jest dostępna także u innych. Tabela \ref{table:historia} prezentuje porównanie tempa rozbudowy zakresu usług.
+Do tego momentu powstały już 3 największe chmury publiczne: Amazon AWS, Google Cloud Platform, Microsoft Azure. Początkowo miały zróżnicowaną ofertę. W~literaturze\cite{ccBiznes} z~2011~r. porównywanie tych platform sprowadzało~się do~zakresu oferowanych przez nie usług. Z~biegiem czasu różnice zatarły~się -- obecnie usługa publikowana przez jednego dostawcę po kilku miesiącach jest dostępna także u innych. Tabela \ref{table:historia} prezentuje porównanie tempa rozbudowy zakresu usług.
 
 \noindent
 \begin{small}
@@ -471,11 +471,11 @@ Kubernetes & 2018 -- Amazon Elastic Container Service for Kubernetes \cite{siteA
 
 \subsection{Konteneryzacja i~DevOps} \label{section:konteneryzacja}
 
-W tym samym czasie rozwijały~się technologie przeznaczone do~wystawiania własnych usług chmurowych. w~2010~r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do~świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na~prowadzenie własnej platformy typu PaaS do~tworzenia aplikacji w~chmurze. 
+W tym samym czasie rozwijały~się technologie przeznaczone do~wystawiania własnych usług chmurowych. W~2010~r. powstała otwartoźródłowa platforma \textbf{OpenStack} służąca do~świadczenia własnych usług typu IaaS. Rok później powstał \textbf{Cloud Foundry} -- również otwartoźródłowy projekt, pozwalający na~prowadzenie własnej platformy typu PaaS do~tworzenia aplikacji w~chmurze. 
 
 Cloud Foundry stanowił odpowiedź na~główny problem chmur publicznych -- tworzenie aplikacji na~wybraną chmurę wiązało ją z~mechanizmami specyficznymi dla~tej chmury. Brakowało pomostu, który oddzieliłby warstwę tworzenia aplikacji w~chmurze od~wybranego usługodawcy, bez konieczności tworzenia serwerów wirtualnych, na~których trzeba instalować określone środowisko. \cite{cloudFoundry}
 
-Cloud Foundry jest niezależny od~infrastruktury, może działać zarówno na~OpenStacku jak i~na serwerze wirtualnym w~chmurze publicznej. Zapewnia możliwość wyboru dowolnych technologii do~wytwarzania oprogramowania. do~działania używa kontenerów zgodnych ze standardem OCI (ang. \textit{Open Container Initiative}). \cite{cloudFoundry} 
+Cloud Foundry jest niezależny od~infrastruktury, może działać zarówno na~OpenStacku jak i~na serwerze wirtualnym w~chmurze publicznej. Zapewnia możliwość wyboru dowolnych technologii do~wytwarzania oprogramowania. Do~działania używa kontenerów zgodnych ze standardem OCI (ang. \textit{Open Container Initiative}). \cite{cloudFoundry} 
 
 \textbf{Konteneryzacja} to metoda wirtualizacji na~poziomie systemu operacyjnego, gdzie na~działającym systemie operacyjnym można uruchomić wiele odizolowanych od~siebie instancji przestrzeni użytkownika. Każda taka instancja to kontener. Kontener zapewnia odpowiednie środowisko do~działania dla~umieszczonej w~nim aplikacji, np. środowisko uruchomieniowe .NET Core w~odpowiedniej wersji.  \cite{cloudFoundry,ccSpringer}
 
@@ -490,13 +490,13 @@ Cloud Foundry zapewnia orkiestrację kontenerów oraz obsługę procesu CI/CD (c
 
 \textbf{DevOps} to słowo po raz pierwszy użyte 2009~r. na~konferencji w~Belgii. Stanowi połączenie ze sobą słów \textit{,,development''} (rozwój) i~\textit{,,operations''} (eksploatacja). Wskazuje to na~zacieśnianie współpracy pomiędzy zespołami zajmującymi~się rozwojem oprogramowania, a~zespołami, które je wdrażają. Współpraca ta ma doprowadzać do~automatyzacji procesów towarzyszących wytwarzaniu oprogramowania, co w~efekcie minimalizuje czas potrzebny od~wprowadzenia poprawki do~wdrożenia na~środowisko produkcyjne, zachowując przy tym niezawodność. Jako strategie DevOps określa~się wszelkie technologie i~narzędzia inżynierii oprogramowania, które dają taki efekt. \cite{devOpsPackt}
 
-Temat DevOps jest mocno powiązany z~chmurami, ponieważ jego koncepcje znacząco redukują złożoność towarzyszącą tworzeniu wysoce skalowalnego oprogramowania. Jednocześnie wychodzą one naprzeciw wymaganiom społeczeństwa coraz bardziej przyzwyczajonego do~częstych aktualizacji oprogramowania, szybkiej reakcji na~błędy oraz braku przestojów towarzyszących wdrażaniu nowych wersji. w~przypadku chmur obliczeniowych, w~których jedna usługa internetowa może mieć np. kilkadziesiąt instancji na~różnych węzłach, taka automatyzacja ma kluczowe znaczenie. w~związku z~tym pojęcie DevOps obecnie wchodzi w~kanon pojęć związanych z~chmurą.
+Temat DevOps jest mocno powiązany z~chmurami, ponieważ jego koncepcje znacząco redukują złożoność towarzyszącą tworzeniu wysoce skalowalnego oprogramowania. Jednocześnie wychodzą one naprzeciw wymaganiom społeczeństwa coraz bardziej przyzwyczajonego do~częstych aktualizacji oprogramowania, szybkiej reakcji na~błędy oraz braku przestojów towarzyszących wdrażaniu nowych wersji. W~przypadku chmur obliczeniowych, w~których jedna usługa internetowa może mieć np. kilkadziesiąt instancji na~różnych węzłach, taka automatyzacja ma kluczowe znaczenie. W~związku z~tym pojęcie DevOps obecnie wchodzi w~kanon pojęć związanych z~chmurą.
 
-Istotny element DevOps stanowią wcześniej wspomniane kontenery. Idea kontenerów kiełkowała już kilka lat wcześniej, np. Solaris Containers z~2004~r. lub OpenVZ (2005~r.) i~LXC (Linux Containers -- 2008~r.), które w~istocie do~działania wykorzystywały UNIX-owy program chroot z~1982~r.\cite{siteOperatingSystemVirtualizationWiki} Jednak prawdziwe ożywienie spowodowało dopiero pojawienie~się Dockera -- sprawił iż~tworzenie kontenerów oraz przenoszenie ich pomiędzy systemami stało~się łatwe. na~nim bazuje kilka projektów intensywnie rozwijanych w~czasie pisania niniejszej pracy.
+Istotny element DevOps stanowią wcześniej wspomniane kontenery. Idea kontenerów kiełkowała już kilka lat wcześniej, np. Solaris Containers z~2004~r. lub OpenVZ (2005~r.) i~LXC (Linux Containers -- 2008~r.), które w~istocie do~działania wykorzystywały UNIX-owy program chroot z~1982~r.\cite{siteOperatingSystemVirtualizationWiki} Jednak prawdziwe ożywienie spowodowało dopiero pojawienie~się Dockera -- sprawił iż~tworzenie kontenerów oraz przenoszenie ich pomiędzy systemami stało~się łatwe. Na~nim bazuje kilka projektów intensywnie rozwijanych w~czasie pisania niniejszej pracy.
 
-\textbf{Docker} to system kontenerów, który powstał jako element platformy dotCloud, świadczącej usługi typu PaaS. Spopularyzował~się w~dość osobliwy sposób. Założyciel myślał, że~tylko wygłosi mały referat na~PyCon w~2013~r., lecz okazało się, że~na~konferencji było dużo osób, a~jego referat stanowił główny element programu. do~końca roku Docker miał 100 mln pobrań, 3 miesiące później -- 300 mln, a~w~czerwcu 2017 -- 13 miliardów.\cite{siteDockerHistory} z~kolei platforma dotCloud nie okazała~się sukcesem -- w~2014~r. Docker Inc. sprzedał ją niemieckiej firmie cloudControl GmbH, która w~grudniu 2015~r. zbankrutowała, a~w~marcu 2016~r. zamknęła usługę.\cite{siteCloudControlWiki}
+\textbf{Docker} to system kontenerów, który powstał jako element platformy dotCloud, świadczącej usługi typu PaaS. Spopularyzował~się w~dość osobliwy sposób. Założyciel myślał, że~tylko wygłosi mały referat na~PyCon w~2013~r., lecz okazało się, że~na~konferencji było dużo osób, a~jego referat stanowił główny element programu. Do~końca roku Docker miał 100 mln pobrań, 3 miesiące później -- 300 mln, a~w~czerwcu 2017 -- 13 miliardów.\cite{siteDockerHistory} z~kolei platforma dotCloud nie okazała~się sukcesem -- w~2014~r. Docker Inc. sprzedał ją niemieckiej firmie cloudControl GmbH, która w~grudniu 2015~r. zbankrutowała, a~w~marcu 2016~r. zamknęła usługę.\cite{siteCloudControlWiki}
 
-Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportującego kontenery. Miało to nawiązywać do~tego, iż~załadowanie statku trwa dłużej niż transport statkiem. Ma to swoją alegorię do~programowania. w~tradycyjnym podejściu, gdyby zechcieć uruchomić np. aplikację napisaną w~ASP.NET, najpierw trzeba byłoby poświęcić kilka godzin na~pobieranie i~instalację narzędzi: Visual Studio z~narzędziami sieci Web, serwer IIS oraz SQL Server LocalDB. Natomiast w~podejściu Dockera, posiadając zbudowany obraz można by tę aplikację uruchomić od~razu. Razem z~krokami budowania obrazu byłoby to:
+Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportującego kontenery. Miało to nawiązywać do~tego, iż~załadowanie statku trwa dłużej niż transport statkiem. Ma to swoją alegorię do~programowania. W~tradycyjnym podejściu, gdyby zechcieć uruchomić np. aplikację napisaną w~ASP.NET, najpierw trzeba byłoby poświęcić kilka godzin na~pobieranie i~instalację narzędzi: Visual Studio z~narzędziami sieci Web, serwer IIS oraz SQL Server LocalDB. Natomiast w~podejściu Dockera, posiadając zbudowany obraz można by tę aplikację uruchomić od~razu. Razem z~krokami budowania obrazu byłoby to:
 \begin{enumerate}
 \item napisanie pliku Dockerfile z~definicją zależności: system Windows, MSBuild, .NET Framework, serwer IIS, menadżer pakietów NuGET,
 \item użycie CLI Dockera oraz pliku Dockerfile do~zbudowania tzw. obrazu Dockera,
@@ -527,9 +527,9 @@ Cloud Foundry & Kubernetes \\
 \hline
 powstał w~2011~r. & powstał w~2014.~r. \\
 \hline
-wysoki poziom automatyzacji -- rozpoznaje zależności aplikacji, sam buduje kontener i~konfiguruje skalowanie aplikacji & więcej kontroli nad kontenerami, lecz także więcej pracy dla~deweloperów. dla~większej automatyzacji należy sięgnąć po rozwiązania PaaS bazujące na~Kubernetes, takie jak RedHat OpenShift \cite{kubernetesPacktGettingStarted} \\
+wysoki poziom automatyzacji -- rozpoznaje zależności aplikacji, sam buduje kontener i~konfiguruje skalowanie aplikacji & więcej kontroli nad kontenerami, lecz także więcej pracy dla~deweloperów. Dla~większej automatyzacji należy sięgnąć po rozwiązania PaaS bazujące na~Kubernetes, takie jak RedHat OpenShift \cite{kubernetesPacktGettingStarted} \\
 \hline
-minimalne wymagania -- 40 GB HDD, 8 GB RAM, 4 rdzenie CPU & 2 GB RAM, 2 rdzenie CPU. na~tyle lekki, że~można go używać na~Raspberry PI \cite{siteKubernetesOnRaspberry} \\
+minimalne wymagania -- 40 GB HDD, 8 GB RAM, 4 rdzenie CPU & 2 GB RAM, 2 rdzenie CPU. Na~tyle lekki, że~można go używać na~Raspberry PI \cite{siteKubernetesOnRaspberry} \\
 \hline
 domyślnie używa własnego systemu kontenerów, ale pozwala na~korzystanie z~obrazów Dockera & stosuje obrazy Dockera jako główny system kontenerów, ale pozwala zastąpić go innym \\
 \hline
@@ -549,21 +549,21 @@ Do tego momentu kontenery jawią~się jako antidotum na~przywiązanie do~wybrane
 Problemem, który w~wielu przypadkach mógł podnosić barierę wejścia do~stosowania takich rozwiązań, była konieczność samodzielnej instalacji Kubernetes lub podobnego narzędzia na~serwerze wirtualnym w~chmurze. Chmury publiczne wyszły naprzeciw tym oczekiwaniom i~zaczęły udostępniać usługi typu \textbf{CaaS} (ang. \textit{Containers as a~Service}), nazywane też KaaS (ang. \textit{Kubernetes as a~Service}). Jako przykłady można wymienić:
 \begin{itemize}
 \item \textbf{Google Kubernetes Engine} (wcześniej: Google Container Engine) -- usługa udostępniona w~sierpniu 2015~r. \cite{siteGoogleBlogKubernetes} z~gotowym do~użycia Kubernetes. Można ją przetestować za darmo w~ramach kredytu 300 USD do~testowania Cloud Platform.\cite{siteGoogleTry}
-\item \textbf{AKS -- Azure Kubernetes Service} (wcześniej: Azure Container Service) -- początkowo od~2015~r. wspierała orkiestratory Mesosphere DC/OS oraz Docker Swarm, jednak na~fali popularności Kubernetes firma Microsoft uznała go za standard i~w 2017~r. opracowała wsparcie dla~Kubernetes. w~związku z~tym nastąpiła także zmiana nazwy usługi. \cite{siteMicrosoftBlogAks} Usługa jest darmowa\cite{siteAksPricing}, opłaty są naliczane za użyte maszyny wirtualne, które przez rok również w~ograniczonym zakresie są bezpłatne.\cite{siteAzureTry}
-\item \textbf{Amazon ECS -- Amazon Elastic Container Service} -- usługa dostępna od~kwietnia 2015~r., jest to własna implementacja orkiestracji kontenerów Dockera stworzona przez Amazona. Pozwala na~2 typy rozliczeń: płatność za zużycie zasobów przez kontener lub płatność za przechowanie i~uruchamianie aplikacji na~EC2.\cite{siteAmazonEcsPricing} Nie występuje na~liście usług dostępnych do~wypróbowania za darmo.\cite{siteAmazonTry}
+\item \textbf{AKS -- Azure Kubernetes Service} (wcześniej: Azure Container Service) -- początkowo od~2015~r. wspierała orkiestratory Mesosphere DC/OS oraz Docker Swarm, jednak na~fali popularności Kubernetes firma Microsoft uznała go za standard i~w 2017~r. opracowała wsparcie dla~Kubernetes. W~związku z~tym nastąpiła także zmiana nazwy usługi. \cite{siteMicrosoftBlogAks} Usługa jest darmowa\cite{siteAksPricing}, opłaty są naliczane za użyte maszyny wirtualne, które przez rok również w~ograniczonym zakresie są bezpłatne.\cite{siteAzureTry}
+\item \textbf{Amazon ECS -- Amazon Elastic Container Service} -- usługa dostępna od~kwietnia 2015~r., jest to własna implementacja orkiestracji kontenerów Dockera stworzona przez Amazona. Pozwala na 2 typy rozliczeń: płatność za zużycie zasobów przez kontener lub płatność za przechowanie i~uruchamianie aplikacji na~EC2.\cite{siteAmazonEcsPricing} Nie występuje na~liście usług dostępnych do~wypróbowania za darmo.\cite{siteAmazonTry}
 \item \textbf{Amazon EKS -- Amazon Elastic Container Service for Kubernetes} -- usługa została uruchomiona w~czerwcu 2018 roku. Publikując usługę Amazon chwalił się, że~na~podstawie danych Cloud Native Computing Foundation (założonej wraz z~powstaniem Kubernetes), 57\% firm korzystających z~Kubernetes robiło to na~serwerach wirtualnych AWS. Płatność wynosi 0.20 USD za godzinę dla~każdego klastra w~usłudze, a~dodatkowo za zużycie zasobów AWS.\cite{siteAmazonEksPricing} Nie występuje na~liście usług dostępnych do~wypróbowania za darmo.\cite{siteAmazonTry}
 \end{itemize}
 
-Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla~chmury tak,	 że:
+Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla~chmury tak, że:
 \begin{itemize}
-\item do~tworzenia aplikacji można wybrać dowolną technologię i~wciąż koncentrować~się na~tworzeniu tej aplikacji, a~nie zapewnianiu jej odpowiedniego środowiska na~serwerze wirtualnym.
+\item Do~tworzenia aplikacji można wybrać dowolną technologię i~wciąż koncentrować~się na~tworzeniu tej aplikacji, a~nie zapewnianiu jej odpowiedniego środowiska na~serwerze wirtualnym.
 \item Istnieje standardowy sposób tworzenia obrazu kontenera (Docker).
 \item Istnieje standardowy sposób orkiestracji kontenerów (Kubernetes). Wiedzę na~temat korzystania z~niego można zastosować do~projektów działających na~chmurach publicznych, prywatnych i~hybrydowych.
 \end{itemize}
 
 \subsection{Mikrousługi i~serverless} \label{section:mikroserwisy}
 
-Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla~chmury. w~chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a~jednocześnie zapewnić niezawodność i~jak najniższy koszt eksploatacji, należy zapoznać~się ze specyficznym sposobem tworzenia aplikacji dla~chmury. Aplikację zgodną z~tymi wytycznymi określa~się jako \textbf{\textit{cloud native}}.
+Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla~chmury. W~chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a~jednocześnie zapewnić niezawodność i~jak najniższy koszt eksploatacji, należy zapoznać~się ze specyficznym sposobem tworzenia aplikacji dla~chmury. Aplikację zgodną z~tymi wytycznymi określa~się jako \textbf{\textit{cloud native}}.
 
 Jak zostało wspomniane wcześniej, platforma Heroku była pionierem jeśli chodzi o~udostępnianie programistom platformy do~tworzenia aplikacji w~chmurze (2007~r.). Współzałożyciel Heroku, Adam Wiggins wraz z~zespołem, w~2012~r. na~podstawie doświadczeń zebranych w~Heroku stworzyli metodykę \textit{,,twelve-factor''} (ang. \textbf{\textit{The Twelve-Factor App}}). Jest to zbiór podstawowych 12. reguł dotyczących programowania oraz pracy z~aplikacjami przeznaczonymi dla~chmury. Reguły te są często przywoływane w~literaturze zajmującej~się tym tematem.\cite{cloudFoundry, microservicesPacktNetCore} Można~się z~nimi zapoznać odwiedzając stronę \texttt{https://12factor.net} (w czasie pisania pracy strona była dostępna w~13 językach, w~tym w~języku polskim).
 
@@ -573,7 +573,7 @@ Osobne ,,dobre praktyki'' powstały dla~systemów rozproszonych używających ko
 \item Wzorce dla~kontenerów występujących na~różnych węzłach (ang. \textit{Multi-node patterns}). Koncentrują~się na~właściwych metodach koordynacji działań pomiędzy różnymi maszynami. Są to wzorce np. komunikacji z~użyciem zdarzeń czy kolejek.  \cite{kubernetesPacktMastering, distributedSystems}
 \end{itemize}
 
-Praktyki wyznaczone przez powyższe wzorce w~dużej mierze opierają~się na~\textbf{mikrousługach}. Mikrousługi wywodzą~się z~\textbf{SOA}. Termin SOA (ang. \textit{Service oriented architecture}) został pierwszy raz użyty przez analityka firmy Gartner podczas wykładu. Utworzył on ten termin, ponieważ zwrot ,,klient/serwer'' tracił na~swoim pierwotnym znaczeniu, gdyż zamiast nazywać tak aplikację dla~serwera lub klienta, ludzie zaczęli tak nazywać fizyczne maszyny. Następnie inni analitycy w~1996~r. publikowali na~ten temat raporty. Bardziej znaczące użycie terminu SOA należało do~Microsoftu. w~2000~r. opisywał zbiór standardów do~komunikacji komputerów przez Internet, gdzie przedstawił architekturę SOA jako ważną, choć nie niezbędną, dla~Web Services. Wkrótce termin podchwyciły inne firmy, w~tym  takie jak IBM, Oracle, HP, publikując nowe koncepcje czy narzędzia powiązane z~SOA. \cite{soaOreily}
+Praktyki wyznaczone przez powyższe wzorce w~dużej mierze opierają~się na~\textbf{mikrousługach}. Mikrousługi wywodzą~się z~\textbf{SOA}. Termin SOA (ang. \textit{Service oriented architecture}) został pierwszy raz użyty przez analityka firmy Gartner podczas wykładu. Utworzył on ten termin, ponieważ zwrot ,,klient/serwer'' tracił na~swoim pierwotnym znaczeniu, gdyż zamiast nazywać tak aplikację dla~serwera lub klienta, ludzie zaczęli tak nazywać fizyczne maszyny. Następnie inni analitycy w~1996~r. publikowali na~ten temat raporty. Bardziej znaczące użycie terminu SOA należało do~Microsoftu. W~2000~r. opisywał zbiór standardów do~komunikacji komputerów przez Internet, gdzie przedstawił architekturę SOA jako ważną, choć nie niezbędną, dla~Web Services. Wkrótce termin podchwyciły inne firmy, w~tym  takie jak IBM, Oracle, HP, publikując nowe koncepcje czy narzędzia powiązane z~SOA. \cite{soaOreily}
 
 SOA to po polsku architektura zorientowana na~usługi. Polega na~podzieleniu systemu informatycznego na~odrębne części, które mogą znajdować~się na~różnych maszynach i~komunikować~się ze sobą przez sieć. Główne koncepcje SOA to: 
 \begin{itemize}
@@ -591,27 +591,27 @@ Z jednej strony powinny grupować powiązane ze sobą funkcjonalności, z~drugie
 \item Zasada pojedynczej odpowiedzialności, wywodząca~się z~zasad SOLID, a~zaadoptowana do~usług. Polega na~umieszczaniu razem elementów, które będą zmieniać~się z~tego samego powodu. \cite{microservicesWmii}
 \item Kod mikrousługi powinien być na~tyle mały, żeby dało~się go przepisać w~dwa tygodnie. \cite{microservicesWmii}
 \item Mikrousługa powinna być na~tyle mała, żeby do~pracy z~nią wystarczył jeden zespół programistów. \cite{microservicesSusan}
-\item w~przypadku gdy mikrousługa jest często używana i~potrzebuje do~działania wielu instancji, nie powinna jednocześnie powielać funkcjonalności rzadziej używanych i~tym sposobem marnować zasobów. \cite{microservicesSusan}
+\item W~przypadku gdy mikrousługa jest często używana i~potrzebuje do~działania wielu instancji, nie powinna jednocześnie powielać funkcjonalności rzadziej używanych i~tym sposobem marnować zasobów. \cite{microservicesSusan}
 \end{itemize}
 
 W odniesieniu do~chmur, mikrousługi wprowadzają następujące udogodnienia: \cite{microservicesPacktNetCore, microservicesSusan, microservicesWmii}
 \begin{itemize}
 \item \textbf{Efektywne skalowanie.} Gdy określona funkcjonalność systemu jest często używana, uruchamia~się więcej instancji mikrousługi odpowiedzialnej za tę funkcjonalność. Nie trzeba zużywać więcej zasobów niż jest to potrzebne.
-\item \textbf{Lepsze zapanowanie nad kodem.} do~mniejszego programu łatwiej wprowadzać poprawki, w~razie potrzeby przepisanie go do~nowszych technologii nie powinno stanowić problemu. Każda mikrousługa może być napisana przy użyciu innych technologii. Większe zmiany w~kodzie oddziałują tylko na~daną mikrousługę, nie na~cały system.
+\item \textbf{Lepsze zapanowanie nad kodem.} Do~mniejszego programu łatwiej wprowadzać poprawki, w~razie potrzeby przepisanie go do~nowszych technologii nie powinno stanowić problemu. Każda mikrousługa może być napisana przy użyciu innych technologii. Większe zmiany w~kodzie oddziałują tylko na~daną mikrousługę, nie na~cały system.
 \item \textbf{Szybsze wdrażanie.} Procesy ciągłej integracji i~ciągłego dostarczania (CI/CD) szybciej działają, gdy mają do~kopiowania, budowania i~testowania mniejszą ilość kodu. 
 \end{itemize}
 
 Popularność kontenerów, mikrousług oraz modelu \textit{utility computing} (rozliczanie za rzeczywiste użycie zasobów komputerowych) doprowadziła do~wytworzenia nowego paradygmatu tworzenia aplikacji w~chmurze, znanego jako \textbf{\textit{serverless}} (z~ang. ,,bez serwera''). Serverless jest obecnie obiecującą nowością jeśli chodzi o~przetwarzanie w~chmurze. Nazwa ta zaczęła zdobywać popularność na~początku 2016~r. \cite{ccResearchSpringer}  
 
-Aplikacje tego typu zamiast być przez cały czas uruchomione na~serwerze w~oczekiwaniu na~zapytania, mają być uruchamiane dopiero gdy przyjdzie określone zdarzenie (ang. \textit{event-driven computation}). Zdarzeniem może być np. nowe zapytanie HTTP, nowy wpis w~kolejce, wywołanie po upłynięciu interwału czasowego. Wówczas zostaje powołana do~życia aplikacja przeznaczona tylko do~obsługi danego zdarzenia i~działa tylko na~krótki czas obsługi zdarzenia (jest to maksymalnie około kilka minut). Aplikacje te to w~istocie mikrousługi, tyle że~posiadające tylko jedną funkcję -- stąd nazywa~się je po prostu funkcjami. dla~lepszego odróżnienia od~mikrousług określa~się je jako ,,nanousługi'' (ang. \textit{nanoservices}). \cite{serverlessMaddie, ccResearchSpringer, distributedSystems}
+Aplikacje tego typu zamiast być przez cały czas uruchomione na~serwerze w~oczekiwaniu na~zapytania, mają być uruchamiane dopiero gdy przyjdzie określone zdarzenie (ang. \textit{event-driven computation}). Zdarzeniem może być np. nowe zapytanie HTTP, nowy wpis w~kolejce, wywołanie po upłynięciu interwału czasowego. Wówczas zostaje powołana do~życia aplikacja przeznaczona tylko do~obsługi danego zdarzenia i~działa tylko na~krótki czas obsługi zdarzenia (jest to maksymalnie około kilka minut). Aplikacje te to w~istocie mikrousługi, tyle że~posiadające tylko jedną funkcję -- stąd nazywa~się je po prostu funkcjami. Dla~lepszego odróżnienia od~mikrousług określa~się je jako ,,nanousługi'' (ang. \textit{nanoservices}). \cite{serverlessMaddie, ccResearchSpringer, distributedSystems}
 
-Platforma w~chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Function as a~Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w~2014~r. uruchomił usługę AWS Lambda typu FaaS. w~2016~r. Microsoft udostępnił usługę Azure Functions. w~Google Cloud Platform tego typu usługa została oficjalnie udostępniona w~sierpniu 2018 (miesiąc przed wydaniem niniejszej pracy), choć wersja poglądowa była dostępna wcześniej. 
+Platforma w~chmurze stosująca model serverless określana jest jako \textbf{FaaS} (ang. \textit{Function as a~Service}). Pierwszym znaczącym dostarczycielem tej usługi był Amazon -- już w~2014~r. uruchomił usługę AWS Lambda typu FaaS. W~2016~r. Microsoft udostępnił usługę Azure Functions. W~Google Cloud Platform tego typu usługa została oficjalnie udostępniona w~sierpniu 2018 (miesiąc przed wydaniem niniejszej pracy), choć wersja poglądowa była dostępna wcześniej. 
 
 Posługując~się modelem serverless, usługodawca może stosować rozliczenie według ilości wywołań poszczególnych funkcji. Dzięki temu nie trzeba płacić za programy bezczynnie czekające na~przychodzące zapytania.
 
 Dla programisty użycie nanoserwisów oznacza mniej projektowania, jeśli chodzi o~optymalną architekturę mikrousług. Mikrousługi grupowały ze sobą niektóre elementy, natomiast w~nanousługach każda funkcja stanowi osobny byt. Według Maddie Stigler, autorki książki \textit{,,Beginning Serverless Computing''}, użycie architektury serverless oszczędza połowę czasu potrzebnego na~stworzenie skalowalnych aplikacji od~podstaw.\cite{serverlessMaddie}
 
-Rozwijane są także inicjatywy niezwiązane z~usługami FaaS konkretnych dostawców. w~2015~r. powstał projekt Serverless Framework,\cite{siteServerlessFramework} służący do~odseparowania logiki konkretnej usługi FaaS od~logiki biznesowej funkcji. Ponadto zapewnia narzędzia wspierające proces tworzenia funkcji. 
+Rozwijane są także inicjatywy niezwiązane z~usługami FaaS konkretnych dostawców. W~2015~r. powstał projekt Serverless Framework,\cite{siteServerlessFramework} służący do~odseparowania logiki konkretnej usługi FaaS od~logiki biznesowej funkcji. Ponadto zapewnia narzędzia wspierające proces tworzenia funkcji. 
 
 W 2017~r. powstał projekt Kubeless.\cite{siteKubelessReleases} Jest to otwartoźródłowy framework dla~Kubernetes, który ma działać w~sposób podobny do~sposobu wyznaczonego przez AWS Lambda, Azure Functions oraz Google Cloud Functions.\cite{distributedSystems} 
 
@@ -620,7 +620,7 @@ Serverless Framework obsługuje wszystkie wyżej wymienione platformy, z~Kubeles
 
 \subsection{Bazy NoSQL, NewSQL i~rozwiązania dla~Big Data} \label{section:nosql}
 
-W literaturze rozróżnia~się trzy rewolucje w~rozwoju technologii bazodanowych.  \cite{noSqlHistory} w~niniejszej sekcji zostaną przytoczone wszystkie trzy, ponieważ pokazuje to, jak kiedyś wyglądały bazy nierelacyjne (teraz postrzegane jako nowość), jak bardzo długo nie było potrzeby rezygnowania z~relacyjnych baz danych, oraz jak na~tym tle prezentuje~się tempo rozwoju współczesnych baz danych.
+W literaturze rozróżnia~się trzy rewolucje w~rozwoju technologii bazodanowych.  \cite{noSqlHistory} W~niniejszej sekcji zostaną przytoczone wszystkie trzy, ponieważ pokazuje to, jak kiedyś wyglądały bazy nierelacyjne (teraz postrzegane jako nowość), jak bardzo długo nie było potrzeby rezygnowania z~relacyjnych baz danych, oraz jak na~tym tle prezentuje~się tempo rozwoju współczesnych baz danych.
 
 Za pierwsze ,,bazy danych'' uznaje~się wszelkie techniki zapisu i~odczytu danych z~nośników, na~które pozwalała technika -- kart perforowanych, taśm magnetycznych, magnetycznych dysków twardych. Przed pierwszą rewolucją, każda aplikacja posiadała swoją własną implementację dostępu do~danych. Nie istniały żadne mechanizmy chroniące przed uszkodzeniem danych, przed równoczesnym dostępem wielu użytkowników, nie wspominając o~optymalizacjach. 
 
@@ -630,15 +630,15 @@ Drugą rewolucję zaczął Edgar Codd, będący matematykiem-programistą oraz w
 
 Pierwszą komercyjną \textbf{relacyjną bazą danych} (\textbf{RDBMS} - \textit{Relational Database Management System}) była Oracle Database. Założyciel Oracle, Larry Ellison, był zaznajomiony zarówno z~pracą Codd'a, jak i~Systemem~r. Wierząc w~relacyjne bazy danych, w~1979~r. wydał pierwszą na~świecie komercyjną relacyjną bazę danych obsługującą język SQL. \cite{relationalDbs}
 
-W tym samym czasie (od roku 1977) pionierski stał~się również projekt Ingres, stworzony przez Michaela Stonebraker'a. Początkowo jako język zapytań stosował QUEL, popularność bazy Oracle wymusiła jednak konieczność obsługi SQL. w~połowie lat 80. na~bazie Ingres powstał projekt Postgres (post-ingres), znany dzisiaj jako PostgreSQL. 
+W tym samym czasie (od roku 1977) pionierski stał~się również projekt Ingres, stworzony przez Michaela Stonebraker'a. Początkowo jako język zapytań stosował QUEL, popularność bazy Oracle wymusiła jednak konieczność obsługi SQL. W~połowie lat 80. na~bazie Ingres powstał projekt Postgres (post-ingres), znany dzisiaj jako PostgreSQL. 
 
-Po sukcesie Oracle IBM opublikował komercyjną bazę SQL/DS w~1981~r. w~późniejszych latach powstawały inne relacyjne bazy chętnie stosowane do~dziś: Microsoft SQL Server, PostgreSQL, MySQL. Wszystkie te bazy co do~zasady są do~siebie podobne -- opierają~się o~model Codd'a, transakcje ACID oraz język SQL. \cite{relationalDbs}
+Po sukcesie Oracle IBM opublikował komercyjną bazę SQL/DS w~1981~r. W~późniejszych latach powstawały inne relacyjne bazy chętnie stosowane do~dziś: Microsoft SQL Server, PostgreSQL, MySQL. Wszystkie te bazy co do~zasady są do~siebie podobne -- opierają~się o~model Codd'a, transakcje ACID oraz język SQL. \cite{relationalDbs}
 
 Potencjalna rewolucja miała szanse dokonać~się po latach 80., gdy zaczął popularyzować~się paradygmat programowania obiektowego. Istniejące języki zaczęły występować w~wersji obiektowej, np. Object Pascal, powstały języki od~początku obiektowe, np. Java. Niektórym programistom nie podobała~się rozbieżność pomiędzy reprezentacją danych w~obiekcie, a~w~relacyjnej bazie danych. w~grudniu 1989~r. powstał manifest obiektowych baz danych (OODBMS, ang.~\textit{Object Oriented Database Management System}), w~którym bazy relacyjne jawiły~się jako relikt przeszłości, a~obiektowe jako ich następcy.\cite{oodbmsManifesto} Jednak na~przestrzeni lat 90. okazało się, że~bazy obiektowe nie zdobyły rynku, nawet pod postacią nowych opcji w~popularnych bazach jak np. Oracle. Według Guy'a Harrison'a, autora książki \textit{,,Next Generation Databases: NoSQL, NewSQL, and Big Data''}, założenia baz obiektowych koncentrowały~się wokół korzyści dla~programisty, ignorując korzyści dla~biznesu (np. brak wsparcia dla~języka SQL będącego powszechnie w~użyciu). Dodatkowo dostępność narzędzi ORM (ang. \textit{Object-relational mapping}) znacząco ułatwiła korzystanie z~RDBMS w~językach obiektowych, więc bazy relacyjne przestały irytować.
 
 \subsubsection{Trzecia rewolucja}
 
-Trzecia rewolucja rozpoczęła~się za sprawą coraz większego znaczenia systemów rozproszonych oraz konieczności analizy dużej ilości danych. Zaczęło~się od~Google. w~1996~r. powstała wyszukiwarka Google, korzystająca z~algorytmu PageRank. w~2005~r. Google był największą stroną internetową na~świecie, stroną zbierającą i~przetwarzającą dane o~wszystkich innych stronach. Potrzebowano nowych narzędzi do~rozwiązania problemu, z~którym jako pierwsi mieli styczność. w~kolejnych latach Google publikował szczegóły swoich rozwiązań, co miało duży wpływ na~rozwój dalszych technologii:
+Trzecia rewolucja rozpoczęła~się za sprawą coraz większego znaczenia systemów rozproszonych oraz konieczności analizy dużej ilości danych. Zaczęło~się od~Google. W~1996~r. powstała wyszukiwarka Google, korzystająca z~algorytmu PageRank. W~2005~r. Google był największą stroną internetową na~świecie, stroną zbierającą i~przetwarzającą dane o~wszystkich innych stronach. Potrzebowano nowych narzędzi do~rozwiązania problemu, z~którym jako pierwsi mieli styczność. W~kolejnych latach Google publikował szczegóły swoich rozwiązań, co miało duży wpływ na~rozwój dalszych technologii:
 \begin{itemize}
 \item w~2003~r. -- system plików \textbf{GFS} (Google File System) dla~systemów rozproszonych, gdzie pula zasobów dyskowych jest widoczna jako jedno,
 \item w~2004~r. -- model \textbf{MapReduce} pozwalający na~przetwarzanie danych w~systemach rozproszonych,
@@ -646,9 +646,9 @@ Trzecia rewolucja rozpoczęła~się za sprawą coraz większego znaczenia system
 \end{itemize}
 Ponadto w~2005~r. Google opatentował Modular Data Center, czyli sposób na~szybką rozbudowę centrum danych. Zamiast z~osobna dodawać serwery, mogli dodawać od~razu po tysiąc naraz.
 
-Rozwiązania Google zainspirowały inne projekty. w~2004~r. powstał projekt Apache Nutch, który miał być otwartoźródłową wyszukiwarką internetową. Gdy Google opublikował GFS i~MapReduce, dla~Nutch to był sygnał jak rozwiązywać problemy skalowalności. w~2006~r. Yahoo! zainwestował w~projekt, pomimo że~był otwartoźródłowy, ponieważ chciał użyć go w~swoim produkcie. Adaptację rozwiązań Google wyodrębniono jako osobny projekt. Tak w~2007~r. powstał \textbf{Apache Hadoop}. \cite{hadoop}
+Rozwiązania Google zainspirowały inne projekty. W~2004~r. powstał projekt Apache Nutch, który miał być otwartoźródłową wyszukiwarką internetową. Gdy Google opublikował GFS i~MapReduce, dla~Nutch to był sygnał jak rozwiązywać problemy skalowalności. W~2006~r. Yahoo! zainwestował w~projekt, pomimo że~był otwartoźródłowy, ponieważ chciał użyć go w~swoim produkcie. Adaptację rozwiązań Google wyodrębniono jako osobny projekt. Tak w~2007~r. powstał \textbf{Apache Hadoop}. \cite{hadoop}
 
-Hadoop to nie tylko projekt, ale podejście do~skalowalnego przetwarzania danych. \cite{hadoop} Obecnie Hadoop to praktycznie synonim Big Data. \cite{bigData} Termin \textbf{Big Data} (z~ang. ,,duże dane'') po raz pierwszy został użyty w~1999~r., jednak zaczął być powszechnie używany odkąd Google użył tego terminu w~dokumencie opisującym MapReduce w~2004 roku. Początkowo (w 2001~r.) opisywano Big Data za pomocą ,,trzech \textit{V}'': \textit{volume, variety, velocity} (ilość, różnorodność, szybkość). w~2014~r. rozszerzono to do~,,pięciu \textit{V}'' o: \textit{veracity, value} (wiarygodność, wartość).\cite{realTimeProcessing} Właściwości te wyznaczają obszar zainteresowań, gdzie zastosowanie mają takie narzędzia jak Hadoop:
+Hadoop to nie tylko projekt, ale podejście do~skalowalnego przetwarzania danych. \cite{hadoop} Obecnie Hadoop to praktycznie synonim Big Data. \cite{bigData} Termin \textbf{Big Data} (z~ang. ,,duże dane'') po raz pierwszy został użyty w~1999~r., jednak zaczął być powszechnie używany odkąd Google użył tego terminu w~dokumencie opisującym MapReduce w~2004 roku. Początkowo (w 2001~r.) opisywano Big Data za pomocą ,,trzech \textit{V}'': \textit{volume, variety, velocity} (ilość, różnorodność, szybkość). W~2014~r. rozszerzono to do~,,pięciu \textit{V}'' o: \textit{veracity, value} (wiarygodność, wartość).\cite{realTimeProcessing} Właściwości te wyznaczają obszar zainteresowań, gdzie zastosowanie mają takie narzędzia jak Hadoop:
 \begin{itemize}
 \item \textit{volume} -- ilość danych,
 \item \textit{variety} -- stopień różnorodności źródeł danych,
@@ -668,7 +668,7 @@ Do głównych zalet Hadoopa zalicza się:
 \item \textit{,,schema on read''} -- struktura danych tworzy~się podczas czytania źródła danych, w~przeciwieństwie do~tradycyjnego modelu relacyjnego, gdzie przy zapisie danych należy~się zastosować do~istniejącego schematu (ang. \textit{schema on write}).
 \end{itemize}
 
-Klasyczny Hadoop posiadał ograniczenia jeśli chodzi o~użycie innego modelu przetwarzania zadań niż MapReduce. w~2012~r. powstała wersja 2.0, w~której dołączono platformę YARN (ang. \textit{Yet Another Resource Negotiator} lub rekursywnie \textit{YARN Application Resource Negotiator}). YARN pozwala na~użycie MapReduce jako jednego z~możliwych frameworków do~zastosowania. Zamiast niego można użyć np. Sparka, pozbawionego niektórych niedogodności MapReduce (krótkotrwałość zadań, brak możliwości trzymania roboczego zbioru danych w~pamięci). \cite{hadoop, bigData}
+Klasyczny Hadoop posiadał ograniczenia jeśli chodzi o~użycie innego modelu przetwarzania zadań niż MapReduce. W~2012~r. powstała wersja 2.0, w~której dołączono platformę YARN (ang. \textit{Yet Another Resource Negotiator} lub rekursywnie \textit{YARN Application Resource Negotiator}). YARN pozwala na~użycie MapReduce jako jednego z~możliwych frameworków do~zastosowania. Zamiast niego można użyć np. Sparka, pozbawionego niektórych niedogodności MapReduce (krótkotrwałość zadań, brak możliwości trzymania roboczego zbioru danych w~pamięci). \cite{hadoop, bigData}
 
 Stworzenie BigTable oraz Hadoopa spowodowało powstanie wielu nowych systemów bazodanowych, które miały lepiej działać na~systemach rozproszonych. Dzielą~się na:
 \begin{itemize}
@@ -678,18 +678,18 @@ Stworzenie BigTable oraz Hadoopa spowodowało powstanie wielu nowych systemów b
 
 W 2005~r. Michael Stonebraker (założyciel Ingres i~PostgreSQL) opracował bazę C-Store, postulującą \textbf{model kolumnowy}. Pomysł opiera~się o~tradycyjną relacyjną bazę danych, gdzie w~tabeli zostają zamienione miejscami wiersze z~kolumnami. Taka zamiana powoduje szybsze działanie zapytań agregujących, gdyż wszystkie potrzebne dane znajdują~się obok siebie. Poza tym, ponieważ obok siebie znajdują~się dane bardzo podobnej postaci, można zastosować lepszą kompresję, nawet przez traktowanie każdej kolejnej danej jako zmianę względem poprzedniej.
 
-W 2007~r. Amazon opracował bazę Dynamo, która stała~się wzorcem dla~baz w~modelu \textbf{klucz-wartość}. Jedną z~nich jest Apache Cassandra (2008~r.), baza typu \textit{\textbf{wide-column}}. w~bazach tego typu w~miejscu wartości jest dynamiczna liczba kolumn, co pozwala np. na~przeszukiwanie po danej kolumnie lub aktualizację tylko danej kolumny, zamiast całego obiektu. Podobnym projektem jest Apache HBase (2008~r.).
+W 2007~r. Amazon opracował bazę Dynamo, która stała~się wzorcem dla~baz w~modelu \textbf{klucz-wartość}. Jedną z~nich jest Apache Cassandra (2008~r.), baza typu \textit{\textbf{wide-column}}. W~bazach tego typu w~miejscu wartości jest dynamiczna liczba kolumn, co pozwala np. na~przeszukiwanie po danej kolumnie lub aktualizację tylko danej kolumny, zamiast całego obiektu. Podobnym projektem jest Apache HBase (2008~r.).
 
-Również w~2007~r. powstała pierwsza \textbf{baza dokumentowa}, która mogła być postrzegana jako alternatywa dla~RDBMS. od~2000~r. powstawały bazy XML, ale raczej mające na~celu zarządzanie już istniejącymi dokumentami w~tym formacie. XML rozpowszechniał~się za sprawą popularności AJAX, później w~tej technice zaczął być zastępowany formatem JSON. Takie dane były już formą dokumentu, a~stworzenie systemu do~przechowywania ich było kwestią czasu. w~2005~r. powstała baza dokumentowa Apache CouchDB, na~razie obsługująca XML, a~w~2007~r. była to pierwsza znacząca baza dokumentów JSON. w~2009~r. powstała baza MongoDB, przechowująca dokumenty JSON (wewnętrznie zapisywane jako BSON -- \textit{Binary JSON}). Stanowi dziś najpopularniejszą bazę tego typu.
+Również w~2007~r. powstała pierwsza \textbf{baza dokumentowa}, która mogła być postrzegana jako alternatywa dla~RDBMS. Od~2000~r. powstawały bazy XML, ale raczej mające na~celu zarządzanie już istniejącymi dokumentami w~tym formacie. XML rozpowszechniał~się za sprawą popularności AJAX, później w~tej technice zaczął być zastępowany formatem JSON. Takie dane były już formą dokumentu, a~stworzenie systemu do~przechowywania ich było kwestią czasu. W~2005~r. powstała baza dokumentowa Apache CouchDB, na~razie obsługująca XML, a~w~2007~r. była to pierwsza znacząca baza dokumentów JSON. W~2009~r. powstała baza MongoDB, przechowująca dokumenty JSON (wewnętrznie zapisywane jako BSON -- \textit{Binary JSON}). Stanowi dziś najpopularniejszą bazę tego typu.
 
 Kolejnym osiągnięciem z~2007~r. był artykuł Michaela Stonebrakera pt. ,,The end of an architectural era: (it's time for a~complete rewrite)'' (,,Koniec współczesnych architektur, czas przepisać je na~nowo'' -- tłumaczenie własne). Opisał tam koncepcję bazy H-store typu \textit{\textbf{in-memory}}, która do~transakcji nie potrzebuje wykonywać operacji I/O na~dysku. Pomysł opiera~się na~lepszym wykorzystaniu pamięci RAM i~dysków SSD. Komercyjną implementacją tego pomysłu była baza VoltDB, utworzona w~2008 roku. Jest to baza typu NewSQL.
 
-Rok 2007 był przełomowy także dla~modelu \textbf{baz grafowych} -- powstała wtedy baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na~wyższym poziomie abstrakcji oraz pozwalają na~przeszukiwanie grafu do~zadanego poziomu. Są stworzone dla~danych, gdzie najważniejszą właściwością są relacje z~innymi danymi, np. relacje w~social media. do~odpytywania bazy grafowej używa~się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z~różnych serwerów znacząco obniżyłoby jego wydajność. do~projektów przetwarzania grafów na~systemach rozproszonych należą: Apache Giraph (2016~r.), GraphX (część Apache Spark, 2014~r.), Titan (2015~r.) -- działający jako nakładka na~HBase czy Cassandrę.
+Rok 2007 był przełomowy także dla~modelu \textbf{baz grafowych} -- powstała wtedy baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na~wyższym poziomie abstrakcji oraz pozwalają na~przeszukiwanie grafu do~zadanego poziomu. Są stworzone dla~danych, gdzie najważniejszą właściwością są relacje z~innymi danymi, np. relacje w~social media. Do~odpytywania bazy grafowej używa~się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z~różnych serwerów znacząco obniżyłoby jego wydajność. Do~projektów przetwarzania grafów na~systemach rozproszonych należą: Apache Giraph (2016~r.), GraphX (część Apache Spark, 2014~r.), Titan (2015~r.) -- działający jako nakładka na~HBase czy Cassandrę.
 
 
 \subsection{CDN i~Fog Computing} \label{section:fog}
 
-Jak było wspomniane wcześniej, chmury obliczeniowe gromadzą~się co do~zasady w~gigantycznych centrach danych. Scentralizowany charakter chmur powoduje opóźnienia względem dostępności usług znajdujących~się bliżej użytkownika. w~celu zapewnienia wysokiej jakości usług (ang. QoS, \textit{Quality of Service}) stosuje~się sieci \textbf{CDN} (ang. \textit{Content Delivery Network}). Węzły sieci CDN są szeroko rozpostarte po całym świecie, na~krawędzi (ang. \textit{edge}) dostawców usług internetowych (ang. ISP, \textit{Internet service provider}), znacznie bliżej użytkowników końcowych niż odległość od~centrów danych (rysunek \ref{fig:cdn-schemat}). \cite{cdn}
+Jak było wspomniane wcześniej, chmury obliczeniowe gromadzą~się co do~zasady w~gigantycznych centrach danych. Scentralizowany charakter chmur powoduje opóźnienia względem dostępności usług znajdujących~się bliżej użytkownika. W~celu zapewnienia wysokiej jakości usług (ang. QoS, \textit{Quality of Service}) stosuje~się sieci \textbf{CDN} (ang. \textit{Content Delivery Network}). Węzły sieci CDN są szeroko rozpostarte po całym świecie, na~krawędzi (ang. \textit{edge}) dostawców usług internetowych (ang. ISP, \textit{Internet service provider}), znacznie bliżej użytkowników końcowych niż odległość od~centrów danych (rysunek \ref{fig:cdn-schemat}). \cite{cdn}
 
 \begin{figure}[h]
 	\centering
@@ -698,7 +698,7 @@ Jak było wspomniane wcześniej, chmury obliczeniowe gromadzą~się co do~zasady
 		\label{fig:cdn-schemat}
 \end{figure}
 
-Początkowo większość treści znajdujących~się w~Internecie była statyczna, więc zadanie sieci CDN koncentrowało~się na~tworzeniu cache często pobieranej treści. z~czasem treść zaczęła~się robić coraz bardziej dynamiczna, zaczęło~się upowszechniać strumieniowanie wideo (rysunek \ref{fig:cdn-streaming}). Spowodowało to powstanie drugiej generacji sieci CDN będącej w~stanie obsłużyć te przypadki. w~technologiach CDN od~lat przewodzi założona w~1998~r. firma Akamai. Obecnie posiada ponad 240 000 serwerów CDN w~ponad 130 krajach na~całym świecie.\cite{siteAkamaiFacts} do~innych znaczących dostarczycieli usług tego typu należą: Limelight, CloudFront (część Amazon AWS), Azure CDN. \cite{ccCambridge, cdn}
+Początkowo większość treści znajdujących~się w~Internecie była statyczna, więc zadanie sieci CDN koncentrowało~się na~tworzeniu cache często pobieranej treści. Z~czasem treść zaczęła~się robić coraz bardziej dynamiczna, zaczęło~się upowszechniać strumieniowanie wideo (rysunek \ref{fig:cdn-streaming}). Spowodowało to powstanie drugiej generacji sieci CDN będącej w~stanie obsłużyć te przypadki. W~technologiach CDN od~lat przewodzi założona w~1998~r. firma Akamai. Obecnie posiada ponad 240 000 serwerów CDN w~ponad 130 krajach na~całym świecie.\cite{siteAkamaiFacts} do~innych znaczących dostarczycieli usług tego typu należą: Limelight, CloudFront (część Amazon AWS), Azure CDN. \cite{ccCambridge, cdn}
 
 \begin{figure}[h]
 	\centering
@@ -719,19 +719,19 @@ Za sprawą rosnącego znaczenia \textbf{Internetu Rzeczy}, przed technologiami w
 		\label{fig:fog-samochod}
 \end{figure}
 
-W 2012~r. firma Cisco przedstawiła koncepcję \textbf{Fog Computing} (,,mgły obliczeniowej''). Mgła ma stanowić warstwę pośredniczącą pomiędzy urządzeniami IoT a~chmurą. Warstwa ta ma być ulokowana na~routerze danego gospodarstwa domowego. do~zadań mgły należy wstępna obróbka danych, komunikacja z~chmurą (już z~użyciem mniejszej ilości danych), a~także obsługa urządzeń IoT nawet jeśli w~danym momencie brakuje połączenia z~Internetem. Przykładowo, takie zadania jak rozpoznawanie obrazów mogą odbywać~się już na~etapie routera, bez konieczności przesyłania danych przez Internet. Konkretną propozycją Cisco było oprogramowanie Cisco IOx. \cite{fogArticle, iotArchitects}
+W 2012~r. firma Cisco przedstawiła koncepcję \textbf{Fog Computing} (,,mgły obliczeniowej''). Mgła ma stanowić warstwę pośredniczącą pomiędzy urządzeniami IoT a~chmurą. Warstwa ta ma być ulokowana na~routerze danego gospodarstwa domowego. Do~zadań mgły należy wstępna obróbka danych, komunikacja z~chmurą (już z~użyciem mniejszej ilości danych), a~także obsługa urządzeń IoT nawet jeśli w~danym momencie brakuje połączenia z~Internetem. Przykładowo, takie zadania jak rozpoznawanie obrazów mogą odbywać~się już na~etapie routera, bez konieczności przesyłania danych przez Internet. Konkretną propozycją Cisco było oprogramowanie Cisco IOx. \cite{fogArticle, iotArchitects}
 
-Fog Computing nie stanowi jedynej koncepcji tego typu, jednakowoż brzmienie tej nazwy jest bardzo wyraziste i~w literaturze wybija~się na~tle innych nazw. Być może z~biegiem lat cała rodzina koncepcji przyspieszania technologii IoT będzie w~ten sposób nazywana. do~innych koncepcji należą:
+Fog Computing nie stanowi jedynej koncepcji tego typu, jednakowoż brzmienie tej nazwy jest bardzo wyraziste i~w literaturze wybija~się na~tle innych nazw. Być może z~biegiem lat cała rodzina koncepcji przyspieszania technologii IoT będzie w~ten sposób nazywana. Do~innych koncepcji należą:
 \begin{description}
-\item [Cyber Foraging] Pojęcie przedstawione w~2001~r. w~artykule M. Satyanarayanan'a. Technika polegająca na~odciążaniu urządzeń mobilnych przez przekazanie wymagających obliczeniowo zadań do~serwerów-surogatów i~zwrócenie temu urządzeniu wyniku z~niskim opóźnieniem. w~przypadku braku serwera znajdującego~się wystarczająco blisko, zadanie zostaje wykonane na~miarę ograniczonych możliwości urządzenia mobilnego. \cite{fogArticle, fog5g}
-\item [Cloudlet] Pojęcie przedstawione w~2009~r. w~artykule współtworzonym przez Satyanarayanan'a. w~odróżnieniu od~Cyber Foragingu, cloudlety wykorzystują techniki wirtualizacji, co pozwala na~ich skalowanie w~zależności od~wymagań użytkowników. Są to chmury znajdujące~się bliżej użytkownika. Może to być np. chmura prywatna używana w~przedsiębiorstwie. Nie ma wymogów, aby cloudlety komunikowały~się dalej z~chmurą publiczną. \cite{fogArticle, fog5g}
-\item [Multi-Access Edge Computing (MEC)] Koncepcja pierwotnie nazwana ,,Mobile Edge Computing'' przez Europejski Instytut Norm Telekomunikacyjnych, gdyż była wiązana z~telefonią komórkową oraz siecią radiową, lecz w~2017~r. została rozszerzona do~wszystkich sieci. w~tej koncepcji kładzie~się nacisk na~odciążanie chmur przez wykonywanie niektórych usług na~krawędzi sieci \textit{(edge)}, tj. w~pobliżu bramy sieciowej na~różnych poziomach. Istotny element tej koncepcji stanowi upowszechnienie superszybkiej sieci 5G. \cite{fogArticle, fog5g}
+\item [Cyber Foraging] Pojęcie przedstawione w~2001~r. w~artykule M. Satyanarayanan'a. Technika polegająca na~odciążaniu urządzeń mobilnych przez przekazanie wymagających obliczeniowo zadań do~serwerów-surogatów i~zwrócenie temu urządzeniu wyniku z~niskim opóźnieniem. W~przypadku braku serwera znajdującego~się wystarczająco blisko, zadanie zostaje wykonane na~miarę ograniczonych możliwości urządzenia mobilnego. \cite{fogArticle, fog5g}
+\item [Cloudlet] Pojęcie przedstawione w~2009~r. w~artykule współtworzonym przez Satyanarayanan'a. W~odróżnieniu od~Cyber Foragingu, cloudlety wykorzystują techniki wirtualizacji, co pozwala na~ich skalowanie w~zależności od~wymagań użytkowników. Są to chmury znajdujące~się bliżej użytkownika. Może to być np. chmura prywatna używana w~przedsiębiorstwie. Nie ma wymogów, aby cloudlety komunikowały~się dalej z~chmurą publiczną. \cite{fogArticle, fog5g}
+\item [Multi-Access Edge Computing (MEC)] Koncepcja pierwotnie nazwana ,,Mobile Edge Computing'' przez Europejski Instytut Norm Telekomunikacyjnych, gdyż była wiązana z~telefonią komórkową oraz siecią radiową, lecz w~2017~r. została rozszerzona do~wszystkich sieci. W~tej koncepcji kładzie~się nacisk na~odciążanie chmur przez wykonywanie niektórych usług na~krawędzi sieci \textit{(edge)}, tj. w~pobliżu bramy sieciowej na~różnych poziomach. Istotny element tej koncepcji stanowi upowszechnienie superszybkiej sieci 5G. \cite{fogArticle, fog5g}
 \end{description}
 
 Obecnie można zaobserwować rozwój zarówno w~kierunku Fog Computingu jak i~Edge Computingu:
 \begin{itemize}
-\item w~2015~r. powstało OpenFog Consortium. w~2017~r. konsorcjum opublikowało dokument referencyjny definiujący architekturę dla~systemu w~modelu Fog Computing. \cite{fogArticle, iotArchitects}
-\item w~2017~r. powstało oprogramowanie ParaDrop, otwartoźródłowe oprogramowanie dla~routerów w~modelu Fog Computing. \cite{fog5g}
+\item W~2015~r. powstało OpenFog Consortium. W~2017~r. konsorcjum opublikowało dokument referencyjny definiujący architekturę dla~systemu w~modelu Fog Computing. \cite{fogArticle, iotArchitects}
+\item W~2017~r. powstało oprogramowanie ParaDrop, otwartoźródłowe oprogramowanie dla~routerów w~modelu Fog Computing. \cite{fog5g}
 \item Główni dostawcy usług chmurowych udostępnili usługi typu \textit{edge}: AWS Lambda@Edge (lipiec 2017) \cite{siteAmazonLambdaEdge}, Azure IoT Edge (czerwiec 2018~r.) \cite{siteAzureIotEdge}, Google Cloud IoT Edge (wersja alpha, czerwiec 2018~r.)\cite{siteGoogleIotEdge}. 
 \end{itemize}
 
@@ -746,11 +746,11 @@ Powszechnie korzysta~się z~atrybutów określonych przez amerykański Narodowy 
 Do cech zasadniczych należą:
 
 \begin{description}
-\item [Samoobsługa] Aby skorzystać z~usługi w~chmurze czy zmodyfikować jej zakres, nie jest konieczna interwencja pracownika usługodawcy. do~samoobsługi służy panel administracyjny udostępniony przez usługodawcę.
+\item [Samoobsługa] Aby skorzystać z~usługi w~chmurze czy zmodyfikować jej zakres, nie jest konieczna interwencja pracownika usługodawcy. Do~samoobsługi służy panel administracyjny udostępniony przez usługodawcę.
 \item [Szeroki dostęp przez sieć] Chmura powinna umożliwiać użytkownikom łączenie~się przez sieć bez względu na~to gdzie~się znajdują i~kiedy chcą skorzystać z~usługi.
 \item [Pula zasobów] Zasoby takie jak moc procesora, dyski, pamięć, mają być widoczne jako zasoby wirtualne oraz posiadać właściwość \textit{multi-tenancy} (z~jednego zasobu może korzystać wiele niezależnych osób, nie mając na~to wpływu i~nie wiedząc o~tym).
 \item [Wysoka elastyczność] Dostępność zasobów ma być dozowana tak, by dla~użytkownika wyglądało to na~nieskończoną ilość.
-\item [Zliczanie zużycia] dla~każdego użytkownika stosowany jest mechanizm zliczania jego rzeczywistego zużycia danych usług. Zużycie jest transparentne dla~obu stron, m.in. przez udostępnienie stosownych paneli służących do~monitorowania i~raportowania.
+\item [Zliczanie zużycia] Dla~każdego użytkownika stosowany jest mechanizm zliczania jego rzeczywistego zużycia danych usług. Zużycie jest transparentne dla~obu stron, m.in. przez udostępnienie stosownych paneli służących do~monitorowania i~raportowania.
 \end{description}
 
 \subsection{Modele dostarczania usług}
@@ -761,7 +761,7 @@ Co do~zasady istnieją 3 modele dostarczania usług:
 \item PaaS -- Platforma jako usługa (ang. \textit{Platform as a~Service)},
 \item SaaS -- Oprogramowanie jako usługa (ang. \textit{Software as a~Service}).
 \end{itemize}
-W literaturze i~innych publikacjach często można spotkać~się także z~innymi podobnymi zwrotami w~formie \textit{,,... as a~Service''}, jednak zawsze jest to podkategoria dla~tych powyższych. IaaS, PaaS i~SaaS stanowią następujące po sobie warstwy. w~przypadku wątpliwości związanej z~klasyfikacją danej usługi, rozwiewa je schemat umieszczony na~rysunku \ref{fig:iaas-paas-saas}.
+W literaturze i~innych publikacjach często można spotkać~się także z~innymi podobnymi zwrotami w~formie \textit{,,... as a~Service''}, jednak zawsze jest to podkategoria dla~tych powyższych. IaaS, PaaS i~SaaS stanowią następujące po sobie warstwy. W~przypadku wątpliwości związanej z~klasyfikacją danej usługi, rozwiewa je schemat umieszczony na~rysunku \ref{fig:iaas-paas-saas}.
 
 \begin{figure}[h]
 	\centering
@@ -785,7 +785,7 @@ W \textbf{PaaS} jako platformę określa~się każde oprogramowanie umożliwiaj�
 \item BaaS/MBaaS (\textit{Mobile Backend}) -- wspomaganie aplikacji użytkownika narzędziami służącymi np. do~wysyłania notyfikacji na~urządzenia mobilne.
 \end{itemize}
 
-Warstwa \textbf{SaaS} obejmuje gotowe do~użycia aplikacje. na~tej warstwie cała aplikacja znajduje~się pod kontrolą dostawcy usługi, użytkownik może ją jedynie skonfigurować. Jest to najbardziej dojrzały model dostarczania usługi chmurowej, był stosowany już w~1999~r. przez Salesforce. do~rozwiązań SaaS należą m.in. popularne aplikacje dostępne przez przeglądarkę internetową: Gmail, Dropbox, Microsoft Office 365. Przykładowe podgrupy to:
+Warstwa \textbf{SaaS} obejmuje gotowe do~użycia aplikacje. Na~tej warstwie cała aplikacja znajduje~się pod kontrolą dostawcy usługi, użytkownik może ją jedynie skonfigurować. Jest to najbardziej dojrzały model dostarczania usługi chmurowej, był stosowany już w~1999~r. przez Salesforce. Do~rozwiązań SaaS należą m.in. popularne aplikacje dostępne przez przeglądarkę internetową: Gmail, Dropbox, Microsoft Office 365. Przykładowe podgrupy to:
 \begin{itemize}
 \item DaaS (\textit{Data} -- dane) -- usługa dostępu do~danych zebranych np. przez Visa czy MasterCard, aby pomóc personalizować przekaz reklamowy,
 \item SECaaS (\textit{Security} -- bezpieczeństwo) -- narzędzia wspierające bezpieczeństwo, np. programy antywirusowe.
@@ -810,7 +810,7 @@ Na podstawie historii najnowszej, a~także mając na~uwadze cele jakie stawia so
 Natychmiastowa popularność konteneryzacji, Kubernetes jako usługa oraz pomysły takie jak Kubeless i~Serverless Framework pozwalają wnioskować, że~dalsza ewolucja dąży do~wypracowania uniwersalnych standardów wytwarzania aplikacji dla~chmury.
 
 \item \textbf{Unifikacja systemów baz danych} \\
-W ostatnich latach stworzono wiele innowacyjnych systemów baz danych. Ilość wariantów do~wybrania stała~się wręcz przytłaczająca. dla~jednego projektu może być potrzebne nawet kilka typów baz, dodatkowo nawet w~ramach jednego typu są różne możliwości. Microsoft dostrzegł ten problem i~stworzył usługę Azure CosmosDB, obsługującą wiele typów baz. Zdaniem autorki to nie jest ostatnie słowo wypowiedziane w~tym kierunku. System pozbawiony problemu vendor lock-in, sam dobierający format przechowywania danych, byłby wielkim ułatwieniem dla~programistów.
+W ostatnich latach stworzono wiele innowacyjnych systemów baz danych. Ilość wariantów do~wybrania stała~się wręcz przytłaczająca. Dla~jednego projektu może być potrzebne nawet kilka typów baz, dodatkowo nawet w~ramach jednego typu są różne możliwości. Microsoft dostrzegł ten problem i~stworzył usługę Azure CosmosDB, obsługującą wiele typów baz. Zdaniem autorki to nie jest ostatnie słowo wypowiedziane w~tym kierunku. System pozbawiony problemu vendor lock-in, sam dobierający format przechowywania danych, byłby wielkim ułatwieniem dla~programistów.
 
 \item \textbf{Usprawnienie modelu serverless} \\
 Usługa AWS Lambda powstała w~2014~r., a~Google Cloud Functions wyszła z~fazy poglądowej dopiero miesiąc temu. Według autorki, w~przypadku usług FaaS konkurencja istnieje na~tyle krótko, że~dostarczyciele usług mogą~się jeszcze wiele od~siebie nawzajem nauczyć i~zastosować nowe pomysły, które nieco zmienią implementacje tego typu usług. 
@@ -985,13 +985,13 @@ Natomiast podejście ,,chmurowe'' do~serwerów wirtualnych różni~się od~trady
 \item Wykonanie kopii zapasowej maszyny wirtualnej jest znacznie ułatwione przez chmurową warstwę abstrakcji. 
 \end{itemize}
 
-W związku z~dostępnością narzędzi przygotowanych do~tworzenia chmur prywatnych, dostarczyciele serwerów VPS zaczęli stosować niektóre bądź wszystkie techniki wymienione powyżej. Wówczas główną różnicę stanowi zaplecze zasobów. w~przypadku dużych chmur publicznych jest ono tak duże, że~dla~skalowania ilości maszyn wirtualnych w~górę tworzy~się iluzja nieskończoności zasobów, gdyż można zażyczyć sobie nawet dziesiątki tysięcy instancji serwerów wirtualnych. dla~mniejszych dostawców to wciąż może być zbyt wielkie wyzwanie.
+W związku z~dostępnością narzędzi przygotowanych do~tworzenia chmur prywatnych, dostarczyciele serwerów VPS zaczęli stosować niektóre bądź wszystkie techniki wymienione powyżej. Wówczas główną różnicę stanowi zaplecze zasobów. W~przypadku dużych chmur publicznych jest ono tak duże, że~dla~skalowania ilości maszyn wirtualnych w~górę tworzy~się iluzja nieskończoności zasobów, gdyż można zażyczyć sobie nawet dziesiątki tysięcy instancji serwerów wirtualnych. dla~mniejszych dostawców to wciąż może być zbyt wielkie wyzwanie.
 
 Jednocześnie chmury publiczne nie stronią od~świadczenia usług bardziej przypominających VPS. Spośród opcji rozliczania można wybrać takie uwzględniające rezerwację określonej puli zasobów na~określony czas. Również istnieją możliwości wynajęcia serwera fizycznie odizolowanego od~innych, np. w~usłudze Amazon EC2 Dedicated Hosts.
 
-Wynajmując prawdziwy serwer wirtualny w~chmurze należy pamiętać, że~to nie jest hosting, nawet jeśli go przypomina. Cechami chmury są skalowalność i~płatność za zużycie. Podczas konfiguracji usługi IaaS istnieje możliwość indywidualnego doboru wielu parametrów, które należy dopasować w~sposób optymalizujący koszty. w~kosztach należy również uwzględnić dodatkowe usługi poza maszynami wirtualnymi, np. wynajęcie przestrzeni dyskowej na~kopie zapasowe maszyn wirtualnych, usługi typu Load Balancer, itp.
+Wynajmując prawdziwy serwer wirtualny w~chmurze należy pamiętać, że~to nie jest hosting, nawet jeśli go przypomina. Cechami chmury są skalowalność i~płatność za zużycie. Podczas konfiguracji usługi IaaS istnieje możliwość indywidualnego doboru wielu parametrów, które należy dopasować w~sposób optymalizujący koszty. W~kosztach należy również uwzględnić dodatkowe usługi poza maszynami wirtualnymi, np. wynajęcie przestrzeni dyskowej na~kopie zapasowe maszyn wirtualnych, usługi typu Load Balancer, itp.
 
-Do tworzenia maszyn wirtualnych można używać napisanych przez siebie programów wykorzystujących API usługodawcy. dla~popularnych technologii (Java, Python itp.) są dostępne SDK do~obsługi wybranej chmury oraz biblioteki obsługujące usługi IaaS wielu dostawców.
+Do tworzenia maszyn wirtualnych można używać napisanych przez siebie programów wykorzystujących API usługodawcy. Dla~popularnych technologii (Java, Python itp.) są dostępne SDK do~obsługi wybranej chmury oraz biblioteki obsługujące usługi IaaS wielu dostawców.
 
 \subsection*{Podsumowanie}
 
@@ -999,8 +999,8 @@ Do tworzenia maszyn wirtualnych można używać napisanych przez siebie program�
 \subsubsection*{Serwery wirtualne w~chmurach publicznych}
 \begin{itemize}
 \item \textbf{Amazon Elastic Compute Cloud (EC2)} -- Aby uruchomić nową instancję, należy wybrać obraz AMI (ang. \textit{Amazon Machine Image}) zawierający system operacyjny wraz z~oprogramowaniem, a~także wybrać typ instancji zawierający wstępną konfigurację. Wraz z~maszyną zostaje utworzony wirtualny dysk w~usłudze Amazon Elastic Block Store. Można zmodyfikować domyślną konfigurację o~dodanie m.in. load balancerów (Elastic Load Balancing), automatycznie skalującej~się grupy (Amazon EC2 Auto Scaling), dodatkowych dysków w~EBS. Wszystkie te usługi zostały zebrane wewnątrz panelu administracyjnego usługi EC2.
-\item \textbf{Azure Virtual Machines} -- Wbrew mitom pozwala na~utworzenie maszyn wirtualnych działających na~systemach innych niż Windows, m.in. Ubuntu, Red Hat, SUSE, CoreOS, FreeBSD. Obrazy tych systemów znajdują~się w~Azure MarketPlace. do~skalowania służą Virtual Machine Scale Sets. Ciekawą opcję stanowią Azure Extensions, czyli skrypty automatycznie uruchamiane po uruchomieniu maszyny wirtualnej. w~przypadku maszyn działających na~systemie Linux dostępna jest również opcja Cloud-init, gdzie można zdefiniować listę paczek do~doinstalowania po pierwszym uruchomieniu systemu. 
-\item \textbf{Google Cloud Platform} -- Usługę Google wyróżnia prosty, schludny interfejs użytkownika. do~uruchomienia instancji maszyny wirtualnej z~domyślnymi ustawieniami wystarcza jeden ekran z~opcjami. w~przypadku braku maszyn wirtualnych portal proponuje wykonać jeden projekt szacowany na~15 minut przy użyciu samouczka.
+\item \textbf{Azure Virtual Machines} -- Wbrew mitom pozwala na~utworzenie maszyn wirtualnych działających na~systemach innych niż Windows, m.in. Ubuntu, Red Hat, SUSE, CoreOS, FreeBSD. Obrazy tych systemów znajdują~się w~Azure MarketPlace. Do~skalowania służą Virtual Machine Scale Sets. Ciekawą opcję stanowią Azure Extensions, czyli skrypty automatycznie uruchamiane po uruchomieniu maszyny wirtualnej. W~przypadku maszyn działających na~systemie Linux dostępna jest również opcja Cloud-init, gdzie można zdefiniować listę paczek do~doinstalowania po pierwszym uruchomieniu systemu. 
+\item \textbf{Google Cloud Platform} -- Usługę Google wyróżnia prosty, schludny interfejs użytkownika. Do~uruchomienia instancji maszyny wirtualnej z~domyślnymi ustawieniami wystarcza jeden ekran z~opcjami. W~przypadku braku maszyn wirtualnych portal proponuje wykonać jeden projekt szacowany na~15 minut przy użyciu samouczka.
 \end{itemize}
 
 \subsubsection{Biblioteki przystosowane do~obsługi wielu chmur IaaS}
@@ -1027,7 +1027,7 @@ Do tworzenia maszyn wirtualnych można używać napisanych przez siebie program�
 \item Konieczność samodzielnego administrowania oprogramowaniem.
 \item Konieczność samodzielnego dbania o~bezpieczeństwo i~aktualizacje.
 \item Skomplikowany model rozliczania -- mnogość parametrów od~których zależy całkowity koszt usług. Niewystarczająca uwaga natychmiast odbija~się na~karcie podanej do~rozliczeń. Autorka pracy ma w~tym punkcie zastrzeżenie do~firmy Amazon, ponieważ z~jednej strony dużymi literami ogłasza możliwość darmowego przetestowania usług, a~z~drugiej strony samo założenie konta kosztuje 1 USD, a~założenie maszyny wirtualnej (która sama w~sobie była bezpłatna) z~domyślnymi opcjami kosztowało kolejnego dolara. 
-\item Organizacje celujące w~ograniczoną ilość odbiorców mogą potrzebować serwera wirtualnego, ale nie potrzebować skalowalności jaką daje chmura. dla~nich odległość do~centrum danych mieszczącego~się w~innym kraju oraz korzystanie z~oferty zagranicznych usługodawców mogą stanowić wady, a~hosting typu VPS dostarczany z~pobliskiej miejscowości lepszą alternatywę.
+\item Organizacje celujące w~ograniczoną ilość odbiorców mogą potrzebować serwera wirtualnego, ale nie potrzebować skalowalności jaką daje chmura. Dla~nich odległość do~centrum danych mieszczącego~się w~innym kraju oraz korzystanie z~oferty zagranicznych usługodawców mogą stanowić wady, a~hosting typu VPS dostarczany z~pobliskiej miejscowości lepszą alternatywę.
 \end{itemize}
 
 \section{Usługi typu PaaS oparte o~maszyny wirtualne w~chmurach publicznych}\label{section:podejsciePaas}
@@ -1241,7 +1241,7 @@ Tak samo jak w~sekcji dotyczącej usługi CaaS (sekcja \ref{section:caas}).
 
 \section{Serverless -- usługi typu FaaS} \label{section:podejscieServerless}
 
-Odkąd w~2014~r. Amazon udostępnił usługę AWS Lambda, model serverless zaczął być postrzegany jako kolejna rewolucja po kontenerach. w~tym podejściu jeszcze większa część pracy pozostaje po stronie usługodawcy, a~programiście zostaje głównie część związana z~tworzeniem aplikacji (rysunek \ref{fig:serverlessSharing}).
+Odkąd w~2014~r. Amazon udostępnił usługę AWS Lambda, model serverless zaczął być postrzegany jako kolejna rewolucja po kontenerach. W~tym podejściu jeszcze większa część pracy pozostaje po stronie usługodawcy, a~programiście zostaje głównie część związana z~tworzeniem aplikacji (rysunek \ref{fig:serverlessSharing}).
 
 \begin{figure}[h]
 	\centering
@@ -1333,7 +1333,7 @@ Pomysł na~aplikację mobilną tworzoną w~ramach pracy, to realny przykład apl
 
 \subsection{Geneza pomysłu}\label{section:genezaPomyslu}
 
-Pomysł polega na~stworzeniu nowatorskiej aplikacji służącej do~zapisywania wydatków. Tego typu aplikacje dotychczas tworzone były z~myślą o~jednym użytkowniku i~raczej nie wymagały do~działania serwera. z~doświadczenia autorki pracy, takie podejście jest skuteczne do~czasu, gdy mieszka~się samemu, a~wszystkie wydatki tworzy~się z~myślą o~sobie. 
+Pomysł polega na~stworzeniu nowatorskiej aplikacji służącej do~zapisywania wydatków. Tego typu aplikacje dotychczas tworzone były z~myślą o~jednym użytkowniku i~raczej nie wymagały do~działania serwera. Z~doświadczenia autorki pracy, takie podejście jest skuteczne do~czasu, gdy mieszka~się samemu, a~wszystkie wydatki tworzy~się z~myślą o~sobie. 
 
 W przypadku gdy mieszka ze sobą więcej osób, liczby przestają cokolwiek mówić, gdyż może być tak, że~jedna osoba robi więcej zakupów czy inna płaci rachunki. Powstają problemy jak~się nawzajem rozliczać. Szczególnie biorąc pod uwagę, że~różne kategorie wydatków można rozliczać w~różny sposób, np.:
 \begin{itemize}
@@ -1348,7 +1348,7 @@ Biorąc pod uwagę powyższe, idealnym rozwiązaniem problemu zapisywania wydatk
 
 Do obsługi wystarczyłaby jakakolwiek aplikacja kliencka zdolna do~połączenia z~Internetem. Serwer zadbałby o~właściwą synchronizację pomiędzy instancjami aplikacji. Aby umożliwić precyzyjne rozliczenia, dodawanie wydatku powinno umożliwić wyszczególnienie, że~należy do~kategorii, w~której panuje określony sposób rozliczeń. 
 
-Jest możliwe ułatwić tę czynność przez rozpoznawanie obrazu, gdzie podstawowe parametry (cena na~paragonie, data zakupu, nazwa sklepu) byłyby wczytywane automatycznie. z~doświadczenia autorki w~zapisywaniu wydatków wynika, że~zazwyczaj prawie wszystkie pozycje na~paragonie odnoszą~się do~jednej kategorii. Aby wygodnie wyszczególnić pojedynczą rzecz na~paragonie, wystarczy odjąć ją od~ceny całkowitej i~przypisać do~innej kategorii. Możliwość wyszczególnienia wydatków z~danego paragonu byłaby sporym ułatwieniem.
+Jest możliwe ułatwić tę czynność przez rozpoznawanie obrazu, gdzie podstawowe parametry (cena na~paragonie, data zakupu, nazwa sklepu) byłyby wczytywane automatycznie. Z~doświadczenia autorki w~zapisywaniu wydatków wynika, że~zazwyczaj prawie wszystkie pozycje na~paragonie odnoszą~się do~jednej kategorii. Aby wygodnie wyszczególnić pojedynczą rzecz na~paragonie, wystarczy odjąć ją od~ceny całkowitej i~przypisać do~innej kategorii. Możliwość wyszczególnienia wydatków z~danego paragonu byłaby sporym ułatwieniem.
 
 Również z~doświadczenia autorki spory problem stanowi rozliczanie wydatków na~jedzenie. Trudno wyznaczyć model, w~którym owo rozliczenie przeprowadzone jest jednocześnie sprawiedliwie oraz wygodnie. Możliwym rozwiązaniem, będącym elementem pomysłu na~aplikację, byłoby automatyczne tworzenie przeliczników dla~kategorii ,,jedzenie'', bazując na~wprowadzonych danych takich jak: waga, wiek, płeć, wzrost i~poziom aktywności fizycznej u danej osoby. Wykorzystując siłę serwera w~chmurze, wszystkie potrzebne obliczenia byłyby przeprowadzone automatycznie.
 
@@ -1399,9 +1399,9 @@ Z pomocą przychodzi skalowanie horyzontalne. Pozwala połączyć siły wielu ko
 		\label{fig:skalowanie-horyzontalne}
 \end{figure}
 
-Chmura idealnie nadaje~się do~skalowania horyzontalnego. Tworzona z~setek tysięcy maszyn, daje możliwość obsłużenia nawet nadspodziewanie wysokiego ruchu. z~kolei usługi chmurowe wspomagają proces tworzenia aplikacji typu \textit{cloud native}, tworzonych za pomocą mikrousług i~korzystających z~baz NoSQL.
+Chmura idealnie nadaje~się do~skalowania horyzontalnego. Tworzona z~setek tysięcy maszyn, daje możliwość obsłużenia nawet nadspodziewanie wysokiego ruchu. Z~kolei usługi chmurowe wspomagają proces tworzenia aplikacji typu \textit{cloud native}, tworzonych za pomocą mikrousług i~korzystających z~baz NoSQL.
 
-Kolejnym ważnym aspektem, dla~którego warto rozważyć użycie chmury, jest dostępność usług wykorzystujących uczenie maszynowe do~np. rozpoznawania obrazu, a~także usług związanych z~przetwarzaniem dużej ilości danych. w~dłuższej perspektywie ułatwienia takie jak automatyczne czytanie danych ze zdjęcia paragonu lub możliwość wykonania analizy dużego zbioru danych mogą stanowić dużą wartość dodaną.
+Kolejnym ważnym aspektem, dla~którego warto rozważyć użycie chmury, jest dostępność usług wykorzystujących uczenie maszynowe do~np. rozpoznawania obrazu, a~także usług związanych z~przetwarzaniem dużej ilości danych. W~dłuższej perspektywie ułatwienia takie jak automatyczne czytanie danych ze zdjęcia paragonu lub możliwość wykonania analizy dużego zbioru danych mogą stanowić dużą wartość dodaną.
 
 Wymienione powyżej przesłanki wskazują na~to, że~omawiany projekt posiada cechy typowego projektu informatycznego i~z~powodzeniem obrazuje sens wykorzystania chmury do~tworzenia nawet eksperymentalnych projektów.
 
@@ -1419,7 +1419,7 @@ Poniżej wymieniono podstawowe kryteria wyboru:
 
 \section{Analiza}
 
-W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają~się z~wymaganiami postawionymi projektowi. na~podstawie analiz dokonano wyboru podejścia oraz chmury publicznej, na~której został zrealizowany projekt.
+W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają~się z~wymaganiami postawionymi projektowi. Na~podstawie analiz dokonano wyboru podejścia oraz chmury publicznej, na~której został zrealizowany projekt.
 
 \subsection{Wybór podejścia}
 
@@ -1438,7 +1438,7 @@ W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają~się z
 \subsubsection{Wynajem maszyny wirtualnej}
 
 \begin{enumerate}
-	\item \textbf{Koszt} -- przy wynajmie maszyny wirtualnej należy przez cały czas, gdy maszyna jest włączona, opłacać przynajmniej zasoby zużywane przez uruchomiony specjalnie na~potrzeby wynajmującego system operacyjny. do~tego dochodzi utrzymanie uruchomionej tam aplikacji, a~w~przypadku skalowania zwielokrotnienie tych opłat zgodnie z~ilością działających maszyn wirtualnych.
+	\item \textbf{Koszt} -- przy wynajmie maszyny wirtualnej należy przez cały czas, gdy maszyna jest włączona, opłacać przynajmniej zasoby zużywane przez uruchomiony specjalnie na~potrzeby wynajmującego system operacyjny. Do~tego dochodzi utrzymanie uruchomionej tam aplikacji, a~w~przypadku skalowania zwielokrotnienie tych opłat zgodnie z~ilością działających maszyn wirtualnych.
 	\item \textbf{Poziom skomplikowania} -- uruchomienie tradycyjnie napisanej aplikacji nie byłoby skomplikowane, gdyż odbywałoby~się dokładnie tak jak na~każdym innym komputerze. Konfiguracja bardziej zaawansowanego środowiska, np. kilku maszyn wirtualnych obsługujących MongoDB, przysporzyłaby już więcej kłopotu.
 	\item \textbf{Czas dostępu} -- dla~Amazon EC2 oraz Google Compute Engine najbliższy region to Frankfurt w~Niemczech, najbliżej znajduje~się Azure Virtual Machines w~Magdeburgu w~Niemczech.
 	\item \textbf{Technologie} -- jak w~chmurze prywatnej.
@@ -1487,7 +1487,7 @@ W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają~się z
 \subsubsection{Serverless -- usługi typu FaaS}
 
 \begin{enumerate}
-	\item \textbf{Koszt} -- najniższy, ponieważ ta usługa jako jedyna nie wymaga płatności za aplikację, która bezczynnie czeka aż ktoś wyśle zapytanie. Jednocześnie raczej nie ponosi~się kosztu źle zaprojektowanej aplikacji, gdyż natura nanousług wyklucza tworzenie mikrousługi o~zbyt dużym zakresie odpowiedzialności. w~razie gdyby funkcja mimo wszystko zbyt długo~się wykonywała, są na~to nałożone limity, które sprawią, że~po pewnym krótkim czasie jej wykonywanie zostanie przerwane.
+	\item \textbf{Koszt} -- najniższy, ponieważ ta usługa jako jedyna nie wymaga płatności za aplikację, która bezczynnie czeka aż ktoś wyśle zapytanie. Jednocześnie raczej nie ponosi~się kosztu źle zaprojektowanej aplikacji, gdyż natura nanousług wyklucza tworzenie mikrousługi o~zbyt dużym zakresie odpowiedzialności. W~razie gdyby funkcja mimo wszystko zbyt długo~się wykonywała, są na~to nałożone limity, które sprawią, że~po pewnym krótkim czasie jej wykonywanie zostanie przerwane.
 	\item \textbf{Poziom skomplikowania} -- wymaga nauczenia~się sposobu funkcjonowania usługi FaaS, ale dzięki temu nie trzeba martwić~się o~właściwą architekturę usług, co znacząco upraszcza proces tworzenia. Każda usługa stanowi osobny byt, więc jest wykluczone stworzenie zbyt skomplikowanej siatki zależności pomiędzy usługami.
 	\item \textbf{Czas dostępu} -- najdalej znajduje~się Google Functions w~Belgii, następnie  AWS Lambda we Frankfurcie w~Niemczech, najbliżej znajduje~się Azure Functions w~Magdeburgu w~Niemczech.
 	\item \textbf{Technologie} -- język pisania usług jest praktycznie dowolny, jednakowoż z~dużym prawdopodobieństwem będą bazować na~innych usługach PaaS wybranego dostawcy.
@@ -1510,7 +1510,7 @@ W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają~się z
 	\item \textbf{Koszt} -- taki jak w~FaaS
 	\item \textbf{Poziom skomplikowania} -- taki jak w~FaaS + nauka Serverless Framework, który proponuje swoje rozwiązania na~każdym etapie tworzenia funkcji. 
 	\item \textbf{Czas dostępu} -- tak jak w~FaaS
-	\item \textbf{Technologie} -- możliwość pisania we wielu językach, nawet jeśli chmura docelowa w~praktyce go nie obsługuje. z~tym że~sprowadzając wszystkie platformy do~jednego mianownika, ogranicza~się możliwość skorzystania z~innych usług PaaS chmury publicznej. z~kolei jeśli i~tak doprowadza~się do~uzależnienia od~wybranego dostawcy, to po co zakładać dodatkową warstwę abstrakcji.
+	\item \textbf{Technologie} -- możliwość pisania we wielu językach, nawet jeśli chmura docelowa w~praktyce go nie obsługuje. Z~tym że~sprowadzając wszystkie platformy do~jednego mianownika, ogranicza~się możliwość skorzystania z~innych usług PaaS chmury publicznej. Z~kolei jeśli i~tak doprowadza~się do~uzależnienia od~wybranego dostawcy, to po co zakładać dodatkową warstwę abstrakcji.
 	\item \textbf{Przenoszenie na~inną platformę} -- przeniesienie kodu mikrousług byłoby łatwe, należałoby~się jednak zapoznać także z~zagadnieniami migracji danych.
 \end{enumerate}
 	
@@ -1574,11 +1574,11 @@ Minusy:
 
 \subsection{Podsumowanie analiz}
 
-W świetle wymagań stawianych projektowi, najlepiej wypada podejście bazujące na~\textbf{usługach w~modelu serverless}. Wymaga ono zużycia najmniejszej możliwej liczby zasobów, więc jest tańsze od~pozostałych metod. na~czas tworzenia i~testowania aplikacji zużycie jest minimalne, ponieważ płatność odbywa~się tylko za egzekucję funkcji, więc nie trzeba płacić za utrzymanie w~chmurze aplikacji oczekującej na~połączenia. 
+W świetle wymagań stawianych projektowi, najlepiej wypada podejście bazujące na~\textbf{usługach w~modelu serverless}. Wymaga ono zużycia najmniejszej możliwej liczby zasobów, więc jest tańsze od~pozostałych metod. Na~czas tworzenia i~testowania aplikacji zużycie jest minimalne, ponieważ płatność odbywa~się tylko za egzekucję funkcji, więc nie trzeba płacić za utrzymanie w~chmurze aplikacji oczekującej na~połączenia. 
 
 Podejście serverless zapewnia również najmniejszą barierę wejścia do~chmury z~wysoce skalowalną aplikacją. Nie trzeba w~nim brać odpowiedzialności za właściwą architekturę mikrousług. Lektura książek\cite{microservicesPacktNetCore, microservicesSusan, microservicesWmii} o~mikrousługach uświadomiła autorkę pracy, że~tworząc architekturę mikrousług należy równocześnie uwzględnić wiele czynników, a~uchybienie któregoś może spowodować więcej szkody niż pożytku. Stworzenie dobrej architektury wymagałoby wcześniejszego doświadczenia, inaczej nie byłoby rzeczą dziwną, gdyby po wdrożeniu jednej architektury wyklarowała~się potrzeba przepisania jej na~nowo.
 
-Jeśli chodzi o~chmurę, na~której dobrze byłoby zrealizować to podejście, autorka zdecydowanie skłania~się ku \textbf{Azure}. na~ten wybór w~szczególności wpłynęła możliwość darmowej subskrypcji dla~studentów, która daje największe poczucie bezpieczeństwa podczas pierwszych starć z~chmurą. Wybór ten zdaje~się również być bezpieczny pod względem dostępności technologii .NET oraz przyjaznych w~użyciu narzędzi. Microsoft słynie z~dobrej jakości narzędzi dla~programistów, na~potwierdzenie tego wystarczy spojrzeć na~wyniki badania przeprowadzonego wśród programistów przez Stack Overflow w~2018~r. (rysunek \ref{fig:stackOverflowSurvey}) -- dwa najczęściej używane edytory programistyczne to Visual Studio Code oraz Visual Studio. 
+Jeśli chodzi o~chmurę, na~której dobrze byłoby zrealizować to podejście, autorka zdecydowanie skłania~się ku \textbf{Azure}. Na~ten wybór w~szczególności wpłynęła możliwość darmowej subskrypcji dla~studentów, która daje największe poczucie bezpieczeństwa podczas pierwszych starć z~chmurą. Wybór ten zdaje~się również być bezpieczny pod względem dostępności technologii .NET oraz przyjaznych w~użyciu narzędzi. Microsoft słynie z~dobrej jakości narzędzi dla~programistów, na~potwierdzenie tego wystarczy spojrzeć na~wyniki badania przeprowadzonego wśród programistów przez Stack Overflow w~2018~r. (rysunek \ref{fig:stackOverflowSurvey}) -- dwa najczęściej używane edytory programistyczne to Visual Studio Code oraz Visual Studio. 
 
 \begin{figure}[h]
 	\centering
@@ -1589,11 +1589,11 @@ Jeśli chodzi o~chmurę, na~której dobrze byłoby zrealizować to podejście, a
 
 Gdyby jeszcze nie wynaleziono podejścia serverless, to za najlepszą z~opcji uchodziłyby \textbf{kontenery}. Kontenery są znacznie lżejsze niż maszyny wirtualne, a~do~tego pozwalają tworzyć w~technologiach, które nie są zarezerwowane dla~wybranego dostawcy. Używając kontenerów wiele można zdziałać na~lokalnej maszynie, gdyż aplikacja dysponuje wówczas wszędzie tym samym środowiskiem do~uruchamiania. 
 
-W przypadku kontenerów należałoby poświęcić wiele uwagi tworzeniu właściwej architektury. Mikrousługi to \textbf{nie jest} rozbicie zwykłej usługi na~mniejsze kawałki, ponieważ w~mikrousługach obowiązują inne zasady programowania i~komunikowania ze sobą usług, niż w~dużych usługach. na~przykład w~zwykłym SOA dość typowe jest wiązanie ze sobą usług za pomocą usługi dostępu do~bazy danych, jednej dla~wszystkich usług. w~mikrousługach byłby to podstawowy błąd architektoniczny. 
+W przypadku kontenerów należałoby poświęcić wiele uwagi tworzeniu właściwej architektury. Mikrousługi to \textbf{nie jest} rozbicie zwykłej usługi na~mniejsze kawałki, ponieważ w~mikrousługach obowiązują inne zasady programowania i~komunikowania ze sobą usług, niż w~dużych usługach. Na~przykład w~zwykłym SOA dość typowe jest wiązanie ze sobą usług za pomocą usługi dostępu do~bazy danych, jednej dla~wszystkich usług. W~mikrousługach byłby to podstawowy błąd architektoniczny. 
 
-Obecnie kontenery można wdrażać w~chmurze na~trzy sposoby. Zdaniem autorki, na~sam początek wystarczyłaby usługa instancji kontenerów, ponieważ jest przystosowana do~uruchamiania małej ilości kontenerów i~nie wymaga konfigurowania maszyn wirtualnych czy orkiestratora. w~drugiej kolejności należałoby wybrać pomiędzy samodzielną instalacją Kubernetes lub skorzystaniem z~KaaS. 
+Obecnie kontenery można wdrażać w~chmurze na~trzy sposoby. Zdaniem autorki, na~sam początek wystarczyłaby usługa instancji kontenerów, ponieważ jest przystosowana do~uruchamiania małej ilości kontenerów i~nie wymaga konfigurowania maszyn wirtualnych czy orkiestratora. W~drugiej kolejności należałoby wybrać pomiędzy samodzielną instalacją Kubernetes lub skorzystaniem z~KaaS. 
 
-Usługa KaaS jest rekomendowaną opcją przez Kubernetes dla~osób, które dopiero chcą~się zaznajomić z~tym narzędziem. Można wtedy od~razu zetknąć~się z~obsługą oprogramowania, zamiast przechodzić przez proces konfiguracji maszyn wirtualnych i~samodzielnej instalacji. Jednak dla~osoby, która już dobrze zna Kubernetes, czynności te mogą nie stanowić bariery, przy czym ich automatyzacja to dodatkowy koszt, np. w~Amazon każda godzina działania klastra w~usłudze KaaS to dodatkowe 0.20 USD. w~przypadku Azure usługa KaaS jest darmowa, więc wybór pomiędzy KaaS a~samodzielną instalacją nie stanowiłby szczególnej różnicy.
+Usługa KaaS jest rekomendowaną opcją przez Kubernetes dla~osób, które dopiero chcą~się zaznajomić z~tym narzędziem. Można wtedy od~razu zetknąć~się z~obsługą oprogramowania, zamiast przechodzić przez proces konfiguracji maszyn wirtualnych i~samodzielnej instalacji. Jednak dla~osoby, która już dobrze zna Kubernetes, czynności te mogą nie stanowić bariery, przy czym ich automatyzacja to dodatkowy koszt, np. w~Amazon każda godzina działania klastra w~usłudze KaaS to dodatkowe 0.20 USD. W~przypadku Azure usługa KaaS jest darmowa, więc wybór pomiędzy KaaS a~samodzielną instalacją nie stanowiłby szczególnej różnicy.
 
 
 
@@ -1705,7 +1705,7 @@ Aby dodać wydatek, należy:
 \begin{enumerate}
 \item \textbf{Wybrać datę}, jeśli ma być inna niż bieżący dzień. Można tego dokonać używając systemowej kontrolki kalendarza.
 \item \textbf{Wybrać kategorię wydatku}. Jeśli konto należy do~grupy, to od~kategorii zależy jak później będą naliczane długi. \textit{Przykład: gdy dana osoba dodaje wydatek na~wspólne jedzenie, innym automatycznie naliczy~się ile powinni oddać tej osobie, zgodnie z~ich zapotrzebowaniem kalorycznym.}
-\item \textbf{Podać sumę na~paragonie}. od~tej sumy ewentualnie zostaną odjęte poszczególne pozycje na~paragonie, które nie pasują do~kategorii głównej.
+\item \textbf{Podać sumę na~paragonie}. Od~tej sumy ewentualnie zostaną odjęte poszczególne pozycje na~paragonie, które nie pasują do~kategorii głównej.
 \item \textbf{Zaznaczyć portfel}, jeśli domyślnie zaznaczony nie pasuje. Jest to źródło, z~którego był opłacony wydatek. Tym sposobem wydatek może być w~obcej walucie.
 \item \textit{(opcjonalnie)} \textbf{Podać szczegóły z~paragonu}. Przydatna opcja odejmująca wiele pracy (rysunek \ref{fig:app-dodajWydatek2}). \textit{Przykład: dodawany jest paragon z~supermarketu, na~nim samo jedzenie i~do~tego żel pod prysznic. Żeby zachować właściwe przypisanie do~kategorii, nie trzeba ręcznie odejmować żelu pod prysznic i~osobno go dodawać. Wystarczy podać go jako szczegół na~paragonie pasujący do~kategorii ,,higiena'' i~cała reszta dopasuje~się automatycznie.}
 \end{enumerate}
@@ -1740,7 +1740,7 @@ Aby dodać wydatek, należy:
 
 \subsection{Łączenie w~gospodarstwo domowe}
 
-Aplikacja może działać w~trybie pracy dla~jednej osoby, ale jej główne przeznaczenie stanowi zapisywanie wydatków przez kilka osób. w~tym celu należy skonfigurować gospodarstwo domowe. Scenariusz ten odbywa~się w~następujący sposób:
+Aplikacja może działać w~trybie pracy dla~jednej osoby, ale jej główne przeznaczenie stanowi zapisywanie wydatków przez kilka osób. W~tym celu należy skonfigurować gospodarstwo domowe. Scenariusz ten odbywa~się w~następujący sposób:
 
 \begin{enumerate}
 \item \textbf{Dodanie i~skonfigurowanie kont} -- każda osoba powinna najpierw założyć konto.
@@ -1748,7 +1748,7 @@ Aplikacja może działać w~trybie pracy dla~jednej osoby, ale jej główne prze
 \item \textbf{Akceptacja zaproszenia} -- każda osoba posiadająca zaproszenie może je wyświetlić i~zaakceptować w~sekcji ,,zaproszenia'' (rysunek \ref{fig:app-akceptacja}).  
 \end{enumerate}
 
-Po akceptacji zaproszenia konto zmienia status na~należące do~gospodarstwa domowego. w~sekcji ,,podsumowanie'' pojawiają~się \textbf{dodatkowe wartości} (rysunek \ref{fig:app-stronaGlowna3}):
+Po akceptacji zaproszenia konto zmienia status na~należące do~gospodarstwa domowego. W~sekcji ,,podsumowanie'' pojawiają~się \textbf{dodatkowe wartości} (rysunek \ref{fig:app-stronaGlowna3}):
 
 \begin{itemize}
 \item wydatki całego gospodarstwa domowego, przedstawione jako suma wszystkich walut posiadanych przez wszystkich uczestników,
@@ -1851,7 +1851,7 @@ Każda funkcja to bezstanowy kod, który reaguje na~dane zdarzenie. Jako kilka p
 
 Należy zdefiniować ścieżkę (np. \textit{/api/person/get/{name}}), obsługiwane rodzaje zapytania (GET, POST itd.) oraz \textbf{poziom autoryzacji}.
 
-Są obsługiwane 3 poziomy autoryzacji. Poziom \textbf{Anonymous} oznacza, że~funkcja jest dostępna bez konieczności podawania klucza. w~poziomach \textbf{Function} oraz \textbf{Admin} konieczne jest podanie klucza. w~ramach aplikacji są zdefiniowane klucze hosta (ang. \textit{host keys}) i~tego typu kluczem można uzyskać dostęp do~poziomu Admin oraz Function. Poza tym każda funkcja posiada swoją kolekcję kluczy, którymi można~się do~nich zautoryzować, jeśli mają dostęp Function.
+Są obsługiwane 3 poziomy autoryzacji. Poziom \textbf{Anonymous} oznacza, że~funkcja jest dostępna bez konieczności podawania klucza. W~poziomach \textbf{Function} oraz \textbf{Admin} konieczne jest podanie klucza. W~ramach aplikacji są zdefiniowane klucze hosta (ang. \textit{host keys}) i~tego typu kluczem można uzyskać dostęp do~poziomu Admin oraz Function. Poza tym każda funkcja posiada swoją kolekcję kluczy, którymi można~się do~nich zautoryzować, jeśli mają dostęp Function.
 
 Klucz podaje~się przez dodanie parametru \texttt{code} do~zapytania HTTP, np.:
 
@@ -1886,7 +1886,7 @@ Do tworzenia aplikacji można podejść na~dwa sposoby: \cite{siteAppLanguages}
 \item cała aplikacja to biblioteka.
 \end{enumerate}
 
-\textbf{Skrypty} działają bardziej wieloplatformowo. Można je tworzyć w~językach C\#, F\# oraz JavaScript (w wersji 2.x także poglądowo w~Javie). Istnieje wtedy możliwość uruchamiania funkcji lokalnie przy pomocy paczki Azure Functions Core Tools dla~menadżera pakietów npm. w~wersji 2.x można w~ten sposób postąpić na~wielu platformach, wszędzie gdzie działa .NET Core, czyli m.in. na~Linuksie i~macOS. Paczki Core Tools można używać z~poziomu linii komend lub korzystając z~Visual Studio Code z~doinstalowanym rozszerzeniem Azure Functions for Visual Studio Code.\cite{siteAppLocally} 
+\textbf{Skrypty} działają bardziej wieloplatformowo. Można je tworzyć w~językach C\#, F\# oraz JavaScript (w wersji 2.x także poglądowo w~Javie). Istnieje wtedy możliwość uruchamiania funkcji lokalnie przy pomocy paczki Azure Functions Core Tools dla~menadżera pakietów npm. W~wersji 2.x można w~ten sposób postąpić na~wielu platformach, wszędzie gdzie działa .NET Core, czyli m.in. na~Linuksie i~macOS. Paczki Core Tools można używać z~poziomu linii komend lub korzystając z~Visual Studio Code z~doinstalowanym rozszerzeniem Azure Functions for Visual Studio Code.\cite{siteAppLocally} 
 
 Aplikacje ze skryptów można edytować z~poziomu portalu Azure.
 
@@ -1898,7 +1898,7 @@ Każda funkcja utworzona jako skrypt składa~się z:
 
 Wspólnie dla~wszystkich funkcji definiuje się:
 \begin{itemize}
-\item \textbf{plik z~zależnościami projektu}. dla~NuGet jest to \textit{project.json}, dla~npm \textit{package.json} i~dla~Mavena \textit{pom.xml},
+\item \textbf{plik z~zależnościami projektu}. Dla~NuGet jest to \textit{project.json}, dla~npm \textit{package.json} i~dla~Mavena \textit{pom.xml},
 \item \textbf{plik \textit{host.json}} przechowujący opis konfiguracji na~produkcji. Tam można np. zdefiniować przedrostek dla~ścieżki API (inny niż domyślny \textit{/api}),
 \item \textit{(w wersji 2.x i~pracy lokalnie)} \textbf{plik \textit{extensions.json}} rejestrujący wiązania występujące w~paczkach NuGet. \cite{siteAppCSharpScript}.
 \end{itemize}
@@ -1926,7 +1926,7 @@ W niniejszej sekcji zostanie opisany dobór narzędzi dla~podejścia ,,bibliotek
 
 Do tworzenia aplikacji lokalnie wystarczy mieć zainstalowane \textbf{Visual Studio} z~pakietem roboczym \textbf{,,Projektowanie dla~platformy Azure''} i~doinstalowanym rozszerzeniem \textbf{,,Azure Functions and Web Jobs Tools''}. Można w~ten sposób tworzyć funkcje, które nie są zależne od~usług Azure.
 
-Jest możliwość symulowania lokalnie usług Azure Storage. w~tym celu należy zainstalować:
+Jest możliwość symulowania lokalnie usług Azure Storage. W~tym celu należy zainstalować:
 \begin{itemize}
 \item \textbf{Microsoft SQL Server}, gdyż za jego pomocą odbywa~się symulacja,
 \item \textbf{Microsoft Azure Storage Emulator}, który należy mieć włączony, aby móc łączyć~się z~,,lokalnym'' Azure Storage.
@@ -1934,9 +1934,9 @@ Jest możliwość symulowania lokalnie usług Azure Storage. w~tym celu należy 
 
 Warto również zainstalować \textbf{Microsoft Azure Storage Explorer}. Jest to specjalna aplikacja służąca do~zarządzania przechowywaniem danych w~Azure. Pozwala zebrać w~jednym miejscu zasoby z~różnych kont Azure oraz różnych subskrypcji (np. symulowana ,,lokalna'' i~,,Azure dla~studentów''). Obsługuje Azure Storage oraz w~wersji poglądowej Azure CosmosDb i~Azure Data Lake Store.
 
-W celu opublikowania aplikacji w~chmurze należy posiadać \textbf{konto w~Azure} i~założyć tam \textbf{plan subskrypcji}, czyli ustalony sposób rozliczania~się z~dostawcą. Jednym z~możliwych wyborów jest plan ,,Azure dla~studentów'', gdzie nie trzeba podawać danych karty kredytowej, tylko uczelniany adres e-mail do~weryfikacji. dla~omawianego projektu utworzono ten właśnie rodzaj subskrypcji. 
+W celu opublikowania aplikacji w~chmurze należy posiadać \textbf{konto w~Azure} i~założyć tam \textbf{plan subskrypcji}, czyli ustalony sposób rozliczania~się z~dostawcą. Jednym z~możliwych wyborów jest plan ,,Azure dla~studentów'', gdzie nie trzeba podawać danych karty kredytowej, tylko uczelniany adres e-mail do~weryfikacji. Dla~omawianego projektu utworzono ten właśnie rodzaj subskrypcji. 
 
-Posiadając te dane można przystąpić do~założenia \textbf{aplikacji funkcji} (ang. \textit{Function app}). Należy wybrać opcję ,,Utwórz zasób'' (ang. \textit{Add resource}) i~tam wyszukać Function App. w~celu utworzenia aplikacji trzeba podać:
+Posiadając te dane można przystąpić do~założenia \textbf{aplikacji funkcji} (ang. \textit{Function app}). Należy wybrać opcję ,,Utwórz zasób'' (ang. \textit{Add resource}) i~tam wyszukać Function App. W~celu utworzenia aplikacji trzeba podać:
 
 \begin{itemize}
 \item nazwę aplikacji -- pod tą nazwą aplikacja będzie dostępna w~domenie azurewebsites.net, dlatego musi być unikalna;
@@ -2054,7 +2054,7 @@ W związku z~powyższym autorka doszła do~wniosku, że~warto utworzyć \textbf{
 
 Pisanie kodu pierwszych funkcji stanowiło nieoczekiwany problem. Zawiłości związane z~różnymi technikami tworzenia na~Azure powodowały, że~ciężko było znaleźć odpowiednie przykłady kodu, które pomogłyby poprawnie zadeklarować wyzwalacze i~wiązania. Mnogość języków programowania oraz rozbieżność między podejściem skryptowym a~bibliotecznym nie pomagają wdrożyć~się w~tym temacie.
 
-Kolejnym nieoczekiwanym problemem było pozyskanie kluczy dostępu dla~funkcji. Poziom autoryzacji jest jedną z~pierwszych rzeczy opisujących funkcje, a~porady jak dodać klucze sprowadzają~się do~generowania ich z~poziomu portalu Azure. w~dokumentacji poniekąd brakuje omówienia tematu, jak dokonać tego programistycznie, lub choćby czemu nie robić tego programistycznie. Dowiedziawszy~się o~Key Management API autorka użyła go do~generowania kluczy podczas rejestracji użytkownika.
+Kolejnym nieoczekiwanym problemem było pozyskanie kluczy dostępu dla~funkcji. Poziom autoryzacji jest jedną z~pierwszych rzeczy opisujących funkcje, a~porady jak dodać klucze sprowadzają~się do~generowania ich z~poziomu portalu Azure. W~dokumentacji poniekąd brakuje omówienia tematu, jak dokonać tego programistycznie, lub choćby czemu nie robić tego programistycznie. Dowiedziawszy~się o~Key Management API autorka użyła go do~generowania kluczy podczas rejestracji użytkownika.
 
 \subsection{Funkcje z~dostępem na~klucz}
 
@@ -2078,7 +2078,7 @@ Dla dodawania wydatku powstały następujące funkcje:
 
 \textbf{\textit{AddCashFlow} dodaje wydatek po kilka razy}, aby w~przyszłości umożliwić wybieranie wydatków różnych osób, ale powiązane innym elementem. Mogą to być wydatki całego gospodarstwa domowego, wydatki jednej osoby, wydatki w~danej kategorii, wydatki w~danym sklepie. Opiera~się to na~założeniu, że~dane o~wydatku raczej nie będą podlegać częstej edycji, za to mogą być często wyświetlane. Stąd też decyzja projektowa o~duplikowaniu danych.
 
-Aby listy wydatków mogły być pobierane w~kolejności \textbf{od najnowszych do~najstarszych}, należało uwzględnić właściwość Table Storage polegającą na~umieszczaniu kolejnych encji w~kolejności alfabetycznej. Chcąc wybierać encje na~podstawie daty, należałoby w~kluczu umieścić datę. Umieszczenie daty w~zwykłym formacie umożliwiłoby wybieranie encji w~kolejności od~najstarszych. w~związku z~tym, aby móc wybierać najnowsze encje, data musi być zapisana odwrotnie.
+Aby listy wydatków mogły być pobierane w~kolejności \textbf{od najnowszych do~najstarszych}, należało uwzględnić właściwość Table Storage polegającą na~umieszczaniu kolejnych encji w~kolejności alfabetycznej. Chcąc wybierać encje na~podstawie daty, należałoby w~kluczu umieścić datę. Umieszczenie daty w~zwykłym formacie umożliwiłoby wybieranie encji w~kolejności od~najstarszych. W~związku z~tym, aby móc wybierać najnowsze encje, data musi być zapisana odwrotnie.
 
 Datę można odwrócić zakładając pewną datę minimalną oraz datę maksymalną. Wówczas bieżącą datę można umieścić w~odległości od~daty maksymalnej równej rzeczywistej odległości od~daty minimalnej. Tak przekodowane daty zapewniają odwróconą chronologię.
 
@@ -2110,7 +2110,7 @@ household\_janusz & userCashflow\_grazyna\_7982.04.04\_23:59:59\_a5ac98f0-1536-4
 \end{table}
 \end{small}
 
-Korzystanie z~kolejek przysparza niedogodność w~postaci \textbf{dużych opóźnień}. Zanim zacznie być przetwarzany nowy wpis z~kolejki, mija do~kilkunastu sekund. z~kolei w~aplikacji klienckiej trzeba sprawić wrażenie, jakby wszystko przebiegało błyskawicznie. Trzeba wtedy pewne kalkulacje wykonać lokalnie, aby widok mógł~się odświeżyć, a~na~rzeczywiste zmiany na~serwerze należy poczekać.
+Korzystanie z~kolejek przysparza niedogodność w~postaci \textbf{dużych opóźnień}. Zanim zacznie być przetwarzany nowy wpis z~kolejki, mija do~kilkunastu sekund. Z~kolei w~aplikacji klienckiej trzeba sprawić wrażenie, jakby wszystko przebiegało błyskawicznie. Trzeba wtedy pewne kalkulacje wykonać lokalnie, aby widok mógł~się odświeżyć, a~na~rzeczywiste zmiany na~serwerze należy poczekać.
 
 \section{Aplikacja na~Android}
 
@@ -2120,7 +2120,7 @@ Przy wyborze technologii autorce zależało na~możliwie dużej dostępności ma
 
 Do łączenia~się z~API aplikacja korzysta ze specjalnie utworzonej w~tym celu \textbf{biblioteki}. Biblioteka zajmuje~się budowaniem właściwych zapytań, w~tym np. zastosowania funkcji skrótu dla~hasła z~solą. Funkcja skrótu z~.NET Framework oraz typy danych użyte do~tworzenia obiektów DTO w~komunikacji z~API okazały~się kompatybilne z~odpowiednikami w~Javie. Zostało to również przetestowane przy pomocy \textbf{testów jednostkowych}.
 
-Wszystkie zapytania tworzone w~aplikacji wysyłają~się \textbf{asynchronicznie}. na~czas wykonywania zadań w~aplikacji pokazuje~się kręcące kółko ukazujące postęp. w~razie błędów użytkownik jest informowany o~problemach w~komunikacji (przykład widać na~rysunku \ref{fig:app-odp-z-serwera}). do~uproszczenia wielu zadań z~tym związanych korzystano z~wyrażeń lambda z~Javy 8.
+Wszystkie zapytania tworzone w~aplikacji wysyłają~się \textbf{asynchronicznie}. Na~czas wykonywania zadań w~aplikacji pokazuje~się kręcące kółko ukazujące postęp. W~razie błędów użytkownik jest informowany o~problemach w~komunikacji (przykład widać na~rysunku \ref{fig:app-odp-z-serwera}). Do~uproszczenia wielu zadań z~tym związanych korzystano z~wyrażeń lambda z~Javy 8.
 
 Dużo uwagi przyłożono do~zapewnienia o~\textbf{poprawności danych}. Mniej zapytań kończących~się odpowiedzią ,,Bad Request'' to szybsze działanie aplikacji i~mniejszy koszt korzystania z~Azure Functions. Dlatego nawet w~prostej aplikacji dobra walidacja danych jest bardzo istotna.
 
@@ -2143,7 +2143,7 @@ Dużo uwagi przyłożono do~zapewnienia o~\textbf{poprawności danych}. Mniej za
 
 W aplikacji został zaimplementowany mechanizm walidacji szczegółowo informujący o~błędach już na~etapie wypełniania pola (przykład na~rysunku \ref{fig:app-walidacja}). Każde pole posiada swoją listę reguł walidacyjnych i~brak przestrzegania którejś z~nich skutkuje poinformowaniem o~tym fakcie użytkownika oraz zablokowaniem możliwości przesłania formularza. 
 
-Aplikacja nigdzie nie przechowuje hasła użytkownika. Jedynie zapisuje klucz uzyskany po zalogowaniu do~systemowego \textbf{Accounts Managera}. Podczas uruchamiania aplikacji sprawdzane jest, czy istnieje konto w~Accounts Managerze i~czy posiada klucz. Jeśli tak, to użytkownik może~się automatycznie zalogować za pomocą tego klucza. w~wiadomości zwrotnej jest przekazywana informacja o~tym, czy konto było skonfigurowane, i~w zależności od~tego użytkownik zostaje przekierowany do~strony konfiguracji bądź do~strony głównej.
+Aplikacja nigdzie nie przechowuje hasła użytkownika. Jedynie zapisuje klucz uzyskany po zalogowaniu do~systemowego \textbf{Accounts Managera}. Podczas uruchamiania aplikacji sprawdzane jest, czy istnieje konto w~Accounts Managerze i~czy posiada klucz. Jeśli tak, to użytkownik może~się automatycznie zalogować za pomocą tego klucza. W~wiadomości zwrotnej jest przekazywana informacja o~tym, czy konto było skonfigurowane, i~w zależności od~tego użytkownik zostaje przekierowany do~strony konfiguracji bądź do~strony głównej.
 
 Dla łatwej obsługi aplikacji wykorzystano mechanizm \textit{navigation drawer}, polegający na~wysuwanym menu po lewej stronie. Składa~się z~aktywności głównej oraz fragmentów dla~każdej z~pozycji występującej w~menu.
 
@@ -2152,7 +2152,7 @@ Dla łatwej obsługi aplikacji wykorzystano mechanizm \textit{navigation drawer}
 \chapter*{Podsumowanie}
 \markboth{Podsumowanie}{}
  
-Przed przystąpieniem do~niniejszej pracy autorka posiadała wiedzę sprzed kilku lat -- że~istnieją platformy pozwalające wdrażać w~chmurze aplikacje utworzone w~określonych technologiach. na~etapie przeglądu literatury okazało się, że~pogląd ten nie ma już prawie nic wspólnego z~dzisiejszą rzeczywistością. Ze wszystkich stron wybijała~się ekscytacja nowymi rewolucyjnymi technologiami i~kolejnymi najlepszymi podejściami do~pracy z~chmurą. 
+Przed przystąpieniem do~niniejszej pracy autorka posiadała wiedzę sprzed kilku lat -- że~istnieją platformy pozwalające wdrażać w~chmurze aplikacje utworzone w~określonych technologiach. Na~etapie przeglądu literatury okazało się, że~pogląd ten nie ma już prawie nic wspólnego z~dzisiejszą rzeczywistością. Ze wszystkich stron wybijała~się ekscytacja nowymi rewolucyjnymi technologiami i~kolejnymi najlepszymi podejściami do~pracy z~chmurą. 
 
 Połączenie tego wszystkiego w~całość umożliwiło spojrzenie z~szerszej perspektywy na~wszystkie te nowości oraz określić jakich obszarów dotyczą. Pozwoliło to wyłonić podejście, które prawdopodobnie najlepiej wypełnia swoje zadanie spośród dostępnych opcji. Cel pracy został osiągnięty.
 
@@ -2166,7 +2166,7 @@ Projekt programistyczny stworzony w~ramach pracy pokazał, jak w~praktyce wyglą
 
 Ambiwalentne wrażenie budzi dążenie do~\textbf{monopolizacji usług chmurowych}. Wielkość centrów danych największych dostawców istotnie tworzy iluzję nieskończonych zasobów komputerowych, lecz prowadzi to do~sytuacji, gdy inne firmy mogą mieć zbyt małą siłę przebicia, by jakkolwiek konkurować z~gigantami chmurowymi. Wtedy nawet posiadając innowacyjny produkt ciężko liczyć na~sukces, jeśli po chwili ta sama funkcjonalność będzie dostępna u wszystkich największych graczy, a~w~razie nieuczciwych praktyk rynkowych pokażą jeszcze potencjał swoich działów prawnych.
 
-Podsumowując, prawdopodobnie najważniejszą rzeczą potrzebną do~podjęcia właściwych decyzji jest staranie~się o~obiektywizm. o~ten z~kolei trudno przy niskiej dostępności aktualnych materiałów o~wydźwięku bardziej akademickim niż marketingowym. Warto zadać sobie trud odnalezienia rzetelnych źródeł. Przy tak szybkim tempie rozwoju technologii chmurowych należy śledzić ten temat, gdyż inaczej istnieje ryzyko skończenia jak programista kart perforowanych w~dobie komputerów PC. 
+Podsumowując, prawdopodobnie najważniejszą rzeczą potrzebną do~podjęcia właściwych decyzji jest staranie~się o~obiektywizm. O~ten z~kolei trudno przy niskiej dostępności aktualnych materiałów o~wydźwięku bardziej akademickim niż marketingowym. Warto zadać sobie trud odnalezienia rzetelnych źródeł. Przy tak szybkim tempie rozwoju technologii chmurowych należy śledzić ten temat, gdyż inaczej istnieje ryzyko skończenia jak programista kart perforowanych w~dobie komputerów PC. 
 
 
 
