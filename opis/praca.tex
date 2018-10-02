@@ -497,7 +497,7 @@ Temat DevOps jest mocno powiązany z~chmurami, ponieważ jego koncepcje znacząc
 
 Istotny element DevOps stanowią wcześniej wspomniane kontenery. Idea kontenerów kiełkowała już kilka lat wcześniej, np. Solaris Containers z~2004~r. lub OpenVZ (2005~r.) i~LXC (Linux Containers -- 2008~r.), które w~istocie do~działania wykorzystywały UNIX-owy program chroot z~1982~r.\cite{siteOperatingSystemVirtualizationWiki} Jednak prawdziwe ożywienie spowodowało dopiero pojawienie~się Dockera -- sprawił iż~tworzenie kontenerów oraz przenoszenie ich pomiędzy systemami stało~się łatwe. Na~nim bazuje kilka projektów intensywnie rozwijanych w~czasie pisania niniejszej pracy.
 
-\textbf{Docker} to system kontenerów, który powstał jako element platformy dotCloud, świadczącej usługi typu PaaS. Spopularyzował~się w~dość osobliwy sposób. Założyciel myślał, że~tylko wygłosi mały referat na~PyCon w~2013~r., lecz okazało się, że~na~konferencji było dużo osób, a~jego referat stanowił główny element programu. Do~końca roku Docker miał 100 mln pobrań, 3 miesiące później -- 300 mln, a~w~czerwcu 2017 -- 13 miliardów.\cite{siteDockerHistory} z~kolei platforma dotCloud nie okazała~się sukcesem -- w~2014~r. Docker Inc. sprzedał ją niemieckiej firmie cloudControl GmbH, która w~grudniu 2015~r. zbankrutowała, a~w~marcu 2016~r. zamknęła usługę.\cite{siteCloudControlWiki}
+\textbf{Docker} to system kontenerów, który powstał jako element platformy dotCloud, świadczącej usługi typu PaaS. Spopularyzował~się w~dość osobliwy sposób. Założyciel myślał, że~tylko wygłosi mały referat na~PyCon w~2013~r., lecz okazało się, że~na~konferencji było dużo osób, a~jego referat stanowił główny element programu. Do~końca roku Docker miał 100 mln pobrań, 3 miesiące później -- 300 mln, a~w~czerwcu 2017 -- 13 miliardów.\cite{siteDockerHistory} Z~kolei platforma dotCloud nie okazała~się sukcesem -- w~2014~r. Docker Inc. sprzedał ją niemieckiej firmie cloudControl GmbH, która w~grudniu 2015~r. zbankrutowała, a~w~marcu 2016~r. zamknęła usługę.\cite{siteCloudControlWiki}
 
 Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportującego kontenery. Miało to nawiązywać do~tego, iż~załadowanie statku trwa dłużej niż transport statkiem. Ma to swoją alegorię do~programowania. W~tradycyjnym podejściu, gdyby zechcieć uruchomić np. aplikację napisaną w~ASP.NET, najpierw trzeba byłoby poświęcić kilka godzin na~pobieranie i~instalację narzędzi: Visual Studio z~narzędziami sieci Web, serwer IIS oraz SQL Server LocalDB. Natomiast w~podejściu Dockera, posiadając zbudowany obraz można by tę aplikację uruchomić od~razu. Razem z~krokami budowania obrazu byłoby to:
 \begin{enumerate}
@@ -505,12 +505,12 @@ Logo Dockera dobrze opisuje jego istotę. Przedstawia wieloryba transportująceg
 \item użycie CLI Dockera oraz pliku Dockerfile do~zbudowania tzw. obrazu Dockera,
 \item użycie obrazu Dockera do~zbudowania i~uruchomienia aplikacji w~kontenerze.
 \end{enumerate}
-Obrazy Dockera działają wszędzie, gdzie jest zainstalowany Docker -- niezależnie od~systemu operacyjnego czy środowisk jakie ma zainstalowane. Ponadto zależności takie jak np. system operacyjny Ubuntu występują w~wersjach ,,odchudzonych'' - przykładowo obraz Minimal Ubuntu 18.04 zajmuje jedynie 29 MB.\cite{siteUbuntuBlog}. Najlżejszym obrazem Linuxa jest dystrybucja Alpine wielkości niecałych 4 MB, stąd używana jest jako baza dla~obrazów zapewnianych przez Docker.\cite{dockerPacktMastering}
+Obrazy Dockera działają wszędzie, gdzie jest zainstalowany Docker -- niezależnie od~systemu operacyjnego czy środowisk jakie ma zainstalowane. Ponadto zależności takie jak np. system operacyjny Ubuntu występują w~wersjach ,,odchudzonych'' -- przykładowo obraz Minimal Ubuntu 18.04 zajmuje jedynie 29 MB.\cite{siteUbuntuBlog}. Najlżejszym obrazem Linuxa jest dystrybucja Alpine wielkości niecałych 4 MB, stąd używana jest jako baza dla~obrazów zapewnianych przez Docker.\cite{dockerPacktMastering}
 Podejście Dockera stwarza następujące możliwości:
 \begin{itemize}
-\item na~jednej maszynie może jednocześnie działać wiele aplikacji wymagających różnych zależności, lub nawet różniących~się jedynie wersjami, w~izolacji od~siebie oraz maszyny, na~której są uruchomione.
-\item w~procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na~środowisku deweloperskim, testowym oraz produkcyjnym. Eliminuje to problem, gdy na~zgłoszony błąd słyszy~się odpowiedź ,,u mnie działa''.
-\item Obrazy Dockera są lekkie: współdzielą wiele zasobów systemu operacyjnego, dzielą między sobą inne obrazy Dockera.\cite{siteDockerStackOverflow} na~jednej maszynie może działać wiele kontenerów Dockera, podczas gdy maszyn wirtualnych może być zaledwie kilka.\cite{ccSpringer}
+\item Na~jednej maszynie może jednocześnie działać wiele aplikacji wymagających różnych zależności, lub nawet różniących~się jedynie wersjami, w~izolacji od~siebie oraz maszyny, na~której są uruchomione.
+\item W~procesie wytwarzania oprogramowania gwarantuje użycie identycznych wersji zależności na~środowisku deweloperskim, testowym oraz produkcyjnym. Eliminuje to problem, gdy na~zgłoszony błąd słyszy~się odpowiedź ,,u mnie działa''.
+\item Obrazy Dockera są lekkie: współdzielą wiele zasobów systemu operacyjnego, dzielą między sobą inne obrazy Dockera.\cite{siteDockerStackOverflow} Na~jednej maszynie może działać wiele kontenerów Dockera, podczas gdy maszyn wirtualnych może być zaledwie kilka.\cite{ccSpringer}
 \end{itemize}
 Powyższe znacząco ułatwia tworzenie aplikacji ,,dla chmury'', orkiestrację chmury oraz stosowanie strategii DevOps.
 
@@ -629,9 +629,9 @@ Za pierwsze ,,bazy danych'' uznaje~się wszelkie techniki zapisu i~odczytu danyc
 
 Pierwszą rewolucją było stworzenie \textbf{systemu bazodanowego} (\textbf{DBMS} -- ang.~\textit{Database Management System}). Wczesne systemy nie opierały~się na~żadnych podstawach matematycznych. Były to tzw. bazy nawigacyjne, gdzie relacje uzyskiwało~się definiując połączenia pomiędzy obiektami. Struktura projektu definiowała jakie będzie można tworzyć rodzaje zapytań do~bazy. Przykłady tych wczesnych baz stanowią: IMS od~firmy IBM (typ hierarchiczny) oraz IDMS będący implementacją standardu CODASTYL (typ sieciowy). 
 
-Drugą rewolucję zaczął Edgar Codd, będący matematykiem-programistą oraz wieloletnim pracownikiem firmy IBM. Był on pierwszą osobą, która zwróciła uwagę na~wady istniejących rozwiązań wynikające z~braku podstaw matematycznych, i~w 1970~r. opublikował artykuł opisujący relacyjne bazy danych. Początkowo pozostał on bez odzewu. Dopiero w~1974~r. IBM zaczął prace nad prototypem zwanym Systemem~r. Prototyp był gotowy w~1976~r. Poza modelem opracowanym przez Codd'a, na~potrzeby systemu stworzono język SQL do~tworzenia zapytań do~bazy danych oraz opracowano zasady obsługi równoległych zapytań. Jim Gray zdefiniował transakcje ACID.
+Drugą rewolucję zaczął Edgar Codd, będący matematykiem-programistą oraz wieloletnim pracownikiem firmy IBM. Był on pierwszą osobą, która zwróciła uwagę na~wady istniejących rozwiązań wynikające z~braku podstaw matematycznych, i~w 1970~r. opublikował artykuł opisujący relacyjne bazy danych. Początkowo pozostał on bez odzewu. Dopiero w~1974~r. IBM zaczął prace nad prototypem zwanym Systemem~R. Prototyp był gotowy w~1976~r. Poza modelem opracowanym przez Codd'a, na~potrzeby systemu stworzono język SQL do~tworzenia zapytań do~bazy danych oraz opracowano zasady obsługi równoległych zapytań. Jim Gray zdefiniował transakcje ACID.
 
-Pierwszą komercyjną \textbf{relacyjną bazą danych} (\textbf{RDBMS} - \textit{Relational Database Management System}) była Oracle Database. Założyciel Oracle, Larry Ellison, był zaznajomiony zarówno z~pracą Codd'a, jak i~Systemem~r. Wierząc w~relacyjne bazy danych, w~1979~r. wydał pierwszą na~świecie komercyjną relacyjną bazę danych obsługującą język SQL. \cite{relationalDbs}
+Pierwszą komercyjną \textbf{relacyjną bazą danych} (\textbf{RDBMS} - \textit{Relational Database Management System}) była Oracle Database. Założyciel Oracle, Larry Ellison, był zaznajomiony zarówno z~pracą Codd'a, jak i~Systemem~R. Wierząc w~relacyjne bazy danych, w~1979~r. wydał pierwszą na~świecie komercyjną relacyjną bazę danych obsługującą język SQL. \cite{relationalDbs}
 
 W tym samym czasie (od roku 1977) pionierski stał~się również projekt Ingres, stworzony przez Michaela Stonebraker'a. Początkowo jako język zapytań stosował QUEL, popularność bazy Oracle wymusiła jednak konieczność obsługi SQL. W~połowie lat 80. na~bazie Ingres powstał projekt Postgres (post-ingres), znany dzisiaj jako PostgreSQL. 
 
@@ -661,7 +661,7 @@ Hadoop to nie tylko projekt, ale podejście do~skalowalnego przetwarzania danych
 \end{itemize}
 Powyższe oznacza, że~wcale nie trzeba mieć bardzo dużego zbioru danych, aby potrzebować Big Data. \cite{hadoop}
 
-Wracając do~Hadoopa, rok po jego wdrożeniu Yahoo! ogłosił, że~ich klaster Hadoopa ma 5 petabajtów dysku i~ponad 10 000 rdzeni CPU, co generowało im cały indeks wyszukiwarki. Podobnie Facebook skorzystał z~Hadoopa w~2007~r. i~już w~2008~r. mieli 2500 rdzeni CPU, a~w~2012~r. 100 petabajtów dysku, co wyparło użycie rozwiązań Oracle w~tej firmie.
+Wracając do~Hadoopa, rok po jego wdrożeniu Yahoo! ogłosił, że~ich klaster Hadoopa ma 5 petabajtów dysku i~ponad 10~000 rdzeni CPU, co generowało im cały indeks wyszukiwarki. Podobnie Facebook skorzystał z~Hadoopa w~2007~r. i~już w~2008~r. mieli 2500~rdzeni CPU, a~w~2012~r. 100~petabajtów dysku, co wyparło użycie rozwiązań Oracle w~tej firmie.
 
 Do głównych zalet Hadoopa zalicza się:
 \begin{itemize}
@@ -685,7 +685,7 @@ W 2007~r. Amazon opracował bazę Dynamo, która stała~się wzorcem dla~baz w~m
 
 Również w~2007~r. powstała pierwsza \textbf{baza dokumentowa}, która mogła być postrzegana jako alternatywa dla~RDBMS. Od~2000~r. powstawały bazy XML, ale raczej mające na~celu zarządzanie już istniejącymi dokumentami w~tym formacie. XML rozpowszechniał~się za sprawą popularności AJAX, później w~tej technice zaczął być zastępowany formatem JSON. Takie dane były już formą dokumentu, a~stworzenie systemu do~przechowywania ich było kwestią czasu. W~2005~r. powstała baza dokumentowa Apache CouchDB, na~razie obsługująca XML, a~w~2007~r. była to pierwsza znacząca baza dokumentów JSON. W~2009~r. powstała baza MongoDB, przechowująca dokumenty JSON (wewnętrznie zapisywane jako BSON -- \textit{Binary JSON}). Stanowi dziś najpopularniejszą bazę tego typu.
 
-Kolejnym osiągnięciem z~2007~r. był artykuł Michaela Stonebrakera pt. ,,The end of an architectural era: (it's time for a~complete rewrite)'' (,,Koniec współczesnych architektur, czas przepisać je na~nowo'' -- tłumaczenie własne). Opisał tam koncepcję bazy H-store typu \textit{\textbf{in-memory}}, która do~transakcji nie potrzebuje wykonywać operacji I/O na~dysku. Pomysł opiera~się na~lepszym wykorzystaniu pamięci RAM i~dysków SSD. Komercyjną implementacją tego pomysłu była baza VoltDB, utworzona w~2008 roku. Jest to baza typu NewSQL.
+Kolejnym osiągnięciem z~2007~r. był artykuł Michaela Stonebrakera pt. \textit{,,The end of an architectural era: (it's time for a~complete rewrite)''} (,,Koniec współczesnych architektur, czas przepisać je na~nowo'' -- tłumaczenie własne). Opisał tam koncepcję bazy H-store typu \textit{\textbf{in-memory}}, która do~transakcji nie potrzebuje wykonywać operacji I/O na~dysku. Pomysł opiera~się na~lepszym wykorzystaniu pamięci RAM i~dysków SSD. Komercyjną implementacją tego pomysłu była baza VoltDB, utworzona w~2008 roku. Jest to baza typu NewSQL.
 
 Rok 2007 był przełomowy także dla~modelu \textbf{baz grafowych} -- powstała wtedy baza Neo4J. Bazy grafowe przypominają wczesne, nawigacyjne bazy danych, lecz operują na~wyższym poziomie abstrakcji oraz pozwalają na~przeszukiwanie grafu do~zadanego poziomu. Są stworzone dla~danych, gdzie najważniejszą właściwością są relacje z~innymi danymi, np. relacje w~social media. Do~odpytywania bazy grafowej używa~się języków Cypher oraz Gremlin. Neo4J stanowi bazę czysto grafową, jednak nie obsługuje systemów rozproszonych, gdyż łączenie wierzchołków grafu z~różnych serwerów znacząco obniżyłoby jego wydajność. Do~projektów przetwarzania grafów na~systemach rozproszonych należą: Apache Giraph (2016~r.), GraphX (część Apache Spark, 2014~r.), Titan (2015~r.) -- działający jako nakładka na~HBase czy Cassandrę.
 
@@ -701,7 +701,7 @@ Jak było wspomniane wcześniej, chmury obliczeniowe gromadzą~się co do~zasady
 		\label{fig:cdn-schemat}
 \end{figure}
 
-Początkowo większość treści znajdujących~się w~Internecie była statyczna, więc zadanie sieci CDN koncentrowało~się na~tworzeniu cache często pobieranej treści. Z~czasem treść zaczęła~się robić coraz bardziej dynamiczna, zaczęło~się upowszechniać strumieniowanie wideo (rysunek \ref{fig:cdn-streaming}). Spowodowało to powstanie drugiej generacji sieci CDN będącej w~stanie obsłużyć te przypadki. W~technologiach CDN od~lat przewodzi założona w~1998~r. firma Akamai. Obecnie posiada ponad 240 000 serwerów CDN w~ponad 130 krajach na~całym świecie.\cite{siteAkamaiFacts} do~innych znaczących dostarczycieli usług tego typu należą: Limelight, CloudFront (część Amazon AWS), Azure CDN. \cite{ccCambridge, cdn}
+Początkowo większość treści znajdujących~się w~Internecie była statyczna, więc zadanie sieci CDN koncentrowało~się na~tworzeniu cache często pobieranej treści. Z~czasem treść zaczęła~się robić coraz bardziej dynamiczna, zaczęło~się upowszechniać strumieniowanie wideo (rysunek \ref{fig:cdn-streaming}). Spowodowało to powstanie drugiej generacji sieci CDN będącej w~stanie obsłużyć te przypadki. W~technologiach CDN od~lat przewodzi założona w~1998~r. firma Akamai. Obecnie posiada ponad 240 000 serwerów CDN w~ponad 130 krajach na~całym świecie.\cite{siteAkamaiFacts} Do~innych znaczących dostarczycieli usług tego typu należą: Limelight, CloudFront (część Amazon AWS), Azure CDN. \cite{ccCambridge, cdn}
 
 \begin{figure}[h]
 	\centering
@@ -1345,7 +1345,7 @@ W przypadku gdy mieszka ze sobą więcej osób, liczby przestają cokolwiek mów
 \item wydatki na~rachunki, gdzie można ustalić, że~osoba zarabiająca więcej będzie płaciła proporcjonalnie więcej,
 \item wydatki na~jedzenie, gdzie jedzenie dla~jednej osoby może kosztować znacznie więcej niż dla~drugiej.
 \end{itemize}
-Gdy gospodarstwo domowe liczy więcej osób, wzajemne rozliczenia stają~się skomplikowane. Trudno wówczas prowadzić budżet domowy, kontrolować gdzie ,,wyciekają'' pieniądze. Można starać się, aby wydatki były zapisywane na~jednym komputerze, można pewne obliczenia przeprowadzić ręcznie. Nie zapewnia to jednak wygody oddzielenia własnych wydatków od~wydatków innych, jak również nie umożliwia sprawdzania np. ile wynoszą wydatki na~jedzenie w~tym miesiącu.
+Gdy gospodarstwo domowe liczy więcej osób, wzajemne rozliczenia stają~się skomplikowane. Trudno wówczas prowadzić budżet domowy, kontrolować gdzie ,,wyciekają'' pieniądze. Można starać się, aby wydatki były zapisywane na~jednym komputerze, można pewne obliczenia przeprowadzić ręcznie. Nie zapewnia to jednak wygody oddzielenia własnych wydatków od~wydatków innych, jak również nie umożliwia sprawdzania np. ile wynoszą wydatki na~jedzenie w~danym miesiącu.
 
 Biorąc pod uwagę powyższe, idealnym rozwiązaniem problemu zapisywania wydatków przez kilka osób byłaby aplikacja, która umożliwiłaby połączenie kilku użytkowników w~grupę i~przy pomocy serwera przeprowadzałaby wszystkie potrzebne obliczenia. Gwarantowałoby to niespotykaną wcześniej precyzję w~rozliczeniach, przy jednoczesnej prostocie obsługi. 
 
@@ -1511,9 +1511,9 @@ W niniejszej sekcji przedstawiono, jak istniejące podejścia zestawiają~się z
 
 \begin{enumerate}
 	\item \textbf{Koszt} -- taki jak w~FaaS
-	\item \textbf{Poziom skomplikowania} -- taki jak w~FaaS + nauka Serverless Framework, który proponuje swoje rozwiązania na~każdym etapie tworzenia funkcji. 
+	\item \textbf{Poziom skomplikowania} -- taki jak w~FaaS, plus dodatkowo nauka Serverless Framework, który proponuje swoje rozwiązania na~każdym etapie tworzenia funkcji. 
 	\item \textbf{Czas dostępu} -- tak jak w~FaaS
-	\item \textbf{Technologie} -- możliwość pisania we wielu językach, nawet jeśli chmura docelowa w~praktyce go nie obsługuje. Z~tym że~sprowadzając wszystkie platformy do~jednego mianownika, ogranicza~się możliwość skorzystania z~innych usług PaaS chmury publicznej. Z~kolei jeśli i~tak doprowadza~się do~uzależnienia od~wybranego dostawcy, to po co zakładać dodatkową warstwę abstrakcji.
+	\item \textbf{Technologie} -- możliwość pisania we wielu językach, nawet jeśli chmura docelowa w~praktyce go nie obsługuje. Z~tym, że~sprowadzając wszystkie platformy do~jednego mianownika, ogranicza~się możliwość skorzystania z~innych usług PaaS chmury publicznej. Z~kolei jeśli i~tak doprowadza~się do~uzależnienia od~wybranego dostawcy, to po co zakładać dodatkową warstwę abstrakcji.
 	\item \textbf{Przenoszenie na~inną platformę} -- przeniesienie kodu mikrousług byłoby łatwe, należałoby~się jednak zapoznać także z~zagadnieniami migracji danych.
 \end{enumerate}
 	
@@ -1592,7 +1592,7 @@ Jeśli chodzi o~chmurę, na~której dobrze byłoby zrealizować to podejście, a
 
 Gdyby jeszcze nie wynaleziono podejścia serverless, to za najlepszą z~opcji uchodziłyby \textbf{kontenery}. Kontenery są znacznie lżejsze niż maszyny wirtualne, a~do~tego pozwalają tworzyć w~technologiach, które nie są zarezerwowane dla~wybranego dostawcy. Używając kontenerów wiele można zdziałać na~lokalnej maszynie, gdyż aplikacja dysponuje wówczas wszędzie tym samym środowiskiem do~uruchamiania. 
 
-W przypadku kontenerów należałoby poświęcić wiele uwagi tworzeniu właściwej architektury. Mikrousługi to \textbf{nie jest} rozbicie zwykłej usługi na~mniejsze kawałki, ponieważ w~mikrousługach obowiązują inne zasady programowania i~komunikowania ze sobą usług, niż w~dużych usługach. Na~przykład w~zwykłym SOA dość typowe jest wiązanie ze sobą usług za pomocą usługi dostępu do~bazy danych, jednej dla~wszystkich usług. W~mikrousługach byłby to podstawowy błąd architektoniczny. 
+W przypadku kontenerów należałoby poświęcić wiele uwagi tworzeniu właściwej architektury. Projektowanie mikrousług to \textbf{nie jest} rozbicie zwykłej usługi na~mniejsze kawałki, ponieważ w~mikrousługach obowiązują inne zasady programowania i~komunikowania ze sobą usług, niż w~dużych usługach. Na~przykład w~zwykłym SOA dość typowe jest wiązanie ze sobą usług za pomocą usługi dostępu do~bazy danych, jednej dla~wszystkich usług. W~mikrousługach byłby to podstawowy błąd architektoniczny. 
 
 Obecnie kontenery można wdrażać w~chmurze na~trzy sposoby. Zdaniem autorki, na~sam początek wystarczyłaby usługa instancji kontenerów, ponieważ jest przystosowana do~uruchamiania małej ilości kontenerów i~nie wymaga konfigurowania maszyn wirtualnych czy orkiestratora. W~drugiej kolejności należałoby wybrać pomiędzy samodzielną instalacją Kubernetes lub skorzystaniem z~KaaS. 
 
@@ -1838,7 +1838,7 @@ Azure Functions stanowi usługę wchodzącą w~skład Azure App Services. Zosta�
 
 Dostępne są dwie wersje środowiska uruchomieniowego Azure Functions: \cite{siteAzureFunctions2}
 \begin{itemize}
-\item 1.x -- działa na~.NET Framework
+\item 1.x -- działa na~.NET Framework;
 \item 2.x -- działa na~.NET Standard; do~dnia 24.09 występowała w~wersji poglądowej i~zalecano korzystanie z~1.x.
 \end{itemize} 
 
@@ -2149,6 +2149,8 @@ W aplikacji został zaimplementowany mechanizm walidacji szczegółowo informuj�
 Aplikacja nigdzie nie przechowuje hasła użytkownika. Jedynie zapisuje klucz uzyskany po zalogowaniu do~systemowego \textbf{Accounts Managera}. Podczas uruchamiania aplikacji sprawdzane jest, czy istnieje konto w~Accounts Managerze i~czy posiada klucz. Jeśli tak, to użytkownik może~się automatycznie zalogować za pomocą tego klucza. W~wiadomości zwrotnej jest przekazywana informacja o~tym, czy konto było skonfigurowane, i~w zależności od~tego użytkownik zostaje przekierowany do~strony konfiguracji bądź do~strony głównej.
 
 Dla łatwej obsługi aplikacji wykorzystano mechanizm \textit{navigation drawer}, polegający na~wysuwanym menu po lewej stronie. Składa~się z~aktywności głównej oraz fragmentów dla~każdej z~pozycji występującej w~menu.
+
+Aby ograniczać liczbę zapytań do serwera, aplikacja zapisuje ostatnio pobrane dane wraz z datą ich pobrania i zgodnie z ustalonym interwałem sprawdza, czy już czas znów je pobrać.
 
 
 \addcontentsline{toc}{chapter}{Podsumowanie}
