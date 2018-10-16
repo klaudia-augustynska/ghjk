@@ -255,8 +255,51 @@ Celem pracy było rozstrzygnięcie, jak na~obecny stan wiedzy podejść do~probl
 
 Wybrana technologia miała zostać użyta w~praktyce do~stworzenia aplikacji na~system Android, komunikującej~się z~API udostępnianym przez chmurę. Aplikacja miała umożliwiać zapisywanie wydatków w~sposób uwzględniający wydatki kilku osób w~gospodarstwie domowym. System miał pozwolić założyć konto w~serwisie, a~następnie połączyć konta w~grupy odpowiadające gospodarstwu domowemu. Kategorie wydatków miały pozwolić na~uzgodnienie, kto ile płaci w~danej kategorii (np. wydatki na~higienę po 50\%). Serwer miał być potrzebny do~wspomagania rozliczeń pomiędzy poszczególnymi osobami przez dynamiczne naliczanie kto ma ile do~oddania. Ponadto miał wspomagać kontrolę własnych wydatków przez uwzględnienie, że~koszty życia to nie tylko pieniądze wydawane przez siebie samego, ale również wydatki poniesione przez inne osoby prowadzące to samo gospodarstwo domowe. 
 
-Ponieważ tradycyjne programy do~zarządzania wydatkami nie posiadają wyżej wymienionych funkcjonalności, jak również zazwyczaj mogą działać bez serwera, to jest przykład aplikacji, która może nagle stać~się popularna i~powinna być w~stanie wówczas obsłużyć większe obciążenie serwera. 
+Tradycyjne programy do~zarządzania wydatkami nie posiadają wyżej wymienionych funkcjonalności -- zazwyczaj mogą działać bez serwera, a nawet jeśli wspierają wiele kont, to nie wspomagają tworzenia rozliczeń w wyżej opisany sposób. Tabela \ref{table:programy} prezentuje funkcjonalności popularnych programów. Została opracowana na podstawie porad Michała Szafrańskiego -- poczytnego w Polsce autora bloga i książek dotyczących oszczędzania pieniędzy,\cite{siteJakOszczedzacPieniadze} oraz zestawienia najpopularniejszych aplikacji tego typu na Androida \cite{siteAppsForAndroid}. 
 
+Biorąc pod uwagę powyższe, proponowany pomysł stanowi przykład aplikacji, która może nagle stać~się popularna i~powinna być w~stanie wówczas obsłużyć większe obciążenie serwera. 
+
+\noindent
+\begin{small}
+\begin{table}[h]
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{ |>{\hsize=1.5\hsize}L|>{\hsize=0.8\hsize}X|>{\hsize=1\hsize}X|>{\hsize=0.9\hsize}X|>{\hsize=0.8\hsize}X|>{\hsize=1\hsize}X| }
+
+\hline
+                & serwer & import z~banków & waluty  & grupy & rozliczenia \\
+\hline
+Microsoft Money & --     & --              & tak     &  --    & -- \\
+\hline
+Microsoft Excel & --     & --              & --      &  --    & -- \\
+\hline
+Kontomierz.pl   & tak    & tak             & tak     &  --    & -- \\
+\hline
+YNAB            & tak    & banki z~USA     & dolary  &  tak   & -- \\
+\hline
+Goodbudget      & tak    & --              & --      &  tak   & -- \\
+\hline
+Google Sheets i podobne
+                & tak    & --              & --      &  tak   & -- \\
+\hline
+Mint            & tak    & tak             & dolary  &  tak   & -- \\
+\hline
+Monefy          & tak    & --              & tak     &  --    & -- \\
+\hline
+Money Manager   & --     & --              & tak     & --     & -- \\
+\hline
+Mój budżet      & --     & --              & --      & --     & -- \\
+\hline
+Wallet          & tak    & tak             & tak     & tak    & -- \\
+\hline
+
+\end{tabularx}
+
+
+\caption{Funkcjonalności popularnych aplikacji używanych do zarządzania wydatkami}
+		\label{table:programy}
+
+\end{table}
+\end{small}
 
 
 \section*{Opis rozdziałów}
@@ -410,7 +453,7 @@ Wymienione wyżej technologie zestawione razem dały podwaliny chmurom obliczeni
 
 Przyjmuje się, że~termin \textit{,,cloud computing''} po raz pierwszy został użyty przez CEO firmy Google, Erica Schmidta, w~trakcie konferencji w~2006~r. Tego samego roku Amazon użył tej nazwy publikując pionierską w~swoim gatunku usługę Elastic Compute Cloud (EC2), czyli możliwość wynajmu serwera wirtualnego w~ich chmurze.
 
-\section{Historia najnowsza. Współczesne wyzwania}
+\section{Współczesne wyzwania Cloud Computingu}
 
 Odkąd Amazon uruchomił usługę EC2, nastąpił gwałtowny rozwój rozwiązań chmurowych. Praktycznie w~tym samym czasie rozwinęły~się technologie postrzegane w~czasie pisania niniejszej pracy jako rewolucyjne. Na~potrzeby opracowania wyróżniono następujące grupy zmian:
 \begin{itemize}
@@ -566,7 +609,7 @@ Dostępność tych usług ucieleśnia wizję tworzenia aplikacji dla~chmury tak,
 
 \subsection{Mikrousługi i~serverless} \label{section:mikroserwisy}
 
-Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla~chmury. W~chmurze może działać praktycznie każdy program, wszakże odpowiednio przygotowana maszyna wirtualna wszystko przyjmie. Chcąc jednak maksymalnie wykorzystać atuty chmury, a~jednocześnie zapewnić niezawodność i~jak najniższy koszt eksploatacji, należy zapoznać~się ze specyficznym sposobem tworzenia aplikacji dla~chmury. Aplikację zgodną z~tymi wytycznymi określa~się jako \textbf{\textit{cloud native}}.
+Gwałtowny rozwój chmur obliczeniowych poskutkował również wytworzeniem nowych wzorców projektowych, wzorców architektonicznych oraz dobrych praktyk używanych podczas tworzenia aplikacji przeznaczonej dla~chmury. W~chmurze może działać praktycznie każdy program. Chcąc jednak maksymalnie wykorzystać atuty chmury, a~jednocześnie zapewnić niezawodność i~jak najniższy koszt eksploatacji, należy zapoznać~się ze specyficznym sposobem tworzenia aplikacji dla~chmury. Aplikację zgodną z~tymi wytycznymi określa~się jako \textbf{\textit{cloud native}}.
 
 Jak zostało wspomniane wcześniej, platforma Heroku była pionierem jeśli chodzi o~udostępnianie programistom platformy do~tworzenia aplikacji w~chmurze (2007~r.). Współzałożyciel Heroku, Adam Wiggins wraz z~zespołem, w~2012~r. na~podstawie doświadczeń zebranych w~Heroku stworzyli metodykę \textit{,,twelve-factor''} (ang. \textbf{\textit{The Twelve-Factor App}}). Jest to zbiór podstawowych 12. reguł dotyczących programowania oraz pracy z~aplikacjami przeznaczonymi dla~chmury. Reguły te są często przywoływane w~literaturze zajmującej~się tym tematem.\cite{cloudFoundry, microservicesPacktNetCore} Można~się z~nimi zapoznać odwiedzając stronę \texttt{https://12factor.net} (w czasie pisania pracy strona była dostępna w~13 językach, w~tym w~języku polskim).
 
@@ -647,7 +690,7 @@ Trzecia rewolucja rozpoczęła~się za sprawą coraz większego znaczenia system
 \item w~2004~r. -- model \textbf{MapReduce} pozwalający na~przetwarzanie danych w~systemach rozproszonych,
 \item w~2006~r. -- baza danych \textbf{BigTable}.
 \end{itemize}
-Ponadto w~2005~r. Google opatentował Modular Data Center, czyli sposób na~szybką rozbudowę centrum danych. Zamiast z~osobna dodawać serwery, mogli dodawać od~razu po tysiąc naraz.
+Ponadto w~2005~r. Google opatentował Modular Data Center, czyli sposób na~szybką rozbudowę centrum danych. Zamiast z~osobna dodawać serwery, mogli dodawać od~razu po tysiąc naraz. Odbywało się to przy pomocy kontenerów, które poza sprzętem komputerowym zawierały także system chłodzenia oraz zasilania prądem. Zmieniło to sposób myślenia o podstawowej jednostce tworzącej centrum danych. \cite{noSqlHistory}
 
 Rozwiązania Google zainspirowały inne projekty. W~2004~r. powstał projekt Apache Nutch, który miał być otwartoźródłową wyszukiwarką internetową. Gdy Google opublikował GFS i~MapReduce, dla~Nutch to był sygnał jak rozwiązywać problemy skalowalności. W~2006~r. Yahoo! zainwestował w~projekt, pomimo że~był otwartoźródłowy, ponieważ chciał użyć go w~swoim produkcie. Adaptację rozwiązań Google wyodrębniono jako osobny projekt. Tak w~2007~r. powstał \textbf{Apache Hadoop}. \cite{hadoop}
 
@@ -667,7 +710,7 @@ Do głównych zalet Hadoopa zalicza się:
 \begin{itemize}
 \item tanie przechowywanie danych -- jest to możliwe na~zwykłych dyskach,
 \item skalowanie operacji I/O -- ponieważ zamiast dodawać tylko dyski, dodaje~się nowe komputery,
-\item niezadowność -- jeśli zepsuje~się jeden komputer, to jego rolę przejmie inny,
+\item niezawodność -- jeśli zepsuje~się jeden komputer, to jego rolę przejmie inny,
 \item \textit{,,schema on read''} -- struktura danych tworzy~się podczas czytania źródła danych, w~przeciwieństwie do~tradycyjnego modelu relacyjnego, gdzie przy zapisie danych należy~się zastosować do~istniejącego schematu (ang. \textit{schema on write}).
 \end{itemize}
 
@@ -826,7 +869,7 @@ Usługi typu CaaS były pierwszym krokiem do~uproszczenia zarządzania kontenera
 
 \end{itemize}
 
-\chapter{Porównanie różnych podejść}
+\chapter{Porównanie usług Cloud Computing}
 
 Usługę wspierającą urządzenie mobilne w~chmurze można stworzyć i~udostępnić na~wiele sposobów. Dla~programisty, który nie korzysta z~chmury na~co dzień, wybór ten może okazać~się zaskakująco szeroki.
 
@@ -974,7 +1017,7 @@ Cisco and Google Cloud \cite{siteGoogleCisco} & Google Cloud & Cisco Hybrid Clou
 \end{itemize}
 
 
-\section{Wykupienie serwera wirtualnego w~chmurze}\label{section:podejscieVm}
+\section{Serwer wirtualny w~chmurze}\label{section:podejscieVm}
 
 Jest to podejście, w~którym rezygnuje~się z~zarządzania fizyczną infrastrukturą komputerową. Odchodzą zatem ograniczenia spotykane przy budowaniu własnej chmury prywatnej (opisane w~sekcji  \ref{section:chmuraPrywatna}). Nadal jednak trzeba samodzielnie wybrać system operacyjny oraz doinstalować odpowiednie środowiska.
 
@@ -2156,10 +2199,11 @@ Aby ograniczać liczbę zapytań do serwera, aplikacja zapisuje ostatnio pobrane
 \addcontentsline{toc}{chapter}{Podsumowanie}
 \chapter*{Podsumowanie}
 \markboth{Podsumowanie}{}
- 
-Przed przystąpieniem do~niniejszej pracy autorka posiadała wiedzę sprzed kilku lat -- że~istnieją platformy pozwalające wdrażać w~chmurze aplikacje utworzone w~określonych technologiach. Na~etapie przeglądu literatury okazało się, że~pogląd ten nie ma już prawie nic wspólnego z~dzisiejszą rzeczywistością. Ze wszystkich stron wybijała~się ekscytacja nowymi rewolucyjnymi technologiami i~kolejnymi najlepszymi podejściami do~pracy z~chmurą. 
 
-Połączenie tego wszystkiego w~całość umożliwiło spojrzenie z~szerszej perspektywy na~wszystkie te nowości oraz określenie jakich obszarów dotyczą. Pozwoliło to wyłonić podejście, które prawdopodobnie najlepiej wypełnia swoje zadanie spośród dostępnych opcji. Cel pracy został osiągnięty.
+
+Badanie literatury przedmiotu pokazało, że w ciągu ostatnich kilku lat technologie chmurowe uległy znaczącej ewolucji. Ze wszystkich stron wybijała~się ekscytacja nowymi rewolucyjnymi technologiami i~kolejnymi najlepszymi podejściami do~pracy z~chmurą. Minęły czasy, gdy możliwości opublikowania aplikacji w chmurze ograniczały się do tworzenia w określonej technologii pod kątem wybranej platformy. 
+
+Połączenie zdobytej wiedzy w~całość umożliwiło spojrzenie z~szerszej perspektywy na~wszystkie te nowości oraz określenie jakich obszarów dotyczą. Pozwoliło to wyłonić podejście, które prawdopodobnie najlepiej wypełnia swoje zadanie spośród dostępnych opcji. Cel pracy został osiągnięty.
 
 Podczas opracowywania poruszanych zagadnień dokonano kilku spostrzeżeń.
 
